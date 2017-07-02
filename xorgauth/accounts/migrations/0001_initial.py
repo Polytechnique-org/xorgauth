@@ -24,8 +24,8 @@ class Migration(migrations.Migration):
                 ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
                 ('uid', models.UUIDField(default=uuid.uuid4, editable=False, verbose_name='UUID')),
                 ('hrid', models.SlugField(unique=True, verbose_name='human-readable identifier')),
-                ('fullname', xorgauth.utils.fields.UnboundedCharField(help_text='Name to display to other users', verbose_name='full name')),
-                ('preferred_name', xorgauth.utils.fields.UnboundedCharField(help_text='Name used when addressing the user', verbose_name='preferred name')),
+                ('fullname', xorgauth.utils.fields.UnboundedCharField(help_text='Name to display to other users', verbose_name='full name')),  # noqa: E501
+                ('preferred_name', xorgauth.utils.fields.UnboundedCharField(help_text='Name used when addressing the user', verbose_name='preferred name')),  # noqa: E501
                 ('main_email', models.EmailField(max_length=254, unique=True, verbose_name='email')),
             ],
             options={
@@ -51,7 +51,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('email', models.EmailField(max_length=254, unique=True, verbose_name='email alias')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='aliases', to='accounts.User', verbose_name='user')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='aliases', to='accounts.User', verbose_name='user')),  # noqa: E501
             ],
             options={
                 'verbose_name_plural': 'user aliases',

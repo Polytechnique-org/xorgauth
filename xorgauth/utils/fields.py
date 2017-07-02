@@ -18,7 +18,5 @@ class UnboundedCharField(models.TextField):
     """
 
     def formfield(self, **kwargs):
-        kwargs['widget'] = None if self.choices else django_forms.TextInput
+        kwargs['widget'] = None if self.choices else forms.TextInput
         return super().formfield(**kwargs)
-
-
