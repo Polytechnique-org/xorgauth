@@ -35,3 +35,10 @@ Features (planned)
 * OpenID Connect v1.0 provider
 * Legacy auth-groupe-x authentication provider
 * Multiple authentication levels (cookie, password, two-factor)
+
+
+Notes
+-----
+
+* Use https://testpypi.python.org/pypi/django-zxcvbn-password/2.0.0 for password entry
+* As a provider, return a list of "group access levels" + "role-based permissions"
