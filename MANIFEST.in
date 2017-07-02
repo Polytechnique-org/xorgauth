@@ -4,6 +4,7 @@ include requirements_dev.txt release.txt
 graft xorgauth
 
 prune docs
+prune scripts
 prune tests
 
 global-exclude *.py[cod] __pycache__ *.so .*.swp
