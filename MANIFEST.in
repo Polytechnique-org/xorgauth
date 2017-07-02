@@ -1,0 +1,11 @@
+include LICENSE README.rst
+include requirements_dev.txt release.txt
+
+graft xorgauth
+
+prune docs
+prune tests
+
+global-exclude *.py[cod] __pycache__ *.so .*.swp
+
+exclude Makefile example_* manage.py tox.ini .flake8 .travis.yml
