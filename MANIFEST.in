@@ -1,5 +1,5 @@
 include LICENSE README.rst
-include requirements_dev.txt release.txt
+include requirements.txt requirements_dev.txt release.txt
 
 graft xorgauth
 
