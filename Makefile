@@ -25,12 +25,16 @@ clean:
 
 build: $(MO_FILES)
 
+createdb:
+	python manage.py migrate
+	python manage.py creatersakey
 
 %.mo: %.po
 	cd $(abspath $(dir $<)/../../..) && $(DJANGO_ADMIN) compilemessages
 
 update:
 	pip install --upgrade pip setuptools
+	pip install --upgrade -r requirements.txt
 	pip install --upgrade -r requirements_dev.txt
 	pip freeze
 
@@ -57,4 +61,4 @@ doc:
 	$(MAKE) -C $(DOC_DIR) html
 
 
-.PHONY: all default clean coverage doc install-deps lint test
+.PHONY: all default clean coverage createdb doc install-deps lint test
