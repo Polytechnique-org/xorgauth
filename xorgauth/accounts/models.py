@@ -12,6 +12,9 @@ from django.utils.translation import ugettext_lazy as _
 from xorgauth.utils.fields import UnboundedCharField
 
 
+ADMIN_ROLE_HRID = 'admin'
+
+
 class Role(models.Model):
     system = models.BooleanField(_("system role"), default=False, editable=False)
     hrid = models.SlugField(_("human-readable identifier"), unique=True)
@@ -24,6 +27,22 @@ class Role(models.Model):
     def __str__(self):
         return self.hrid
 
+    @classmethod
+    def get_admin(cls):
+        return cls.objects.get(hrid=ADMIN_ROLE_HRID)
+
+
+class UserManager(base_user.BaseUserManager):
+
+    def create_superuser(self, hrid, main_email, password, **extra_fields):
+        main_email = self.normalize_email(main_email)
+        user = self.model(hrid=hrid, main_email=main_email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        user.roles.add(Role.get_admin())
+        user.save(using=self._db)
+        return user
+
 
 class User(base_user.AbstractBaseUser):
     uid = models.UUIDField("UUID", default=uuid.uuid4, editable=False)
@@ -32,6 +51,8 @@ class User(base_user.AbstractBaseUser):
     preferred_name = UnboundedCharField(_("preferred name"), help_text=_("Name used when addressing the user"))
     main_email = models.EmailField(_("email"), unique=True)
     roles = models.ManyToManyField(Role, related_name='members', verbose_name=_("roles"))
+
+    objects = UserManager()
 
     class Meta:
         verbose_name = _("user account")
@@ -51,6 +72,11 @@ class User(base_user.AbstractBaseUser):
 
     def get_short_name(self):
         return self.preferred_name
+
+    @property
+    def is_staff(self):
+        """Staff members are defined by the admin role"""
+        return self.roles.filter(hrid=ADMIN_ROLE_HRID).count() > 0
 
 
 class UserAlias(models.Model):
