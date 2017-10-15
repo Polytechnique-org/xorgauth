@@ -78,6 +78,20 @@ class User(base_user.AbstractBaseUser):
         """Staff members are defined by the admin role"""
         return self.roles.filter(hrid=ADMIN_ROLE_HRID).count() > 0
 
+    def has_module_perms(self, app_label):
+        # staff members have every right
+        if self.is_staff:
+            return True
+        # FIXME implement permissions for other user kinds
+        return False
+
+    def has_perm(self, perm, obj=None):
+        # staff members have every right
+        if self.is_staff:
+            return True
+        # FIXME implement permissions for other user kinds
+        return False
+
 
 class UserAlias(models.Model):
     """Alias login"""
