@@ -42,3 +42,15 @@ Notes
 
 * Use https://testpypi.python.org/pypi/django-zxcvbn-password/2.0.0 for password entry
 * As a provider, return a list of "group access levels" + "role-based permissions"
+
+* Run the following commands in order to setup a development environment::
+
+    make update
+    make createdb
+    python manage.py createsuperuser --fullname me --hrid me --preferred_name me --main_email me@localhost.localdomain
+    python manage.py runserver
+    # Go to http://127.0.0.1:8000/admin/ to configure django-oidc-provider
+
+* Documentation:
+  - https://django-oidc-provider.readthedocs.io/ for the identity provider
+  - https://mozilla-django-oidc.readthedocs.io/ in order to configure a test relying party (client)
