@@ -51,6 +51,19 @@ Notes
     python manage.py runserver
     # Go to http://127.0.0.1:8000/admin/ to configure django-oidc-provider
 
+* In a development environment, in order to use the test relying party:
+
+  - run ``python manage.py shell`` and add a client:
+
+    .. code-block:: python
+
+        from oidc_provider.models import Client
+        c = Client(name='Test RP', client_id='123456', response_type='id_token token', redirect_uris=['http://localhost:8000/test-relying-party/'])
+        c.save()
+
+  - run ``python manage.py runserver 8000``
+  - open http://localhost:8000/test-relying-party/ in a web browser and click on the log in button
+
 * Documentation:
   - https://django-oidc-provider.readthedocs.io/ for the identity provider
   - https://mozilla-django-oidc.readthedocs.io/ in order to configure a test relying party (client)
