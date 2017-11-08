@@ -78,6 +78,12 @@ class User(base_user.AbstractBaseUser):
         """Staff members are defined by the admin role"""
         return self.roles.filter(hrid=ADMIN_ROLE_HRID).count() > 0
 
+    @property
+    def email(self):
+        """Hack to work around a bug in django-oidc-provider"""
+        field_name = self.get_email_field_name()
+        return getattr(self, field_name)
+
     def has_module_perms(self, app_label):
         # staff members have every right
         if self.is_staff:
