@@ -104,3 +104,26 @@ class UserAlias(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Group(models.Model):
+    """Group of people"""
+    shortname = models.SlugField(_("short name"), unique=True)
+
+    class Meta:
+        verbose_name = _("group")
+        verbose_name_plural = _("groups")
+
+    def __str__(self):
+        return self.shortname
+
+
+class GroupMembership(models.Model):
+    """Relationship between a user and a group"""
+    MEMBERSHIP_PERMS = (
+        ('member', _('member')),
+        ('admin', _('administrator')),
+    )
+    group = models.ForeignKey(Group, related_name='members', verbose_name=_("members"))
+    user = models.ForeignKey(User, related_name='groups', verbose_name=_("groups"))
+    perms = models.SlugField(choices=MEMBERSHIP_PERMS)

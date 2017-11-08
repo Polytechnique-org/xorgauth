@@ -29,3 +29,18 @@ class UserAliasAdmin(admin.ModelAdmin):
 
     list_display = ['email', 'user']
     list_select_related = ['user']
+
+
+@admin.register(models.Group)
+class GroupAdmin(admin.ModelAdmin):
+    search_fields = ['shortname'] + ['members__user__%s' % f for f in UserAdmin.search_fields]
+
+    list_display = ['shortname']
+
+
+@admin.register(models.GroupMembership)
+class GroupMembershipAdmin(admin.ModelAdmin):
+    search_fields = ['group__shortname'] + ['user__%s' % f for f in UserAdmin.search_fields]
+
+    list_display = ['pk', 'group', 'user', 'perms']
+    list_filter = ['perms']
