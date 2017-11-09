@@ -17,12 +17,18 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='groupmembership',
             name='group',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='members', to='accounts.Group', verbose_name='group'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                    related_name='members',
+                                    to='accounts.Group',
+                                    verbose_name='group'),
         ),
         migrations.AlterField(
             model_name='groupmembership',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='groups', to=settings.AUTH_USER_MODEL, verbose_name='member'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                    related_name='groups',
+                                    to=settings.AUTH_USER_MODEL,
+                                    verbose_name='member'),
         ),
         migrations.AlterUniqueTogether(
             name='groupmembership',
