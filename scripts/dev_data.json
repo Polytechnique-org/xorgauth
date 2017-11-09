@@ -1,0 +1,221 @@
+{
+  "accounts": [
+    {
+      "hruid": "admi.nistrateur.1942",
+      "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+      "type": "x",
+      "is_admin": 1,
+      "firstname": "Admin",
+      "lastname": "Nistrateur",
+      "full_name": "Admi Nistrateur",
+      "directory_name": "NISTRATEUR Admi",
+      "display_name": "Admi Nistrateur",
+      "sex": "male",
+      "email": "admi.nistrateur@m4x.org",
+      "email_source": {
+        "admi.nistrateur@alumni.polytechnique.org": "alias",
+        "admi.nistrateur.42@alumni.polytechnique.org": "alias",
+        "admi.nistrateur.1942@alumni.m4x.org": "forlife",
+        "admi.nistrateur@alumni.m4x.org": "alias",
+        "admi.nistrateur.42@alumni.m4x.org": "alias",
+        "admi.nistrateur.1942@alumni.m4x.org": "forlife",
+        "admi.nistrateur@m4x.org": "alias",
+        "admi.nistrateur.42@m4x.org": "alias",
+        "admi.nistrateur.1942@m4x.org": "forlife",
+        "admi.nistrateur@polytechnique.org": "alias",
+        "admi.nistrateur.42@polytechnique.org": "alias",
+        "admi.nistrateur.1942@polytechnique.org": "forlife",
+        "admin@melix.net": "alias_aux"
+      },
+      "email_redirect": {
+        "administateur@gmail.com": "smtp"
+      },
+      "groups": {
+        "1942": "member",
+        "Polytechnique.org": "admin",
+        "X-Informatique": "member"
+      }
+    },
+    {
+      "hruid": "simple.user.1942",
+      "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+      "type": "x",
+      "is_admin": 0,
+      "firstname": "Simple",
+      "lastname": "User",
+      "full_name": "Simple User",
+      "directory_name": "USER Simple",
+      "display_name": "Simple",
+      "sex": "male",
+      "email": "simple.user@m4x.org",
+      "email_source": {
+        "simple.user@alumni.polytechnique.org": "alias",
+        "simple.user.42@alumni.polytechnique.org": "alias",
+        "simple.user.1942@alumni.m4x.org": "forlife",
+        "simple.user@alumni.m4x.org": "alias",
+        "simple.user.42@alumni.m4x.org": "alias",
+        "simple.user.1942@alumni.m4x.org": "forlife",
+        "simple.user@m4x.org": "alias",
+        "simple.user.42@m4x.org": "alias",
+        "simple.user.1942@m4x.org": "forlife",
+        "simple.user@polytechnique.org": "alias",
+        "simple.user.42@polytechnique.org": "alias",
+        "simple.user.1942@polytechnique.org": "forlife",
+        "user@melix.net": "alias_aux"
+      },
+      "email_redirect": {
+        "user@outlook.com": "smtp",
+        "simple.user.1942@g.polytechnique.org": "googleapps",
+        "simple.user.1942@imap.polytechnique.org": "imap"
+      },
+      "groups": {
+        "1942": "member",
+        "Polytechnique.org": "member",
+        "X-Informatique": "member",
+        "X-Internet": "member"
+      }
+    },
+    {
+      "hruid": "angela.felix.1999",
+      "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+      "type": "x",
+      "is_admin": 0,
+      "firstname": "Angela",
+      "lastname": "Felix",
+      "full_name": "Angela Felix",
+      "directory_name": "FELIX Angela",
+      "display_name": "Simple",
+      "sex": "female",
+      "email": "angela.felix@m4x.org",
+      "email_source": {
+        "angela.felix@alumni.polytechnique.org": "alias",
+        "angela.felix.99@alumni.polytechnique.org": "alias",
+        "angela.felix.1999@alumni.m4x.org": "forlife",
+        "angela.felix@alumni.m4x.org": "alias",
+        "angela.felix.99@alumni.m4x.org": "alias",
+        "angela.felix.1999@alumni.m4x.org": "forlife",
+        "angela.felix@m4x.org": "alias",
+        "angela.felix.99@m4x.org": "alias",
+        "angela.felix.1999@m4x.org": "forlife",
+        "angela.felix@polytechnique.org": "alias",
+        "angela.felix.99@polytechnique.org": "alias",
+        "angela.felix.1999@polytechnique.org": "forlife",
+        "angela@melix.net": "alias_aux"
+      },
+      "email_redirect": {
+        "angela@yahoo.com": "smtp",
+        "angela.felix.1999@imap.polytechnique.org": "imap"
+      },
+      "groups": {
+        "1999": "member",
+        "X-Environnement": "admin"
+      }
+    },
+    {
+      "hruid": "alice.lemaitre.m2017",
+      "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+      "type": "master",
+      "is_admin": 0,
+      "firstname": "Alice",
+      "lastname": "Lemaître",
+      "full_name": "Alice Lemaître",
+      "directory_name": "LEMAITRE Alice",
+      "display_name": "Alice",
+      "sex": "female",
+      "email": "alice.lemaitre@m4x.org",
+      "email_source": {
+        "alice.lemaitre@alumni.polytechnique.org": "alias",
+        "alice.lemaitre.m17@alumni.polytechnique.org": "alias",
+        "alice.lemaitre.m2017@alumni.m4x.org": "forlife",
+        "alice.lemaitre@alumni.m4x.org": "alias",
+        "alice.lemaitre.m17@alumni.m4x.org": "alias",
+        "alice.lemaitre.m2017@alumni.m4x.org": "forlife",
+        "alice.lemaitre@master.m4x.org": "alias",
+        "alice.lemaitre.m17@mastr.m4x.org": "alias",
+        "alice.lemaitre.m2017@master.m4x.org": "forlife",
+        "alice.lemaitre@master.polytechnique.org": "alias",
+        "alice.lemaitre.m17@master.polytechnique.org": "alias",
+        "alice.lemaitre.m2017@master.polytechnique.org": "forlife"
+      },
+      "email_redirect": {
+        "alice@iliad.fr": "smtp",
+        "alice.lemaitre.2017@g.polytechnique.org": "googleapps",
+        "alice.lemaitre.2017@imap.polytechnique.org": "imap"
+      },
+      "groups": {
+        "2017": "member",
+        "X-Asie": "member"
+      }
+    },
+    {
+      "hruid": "doctor.who.d2013",
+      "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+      "type": "phd",
+      "is_admin": 0,
+      "firstname": "Doctor",
+      "lastname": "Who",
+      "full_name": "Doctor Who",
+      "directory_name": "WHO Doctor",
+      "display_name": "Dr. Who",
+      "sex": "male",
+      "email": "doctor.who@m4x.org",
+      "email_source": {
+        "doctor.who@alumni.polytechnique.org": "alias",
+        "doctor.who.d13@alumni.polytechnique.org": "alias",
+        "doctor.who.d2013@alumni.m4x.org": "forlife",
+        "doctor.who@alumni.m4x.org": "alias",
+        "doctor.who.d13@alumni.m4x.org": "alias",
+        "doctor.who.d2013@alumni.m4x.org": "forlife",
+        "doctor.who@master.m4x.org": "alias",
+        "doctor.who.d13@mastr.m4x.org": "alias",
+        "doctor.who.d2013@master.m4x.org": "forlife",
+        "doctor.who@master.polytechnique.org": "alias",
+        "doctor.who.d13@master.polytechnique.org": "alias",
+        "doctor.who.d2013@master.polytechnique.org": "forlife",
+        "drwho@melix.net": "alias_aux"
+      },
+      "email_redirect": {
+        "doctor.who@laposte.net": "smtp"
+      },
+      "groups": {
+        "2013": "member",
+        "X-Doc": "admin"
+      }
+    },
+    {
+      "hruid": "yapaquelix.example.com.ext",
+      "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+      "type": "xnet",
+      "is_admin": 0,
+      "firstname": "Yapaquelix",
+      "lastname": "Denlavi",
+      "full_name": "Yapaquelix Denlavi",
+      "directory_name": "DENLAVI Yapaquelix",
+      "display_name": "Yapaquelix",
+      "sex": "male",
+      "email": "yapaquelix.example.com.ext",
+      "email_source": {},
+      "email_redirect": {},
+      "groups": {
+        "XMP": "admin",
+        "X-ENSTA": "member"
+      }
+    }
+  ],
+  "authgroupex": [
+    {
+      "privkey": "356a192b7913b04c54574d18c28d46e6395428ab",
+      "name": "Bal de l'X",
+      "datafields": "matricule_ax,nom,prenom,full_promo,forlife,sex",
+      "returnurls": "#^https?://(.*\\.baldelx\\.com)/#",
+      "flags": ""
+    },
+    {
+      "privkey": "da4b9237bacccdf19c0760cab7aec4a8359010b0",
+      "name": "Polytechnique.net",
+      "datafields": "uid",
+      "returnurls": "#^https?://www\\.polytechnique\\.net)/#",
+      "flags": "allow_xnet"
+    }
+  ]
+}
