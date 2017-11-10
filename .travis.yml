@@ -27,4 +27,9 @@ matrix:
 
 notifications:
   email: false
-  irc: "irc.freenode.org#platal"
+  irc:
+    channels:
+      - "irc.freenode.org#platal"
+    on_success: change
+    on_failure: always
+    use_notice: true
