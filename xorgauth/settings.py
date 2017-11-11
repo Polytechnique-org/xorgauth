@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'xorgauth',
     'oidc_provider',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
