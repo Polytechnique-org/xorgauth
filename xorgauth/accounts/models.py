@@ -46,7 +46,7 @@ class UserManager(base_user.BaseUserManager):
 
 class User(base_user.AbstractBaseUser):
     uid = models.UUIDField("UUID", default=uuid.uuid4, editable=False)
-    hrid = models.SlugField(_("human-readable identifier"), unique=True)
+    hrid = models.SlugField(_("username"), unique=True)
     fullname = UnboundedCharField(_("full name"), help_text=_("Name to display to other users"))
     preferred_name = UnboundedCharField(_("preferred name"), help_text=_("Name used when addressing the user"))
     main_email = models.EmailField(_("email"), unique=True)
