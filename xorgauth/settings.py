@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.auth',
-    'oidc_provider',
     'xorgauth',
+    'oidc_provider',
 ]
 
 MIDDLEWARE = [
