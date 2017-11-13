@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load i18n staticfiles bootstrap4 %}
+
+{% block content %}
+
+{% if error %}
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        Error: {{ error }}
+    </div>
+{% endif %}
+{% if revoked_client %}
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        Successfully revoked consent for client "{{ revoked_client }}".
+    </div>
+{% endif %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Client name</th>
+            <th scope="col">Authorized scopes</th>
+            <th scope="col">Expiration date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for consent in consents %}
+    <tr>
+        <td>{{ consent.client.name }}</td>
+        <td>{{ consent.scope }}</td>
+        <td>{{ consent.expires_at }}</td>
+        <td>
+            <form action="{{ request.path }}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="revoke" value="{{ consent.client.client_id }}" />
+                <input type="submit" value="Revoke" class="btn btn-secondary" />
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
