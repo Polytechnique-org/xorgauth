@@ -105,6 +105,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Password hashers
+# https://docs.djangoproject.com/en/1.11/ref/settings/#password-hashers
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'xorgauth.accounts.hashers.PBKDF2WrappedSHA1PasswordHasher',
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
