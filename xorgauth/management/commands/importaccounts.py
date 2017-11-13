@@ -3,7 +3,7 @@ import json
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import BaseCommand, CommandError
 from xorgauth.accounts.hashers import PBKDF2WrappedSHA1PasswordHasher
-from xorgauth.accounts.models import User, Group, GroupMembership
+from xorgauth.accounts.models import User, Group, GroupMembership, Role
 
 
 class Command(BaseCommand):
@@ -19,6 +19,7 @@ class Command(BaseCommand):
         if 'accounts' not in jsondata:
             raise CommandError("Unable to find account entries")
         hasher = PBKDF2WrappedSHA1PasswordHasher()
+        admin_role = Role.get_admin()
         for account_data in jsondata['accounts']:
             hrid = account_data['hruid']
             try:
@@ -30,6 +31,8 @@ class Command(BaseCommand):
             user.preferred_name = account_data['display_name']
             user.main_email = account_data['email']
             user.password = hasher.encode_sha1_hash(account_data['password'])
+            if account_data['is_admin']:
+                user.roles.add(admin_role)
             user.save()
 
             # Import groups
