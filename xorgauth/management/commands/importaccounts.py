@@ -3,7 +3,7 @@ import json
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import BaseCommand, CommandError
 from xorgauth.accounts.hashers import PBKDF2WrappedSHA1PasswordHasher
-from xorgauth.accounts.models import User, Group, GroupMembership, Role
+from xorgauth.accounts.models import User, UserAlias, Group, GroupMembership, Role
 
 
 class Command(BaseCommand):
@@ -42,3 +42,14 @@ class Command(BaseCommand):
                     group=group,
                     user=user,
                     perms=perms)
+
+            # Import email aliases
+            for email in account_data['email_source'].keys():
+                try:
+                    alias = UserAlias.objects.get(email=email)
+                except ObjectDoesNotExist:
+                    alias = UserAlias(user=user, email=email)
+                    alias.save()
+                else:
+                    if alias.user != user:
+                        raise CommandError("Duplicate email %r" % email)
