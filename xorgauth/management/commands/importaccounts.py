@@ -31,9 +31,10 @@ class Command(BaseCommand):
             user.preferred_name = account_data['display_name']
             user.main_email = account_data['email']
             user.password = hasher.encode_sha1_hash(account_data['password'])
+            user.save()
             if account_data['is_admin']:
                 user.roles.add(admin_role)
-            user.save()
+                user.save()
 
             # Import groups
             for groupname, perms in account_data['groups'].items():
