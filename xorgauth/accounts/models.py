@@ -130,6 +130,9 @@ class GroupMembership(models.Model):
         ('member', _('member')),
         ('admin', _('administrator')),
     )
-    group = models.ForeignKey(Group, related_name='members', verbose_name=_("members"))
-    user = models.ForeignKey(User, related_name='groups', verbose_name=_("groups"))
+    group = models.ForeignKey(Group, related_name='members', verbose_name=_("group"))
+    user = models.ForeignKey(User, related_name='groups', verbose_name=_("member"))
     perms = models.SlugField(choices=MEMBERSHIP_PERMS)
+
+    class Meta:
+        unique_together = ('group', 'user',)
