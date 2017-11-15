@@ -135,3 +135,4 @@ STATIC_URL = '/static/'
 
 # django-oidc-provider configuration
 OIDC_USERINFO = 'xorgauth.accounts.oidc_provider_settings.userinfo'
+OIDC_EXTRA_SCOPE_CLAIMS = 'xorgauth.accounts.oidc_provider_settings.XorgScopeClaims'
