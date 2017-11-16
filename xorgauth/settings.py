@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'bootstrap4',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'xorgauth.accounts.authentication.XorgBackend'
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
