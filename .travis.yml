@@ -24,6 +24,9 @@ matrix:
     # Linting
     - python: "3.6"
       env: TOXENV=lint
+    # Test dev makefile
+    - python: "3.6"
+      env: TOXENV=dev
 
 notifications:
   email: false
