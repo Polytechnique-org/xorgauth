@@ -18,6 +18,13 @@
     <nav class="navbar navbar-fixed-top navbar-light bg-faded">
         <div class="container">
             <a class="navbar-brand m-b-0">{% trans 'Polytechnique.org' %}</a>
+            {% block login-nav-button %}
+            {% if user.is_authenticated %}
+                <p class="navbar-right">{{ user.fullname }} <a href="{% url 'logout' %}">{% trans 'Log out' %}</a></p>
+            {% else %}
+                <a class="navbar-button navbar-right" href="{% url 'login' %}">{% trans 'Log in' %}</a>
+            {% endif %}
+            {% endblock %}
         </div>
     </nav>
 
