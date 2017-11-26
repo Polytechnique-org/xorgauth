@@ -37,13 +37,10 @@ Features (planned)
 * Multiple authentication levels (cookie, password, two-factor)
 
 
-Notes
------
+Configuring a development environment
+-------------------------------------
 
-* Use https://testpypi.python.org/pypi/django-zxcvbn-password/2.0.0 for password entry
-* As a provider, return a list of "group access levels" + "role-based permissions"
-
-* Run the following commands in order to setup a development environment::
+Run the following commands in order to setup a development environment on a local computer::
 
     make update
     make createdb
@@ -53,19 +50,44 @@ Notes
     python manage.py runserver
     # Go to http://127.0.0.1:8000/admin/ to configure django-oidc-provider
 
-* In a development environment, in order to use the test relying party:
+In such a development environment, in order to use the test relying party:
 
-  - run ``python manage.py shell`` and add a client:
+* run ``python manage.py shell`` and add a client:
 
-    .. code-block:: python
+  .. code-block:: python
 
-        from oidc_provider.models import Client
-        c = Client(name='Test RP', client_id='123456', response_type='id_token token', redirect_uris=['http://localhost:8000/test-relying-party/'])
-        c.save()
+      from oidc_provider.models import Client
+      c = Client(name='Test RP', client_id='123456', response_type='id_token token', redirect_uris=['http://localhost:8000/test-relying-party/','http://127.0.0.1:8000/test-relying-party/'])
+      c.save()
 
-  - run ``python manage.py runserver 8000``
-  - open http://localhost:8000/test-relying-party/ in a web browser and click on the log in button
+* run ``python manage.py runserver 8000``
+* open http://localhost:8000/test-relying-party/ in a web browser and click on the log in button
+
+
+Configuring a production environment
+------------------------------------
+
+On Debian, configure a web server (Apache, ngninx, etc.) to serve Django applications (using uwsgi, mod_wsgi, etc.) by reading the documents relevant to these systems. It is a good idea to use a dedicated Python virtual environment.
+
+In order to configure the production application, copy ``example_settings.ini`` to ``local_settings.ini`` and edit this new file accordingly (DNS hostname, admin email address, database credentials, etc.). It is also possible to use environment variables to give some settings to the Django application (thanks to getconf_). It is then possible to initialize the database with::
+
+    make createdb
+
+.. _getconf: https://pypi.python.org/pypi/getconf/
+
+Here are instructions specific to xorgauth application for upgrading::
+
+    make update
+    python manage.py migrate
+    python manage.py collectstatic
+
+
+Notes
+-----
+
+* Use https://testpypi.python.org/pypi/django-zxcvbn-password/2.0.0 for password entry
+* As a provider, return a list of "group access levels" + "role-based permissions"
 
 * Documentation:
-  - https://django-oidc-provider.readthedocs.io/ for the identity provider
-  - https://mozilla-django-oidc.readthedocs.io/ in order to configure a test relying party (client)
+    - https://django-oidc-provider.readthedocs.io/ for the identity provider
+    - https://mozilla-django-oidc.readthedocs.io/ in order to configure a test relying party (client)
