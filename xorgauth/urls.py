@@ -16,9 +16,9 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.views.generic import TemplateView
 
 from xorgauth.accounts import views as xorgauth_views
+from xorgauth.relying_party_test import views as rptest_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,5 +27,5 @@ urlpatterns = [
     url(r'^accounts/logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^accounts/list_consents/$', xorgauth_views.list_consents, name='list_consents'),
     url(r'^accounts/profile/$', xorgauth_views.ProfileView.as_view(), name='profile'),
-    url(r'^test-relying-party/$', TemplateView.as_view(template_name="test-relying-party.html")),
+    url(r'^test-relying-party/$', rptest_views.RelyingParty.as_view()),
 ]

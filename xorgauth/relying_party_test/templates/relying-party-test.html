@@ -1,0 +1,105 @@
+{% load i18n bootstrap4 %}
+<!DOCTYPE html>
+<!-- Code from https://django-oidc-provider.readthedocs.io/en/v0.5.x/sections/examples.html
+
+In order to use this reliying party, you need to create a client with the given
+client ID and redirect URL in a provider. From python manage.py shell:
+
+from oidc_provider.models import Client
+c = Client(name='Test RP', client_id='123456', response_type='id_token token', redirect_uris=['http://localhost:8000/test-relying-party/'])
+c.save()
+-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% trans 'OIDC Relying Party' %}</title>
+
+    {% bootstrap_css %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <center>
+        <h1>OpenID Connect Relying Party Example</h1>
+        <button id="login-button">Login</button><br><br>
+        <div class="container" id="result"></div>
+        <a href="/test-relying-party/">Reset URL hash variables</a><br><br>
+        <a href="http://{{ request.get_host }}/openid/end-session?next=http://{{ request.get_host }}/test-relying-party/">Log out</a><br><br>
+    </center>
+    {% if dev_accounts %}
+    <div class="container">
+        <p>{% trans 'Development accounts (password is "password"):' %}</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{% trans 'Human-readable ID' %}</th>
+                    <th>{% trans 'Type' %}</th>
+                    <th>{% trans 'Admin' %}</th>
+                    <th>{% trans 'Email' %}</th>
+                    <th>{% trans 'Groups' %}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for account in dev_accounts %}
+                <tr>
+                    <td>{{ account.hruid }}</td>
+                    <td>{{ account.type }}</td>
+                    <td>{% if account.is_admin %}{% trans 'admin' %}{% endif %}</td>
+                    <td>{{ account.email }}</td>
+                    <td>{{ account.groups.keys | join:", " }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://www.sakimura.org/test/openidconnect.js"></script>
+
+    <script type="text/javascript">
+    $(function() {
+        var clientInfo = {
+            client_id : '123456',
+            redirect_uri : 'http://{{ request.get_host }}/test-relying-party/'
+        };
+
+        OIDC.setClientInfo(clientInfo);
+
+        var providerInfo = OIDC.discover('http://{{ request.get_host }}/openid');
+
+        OIDC.setProviderInfo(providerInfo);
+        OIDC.storeInfo(providerInfo, clientInfo);
+
+        // Restore configuration information.
+        OIDC.restoreInfo();
+
+        // Get Access Token
+        var token = OIDC.getAccessToken();
+
+        // Make userinfo request using access_token.
+        if (token !== null) {
+            $.get('http://{{ request.get_host }}/openid/userinfo/?access_token='+token, function( data ) {
+                var result = '<table class="table table-striped" style="width: auto;"><thead><tr><th colspan="3" class="center">user info:</th></tr></thead><tbody>';
+                $.each(data, function(key, value) {
+                    result += '<tr><td align="right">' + JSON.stringify(key) + '</td><td>=</td><td>' + JSON.stringify(value) + '</td></tr>';
+                });
+                result += '</tbody></table>';
+                $('#result').html(result);
+            });
+        }
+
+        // Make an authorization request if the user click the login button.
+        $('#login-button').click(function (event) {
+            OIDC.login({
+                scope : 'openid profile email xorg_groups',
+                response_type : 'id_token token'
+            });
+        });
+    });
+    </script>
+</body>
+</html>
