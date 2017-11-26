@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 from oidc_provider.models import UserConsent, Client
 
@@ -28,3 +30,7 @@ def list_consents(request):
         'revoked_client': revoked_client,
         'consents': consents
     })
+
+
+class ProfileView(TemplateView, LoginRequiredMixin):
+    template_name = 'profile.html'

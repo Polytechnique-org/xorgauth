@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <p>{% blocktrans with username=user.preferred_name %}Hello {{ username }}!{% endblocktrans %}</p>
+        <p>{% trans "Welcome to Polytechnique.org's authentication service." %}</p>
+        <p>{% trans "Here are some pages you can access while you are logged in:" %}</p>
+
+        <ul>
+        <li><a href="{% url 'list_consents' %}">{% trans "List of constents given to web sites" %}</li>
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
