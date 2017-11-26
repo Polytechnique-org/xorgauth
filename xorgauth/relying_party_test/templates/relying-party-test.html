@@ -27,7 +27,7 @@ c.save()
         <button id="login-button">Login</button><br><br>
         <div class="container" id="result"></div>
         <a href="/test-relying-party/">Reset URL hash variables</a><br><br>
-        <a href="http://{{ request.get_host }}/openid/end-session?next=http://{{ request.get_host }}/test-relying-party/">Log out</a><br><br>
+        <a href="{{ base_url }}openid/end-session?next={{ base_url }}test-relying-party/">Log out</a><br><br>
     </center>
     {% if dev_accounts %}
     <div class="container">
@@ -64,12 +64,12 @@ c.save()
     $(function() {
         var clientInfo = {
             client_id : '123456',
-            redirect_uri : 'http://{{ request.get_host }}/test-relying-party/'
+            redirect_uri : '{{ base_url }}test-relying-party/'
         };
 
         OIDC.setClientInfo(clientInfo);
 
-        var providerInfo = OIDC.discover('http://{{ request.get_host }}/openid');
+        var providerInfo = OIDC.discover('{{ base_url }}openid');
 
         OIDC.setProviderInfo(providerInfo);
         OIDC.storeInfo(providerInfo, clientInfo);
@@ -82,7 +82,7 @@ c.save()
 
         // Make userinfo request using access_token.
         if (token !== null) {
-            $.get('http://{{ request.get_host }}/openid/userinfo/?access_token='+token, function( data ) {
+            $.get('{{ base_url }}openid/userinfo/?access_token='+token, function( data ) {
                 var result = '<table class="table table-striped" style="width: auto;"><thead><tr><th colspan="3" class="center">user info:</th></tr></thead><tbody>';
                 $.each(data, function(key, value) {
                     result += '<tr><td align="right">' + JSON.stringify(key) + '</td><td>=</td><td>' + JSON.stringify(value) + '</td></tr>';

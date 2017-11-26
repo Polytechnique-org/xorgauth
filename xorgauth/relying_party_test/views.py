@@ -10,6 +10,10 @@ class RelyingParty(TemplateView):
 
     def get_context_data(self, **kwargs):
         kwargs = super(RelyingParty, self).get_context_data(**kwargs)
+
+        # Make the base URL accessible to the template
+        kwargs['base_url'] = self.request.build_absolute_uri('/')
+
         # Show some useful accounts in development mode
         if settings.DEBUG:
             with open(os.path.join(settings.BASE_DIR, 'scripts', 'dev_data.json')) as fd:
