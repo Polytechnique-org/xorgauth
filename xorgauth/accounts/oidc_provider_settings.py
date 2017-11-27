@@ -16,6 +16,12 @@ def userinfo(claims, user):
     return claims
 
 
+def user_sub_generator(user):
+    """Use the human-readable ID of a user as the "sub" claim in userinfo scope
+    """
+    return user.hrid
+
+
 class XorgScopeClaims(ScopeClaims):
     info_xorg_groups = (
         _("X Groups"),
