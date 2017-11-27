@@ -31,6 +31,9 @@ class Command(BaseCommand):
             user.preferred_name = account_data['display_name']
             user.main_email = account_data['email']
             user.password = hasher.encode_sha1_hash(account_data['password'])
+            user.axid = account_data['ax_id']
+            user.study_year = account_data['promo']
+            user.grad_year = account_data['grad_year']
             user.save()
             if account_data['is_admin']:
                 user.roles.add(admin_role)

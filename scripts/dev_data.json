@@ -12,6 +12,9 @@
       "display_name": "Admi Nistrateur",
       "sex": "male",
       "email": "admi.nistrateur@m4x.org",
+      "ax_id": "19420042",
+      "promo": "X1942",
+      "grad_year": 1945,
       "email_source": {
         "admi.nistrateur@alumni.polytechnique.org": "alias",
         "admi.nistrateur.42@alumni.polytechnique.org": "alias",
@@ -48,6 +51,9 @@
       "display_name": "Simple",
       "sex": "male",
       "email": "simple.user@m4x.org",
+      "ax_id": "19420043",
+      "promo": "X1942",
+      "grad_year": 1945,
       "email_source": {
         "simple.user@alumni.polytechnique.org": "alias",
         "simple.user.42@alumni.polytechnique.org": "alias",
@@ -87,6 +93,9 @@
       "display_name": "Simple",
       "sex": "female",
       "email": "angela.felix@m4x.org",
+      "ax_id": "19990789",
+      "promo": "X1999",
+      "grad_year": 2003,
       "email_source": {
         "angela.felix@alumni.polytechnique.org": "alias",
         "angela.felix.99@alumni.polytechnique.org": "alias",
@@ -123,6 +132,9 @@
       "display_name": "Alice",
       "sex": "female",
       "email": "alice.lemaitre@m4x.org",
+      "ax_id": "2017m123",
+      "promo": "M2017",
+      "grad_year": 2017,
       "email_source": {
         "alice.lemaitre@alumni.polytechnique.org": "alias",
         "alice.lemaitre.m17@alumni.polytechnique.org": "alias",
@@ -159,6 +171,9 @@
       "display_name": "Dr. Who",
       "sex": "male",
       "email": "doctor.who@m4x.org",
+      "ax_id": "2013D123",
+      "promo": "D2013",
+      "grad_year": 2013,
       "email_source": {
         "doctor.who@alumni.polytechnique.org": "alias",
         "doctor.who.d13@alumni.polytechnique.org": "alias",
@@ -194,6 +209,9 @@
       "display_name": "Yapaquelix",
       "sex": "male",
       "email": "yapaquelix@example.com",
+      "ax_id": null,
+      "promo": null,
+      "grad_year": null,
       "email_source": {},
       "email_redirect": {},
       "groups": {
