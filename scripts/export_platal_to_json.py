@@ -5,6 +5,7 @@ Requires:
     pip install PyMySQL
     platal.conf file
 """
+from collections import OrderedDict
 import configparser
 import pymysql
 import json
@@ -44,11 +45,11 @@ with db.cursor() as cursor:
     cols = get_cols_from_query(sql)
     cursor.execute(sql)
     for row in cursor:
-        entry = dict(zip(cols, row))
+        entry = OrderedDict(zip(cols, row))
         result['authgroupex'].append(entry)
 
 # Export accounts info
-accounts = {}
+accounts = OrderedDict()
 with db.cursor() as cursor:
     print("Exporting accounts table")
     sql = """
@@ -61,13 +62,13 @@ with db.cursor() as cursor:
     cols = get_cols_from_query(sql)
     cursor.execute(sql)
     for row in cursor:
-        entry = dict(zip(cols, row))
+        entry = OrderedDict(zip(cols, row))
         uid = int(entry['uid'])
         # Remove uid from exported data, but use it in order to gather more data
         del entry['uid']
-        entry['email_source'] = {}
-        entry['email_redirect'] = {}
-        entry['groups'] = {}
+        entry['email_source'] = OrderedDict()
+        entry['email_redirect'] = OrderedDict()
+        entry['groups'] = OrderedDict()
         accounts[uid] = entry
 
 with db.cursor() as cursor:
