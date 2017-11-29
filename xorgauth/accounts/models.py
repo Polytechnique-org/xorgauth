@@ -33,6 +33,12 @@ class Role(models.Model):
 
 
 class UserManager(base_user.BaseUserManager):
+    def create_user(self, hrid, main_email, password, **extra_fields):
+        main_email = self.normalize_email(main_email)
+        user = self.model(hrid=hrid, main_email=main_email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
 
     def create_superuser(self, hrid, main_email, password, **extra_fields):
         main_email = self.normalize_email(main_email)
