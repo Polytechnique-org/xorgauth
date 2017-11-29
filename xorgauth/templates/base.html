@@ -15,20 +15,23 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-fixed-top navbar-light bg-faded">
+    <nav class="navbar navbar-fixed-top navbar-light bg-light navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand m-b-0">{% trans 'Polytechnique.org' %}</a>
-            {% block login-nav-button %}
+            <div class="navbar-header">
+                <a class="navbar-brand m-b-0">{% trans 'Polytechnique.org' %}</a>
+            </div>
+            <ul  class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-                <p class="navbar-right">{{ user.fullname }} <a href="{% url 'logout' %}">{% trans 'Log out' %}</a></p>
+            <li class="nav-item active"><a class="nav-link" href="{% url 'profile' %}">{{ user.fullname }}</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">{% trans 'Log out' %}</a></li>
             {% else %}
-                <a class="navbar-button navbar-right" href="{% url 'login' %}">{% trans 'Log in' %}</a>
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">{% trans 'Log in' %}</a></li>
             {% endif %}
-            {% endblock %}
+            </ul>
         </div>
     </nav>
 
-    <div class="container" style="margin-top: 150px;">
+    <div class="container" style="margin-top: 10em;">
     {% block content %}{% endblock %}
     </div>
 

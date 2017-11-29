@@ -26,6 +26,8 @@ urlpatterns = [
     url(r'^accounts/login/$', auth_views.LoginView.as_view(), name='login'),
     url(r'^accounts/logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^accounts/list_consents/$', xorgauth_views.list_consents, name='list_consents'),
+    url(r'^accounts/password/change/$', auth_views.password_change, name='password_change'),
+    url(r'^accounts/password/change/done/$', auth_views.password_change_done, name='password_change_done'),
     url(r'^accounts/profile/$', xorgauth_views.ProfileView.as_view(), name='profile'),
     url(r'^test-relying-party/$', rptest_views.RelyingParty.as_view()),
 ]

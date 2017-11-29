@@ -3,22 +3,8 @@
 
 {% block content %}
 
-{% if error %}
-    <div class="alert alert-danger" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        Error: {{ error }}
-    </div>
-{% endif %}
-{% if revoked_client %}
-    <div class="alert alert-success" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        Successfully revoked consent for client "{{ revoked_client }}".
-    </div>
-{% endif %}
+{% bootstrap_messages %}
+
 <table class="table table-striped">
     <thead>
         <tr>
