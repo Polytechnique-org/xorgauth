@@ -30,5 +30,5 @@ def list_consents(request):
     })
 
 
-class ProfileView(TemplateView, LoginRequiredMixin):
+class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'profile.html'
