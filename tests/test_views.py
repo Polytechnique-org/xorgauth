@@ -16,6 +16,7 @@ class ViewTests(TestCase):
     )
     # Views which need an authenticated user
     LOGIN_REQUIRED_VIEW_IDS = (
+        'index',
         'list_consents',
         'password_change',
         'password_change_done',
@@ -63,5 +64,9 @@ class ViewTests(TestCase):
             c = Client()
             self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
             resp = c.get(reverse(url_id))
-            self.assertEqual(200, resp.status_code,
-                             "unexpected HTTP response code for URL %s" % url_id)
+            if resp.status_code == 302:
+                self.assertFalse(resp['Location'].startswith('/accounts/login/?'),
+                                 "unexpected login-Location: %r" % resp['Location'])
+            else:
+                self.assertEqual(200, resp.status_code,
+                                 "unexpected HTTP response code for URL %s" % url_id)
