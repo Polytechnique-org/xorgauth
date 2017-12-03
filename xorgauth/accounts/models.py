@@ -107,7 +107,7 @@ class User(base_user.AbstractBaseUser):
 
 class UserAlias(models.Model):
     """Alias login"""
-    user = models.ForeignKey(User, related_name='aliases', verbose_name=_("user"))
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='aliases', verbose_name=_("user"))
     email = models.EmailField(_("email alias"), unique=True)
 
     class Meta:
@@ -136,8 +136,8 @@ class GroupMembership(models.Model):
         ('member', _('member')),
         ('admin', _('administrator')),
     )
-    group = models.ForeignKey(Group, related_name='members', verbose_name=_("group"))
-    user = models.ForeignKey(User, related_name='groups', verbose_name=_("member"))
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name='members', verbose_name=_("group"))
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='groups', verbose_name=_("member"))
     perms = models.SlugField(choices=MEMBERSHIP_PERMS)
 
     class Meta:
