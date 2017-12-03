@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <h2>{% trans 'Request for Permission' %}</h2>
-        <p class="lead">Client <i>{{ client.name }}</i> would like to access this information of you.</p>
+        <p class="lead">{% blocktrans with clientname=client.name %}Client <i>{{ clientname }}</i> would like to access this information of you.{% endblocktrans %} </p>
         <form method="post" action="{% url 'oidc_provider:authorize' %}">
             {% csrf_token %}
             {{ hidden_inputs }}

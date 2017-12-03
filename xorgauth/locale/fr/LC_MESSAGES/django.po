@@ -1,0 +1,266 @@
+# xorgauth French translation
+# Copyright (C) Polytechnique.org
+# This file is distributed under the same license as the xorgauth package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: xorgauth 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-04 23:56+0100\n"
+"PO-Revision-Date: 2017-12-03 22:42+0100\n"
+"Last-Translator: Nicolas Iooss\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: xorgauth/accounts/models.py:19
+msgid "system role"
+msgstr "rôle système"
+
+#: xorgauth/accounts/models.py:20
+msgid "human-readable identifier"
+msgstr "identifiant humainement lisible"
+
+#: xorgauth/accounts/models.py:21
+msgid "display name"
+msgstr "nom affiché"
+
+#: xorgauth/accounts/models.py:24
+msgid "role"
+msgstr "rôle"
+
+#: xorgauth/accounts/models.py:25 xorgauth/accounts/models.py:59
+msgid "roles"
+msgstr "rôles"
+
+#: xorgauth/accounts/models.py:55
+msgid "username"
+msgstr "nom d'utilisateur"
+
+#: xorgauth/accounts/models.py:56
+msgid "full name"
+msgstr "nom complet"
+
+#: xorgauth/accounts/models.py:56
+msgid "Name to display to other users"
+msgstr "Nom affiché aux autres utilisateurs"
+
+#: xorgauth/accounts/models.py:57
+msgid "preferred name"
+msgstr "nom préféré"
+
+#: xorgauth/accounts/models.py:57
+msgid "Name used when addressing the user"
+msgstr "Nom utilisé pour s'adresser à l'utilisateur"
+
+#: xorgauth/accounts/models.py:58
+msgid "email"
+msgstr "couriel"
+
+#: xorgauth/accounts/models.py:60
+#: xorgauth/accounts/oidc_provider_settings.py:35
+#: xorgauth/relying_party_test/templates/relying-party-test.html:39
+msgid "AX ID"
+msgstr "ID AX"
+
+#: xorgauth/accounts/models.py:60
+msgid "Identification in AX directory"
+msgstr "Identifiant dans l'annuaire de l'AX"
+
+#: xorgauth/accounts/models.py:61
+msgid "study year"
+msgstr "promotion"
+
+#: xorgauth/accounts/models.py:62
+msgid ""
+"Kind and main year of the study ('X1829' means 'entered the school in 1829 "
+"but 'M2005' means 'graduated in 2005')"
+msgstr ""
+"Catégorie et année de référence de la scolarité ('X1829' signifie 'est "
+"entré à l'école en 1829 mais 'M2005' signifié 'diplomé en 2005')"
+
+#: xorgauth/accounts/models.py:64
+msgid "graduation year"
+msgstr "année du diplôme"
+
+#: xorgauth/accounts/models.py:64
+msgid "Year of the graduation"
+msgstr "Année d'obtention du diplôme"
+
+#: xorgauth/accounts/models.py:69
+msgid "user account"
+msgstr "compte utilisateur"
+
+#: xorgauth/accounts/models.py:70
+msgid "user accounts"
+msgstr "comptes utilisateurs"
+
+#: xorgauth/accounts/models.py:115
+msgid "user"
+msgstr "utilisateur"
+
+#: xorgauth/accounts/models.py:116
+msgid "email alias"
+msgstr "alias couriel"
+
+#: xorgauth/accounts/models.py:119
+msgid "user alias"
+msgstr "alias utilisateur"
+
+#: xorgauth/accounts/models.py:120
+msgid "user aliases"
+msgstr "aliases utilisateurs"
+
+#: xorgauth/accounts/models.py:128
+msgid "short name"
+msgstr "nom court"
+
+#: xorgauth/accounts/models.py:131 xorgauth/accounts/models.py:144
+msgid "group"
+msgstr "groupe"
+
+#: xorgauth/accounts/models.py:132
+msgid "groups"
+msgstr "groupes"
+
+#: xorgauth/accounts/models.py:141 xorgauth/accounts/models.py:145
+msgid "member"
+msgstr "membres"
+
+#: xorgauth/accounts/models.py:142
+msgid "administrator"
+msgstr "administrateur"
+
+#: xorgauth/accounts/oidc_provider_settings.py:27
+msgid "X Groups"
+msgstr "Groupes X"
+
+#: xorgauth/accounts/oidc_provider_settings.py:28
+msgid "The list of the X Groups you belong to"
+msgstr "La liste des Groupes X auxquels tu appartiens"
+
+#: xorgauth/accounts/oidc_provider_settings.py:31
+#: xorgauth/relying_party_test/templates/relying-party-test.html:41
+msgid "Study year"
+msgstr "Promotion"
+
+#: xorgauth/accounts/oidc_provider_settings.py:32
+msgid "The year of your study at the Ecole polytechnique"
+msgstr "L'année de scolarité à l'École polytechnique"
+
+#: xorgauth/accounts/oidc_provider_settings.py:36
+msgid "Your identification in AX directory"
+msgstr "Ton identifiant dans l'annuaire de l'AX"
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:18
+msgid "OIDC Relying Party"
+msgstr ""
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:34
+msgid "Development accounts (password is \"password\"):"
+msgstr "Comptes de développement (le mot de passe est \"password\") :"
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:38
+msgid "Human-readable ID"
+msgstr "ID humainement lisible"
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:40
+msgid "Type"
+msgstr ""
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:42
+msgid "Admin"
+msgstr ""
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:43
+msgid "Email"
+msgstr "Couriel"
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:44
+msgid "Groups"
+msgstr "Groupes"
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:54
+msgid "admin"
+msgstr ""
+
+#: xorgauth/templates/base.html:10 xorgauth/templates/base.html:21
+msgid "Polytechnique.org"
+msgstr ""
+
+#: xorgauth/templates/base.html:26
+msgid "Log out"
+msgstr "Déconnexion"
+
+#: xorgauth/templates/base.html:28
+#: xorgauth/templates/registration/login.html:10
+msgid "Log in"
+msgstr "Connexion"
+
+#: xorgauth/templates/oidc_provider/authorize.html:8
+msgid "Request for Permission"
+msgstr "Demande de Permission"
+
+#: xorgauth/templates/oidc_provider/authorize.html:9
+#, python-format
+msgid ""
+"Client <i>%(clientname)s</i> would like to access this information of you."
+msgstr ""
+"Le site <i>%(clientname)s</i> souhaiterait accéder à tes informations "
+"suivantes."
+
+#: xorgauth/templates/oidc_provider/authorize.html:19
+msgid "Accept"
+msgstr "Accepter"
+
+#: xorgauth/templates/oidc_provider/authorize.html:20
+msgid "Decline"
+msgstr "Refuser"
+
+#: xorgauth/templates/profile.html:8
+#, python-format
+msgid "Hello %(username)s!"
+msgstr "Bonjour %(username)s!"
+
+#: xorgauth/templates/profile.html:9
+msgid "Welcome to Polytechnique.org's authentication service."
+msgstr "Bienvenue sur le service d'authentification de Polytechnique.org."
+
+#: xorgauth/templates/profile.html:10
+msgid "Here are some pages you can access while you are logged in:"
+msgstr "Voici quelques pages auxquelles tu peux accéder en étant connecté :"
+
+#: xorgauth/templates/profile.html:13
+msgid "List of consents given to web sites"
+msgstr "Liste des autorisations données aux sites web"
+
+#: xorgauth/templates/profile.html:14
+msgid "Change your password"
+msgstr "Modification de ton mot de passe"
+
+#: xorgauth/templates/registration/logged_out.html:6
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr "Merci pour le temps que vous avez accordé à ce site aujourd'hui."
+
+#: xorgauth/templates/registration/logged_out.html:8
+msgid "Log in again"
+msgstr "Connectez-vous à nouveau"
+
+#: xorgauth/templates/registration/password_change_done.html:4
+msgid "Your password was changed."
+msgstr "Votre mot de passe a été modifié."
+
+#: xorgauth/templates/registration/password_change_form.html:9
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+"Pour des raisons de sécurité, saisissez votre ancien mot de passe puis votre "
+"nouveau mot de passe à deux reprises afin de vérifier qu'il est correctement "
+"saisi."
+
+#: xorgauth/templates/registration/password_change_form.html:13
+msgid "Submit"
+msgstr "Soumettre"
