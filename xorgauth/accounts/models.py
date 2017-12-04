@@ -57,6 +57,11 @@ class User(base_user.AbstractBaseUser):
     preferred_name = UnboundedCharField(_("preferred name"), help_text=_("Name used when addressing the user"))
     main_email = models.EmailField(_("email"), unique=True)
     roles = models.ManyToManyField(Role, related_name='members', verbose_name=_("roles"))
+    axid = UnboundedCharField(_("AX ID"), null=True, help_text=_("Identification in AX directory"))
+    study_year = UnboundedCharField(_("study year"), null=True, help_text=_(
+        "Kind and main year of the study ('X1829' means 'entered the school in 1829 " +
+        "but 'M2005' means 'graduated in 2005')"))
+    grad_year = models.IntegerField(_("graduation year"), null=True, help_text=_("Year of the graduation"))
 
     objects = UserManager()
 

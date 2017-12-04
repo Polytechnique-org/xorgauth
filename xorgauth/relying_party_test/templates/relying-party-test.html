@@ -36,7 +36,9 @@ c.save()
             <thead>
                 <tr>
                     <th>{% trans 'Human-readable ID' %}</th>
+                    <th>{% trans 'AX ID' %}</th>
                     <th>{% trans 'Type' %}</th>
+                    <th>{% trans 'Study year' %}</th>
                     <th>{% trans 'Admin' %}</th>
                     <th>{% trans 'Email' %}</th>
                     <th>{% trans 'Groups' %}</th>
@@ -46,7 +48,9 @@ c.save()
             {% for account in dev_accounts %}
                 <tr>
                     <td>{{ account.hruid }}</td>
+                    <td>{% if account.ax_id %}{{ account.ax_id }}{% else %}<span style="font-style: italic;">None</span>{% endif %}</td>
                     <td>{{ account.type }}</td>
+                    <td>{% if account.promo %}{{ account.promo }}{% else %}<span style="font-style: italic;">None</span>{% endif %}</td>
                     <td>{% if account.is_admin %}{% trans 'admin' %}{% endif %}</td>
                     <td>{{ account.email }}</td>
                     <td>{{ account.groups.keys | join:", " }}</td>
@@ -95,7 +99,7 @@ c.save()
         // Make an authorization request if the user click the login button.
         $('#login-button').click(function (event) {
             OIDC.login({
-                scope : 'openid profile email xorg_groups',
+                scope : 'openid profile email xorg_groups xorg_study_year xorg_axid',
                 response_type : 'id_token token'
             });
         });

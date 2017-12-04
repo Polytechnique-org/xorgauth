@@ -5,6 +5,7 @@ Requires:
     pip install PyMySQL
     platal.conf file
 """
+from collections import OrderedDict
 import configparser
 import pymysql
 import json
@@ -44,30 +45,36 @@ with db.cursor() as cursor:
     cols = get_cols_from_query(sql)
     cursor.execute(sql)
     for row in cursor:
-        entry = dict(zip(cols, row))
+        entry = OrderedDict(zip(cols, row))
         result['authgroupex'].append(entry)
 
 # Export accounts info
-accounts = {}
+accounts = OrderedDict()
 with db.cursor() as cursor:
     print("Exporting accounts table")
     sql = """
         SELECT  a.uid, a.hruid, a.password, a.type, a.is_admin,
                 a.firstname, a.lastname, a.full_name, a.directory_name, a.display_name,
-                a.sex, a.email
+                a.sex, a.email,
+                p.ax_id, pd.promo, pe.grad_year
           FROM  accounts AS a
+     LEFT JOIN  account_profiles AS ap ON (ap.uid = a.uid AND FIND_IN_SET('owner', ap.perms))
+     LEFT JOIN  profiles AS p ON (p.pid = ap.pid)
+     LEFT JOIN  profile_display AS pd ON (pd.pid = p.pid)
+     LEFT JOIN  profile_education AS pe ON (pe.pid = p.pid AND FIND_IN_SET(\'primary\', pe.flags))
          WHERE  a.state = 'active'
+      GROUP BY  a.uid
      """
     cols = get_cols_from_query(sql)
     cursor.execute(sql)
     for row in cursor:
-        entry = dict(zip(cols, row))
+        entry = OrderedDict(zip(cols, row))
         uid = int(entry['uid'])
         # Remove uid from exported data, but use it in order to gather more data
         del entry['uid']
-        entry['email_source'] = {}
-        entry['email_redirect'] = {}
-        entry['groups'] = {}
+        entry['email_source'] = OrderedDict()
+        entry['email_redirect'] = OrderedDict()
+        entry['groups'] = OrderedDict()
         accounts[uid] = entry
 
 with db.cursor() as cursor:
