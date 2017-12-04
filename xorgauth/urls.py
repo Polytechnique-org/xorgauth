@@ -21,6 +21,7 @@ from xorgauth.accounts import views as xorgauth_views
 from xorgauth.relying_party_test import views as rptest_views
 
 urlpatterns = [
+    url(r'^$', xorgauth_views.IndexView.as_view(), name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^openid/', include('oidc_provider.urls', namespace='oidc_provider')),
     url(r'^accounts/login/$', auth_views.LoginView.as_view(), name='login'),

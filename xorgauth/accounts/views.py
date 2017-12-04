@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView, TemplateView
 
 from oidc_provider.models import UserConsent, Client
 
@@ -28,6 +28,10 @@ def list_consents(request):
     return render(request, 'list_consents.html', {
         'consents': consents
     })
+
+
+class IndexView(LoginRequiredMixin, RedirectView):
+    pattern_name = 'profile'
 
 
 class ProfileView(LoginRequiredMixin, TemplateView):
