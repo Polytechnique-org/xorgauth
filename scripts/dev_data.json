@@ -232,7 +232,7 @@
       "privkey": "da4b9237bacccdf19c0760cab7aec4a8359010b0",
       "name": "Polytechnique.net",
       "datafields": "uid",
-      "returnurls": "#^https?://www\\.polytechnique\\.net)/#",
+      "returnurls": "#^https?://www\\.polytechnique\\.net/#",
       "flags": "allow_xnet"
     }
   ]

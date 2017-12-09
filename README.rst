@@ -49,6 +49,7 @@ Notes
     make createdb
     python manage.py createsuperuser --fullname me --hrid me --preferred_name me --main_email me@localhost.localdomain
     python manage.py importaccounts scripts/dev_data.json
+    python manage.py importauthgroupex scripts/dev_data.json
     python manage.py runserver
     # Go to http://127.0.0.1:8000/admin/ to configure django-oidc-provider
 
