@@ -85,10 +85,10 @@ class AuthenticationTests(TestCase):
             'axid': '18290001',
         }, userinfo)
 
-    def test_study_year(self):
-        """Test acquiring study year through OIDC"""
+    def test_study_years(self):
+        """Test acquiring study years through OIDC"""
         c = Client()
-        access_token = self._request_access_token(c, 'openid profile email xorg_study_year')
+        access_token = self._request_access_token(c, 'openid profile email xorg_study_years')
 
         response = c.get(reverse('oidc_provider:userinfo'), {
             'access_token': access_token,
@@ -99,6 +99,6 @@ class AuthenticationTests(TestCase):
             'sub': 'louis.vaneau.1829',
             'name': 'Louis Vaneau',
             'email': 'louis.vaneau.1829@polytechnique.org',
-            'study_year': 'X1829',
+            'study_years': ['X1829'],
             'grad_year': 1829,
         }, userinfo)
