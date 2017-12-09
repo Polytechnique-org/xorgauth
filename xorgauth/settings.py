@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'xorgauth.accounts.apps.AccountsConfig',
     'xorgauth',
+    'xorgauth.authgroupex',
     'xorgauth.relying_party_test',
     'django.contrib.admin',
     'django.contrib.contenttypes',
