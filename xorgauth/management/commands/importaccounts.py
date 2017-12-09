@@ -32,6 +32,9 @@ class Command(BaseCommand):
             user.main_email = account_data['email']
             user.password = hasher.encode_sha1_hash(account_data['password'])
             user.axid = account_data['ax_id']
+            user.firstname = account_data['firstname']
+            user.lastname = account_data['lastname']
+            user.sex = account_data['sex']
             user.study_year = account_data['promo']
             user.grad_year = account_data['grad_year']
             user.save()

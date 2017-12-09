@@ -51,10 +51,20 @@ class UserManager(base_user.BaseUserManager):
 
 
 class User(base_user.AbstractBaseUser):
+    MALE = 'male'
+    FEMALE = 'female'
+    SEX = (
+        (MALE, _("Male")),
+        (FEMALE, _("Female")),
+    )
+
     uid = models.UUIDField("UUID", default=uuid.uuid4, editable=False)
     hrid = models.SlugField(_("username"), unique=True)
     fullname = UnboundedCharField(_("full name"), help_text=_("Name to display to other users"))
     preferred_name = UnboundedCharField(_("preferred name"), help_text=_("Name used when addressing the user"))
+    firstname = UnboundedCharField(_("first name"), null=True)
+    lastname = UnboundedCharField(_("last name"), null=True)
+    sex = models.CharField(_("sex"), max_length=6, choices=SEX, null=True)
     main_email = models.EmailField(_("email"), unique=True)
     roles = models.ManyToManyField(Role, related_name='members', verbose_name=_("roles"))
     axid = UnboundedCharField(_("AX ID"), null=True, help_text=_("Identification in AX directory"))
