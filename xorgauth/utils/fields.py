@@ -19,4 +19,4 @@ class UnboundedCharField(models.TextField):
 
     def formfield(self, **kwargs):
         kwargs['widget'] = None if self.choices else forms.TextInput
-        return super().formfield(**kwargs)
+        return super(UnboundedCharField, self).formfield(**kwargs)
