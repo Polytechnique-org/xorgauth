@@ -1,0 +1,17 @@
+{% extends "registration/login.html" %}
+{% load bootstrap4 i18n %}
+
+{% block content %}
+
+{% blocktrans %}The website you requested, <strong>{{ ext_url }}</strong>, requires an authentification.{% endblocktrans %}
+
+<form method="post" action="{% url 'auth-groupex-login' %}" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary" />
+    {% endbuttons %}
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{% endblock %}

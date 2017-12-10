@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 from xorgauth.accounts import views as xorgauth_views
+from xorgauth.authgroupex import views as authgpx_views
 from xorgauth.relying_party_test import views as rptest_views
 
 urlpatterns = [
@@ -30,5 +31,7 @@ urlpatterns = [
     url(r'^accounts/password/change/$', auth_views.password_change, name='password_change'),
     url(r'^accounts/password/change/done/$', auth_views.password_change_done, name='password_change_done'),
     url(r'^accounts/profile/$', xorgauth_views.ProfileView.as_view(), name='profile'),
+    url(r'^auth-groupex$', authgpx_views.AuthGroupeXView.as_view(), name='auth-groupex'),
+    url(r'^auth-groupex-login$', authgpx_views.AuthGroupeXLoginView.as_view(), name='auth-groupex-login'),
     url(r'^test-relying-party/$', rptest_views.RelyingParty.as_view(), name='test-relying-party'),
 ]
