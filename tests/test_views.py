@@ -1,5 +1,3 @@
-import contextlib
-
 from django.test import Client, TestCase
 from django.urls import reverse
 
@@ -29,9 +27,11 @@ class ViewTests(TestCase):
         known_views.update(self.PUBLIC_VIEW_IDS)
         known_views.update(self.LOGIN_REQUIRED_VIEW_IDS)
         for urlpattern in xorgauth_urlpatterns:
-            with contextlib.suppress(AttributeError):
+            try:
                 self.assertIn(urlpattern.name, known_views)
                 known_views.remove(urlpattern.name)
+            except AttributeError:
+                pass
         # Ensure that every view in the local lists exist
         self.assertEqual(set(), known_views, "stray view IDs in tests")
 

@@ -1,6 +1,5 @@
 import json
-import urllib.parse
-
+import sys
 from django.core.management import call_command
 from django.test import Client, TestCase
 from django.urls import reverse
@@ -8,6 +7,14 @@ from django.urls import reverse
 import oidc_provider.models
 
 from xorgauth.accounts.models import User, UserAlias
+
+if sys.version_info >= (3,):
+    import urllib.parse
+else:
+    import urlparse
+
+    class urllib(object):
+        parse = urlparse
 
 
 class AuthenticationTests(TestCase):
