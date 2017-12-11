@@ -46,7 +46,6 @@ class XorgScopeClaims(ScopeClaims):
     def scope_xorg_study_years(self):
         return {
             'study_years': [self.user.study_year],
-            'grad_year': self.user.grad_year,
         }
 
     def scope_xorg_axid(self):

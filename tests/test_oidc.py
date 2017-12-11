@@ -100,5 +100,4 @@ class AuthenticationTests(TestCase):
             'name': 'Louis Vaneau',
             'email': 'louis.vaneau.1829@polytechnique.org',
             'study_years': ['X1829'],
-            'grad_year': 1829,
         }, userinfo)
