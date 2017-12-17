@@ -8,12 +8,14 @@ from xorgauth.urls import urlpatterns as xorgauth_urlpatterns
 class ViewTests(TestCase):
     # Views which are publicy accessible
     PUBLIC_VIEW_IDS = (
+        'auth-groupex-login',
         'login',
         'logout',
         'test-relying-party',
     )
     # Views which need an authenticated user
     LOGIN_REQUIRED_VIEW_IDS = (
+        'auth-groupex',
         'index',
         'list_consents',
         'password_change',
@@ -49,8 +51,12 @@ class ViewTests(TestCase):
             resp = c.get(reverse(url_id))
             self.assertEqual(302, resp.status_code,
                              "unexpected HTTP response code for URL %s" % url_id)
-            self.assertTrue(resp['Location'].startswith('/accounts/login/?'),
-                            "unexpected Location header: %r" % resp['Location'])
+            if url_id == 'auth-groupex':
+                self.assertTrue(resp['Location'].startswith('/auth-groupex-login?'),
+                                "unexpected Location header: %r" % resp['Location'])
+            else:
+                self.assertTrue(resp['Location'].startswith('/accounts/login/?'),
+                                "unexpected Location header: %r" % resp['Location'])
 
     def test_login_required_views_success(self):
         """Test accessing login-required views while being logged in"""
@@ -65,8 +71,11 @@ class ViewTests(TestCase):
             self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
             resp = c.get(reverse(url_id))
             if resp.status_code == 302:
-                self.assertFalse(resp['Location'].startswith('/accounts/login/?'),
+                self.assertFalse(resp['Location'].startswith(('/accounts/login/?', '/auth-groupex-login?')),
                                  "unexpected login-Location: %r" % resp['Location'])
+            elif url_id == 'auth-groupex':
+                self.assertEqual(400, resp.status_code,
+                                 "unexpected HTTP response code for URL %s" % url_id)
             else:
                 self.assertEqual(200, resp.status_code,
                                  "unexpected HTTP response code for URL %s" % url_id)
