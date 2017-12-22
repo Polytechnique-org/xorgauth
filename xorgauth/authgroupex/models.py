@@ -96,11 +96,13 @@ class AuthGroupeXClient(models.Model):
             elif datafield == 'full_promo':
                 val = user.study_year
             elif datafield in ('promo_sortie', 'grad_year'):
-                val = user.grad_year
+                val = str(user.grad_year)
             elif datafield == 'grpauth' and gpex_group:
                 try:
                     grp_membership = user.groups.get(group__shortname=gpex_group)
                     val = grp_membership.perms
+                    if val == 'member':
+                        val = 'membre'
                 except ObjectDoesNotExist:
                     pass
 

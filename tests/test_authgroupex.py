@@ -33,7 +33,7 @@ class AuthGroupeXTests(TestCase):
             schoolid='18290042',
             xorgdb_uid=1,
             study_year='X1829',
-            grad_year=1829,
+            grad_year=1832,
         )
         cls.role_x = Role.objects.create(hrid='x', display='X')
         cls.role_xnet = Role.objects.create(hrid='xnet', display='External')
@@ -108,7 +108,7 @@ class AuthGroupeXTests(TestCase):
         })
 
     def test_logged_request_2(self):
-        self.client_simple.datafields = 'matricule,uid,username,firstname,lastname,forlife,perms'
+        self.client_simple.datafields = 'matricule,uid,username,firstname,lastname,forlife,entry_year,grad_year,perms'
         self.client_simple.save()
 
         c = Client()
@@ -126,6 +126,8 @@ class AuthGroupeXTests(TestCase):
             'lastname': 'Vaneau',
             'matricule': '18290042',
             'forlife': 'louis.vaneau.1829',
+            'entry_year': '1829',
+            'grad_year': '1832',
             'perms': 'user',
         })
 
@@ -153,6 +155,58 @@ class AuthGroupeXTests(TestCase):
             'perms': 'user',
             'grpauth': 'admin',
         })
+
+    def test_logged_request_group_member(self):
+        grp = Group.objects.create(shortname='X1829')
+        grp.save()
+        user = User.objects.get(hrid='louis.vaneau.1829')
+        gmem = GroupMembership.objects.create(group=grp, user=user, perms='member')
+        gmem.save()
+        self.client_simple.datafields = 'forlife,perms,grpauth'
+        self.client_simple.save()
+
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        requrl, challenge = self._get_req_url(self.client_simple.privkey,
+                                              'https://example.com/',
+                                              group='X1829')
+        resp = c.get(requrl)
+        self.assertEqual(302, resp.status_code)
+        query_params, expected_auth = self._check_resp_auth(
+            self.client_simple.privkey, 'https://example.com/', challenge, resp['Location'])
+        self.assertEquals(query_params.dict(), {
+            'auth': expected_auth,
+            'forlife': 'louis.vaneau.1829',
+            'perms': 'user',
+            'grpauth': 'membre',
+        })
+
+    def test_logged_request_no_group_member(self):
+        self.client_simple.datafields = 'forlife,perms,grpauth'
+        self.client_simple.save()
+
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        requrl, challenge = self._get_req_url(self.client_simple.privkey,
+                                              'https://example.com/',
+                                              group='X1829')
+        resp = c.get(requrl)
+        self.assertEqual(302, resp.status_code)
+        query_params, expected_auth = self._check_resp_auth(
+            self.client_simple.privkey, 'https://example.com/', challenge, resp['Location'])
+        self.assertEquals(query_params.dict(), {
+            'auth': expected_auth,
+            'forlife': 'louis.vaneau.1829',
+            'perms': 'user',
+            'grpauth': '',
+        })
+
+    def test_unknown_site(self):
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        requrl, challenge = self._get_req_url(self.client_simple.privkey, 'https://unknown.example.com/')
+        resp = c.get(requrl)
+        self.assertEqual(400, resp.status_code)
 
     def test_xnet_on_non_xnet_site(self):
         user = User.objects.get(hrid='louis.vaneau.1829')
