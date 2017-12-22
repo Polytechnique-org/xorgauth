@@ -1,6 +1,7 @@
 {
   "accounts": [
     {
+      "uid": 42,
       "hruid": "admi.nistrateur.1942",
       "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
       "type": "x",
@@ -13,6 +14,7 @@
       "sex": "male",
       "email": "admi.nistrateur@m4x.org",
       "ax_id": "19420042",
+      "xorg_id": "19420001",
       "promo": "X1942",
       "grad_year": 1945,
       "email_source": {
@@ -40,6 +42,7 @@
       }
     },
     {
+      "uid": 43,
       "hruid": "simple.user.1942",
       "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
       "type": "x",
@@ -52,6 +55,7 @@
       "sex": "male",
       "email": "simple.user@m4x.org",
       "ax_id": "19420043",
+      "xorg_id": "19420002",
       "promo": "X1942",
       "grad_year": 1945,
       "email_source": {
@@ -82,6 +86,7 @@
       }
     },
     {
+      "uid": 100,
       "hruid": "angela.felix.1999",
       "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
       "type": "x",
@@ -94,6 +99,7 @@
       "sex": "female",
       "email": "angela.felix@m4x.org",
       "ax_id": "19990789",
+      "xorg_id": "19991234",
       "promo": "X1999",
       "grad_year": 2003,
       "email_source": {
@@ -121,6 +127,7 @@
       }
     },
     {
+      "uid": 101,
       "hruid": "alice.lemaitre.m2017",
       "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
       "type": "master",
@@ -133,6 +140,7 @@
       "sex": "female",
       "email": "alice.lemaitre@m4x.org",
       "ax_id": "2017m123",
+      "xorg_id": "120173210",
       "promo": "M2017",
       "grad_year": 2017,
       "email_source": {
@@ -160,6 +168,7 @@
       }
     },
     {
+      "uid": 102,
       "hruid": "doctor.who.d2013",
       "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
       "type": "phd",
@@ -172,6 +181,7 @@
       "sex": "male",
       "email": "doctor.who@m4x.org",
       "ax_id": "2013D123",
+      "xorg_id": "220133210",
       "promo": "D2013",
       "grad_year": 2013,
       "email_source": {
@@ -198,6 +208,7 @@
       }
     },
     {
+      "uid": 103,
       "hruid": "yapaquelix.example.com.ext",
       "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
       "type": "xnet",
@@ -210,6 +221,7 @@
       "sex": "male",
       "email": "yapaquelix@example.com",
       "ax_id": null,
+      "xorg_id": null,
       "promo": null,
       "grad_year": null,
       "email_source": {},

@@ -68,6 +68,10 @@ class User(base_user.AbstractBaseUser):
     main_email = models.EmailField(_("email"), unique=True)
     roles = models.ManyToManyField(Role, related_name='members', verbose_name=_("roles"))
     axid = UnboundedCharField(_("AX ID"), null=True, help_text=_("Identification in AX directory"))
+    schoolid = UnboundedCharField(_("School ID"), null=True, unique=True,
+                                  help_text=_("Identification defined by the School"))
+    xorgdb_uid = models.IntegerField(_("Polytechnique.org database user ID"), null=True, unique=True,
+                                     help_text=_("User ID in Polytechnique.org database"))
     study_year = UnboundedCharField(_("study year"), null=True, help_text=_(
         "Kind and main year of the study ('X1829' means 'entered the school in 1829 " +
         "but 'M2005' means 'graduated in 2005')"))

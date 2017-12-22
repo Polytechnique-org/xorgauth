@@ -56,7 +56,7 @@ with db.cursor() as cursor:
         SELECT  a.uid, a.hruid, a.password, a.type, a.is_admin,
                 a.firstname, a.lastname, a.full_name, a.directory_name, a.display_name,
                 a.sex, a.email,
-                p.ax_id, pd.promo, pe.grad_year
+                p.ax_id, p.xorg_id, pd.promo, pe.grad_year
           FROM  accounts AS a
      LEFT JOIN  account_profiles AS ap ON (ap.uid = a.uid AND FIND_IN_SET('owner', ap.perms))
      LEFT JOIN  profiles AS p ON (p.pid = ap.pid)
@@ -70,8 +70,6 @@ with db.cursor() as cursor:
     for row in cursor:
         entry = OrderedDict(zip(cols, row))
         uid = int(entry['uid'])
-        # Remove uid from exported data, but use it in order to gather more data
-        del entry['uid']
         entry['email_source'] = OrderedDict()
         entry['email_redirect'] = OrderedDict()
         entry['groups'] = OrderedDict()

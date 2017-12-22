@@ -55,6 +55,8 @@ class Command(BaseCommand):
             user.main_email = account_data['email']
             user.password = hasher.encode_sha1_hash(account_data['password'])
             user.axid = account_data['ax_id']
+            user.schoolid = account_data['xorg_id']
+            user.xorgdb_uid = account_data['uid']
             user.firstname = account_data['firstname']
             user.lastname = account_data['lastname']
             user.sex = account_data['sex']

@@ -83,6 +83,10 @@ class AuthGroupeXClient(models.Model):
                 val = user.sex
             elif datafield == 'matricule_ax':
                 val = user.axid
+            elif datafield == 'matricule':
+                val = user.schoolid
+            elif datafield == 'uid':
+                val = str(user.xorgdb_uid or '')
             elif datafield == 'username':
                 val = user.main_email
             elif datafield in ('promo', 'entry_year'):
