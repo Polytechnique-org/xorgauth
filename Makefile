@@ -53,7 +53,7 @@ lint:
 
 coverage:
 	$(COVERAGE) erase
-	$(COVERAGE) run "--include=$(SRC_DIR)/*.py,$(TESTS_DIR)/*.py" --branch setup.py test
+	$(COVERAGE) run "--include=$(SRC_DIR)/*.py,$(TESTS_DIR)/*.py" --branch manage.py test $(TESTS_DIR)
 	$(COVERAGE) report "--include=$(SRC_DIR)/*.py,$(TESTS_DIR)/*.py"
 	$(COVERAGE) html "--include=$(SRC_DIR)/*.py,$(TESTS_DIR)/*.py"
 
