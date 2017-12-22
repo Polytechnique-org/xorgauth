@@ -97,7 +97,7 @@ class AuthGroupeXTests(TestCase):
         self.assertEqual(302, resp.status_code)
         query_params, expected_auth = self._check_resp_auth(
             self.client_simple.privkey, 'https://example.com/', challenge, resp['Location'])
-        self.assertEquals(query_params.dict(), {
+        self.assertEqual(query_params.dict(), {
             'auth': expected_auth,
             'forlife': 'louis.vaneau.1829',
             'full_promo': 'X1829',
@@ -118,7 +118,7 @@ class AuthGroupeXTests(TestCase):
         self.assertEqual(302, resp.status_code)
         query_params, expected_auth = self._check_resp_auth(
             self.client_simple.privkey, 'https://example.com/', challenge, resp['Location'])
-        self.assertEquals(query_params.dict(), {
+        self.assertEqual(query_params.dict(), {
             'auth': expected_auth,
             'uid': '1',
             'username': 'louis.vaneau.1829@polytechnique.org',
@@ -149,7 +149,7 @@ class AuthGroupeXTests(TestCase):
         self.assertEqual(302, resp.status_code)
         query_params, expected_auth = self._check_resp_auth(
             self.client_simple.privkey, 'https://example.com/', challenge, resp['Location'])
-        self.assertEquals(query_params.dict(), {
+        self.assertEqual(query_params.dict(), {
             'auth': expected_auth,
             'forlife': 'louis.vaneau.1829',
             'perms': 'user',
@@ -174,7 +174,7 @@ class AuthGroupeXTests(TestCase):
         self.assertEqual(302, resp.status_code)
         query_params, expected_auth = self._check_resp_auth(
             self.client_simple.privkey, 'https://example.com/', challenge, resp['Location'])
-        self.assertEquals(query_params.dict(), {
+        self.assertEqual(query_params.dict(), {
             'auth': expected_auth,
             'forlife': 'louis.vaneau.1829',
             'perms': 'user',
@@ -194,7 +194,7 @@ class AuthGroupeXTests(TestCase):
         self.assertEqual(302, resp.status_code)
         query_params, expected_auth = self._check_resp_auth(
             self.client_simple.privkey, 'https://example.com/', challenge, resp['Location'])
-        self.assertEquals(query_params.dict(), {
+        self.assertEqual(query_params.dict(), {
             'auth': expected_auth,
             'forlife': 'louis.vaneau.1829',
             'perms': 'user',
@@ -234,7 +234,7 @@ class AuthGroupeXTests(TestCase):
         self.assertEqual(302, resp.status_code)
         query_params, expected_auth = self._check_resp_auth(
             self.client_simple.privkey, 'https://example.com/', challenge, resp['Location'])
-        self.assertEquals(query_params.dict(), {
+        self.assertEqual(query_params.dict(), {
             'auth': expected_auth,
             'forlife': 'louis.vaneau.1829',
             'full_promo': 'X1829',
@@ -257,7 +257,7 @@ class AuthGroupeXTests(TestCase):
             self.assertEqual(302, resp.status_code, "error for URL %r" % url)
             query_params, expected_auth = self._check_resp_auth(
                 self.client_simple.privkey, url, challenge, resp['Location'])
-            self.assertEquals(query_params.dict(), {
+            self.assertEqual(query_params.dict(), {
                 'auth': expected_auth,
                 'forlife': 'louis.vaneau.1829',
                 'full_promo': 'X1829',
