@@ -75,21 +75,23 @@ class AuthGroupeXClient(models.Model):
                 val = 'admin' if user.is_staff else 'user'
             elif datafield == 'forlife':
                 val = user.hrid
-            elif datafield == 'prenom':
+            elif datafield in ('prenom', 'firstname'):
                 val = user.firstname
-            elif datafield == 'nom':
+            elif datafield in ('nom', 'lastname'):
                 val = user.lastname
             elif datafield == 'sex':
                 val = user.sex
             elif datafield == 'matricule_ax':
                 val = user.axid
-            elif datafield == 'promo':
+            elif datafield == 'username':
+                val = user.main_email
+            elif datafield in ('promo', 'entry_year'):
                 val = user.study_year
                 while val and not '0' <= val[0] <= '9':
                     val = val[1:]
             elif datafield == 'full_promo':
                 val = user.study_year
-            elif datafield == 'promo_sortie':
+            elif datafield in ('promo_sortie', 'grad_year'):
                 val = user.grad_year
             elif datafield == 'grpauth' and gpex_group:
                 try:
