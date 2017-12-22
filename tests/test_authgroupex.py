@@ -6,7 +6,7 @@ from django import http
 from django.test import Client, TestCase
 from django.urls import reverse
 
-from xorgauth.accounts.models import User, UserAlias, Role
+from xorgauth.accounts.models import User, UserAlias, Role, Group, GroupMembership
 from xorgauth.authgroupex.models import AuthGroupeXClient
 
 
@@ -30,6 +30,8 @@ class AuthGroupeXTests(TestCase):
             main_email='louis.vaneau.1829@polytechnique.org',
             password='Depuis Vaneau!',
             axid='18290001',
+            schoolid='18290042',
+            xorgdb_uid=1,
             study_year='X1829',
             grad_year=1829,
         )
@@ -40,7 +42,7 @@ class AuthGroupeXTests(TestCase):
         UserAlias(user=vaneau, email='vaneau@melix.net').save()
 
     @staticmethod
-    def _get_req_url(privkey, return_url):
+    def _get_req_url(privkey, return_url, group=None):
         """Generate a request challenge and compute its signature"""
         challenge = hashlib.sha1(
             b''.join(struct.pack(b'B', random.randrange(0, 256)) for i in range(64)))
@@ -50,6 +52,8 @@ class AuthGroupeXTests(TestCase):
         query['challenge'] = challenge
         query['pass'] = sig
         query['url'] = return_url
+        if group:
+            query['group'] = group
         requrl = reverse('auth-groupex') + '?' + query.urlencode()
         return requrl, challenge
 
@@ -101,6 +105,53 @@ class AuthGroupeXTests(TestCase):
             'nom': 'Vaneau',
             'prenom': 'Louis',
             'sex': 'male',
+        })
+
+    def test_logged_request_2(self):
+        self.client_simple.datafields = 'matricule,uid,username,firstname,lastname,forlife,perms'
+        self.client_simple.save()
+
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        requrl, challenge = self._get_req_url(self.client_simple.privkey, 'https://example.com/')
+        resp = c.get(requrl)
+        self.assertEqual(302, resp.status_code)
+        query_params, expected_auth = self._check_resp_auth(
+            self.client_simple.privkey, 'https://example.com/', challenge, resp['Location'])
+        self.assertEquals(query_params.dict(), {
+            'auth': expected_auth,
+            'uid': '1',
+            'username': 'louis.vaneau.1829@polytechnique.org',
+            'firstname': 'Louis',
+            'lastname': 'Vaneau',
+            'matricule': '18290042',
+            'forlife': 'louis.vaneau.1829',
+            'perms': 'user',
+        })
+
+    def test_logged_request__groupadm(self):
+        grp = Group.objects.create(shortname='X1829')
+        grp.save()
+        user = User.objects.get(hrid='louis.vaneau.1829')
+        gmem = GroupMembership.objects.create(group=grp, user=user, perms='admin')
+        gmem.save()
+        self.client_simple.datafields = 'forlife,perms,grpauth'
+        self.client_simple.save()
+
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        requrl, challenge = self._get_req_url(self.client_simple.privkey,
+                                              'https://example.com/',
+                                              group='X1829')
+        resp = c.get(requrl)
+        self.assertEqual(302, resp.status_code)
+        query_params, expected_auth = self._check_resp_auth(
+            self.client_simple.privkey, 'https://example.com/', challenge, resp['Location'])
+        self.assertEquals(query_params.dict(), {
+            'auth': expected_auth,
+            'forlife': 'louis.vaneau.1829',
+            'perms': 'user',
+            'grpauth': 'admin',
         })
 
     def test_xnet_on_non_xnet_site(self):
