@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-04 23:56+0100\n"
+"POT-Creation-Date: 2017-12-22 23:35+0100\n"
 "PO-Revision-Date: 2017-12-03 22:42+0100\n"
 "Last-Translator: Nicolas Iooss\n"
 "Language: \n"
@@ -31,105 +31,125 @@ msgstr "nom affiché"
 msgid "role"
 msgstr "rôle"
 
-#: xorgauth/accounts/models.py:25 xorgauth/accounts/models.py:59
+#: xorgauth/accounts/models.py:25 xorgauth/accounts/models.py:69
 msgid "roles"
 msgstr "rôles"
 
-#: xorgauth/accounts/models.py:55
+#: xorgauth/accounts/models.py:57
+msgid "Male"
+msgstr "Homme"
+
+#: xorgauth/accounts/models.py:58
+msgid "Female"
+msgstr "Femme"
+
+#: xorgauth/accounts/models.py:62
 msgid "username"
 msgstr "nom d'utilisateur"
 
-#: xorgauth/accounts/models.py:56
+#: xorgauth/accounts/models.py:63
 msgid "full name"
 msgstr "nom complet"
 
-#: xorgauth/accounts/models.py:56
+#: xorgauth/accounts/models.py:63
 msgid "Name to display to other users"
 msgstr "Nom affiché aux autres utilisateurs"
 
-#: xorgauth/accounts/models.py:57
+#: xorgauth/accounts/models.py:64
 msgid "preferred name"
 msgstr "nom préféré"
 
-#: xorgauth/accounts/models.py:57
+#: xorgauth/accounts/models.py:64
 msgid "Name used when addressing the user"
 msgstr "Nom utilisé pour s'adresser à l'utilisateur"
 
-#: xorgauth/accounts/models.py:58
+#: xorgauth/accounts/models.py:65
+msgid "first name"
+msgstr "prénom"
+
+#: xorgauth/accounts/models.py:66
+msgid "last name"
+msgstr "nom de famille"
+
+#: xorgauth/accounts/models.py:67
+msgid "sex"
+msgstr "Sexe"
+
+#: xorgauth/accounts/models.py:68
 msgid "email"
 msgstr "couriel"
 
-#: xorgauth/accounts/models.py:60
+#: xorgauth/accounts/models.py:70
 #: xorgauth/accounts/oidc_provider_settings.py:35
 #: xorgauth/relying_party_test/templates/relying-party-test.html:39
 msgid "AX ID"
 msgstr "ID AX"
 
-#: xorgauth/accounts/models.py:60
+#: xorgauth/accounts/models.py:70
 msgid "Identification in AX directory"
-msgstr "Identifiant dans l'annuaire de l'AX"
+msgstr "Matricule dans l'annuaire de l'AX"
 
-#: xorgauth/accounts/models.py:61
+#: xorgauth/accounts/models.py:71
 msgid "study year"
 msgstr "promotion"
 
-#: xorgauth/accounts/models.py:62
+#: xorgauth/accounts/models.py:72
 msgid ""
 "Kind and main year of the study ('X1829' means 'entered the school in 1829 "
 "but 'M2005' means 'graduated in 2005')"
 msgstr ""
-"Catégorie et année de référence de la scolarité ('X1829' signifie 'est "
-"entré à l'école en 1829 mais 'M2005' signifié 'diplomé en 2005')"
+"Catégorie et année de référence de la scolarité ('X1829' signifie 'est entré "
+"à l'école en 1829 mais 'M2005' signifié 'diplomé en 2005')"
 
-#: xorgauth/accounts/models.py:64
+#: xorgauth/accounts/models.py:74
 msgid "graduation year"
 msgstr "année du diplôme"
 
-#: xorgauth/accounts/models.py:64
+#: xorgauth/accounts/models.py:74
 msgid "Year of the graduation"
 msgstr "Année d'obtention du diplôme"
 
-#: xorgauth/accounts/models.py:69
+#: xorgauth/accounts/models.py:79
 msgid "user account"
 msgstr "compte utilisateur"
 
-#: xorgauth/accounts/models.py:70
+#: xorgauth/accounts/models.py:80
 msgid "user accounts"
 msgstr "comptes utilisateurs"
 
-#: xorgauth/accounts/models.py:115
+#: xorgauth/accounts/models.py:125
 msgid "user"
 msgstr "utilisateur"
 
-#: xorgauth/accounts/models.py:116
+#: xorgauth/accounts/models.py:126
 msgid "email alias"
 msgstr "alias couriel"
 
-#: xorgauth/accounts/models.py:119
+#: xorgauth/accounts/models.py:129
 msgid "user alias"
 msgstr "alias utilisateur"
 
-#: xorgauth/accounts/models.py:120
+#: xorgauth/accounts/models.py:130
 msgid "user aliases"
 msgstr "aliases utilisateurs"
 
-#: xorgauth/accounts/models.py:128
+#: xorgauth/accounts/models.py:138
 msgid "short name"
 msgstr "nom court"
 
-#: xorgauth/accounts/models.py:131 xorgauth/accounts/models.py:144
+#: xorgauth/accounts/models.py:141 xorgauth/accounts/models.py:154
 msgid "group"
 msgstr "groupe"
 
-#: xorgauth/accounts/models.py:132
+#: xorgauth/accounts/models.py:142
 msgid "groups"
 msgstr "groupes"
 
-#: xorgauth/accounts/models.py:141 xorgauth/accounts/models.py:145
+#: xorgauth/accounts/models.py:151 xorgauth/accounts/models.py:155
 msgid "member"
 msgstr "membres"
 
-#: xorgauth/accounts/models.py:142
+#: xorgauth/accounts/models.py:152
 msgid "administrator"
 msgstr "administrateur"
 
