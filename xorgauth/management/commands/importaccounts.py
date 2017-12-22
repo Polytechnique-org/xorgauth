@@ -21,9 +21,15 @@ class Command(BaseCommand):
         hasher = PBKDF2WrappedSHA1PasswordHasher()
         admin_role = Role.get_admin()
         role_displays = {
+            # Alumni
             'x': 'X',
             'master': 'Master',
             'phd': 'PhD',
+            # Staff
+            'ax': 'AX',
+            'fx': 'FX',
+            'school': 'School',
+            # Other
             'xnet': 'External',
         }
         type_roles = {}
@@ -34,6 +40,10 @@ class Command(BaseCommand):
                 type_roles[rolename].save()
 
         for account_data in jsondata['accounts']:
+            # Do not import virtual accounts
+            if account_data['type'] == 'virtual':
+                continue
+
             hrid = account_data['hruid']
             try:
                 user = User.objects.get(hrid=hrid)
