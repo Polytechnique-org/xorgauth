@@ -32,6 +32,9 @@ createdb:
 %.mo: %.po
 	cd $(abspath $(dir $<)/../../..) && $(DJANGO_ADMIN) compilemessages
 
+poupdate:
+	$(DJANGO_ADMIN) makemessages --locale=fr --ignore=.tox
+
 update:
 	pip install --upgrade pip setuptools
 	pip install --upgrade -r requirements.txt
@@ -61,4 +64,4 @@ doc:
 	$(MAKE) -C $(DOC_DIR) html
 
 
-.PHONY: all default clean coverage createdb doc install-deps lint test
+.PHONY: all default clean coverage createdb doc install-deps lint update poupdate test testall
