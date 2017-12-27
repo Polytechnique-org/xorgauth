@@ -67,7 +67,7 @@ class User(base_user.AbstractBaseUser):
     lastname = UnboundedCharField(_("last name"), null=True)
     sex = models.CharField(_("sex"), max_length=6, choices=SEX, null=True)
     main_email = models.EmailField(_("email"), unique=True)
-    roles = models.ManyToManyField(Role, related_name='members', verbose_name=_("roles"))
+    roles = models.ManyToManyField(Role, related_name='members', blank=True, verbose_name=_("roles"))
     axid = UnboundedCharField(_("AX ID"), null=True, help_text=_("Identification in AX directory"))
     schoolid = UnboundedCharField(_("School ID"), null=True, unique=True,
                                   help_text=_("Identification defined by the School"))
