@@ -15,7 +15,24 @@ class XorgBackend(ModelBackend):
             try:
                 user = User.objects.get(hrid=username)
             except User.DoesNotExist:
-                return None
+                # if the username is "firstname.lastname", try builing an hrid
+                user = None
+                hrid_prefix = username + '.'
+                for possible_user in User.objects.filter(hrid__startswith=hrid_prefix):
+                    # Sanity check
+                    if not possible_user.hrid.startswith(hrid_prefix):
+                        return None
+                    # No dot in the last part
+                    if '.' in possible_user.hrid[len(hrid_prefix):]:
+                        continue
+                    # Several users share the same firstname.lastname prefix,
+                    # refuse to log in.
+                    if user is not None:
+                        return None
+                    user = possible_user
+                # Return nothing if no user has been found
+                if user is None:
+                    return None
         else:
             # try to login with email
             try:
