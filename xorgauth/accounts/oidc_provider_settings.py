@@ -27,7 +27,7 @@ class XorgScopeClaims(ScopeClaims):
         _("X Groups"),
         _("The list of the X Groups you belong to")
     )
-    info_xorg_study_year = (
+    info_xorg_study_years = (
         _("Study year"),
         _("The year of your study at the Ecole polytechnique")
     )
@@ -43,10 +43,9 @@ class XorgScopeClaims(ScopeClaims):
         }
         return dic
 
-    def scope_xorg_study_year(self):
+    def scope_xorg_study_years(self):
         return {
-            'study_year': self.user.study_year,
-            'grad_year': self.user.grad_year,
+            'study_years': [self.user.study_year],
         }
 
     def scope_xorg_axid(self):
