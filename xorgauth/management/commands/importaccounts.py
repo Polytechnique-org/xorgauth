@@ -20,7 +20,30 @@ class Command(BaseCommand):
             raise CommandError("Unable to find account entries")
         hasher = PBKDF2WrappedSHA1PasswordHasher()
         admin_role = Role.get_admin()
+        role_displays = {
+            # Alumni
+            'x': 'X',
+            'master': 'Master',
+            'phd': 'PhD',
+            # Staff
+            'ax': 'AX',
+            'fx': 'FX',
+            'school': 'School',
+            # Other
+            'xnet': 'External',
+        }
+        type_roles = {}
+        for rolename, roledisplay in role_displays.items():
+            type_roles[rolename], created = Role.objects.get_or_create(hrid=rolename)
+            if created:
+                type_roles[rolename].display = roledisplay
+                type_roles[rolename].save()
+
         for account_data in jsondata['accounts']:
+            # Do not import virtual accounts
+            if account_data['type'] == 'virtual':
+                continue
+
             hrid = account_data['hruid']
             try:
                 user = User.objects.get(hrid=hrid)
@@ -32,6 +55,8 @@ class Command(BaseCommand):
             user.main_email = account_data['email']
             user.password = hasher.encode_sha1_hash(account_data['password'])
             user.axid = account_data['ax_id']
+            user.schoolid = account_data['xorg_id']
+            user.xorgdb_uid = account_data['uid']
             user.firstname = account_data['firstname']
             user.lastname = account_data['lastname']
             user.sex = account_data['sex']
@@ -60,3 +85,7 @@ class Command(BaseCommand):
                 else:
                     if alias.user != user:
                         raise CommandError("Duplicate email %r" % email)
+
+            # Import account type into role
+            user.roles.add(type_roles[account_data['type']])
+            user.save()
