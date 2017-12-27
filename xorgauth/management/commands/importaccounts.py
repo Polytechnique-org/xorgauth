@@ -37,6 +37,7 @@ class Command(BaseCommand):
             type_roles[rolename], created = Role.objects.get_or_create(hrid=rolename)
             if created:
                 type_roles[rolename].display = roledisplay
+                type_roles[rolename].full_clean()
                 type_roles[rolename].save()
 
         for account_data in jsondata['accounts']:
@@ -62,6 +63,7 @@ class Command(BaseCommand):
             user.sex = account_data['sex']
             user.study_year = account_data['promo']
             user.grad_year = account_data['grad_year']
+            user.full_clean()
             user.save()
             if account_data['is_admin']:
                 user.roles.add(admin_role)
@@ -81,6 +83,7 @@ class Command(BaseCommand):
                     alias = UserAlias.objects.get(email=email)
                 except ObjectDoesNotExist:
                     alias = UserAlias(user=user, email=email)
+                    alias.full_clean()
                     alias.save()
                 else:
                     if alias.user != user:
@@ -88,4 +91,5 @@ class Command(BaseCommand):
 
             # Import account type into role
             user.roles.add(type_roles[account_data['type']])
+            user.full_clean()
             user.save()
