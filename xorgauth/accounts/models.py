@@ -9,7 +9,7 @@ from django.db import models
 
 from django.utils.translation import ugettext_lazy as _
 
-from xorgauth.utils.fields import UnboundedCharField
+from xorgauth.utils.fields import DottedSlugField, UnboundedCharField
 
 
 ADMIN_ROLE_HRID = 'admin'
@@ -59,7 +59,8 @@ class User(base_user.AbstractBaseUser):
     )
 
     uid = models.UUIDField("UUID", default=uuid.uuid4, editable=False)
-    hrid = models.SlugField(_("username"), unique=True)
+    hrid = DottedSlugField(_("username"), unique=True, max_length=255, help_text=_(
+        "Human-readable identifier, usually firstname.lastname.study-year"))
     fullname = UnboundedCharField(_("full name"), help_text=_("Name to display to other users"))
     preferred_name = UnboundedCharField(_("preferred name"), help_text=_("Name used when addressing the user"))
     firstname = UnboundedCharField(_("first name"), null=True)
