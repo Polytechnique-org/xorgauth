@@ -14,3 +14,6 @@ build/
 dist/
 htmlcov/
 MANIFEST
+
+# Settings
+local_settings.ini
