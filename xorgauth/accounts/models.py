@@ -9,7 +9,7 @@ from django.db import models
 
 from django.utils.translation import ugettext_lazy as _
 
-from xorgauth.utils.fields import UnboundedCharField
+from xorgauth.utils.fields import DottedSlugField, UnboundedCharField
 
 
 ADMIN_ROLE_HRID = 'admin'
@@ -59,23 +59,24 @@ class User(base_user.AbstractBaseUser):
     )
 
     uid = models.UUIDField("UUID", default=uuid.uuid4, editable=False)
-    hrid = models.SlugField(_("username"), unique=True)
+    hrid = DottedSlugField(_("username"), unique=True, max_length=255, help_text=_(
+        "Human-readable identifier, usually firstname.lastname.study-year"))
     fullname = UnboundedCharField(_("full name"), help_text=_("Name to display to other users"))
     preferred_name = UnboundedCharField(_("preferred name"), help_text=_("Name used when addressing the user"))
     firstname = UnboundedCharField(_("first name"), null=True)
     lastname = UnboundedCharField(_("last name"), null=True)
     sex = models.CharField(_("sex"), max_length=6, choices=SEX, null=True)
     main_email = models.EmailField(_("email"), unique=True)
-    roles = models.ManyToManyField(Role, related_name='members', verbose_name=_("roles"))
-    axid = UnboundedCharField(_("AX ID"), null=True, help_text=_("Identification in AX directory"))
-    schoolid = UnboundedCharField(_("School ID"), null=True, unique=True,
+    roles = models.ManyToManyField(Role, related_name='members', blank=True, verbose_name=_("roles"))
+    axid = UnboundedCharField(_("AX ID"), blank=True, null=True, help_text=_("Identification in AX directory"))
+    schoolid = UnboundedCharField(_("School ID"), blank=True, null=True, unique=True,
                                   help_text=_("Identification defined by the School"))
     xorgdb_uid = models.IntegerField(_("Polytechnique.org database user ID"), null=True, unique=True,
                                      help_text=_("User ID in Polytechnique.org database"))
-    study_year = UnboundedCharField(_("study year"), null=True, help_text=_(
+    study_year = UnboundedCharField(_("study year"), blank=True, null=True, help_text=_(
         "Kind and main year of the study ('X1829' means 'entered the school in 1829 " +
         "but 'M2005' means 'graduated in 2005')"))
-    grad_year = models.IntegerField(_("graduation year"), null=True, help_text=_("Year of the graduation"))
+    grad_year = models.IntegerField(_("graduation year"), blank=True, null=True, help_text=_("Year of the graduation"))
 
     objects = UserManager()
 
