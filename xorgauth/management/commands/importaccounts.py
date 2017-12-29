@@ -14,6 +14,7 @@ class Command(BaseCommand):
                             help="path to JSON file to load")
 
     def handle(self, *args, **options):
+        is_verbose = int(options['verbosity']) >= 2
         with open(options['jsonfile'][0], 'r') as jsonfd:
             jsondata = json.load(jsonfd)
         if 'accounts' not in jsondata:
@@ -36,11 +37,14 @@ class Command(BaseCommand):
         for rolename, roledisplay in role_displays.items():
             type_roles[rolename], created = Role.objects.get_or_create(hrid=rolename)
             if created:
+                if is_verbose:
+                    print("Creating role %r (%r)" % (rolename, roledisplay))
                 type_roles[rolename].display = roledisplay
                 type_roles[rolename].full_clean()
                 type_roles[rolename].save()
 
-        for account_data in jsondata['accounts']:
+        accounts_num = len(jsondata['accounts'])
+        for idx_account, account_data in enumerate(jsondata['accounts']):
             # Do not import virtual accounts
             if account_data['type'] == 'virtual':
                 continue
@@ -48,8 +52,12 @@ class Command(BaseCommand):
             hrid = account_data['hruid']
             try:
                 user = User.objects.get(hrid=hrid)
+                if is_verbose:
+                    print("Updating user %s (%d/%d)" % (hrid, idx_account + 1, accounts_num))
             except ObjectDoesNotExist:
                 user = User(hrid=hrid)
+                if is_verbose:
+                    print("Creating user %s (%d/%d)" % (hrid, idx_account + 1, accounts_num))
 
             user.fullname = account_data['full_name']
             user.preferred_name = account_data['display_name']
