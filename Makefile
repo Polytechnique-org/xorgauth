@@ -26,6 +26,7 @@ clean:
 build: $(MO_FILES)
 
 createdb:
+	mkdir -p dev
 	python manage.py migrate
 	python manage.py creatersakey
 

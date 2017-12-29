@@ -9,23 +9,40 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
+from __future__ import unicode_literals
 
+import getconf
 import os
+
+from django.core.exceptions import ImproperlyConfigured
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+config = getconf.ConfigGetter('xorgauth', [
+    '/etc/xorgauth/*.ini',
+    os.path.join(BASE_DIR, 'local_settings.ini'),
+])
+
+APPMODE = config.getstr('app.mode', 'dev')
+assert APPMODE in ('dev', 'dist', 'prod'), "Invalid application mode %s" % APPMODE
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dev'
+SECRET_KEY = config.getstr('app.secret_key', 'Dev only!!')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config.getbool('app.debug', APPMODE == 'dev')
 
-ALLOWED_HOSTS = []
+if config.getstr('site.admin_mail'):
+    ADMINS = (
+        ("XorgAuth admins", config.getstr('site.admin_mail')),
+    )
+
+ALLOWED_HOSTS = config.getlist('site.allowed_hosts', [])
 
 
 # Application definition
@@ -86,11 +103,34 @@ AUTH_USER_MODEL = 'accounts.User'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+_ENGINE_MAP = {
+    'sqlite': 'django.db.backends.sqlite3',
+    'mysql': 'django.db.backends.mysql',
+    'postgresql': 'django.db.backends.postgresql_psycopg2',
+}
+_engine = config.getstr('db.engine', 'sqlite')
+if _engine not in _ENGINE_MAP:
+    raise ImproperlyConfigured(
+        "DB engine %s is unknown; please choose from %s" %
+        (_engine, ', '.join(sorted(_ENGINE_MAP.keys())))
+    )
+if _engine == 'sqlite':
+    if APPMODE == 'dev':
+        _default_db_name = os.path.join(BASE_DIR, 'dev', 'db.sqlite')
+    else:
+        _default_db_name = '/var/lib/xorgauth/db.sqlite'
+else:
+    _default_db_name = 'xorgauth'
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': _ENGINE_MAP[_engine],
+        'NAME': config.getstr('db.name', _default_db_name),
+        'USER': config.getstr('db.user'),
+        'PASSWORD': config.getstr('db.password'),
+        'HOST': config.getstr('db.host', 'localhost'),
+        'PORT': config.getstr('db.port'),
+    },
 }
 
 
