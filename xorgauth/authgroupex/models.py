@@ -30,12 +30,15 @@ class AuthGroupeXClientManager(models.Manager):
 
 
 class AuthGroupeXClient(models.Model):
-    privkey = models.CharField(unique=True, max_length=40)
-    name = UnboundedCharField(unique=True)
-    data_fields = UnboundedCharField()
-    return_urls = UnboundedCharField()
-    last_used = models.DateField(null=True)
-    allow_xnet = models.BooleanField(default=False)
+    privkey = models.CharField(_("private key"), unique=True, max_length=40,
+                               help_text=_("Secret key shared with the client"))
+    name = UnboundedCharField(_("name"), unique=True, help_text=_("Name of the client"))
+    data_fields = UnboundedCharField(_("data fields"), help_text=_("Fields requested by the client"))
+    return_urls = UnboundedCharField(_("return URLs"),
+                                     help_text=_("Regular expression pattern of the allowed return URLs"))
+    last_used = models.DateField(_("last used"), null=True, help_text=_("Date of the last use of this client"))
+    allow_xnet = models.BooleanField(_("allow xnet"), default=False,
+                                     help_text=_("Allow account with type 'xnet' (external) to log in to this client"))
 
     objects = AuthGroupeXClientManager()
 
