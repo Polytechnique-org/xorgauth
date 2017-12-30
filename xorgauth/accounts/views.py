@@ -1,10 +1,13 @@
 from django.contrib import messages
+from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic.base import RedirectView, TemplateView
 
 from oidc_provider.models import UserConsent, Client
+
+from xorgauth.forms import PasswordChangeForm
 
 
 @login_required
@@ -36,3 +39,6 @@ class IndexView(LoginRequiredMixin, RedirectView):
 
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'profile.html'
+
+class PasswordChangeView(auth_views.PasswordChangeView):
+    form_class = PasswordChangeForm

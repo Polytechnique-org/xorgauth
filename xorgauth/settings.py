@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.auth',
     'oidc_provider',
+    'zxcvbn_password',
     'bootstrap4',
 ]
 
@@ -150,7 +151,17 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
-]
+    {
+        'NAME': 'zxcvbn_password.ZXCVBNValidator',
+        'OPTIONS': {
+            'min_score': 3,
+            'user_attributes':
+                ('hrid', 'main_email', 'fullname', 'preferred_name',
+                    'firstname', 'lastname', 'grad_year', 'schoolid',
+                    'study_year')
+            }
+        },
+    ]
 
 # Password hashers
 # https://docs.djangoproject.com/en/1.11/ref/settings/#password-hashers
