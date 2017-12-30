@@ -7,7 +7,7 @@ DOC_DIR=docs
 COVERAGE = python $(shell which coverage)
 FLAKE8 = flake8
 DJANGO_ADMIN = django-admin.py
-PO_FILES = $(shell find $(SRC_DIR) -name '*.po')
+PO_FILES = $(shell find $(SRC_DIR) -name '*.po') $(shell find third_party -name '*.po')
 MO_FILES = $(PO_FILES:.po=.mo)
 
 all: default
@@ -34,7 +34,10 @@ createdb:
 	cd $(abspath $(dir $<)/../../..) && $(DJANGO_ADMIN) compilemessages
 
 poupdate:
-	$(DJANGO_ADMIN) makemessages --locale=fr --ignore=.tox
+	# To generate messages for third party apps, copy or symlink their
+	# source and chmod it read-write in third_party/<app>
+	# then declare them in setting.py
+	python manage.py makemessages --locale=fr --ignore=.tox
 
 update:
 	pip install --upgrade pip setuptools

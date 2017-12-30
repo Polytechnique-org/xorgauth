@@ -176,6 +176,10 @@ PASSWORD_HASHERS = [
 
 LANGUAGE_CODE = 'fr-fr'
 
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'third_party', 'zxcvbn_password', 'locale'),
+]
+
 TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
