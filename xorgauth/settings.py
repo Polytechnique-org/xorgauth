@@ -159,9 +159,9 @@ AUTH_PASSWORD_VALIDATORS = [
                 ('hrid', 'main_email', 'fullname', 'preferred_name',
                     'firstname', 'lastname', 'grad_year', 'schoolid',
                     'study_year')
-            }
-        },
-    ]
+        }
+    },
+]
 
 # Password hashers
 # https://docs.djangoproject.com/en/1.11/ref/settings/#password-hashers

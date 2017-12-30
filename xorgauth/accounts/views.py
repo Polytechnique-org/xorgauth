@@ -40,5 +40,6 @@ class IndexView(LoginRequiredMixin, RedirectView):
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'profile.html'
 
+
 class PasswordChangeView(auth_views.PasswordChangeView):
     form_class = PasswordChangeForm
