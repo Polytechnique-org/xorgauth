@@ -38,7 +38,6 @@ poupdate:
 
 update:
 	pip install --upgrade pip setuptools
-	pip install --upgrade -r requirements.txt
 	pip install --upgrade -r requirements_dev.txt
 	pip freeze
 

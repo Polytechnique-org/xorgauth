@@ -58,6 +58,9 @@ setup(
     python_requires='>=2.7',
     install_requires=[
         'Django>=1.11',
+        'django-oidc-provider',
+        'django-bootstrap4',
+        'getconf',
     ],
     setup_requires=[
         'setuptools>=0.8',

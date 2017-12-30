@@ -1,3 +1,0 @@
-django-oidc-provider
-django-bootstrap4
-getconf
