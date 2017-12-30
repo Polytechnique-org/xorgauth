@@ -1,4 +1,4 @@
 django-oidc-provider
-django-bootstrap4
+django-bootstrap3
 django-zxcvbn-password
 getconf

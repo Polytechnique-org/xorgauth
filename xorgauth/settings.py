@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'oidc_provider',
     'zxcvbn_password',
-    'bootstrap4',
+    'bootstrap3',
 ]
 
 AUTHENTICATION_BACKENDS = [
