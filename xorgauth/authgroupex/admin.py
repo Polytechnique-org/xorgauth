@@ -9,6 +9,6 @@ from . import models
 
 @admin.register(models.AuthGroupeXClient)
 class AuthGroupeXClientAdmin(admin.ModelAdmin):
-    search_fields = ['name', 'returnurls', 'last_used', 'datafields', 'allow_xnet']
+    search_fields = ['name', 'return_urls', 'last_used', 'data_fields', 'allow_xnet']
 
-    list_display = ['name', 'returnurls', 'last_used', 'datafields', 'allow_xnet']
+    list_display = ['name', 'return_urls', 'last_used', 'data_fields', 'allow_xnet']
