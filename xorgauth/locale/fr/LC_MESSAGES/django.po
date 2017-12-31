@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-29 18:53+0100\n"
+"POT-Creation-Date: 2017-12-30 23:23+0100\n"
 "PO-Revision-Date: 2017-12-03 22:42+0100\n"
 "Last-Translator: Nicolas Iooss\n"
 "Language: \n"
@@ -194,11 +194,59 @@ msgstr "L'année de scolarité à l'École polytechnique"
 msgid "Your identification in AX directory"
 msgstr "Ton identifiant dans l'annuaire de l'AX"
 
-#: xorgauth/authgroupex/models.py:43
+#: xorgauth/authgroupex/models.py:33
+msgid "private key"
+msgstr "clé privée"
+
+#: xorgauth/authgroupex/models.py:34
+msgid "Secret key shared with the client"
+msgstr "Clé secrète partagée avec le client"
+
+#: xorgauth/authgroupex/models.py:35
+msgid "name"
+msgstr "nom"
+
+#: xorgauth/authgroupex/models.py:35
+msgid "Name of the client"
+msgstr "Nom du client"
+
+#: xorgauth/authgroupex/models.py:36
+msgid "data fields"
+msgstr "champs de donnée"
+
+#: xorgauth/authgroupex/models.py:36
+msgid "Fields requested by the client"
+msgstr "Champs demandés par le client"
+
+#: xorgauth/authgroupex/models.py:37
+msgid "return URLs"
+msgstr "URLs de retour"
+
+#: xorgauth/authgroupex/models.py:38
+msgid "Regular expression pattern of the allowed return URLs"
+msgstr "Expression régulière des URLs de retour autorisées"
+
+#: xorgauth/authgroupex/models.py:39
+msgid "last used"
+msgstr "dernière utilisation"
+
+#: xorgauth/authgroupex/models.py:39
+msgid "Date of the last use of this client"
+msgstr "Date de la dernière utilisation par ce client"
+
+#: xorgauth/authgroupex/models.py:40
+msgid "allow xnet"
+msgstr "autorise xnet"
+
+#: xorgauth/authgroupex/models.py:41
+msgid "Allow account with type 'xnet' (external) to log in to this client"
+msgstr "Autorise les comptes de type 'xnet' (externes) à se connecter à ce client"
+
+#: xorgauth/authgroupex/models.py:46
 msgid "AuthGroupeX client"
 msgstr "Client AuthGroupeX"
 
-#: xorgauth/authgroupex/models.py:44
+#: xorgauth/authgroupex/models.py:47
 msgid "AuthGroupeX clients"
 msgstr "Clients AuthGroupeX"
 

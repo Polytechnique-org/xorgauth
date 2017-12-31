@@ -16,8 +16,8 @@ class AuthGroupeXTests(TestCase):
         cls.client_simple = AuthGroupeXClient.objects.create(
             privkey='356a192b7913b04c54574d18c28d46e6395428ab',  # SHA1("1")
             name='Test AuthGroupeX Client',
-            datafields='matricule_ax,nom,prenom,full_promo,forlife,sex',
-            returnurls=r'#https://example\.com/#',
+            data_fields='matricule_ax,nom,prenom,full_promo,forlife,sex',
+            return_urls=r'#https://example\.com/#',
             allow_xnet=False,
         )
 
@@ -66,7 +66,7 @@ class AuthGroupeXTests(TestCase):
         # Compute expected auth
         check_str = '1%s%s' % (challenge, privkey)
         known_resp_fields = set(('auth', ))
-        for field in self.client_simple.datafields.split(','):
+        for field in self.client_simple.data_fields.split(','):
             self.assertTrue(field in query_params, "missing field %r in response" % field)
             check_str += query_params[field]
             known_resp_fields.add(field)
@@ -108,7 +108,7 @@ class AuthGroupeXTests(TestCase):
         })
 
     def test_logged_request_2(self):
-        self.client_simple.datafields = 'matricule,uid,username,firstname,lastname,forlife,entry_year,grad_year,perms'
+        self.client_simple.data_fields = 'matricule,uid,username,firstname,lastname,forlife,entry_year,grad_year,perms'
         self.client_simple.save()
 
         c = Client()
@@ -137,7 +137,7 @@ class AuthGroupeXTests(TestCase):
         user = User.objects.get(hrid='louis.vaneau.1829')
         gmem = GroupMembership.objects.create(group=grp, user=user, perms='admin')
         gmem.save()
-        self.client_simple.datafields = 'forlife,perms,grpauth'
+        self.client_simple.data_fields = 'forlife,perms,grpauth'
         self.client_simple.save()
 
         c = Client()
@@ -162,7 +162,7 @@ class AuthGroupeXTests(TestCase):
         user = User.objects.get(hrid='louis.vaneau.1829')
         gmem = GroupMembership.objects.create(group=grp, user=user, perms='member')
         gmem.save()
-        self.client_simple.datafields = 'forlife,perms,grpauth'
+        self.client_simple.data_fields = 'forlife,perms,grpauth'
         self.client_simple.save()
 
         c = Client()
@@ -182,7 +182,7 @@ class AuthGroupeXTests(TestCase):
         })
 
     def test_logged_request_no_group_member(self):
-        self.client_simple.datafields = 'forlife,perms,grpauth'
+        self.client_simple.data_fields = 'forlife,perms,grpauth'
         self.client_simple.save()
 
         c = Client()
@@ -245,7 +245,7 @@ class AuthGroupeXTests(TestCase):
         })
 
     def test_regexp_site(self):
-        self.client_simple.returnurls = r'#^https?://(dev|preprod|www)\.example\.(net|org)/#'
+        self.client_simple.return_urls = r'#^https?://(dev|preprod|www)\.example\.(net|org)/#'
         self.client_simple.save()
 
         c = Client()

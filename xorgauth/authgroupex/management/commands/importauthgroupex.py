@@ -25,7 +25,7 @@ class Command(BaseCommand):
                 client = AuthGroupeXClient(name=name)
 
             client.privkey = client_data['privkey']
-            client.datafields = client_data['datafields']
-            client.returnurls = client_data['returnurls']
+            client.data_fields = client_data['datafields']
+            client.return_urls = client_data['returnurls']
             client.allow_xnet = (client_data['flags'] == 'allow_xnet')
             client.save()

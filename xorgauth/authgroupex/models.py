@@ -30,12 +30,15 @@ class AuthGroupeXClientManager(models.Manager):
 
 
 class AuthGroupeXClient(models.Model):
-    privkey = models.CharField(unique=True, max_length=40)
-    name = UnboundedCharField(unique=True)
-    datafields = UnboundedCharField()
-    returnurls = UnboundedCharField()
-    last_used = models.DateField(null=True)
-    allow_xnet = models.BooleanField(default=False)
+    privkey = models.CharField(_("private key"), unique=True, max_length=40,
+                               help_text=_("Secret key shared with the client"))
+    name = UnboundedCharField(_("name"), unique=True, help_text=_("Name of the client"))
+    data_fields = UnboundedCharField(_("data fields"), help_text=_("Fields requested by the client"))
+    return_urls = UnboundedCharField(_("return URLs"),
+                                     help_text=_("Regular expression pattern of the allowed return URLs"))
+    last_used = models.DateField(_("last used"), null=True, help_text=_("Date of the last use of this client"))
+    allow_xnet = models.BooleanField(_("allow xnet"), default=False,
+                                     help_text=_("Allow account with type 'xnet' (external) to log in to this client"))
 
     objects = AuthGroupeXClientManager()
 
@@ -48,7 +51,7 @@ class AuthGroupeXClient(models.Model):
 
     def match_return_url(self, url):
         """Match the given url against the pattern for return URLS"""
-        pattern = self.returnurls.strip()
+        pattern = self.return_urls.strip()
         # PHP's preg_match uses a special character at the beginning and the end
         # of the pattern
         if pattern and pattern[0] == pattern[-1] == '#':
@@ -69,35 +72,35 @@ class AuthGroupeXClient(models.Model):
             hashed_val = ('1' + gpex_challenge + self.privkey).encode('ascii')
         except UnicodeEncodeError:
             return False
-        for datafield in self.datafields.split(','):
+        for data_field in self.data_fields.split(','):
             val = None
-            if datafield == 'perms':
+            if data_field == 'perms':
                 val = 'admin' if user.is_staff else 'user'
-            elif datafield == 'forlife':
+            elif data_field == 'forlife':
                 val = user.hrid
-            elif datafield in ('prenom', 'firstname'):
+            elif data_field in ('prenom', 'firstname'):
                 val = user.firstname
-            elif datafield in ('nom', 'lastname'):
+            elif data_field in ('nom', 'lastname'):
                 val = user.lastname
-            elif datafield == 'sex':
+            elif data_field == 'sex':
                 val = user.sex
-            elif datafield == 'matricule_ax':
+            elif data_field == 'matricule_ax':
                 val = user.axid
-            elif datafield == 'matricule':
+            elif data_field == 'matricule':
                 val = user.schoolid
-            elif datafield == 'uid':
+            elif data_field == 'uid':
                 val = str(user.xorgdb_uid or '')
-            elif datafield == 'username':
+            elif data_field == 'username':
                 val = user.main_email
-            elif datafield in ('promo', 'entry_year'):
+            elif data_field in ('promo', 'entry_year'):
                 val = user.study_year
                 while val and not '0' <= val[0] <= '9':
                     val = val[1:]
-            elif datafield == 'full_promo':
+            elif data_field == 'full_promo':
                 val = user.study_year
-            elif datafield in ('promo_sortie', 'grad_year'):
+            elif data_field in ('promo_sortie', 'grad_year'):
                 val = str(user.grad_year)
-            elif datafield == 'grpauth' and gpex_group:
+            elif data_field == 'grpauth' and gpex_group:
                 try:
                     grp_membership = user.groups.get(group__shortname=gpex_group)
                     val = grp_membership.perms
@@ -108,7 +111,7 @@ class AuthGroupeXClient(models.Model):
 
             if not val:
                 val = ''
-            ext_url_params[datafield] = val
+            ext_url_params[data_field] = val
             try:
                 hashed_val += val.encode('utf-8')
             except UnicodeEncodeError:
