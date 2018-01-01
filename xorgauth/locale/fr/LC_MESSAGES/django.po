@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-22 23:35+0100\n"
+"POT-Creation-Date: 2017-12-30 23:23+0100\n"
 "PO-Revision-Date: 2017-12-03 22:42+0100\n"
 "Last-Translator: Nicolas Iooss\n"
 "Language: \n"
@@ -31,7 +31,7 @@ msgstr "nom affiché"
 msgid "role"
 msgstr "rôle"
 
-#: xorgauth/accounts/models.py:25 xorgauth/accounts/models.py:69
+#: xorgauth/accounts/models.py:25 xorgauth/accounts/models.py:70
 msgid "roles"
 msgstr "rôles"
 
@@ -48,52 +48,72 @@ msgid "username"
 msgstr "nom d'utilisateur"
 
 #: xorgauth/accounts/models.py:63
+msgid "Human-readable identifier, usually firstname.lastname.study-year"
+msgstr "Identifiant humainement lisible, généralement prenom.nom.promo"
+
+#: xorgauth/accounts/models.py:64
 msgid "full name"
 msgstr "nom complet"
 
-#: xorgauth/accounts/models.py:63
+#: xorgauth/accounts/models.py:64
 msgid "Name to display to other users"
 msgstr "Nom affiché aux autres utilisateurs"
 
-#: xorgauth/accounts/models.py:64
+#: xorgauth/accounts/models.py:65
 msgid "preferred name"
 msgstr "nom préféré"
 
-#: xorgauth/accounts/models.py:64
+#: xorgauth/accounts/models.py:65
 msgid "Name used when addressing the user"
 msgstr "Nom utilisé pour s'adresser à l'utilisateur"
 
-#: xorgauth/accounts/models.py:65
+#: xorgauth/accounts/models.py:66
 msgid "first name"
 msgstr "prénom"
 
-#: xorgauth/accounts/models.py:66
+#: xorgauth/accounts/models.py:67
 msgid "last name"
 msgstr "nom de famille"
 
-#: xorgauth/accounts/models.py:67
+#: xorgauth/accounts/models.py:68
 msgid "sex"
 msgstr "Sexe"
 
-#: xorgauth/accounts/models.py:68
+#: xorgauth/accounts/models.py:69
 msgid "email"
 msgstr "couriel"
 
-#: xorgauth/accounts/models.py:70
+#: xorgauth/accounts/models.py:71
 #: xorgauth/accounts/oidc_provider_settings.py:35
 #: xorgauth/relying_party_test/templates/relying-party-test.html:39
 msgid "AX ID"
 msgstr "ID AX"
 
-#: xorgauth/accounts/models.py:70
+#: xorgauth/accounts/models.py:71
 msgid "Identification in AX directory"
 msgstr "Matricule dans l'annuaire de l'AX"
 
-#: xorgauth/accounts/models.py:71
+#: xorgauth/accounts/models.py:72
+msgid "School ID"
+msgstr "ID École"
+
+#: xorgauth/accounts/models.py:73
+msgid "Identification defined by the School"
+msgstr "Matricule donné par l'École"
+
+#: xorgauth/accounts/models.py:74
+msgid "Polytechnique.org database user ID"
+msgstr "ID dans la base de données de Polytechnique.org"
+
+#: xorgauth/accounts/models.py:75
+msgid "User ID in Polytechnique.org database"
+msgstr "Identifiant utilisateur dans la base de données de Polytechnique.org"
+
+#: xorgauth/accounts/models.py:76
 msgid "study year"
 msgstr "promotion"
 
-#: xorgauth/accounts/models.py:72
+#: xorgauth/accounts/models.py:77
 msgid ""
 "Kind and main year of the study ('X1829' means 'entered the school in 1829 "
 "but 'M2005' means 'graduated in 2005')"
@@ -101,55 +121,55 @@ msgstr ""
 "Catégorie et année de référence de la scolarité ('X1829' signifie 'est entré "
 "à l'école en 1829 mais 'M2005' signifié 'diplomé en 2005')"
 
-#: xorgauth/accounts/models.py:74
+#: xorgauth/accounts/models.py:79
 msgid "graduation year"
 msgstr "année du diplôme"
 
-#: xorgauth/accounts/models.py:74
+#: xorgauth/accounts/models.py:79
 msgid "Year of the graduation"
 msgstr "Année d'obtention du diplôme"
 
-#: xorgauth/accounts/models.py:79
+#: xorgauth/accounts/models.py:84
 msgid "user account"
 msgstr "compte utilisateur"
 
-#: xorgauth/accounts/models.py:80
+#: xorgauth/accounts/models.py:85
 msgid "user accounts"
 msgstr "comptes utilisateurs"
 
-#: xorgauth/accounts/models.py:125
+#: xorgauth/accounts/models.py:130
 msgid "user"
 msgstr "utilisateur"
 
-#: xorgauth/accounts/models.py:126
+#: xorgauth/accounts/models.py:131
 msgid "email alias"
 msgstr "alias couriel"
 
-#: xorgauth/accounts/models.py:129
+#: xorgauth/accounts/models.py:134
 msgid "user alias"
 msgstr "alias utilisateur"
 
-#: xorgauth/accounts/models.py:130
+#: xorgauth/accounts/models.py:135
 msgid "user aliases"
 msgstr "aliases utilisateurs"
 
-#: xorgauth/accounts/models.py:138
+#: xorgauth/accounts/models.py:143
 msgid "short name"
 msgstr "nom court"
 
-#: xorgauth/accounts/models.py:141 xorgauth/accounts/models.py:154
+#: xorgauth/accounts/models.py:146 xorgauth/accounts/models.py:159
 msgid "group"
 msgstr "groupe"
 
-#: xorgauth/accounts/models.py:142
+#: xorgauth/accounts/models.py:147
 msgid "groups"
 msgstr "groupes"
 
-#: xorgauth/accounts/models.py:151 xorgauth/accounts/models.py:155
+#: xorgauth/accounts/models.py:156 xorgauth/accounts/models.py:160
 msgid "member"
 msgstr "membres"
 
-#: xorgauth/accounts/models.py:152
+#: xorgauth/accounts/models.py:157
 msgid "administrator"
 msgstr "administrateur"
 
@@ -173,6 +193,77 @@ msgstr "L'année de scolarité à l'École polytechnique"
 #: xorgauth/accounts/oidc_provider_settings.py:36
 msgid "Your identification in AX directory"
 msgstr "Ton identifiant dans l'annuaire de l'AX"
+
+#: xorgauth/authgroupex/models.py:33
+msgid "private key"
+msgstr "clé privée"
+
+#: xorgauth/authgroupex/models.py:34
+msgid "Secret key shared with the client"
+msgstr "Clé secrète partagée avec le client"
+
+#: xorgauth/authgroupex/models.py:35
+msgid "name"
+msgstr "nom"
+
+#: xorgauth/authgroupex/models.py:35
+msgid "Name of the client"
+msgstr "Nom du client"
+
+#: xorgauth/authgroupex/models.py:36
+msgid "data fields"
+msgstr "champs de donnée"
+
+#: xorgauth/authgroupex/models.py:36
+msgid "Fields requested by the client"
+msgstr "Champs demandés par le client"
+
+#: xorgauth/authgroupex/models.py:37
+msgid "return URLs"
+msgstr "URLs de retour"
+
+#: xorgauth/authgroupex/models.py:38
+msgid "Regular expression pattern of the allowed return URLs"
+msgstr "Expression régulière des URLs de retour autorisées"
+
+#: xorgauth/authgroupex/models.py:39
+msgid "last used"
+msgstr "dernière utilisation"
+
+#: xorgauth/authgroupex/models.py:39
+msgid "Date of the last use of this client"
+msgstr "Date de la dernière utilisation par ce client"
+
+#: xorgauth/authgroupex/models.py:40
+msgid "allow xnet"
+msgstr "autorise xnet"
+
+#: xorgauth/authgroupex/models.py:41
+msgid "Allow account with type 'xnet' (external) to log in to this client"
+msgstr "Autorise les comptes de type 'xnet' (externes) à se connecter à ce client"
+
+#: xorgauth/authgroupex/models.py:46
+msgid "AuthGroupeX client"
+msgstr "Client AuthGroupeX"
+
+#: xorgauth/authgroupex/models.py:47
+msgid "AuthGroupeX clients"
+msgstr "Clients AuthGroupeX"
+
+#: xorgauth/authgroupex/templates/authgroupex/login.html:6
+#, python-format
+msgid ""
+"The website you requested, <strong>%(ext_url)s</strong>, requires an "
+"authentification."
+msgstr ""
+"Le site demandé, <strong>%(ext_url)s</strong>, nécessite une "
+"authentification."
+
+#: xorgauth/authgroupex/templates/authgroupex/login.html:12
+#: xorgauth/templates/base.html:28
+#: xorgauth/templates/registration/login.html:10
+msgid "Log in"
+msgstr "Connexion"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:18
 msgid "OIDC Relying Party"
@@ -213,11 +304,6 @@ msgstr ""
 #: xorgauth/templates/base.html:26
 msgid "Log out"
 msgstr "Déconnexion"
-
-#: xorgauth/templates/base.html:28
-#: xorgauth/templates/registration/login.html:10
-msgid "Log in"
-msgstr "Connexion"
 
 #: xorgauth/templates/oidc_provider/authorize.html:8
 msgid "Request for Permission"
@@ -284,3 +370,11 @@ msgstr ""
 #: xorgauth/templates/registration/password_change_form.html:13
 msgid "Submit"
 msgstr "Soumettre"
+
+#: xorgauth/utils/fields.py:29
+msgid ""
+"Enter a valid 'slug' consisting of letters, numbers, underscores, dots or "
+"hyphens."
+msgstr ""
+"Ce champ ne doit contenir que des lettres, des nombres, des tirets bas _, "
+"des points et des traits d'union."

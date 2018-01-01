@@ -1,4 +1,0 @@
-django-oidc-provider
-django-bootstrap3
-django-zxcvbn-password
-getconf
