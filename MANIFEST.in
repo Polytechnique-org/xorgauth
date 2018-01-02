@@ -7,6 +7,8 @@ prune docs
 prune scripts
 prune tests
 
+recursive-include third_party *.po
+
 global-exclude *.py[cod] __pycache__ *.so .*.swp
 
 exclude Makefile example_* manage.py tox.ini .flake8 .travis.yml

@@ -59,7 +59,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.auth',
     'oidc_provider',
-    'bootstrap4',
+    'zxcvbn_password',
+    'bootstrap3',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -150,6 +151,16 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    {
+        'NAME': 'zxcvbn_password.ZXCVBNValidator',
+        'OPTIONS': {
+            'min_score': 3,
+            'user_attributes':
+                ('hrid', 'main_email', 'fullname', 'preferred_name',
+                    'firstname', 'lastname', 'grad_year', 'schoolid',
+                    'study_year')
+        }
+    },
 ]
 
 # Password hashers
@@ -164,6 +175,10 @@ PASSWORD_HASHERS = [
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'fr-fr'
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'third_party', 'zxcvbn_password', 'locale'),
+]
 
 TIME_ZONE = 'Europe/Paris'
 

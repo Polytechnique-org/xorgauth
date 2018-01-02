@@ -59,7 +59,8 @@ setup(
     install_requires=[
         'Django>=1.11',
         'django-oidc-provider',
-        'django-bootstrap4',
+        'django-bootstrap3',
+        'django-zxcvbn-password',
         'getconf',
     ],
     setup_requires=[
