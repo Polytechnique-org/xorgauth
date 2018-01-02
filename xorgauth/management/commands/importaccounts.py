@@ -59,6 +59,18 @@ class Command(BaseCommand):
                 if is_verbose:
                     print("Creating user %s (%d/%d)" % (hrid, idx_account + 1, accounts_num))
 
+            # Sometimes, first_name or display_name is empty
+            if not account_data['display_name']:
+                if not account_data['firstname']:
+                    raise CommandError("No display_name nor firstname in account data")
+                if is_verbose:
+                    print("... using first name (%r) as display name" % account_data['firstname'])
+                account_data['display_name'] = account_data['firstname']
+            elif not account_data['firstname']:
+                if is_verbose:
+                    print("... using display name (%r) as first name" % account_data['display_name'])
+                account_data['firstname'] = account_data['display_name']
+
             user.fullname = account_data['full_name']
             user.preferred_name = account_data['display_name']
             user.main_email = account_data['email']
