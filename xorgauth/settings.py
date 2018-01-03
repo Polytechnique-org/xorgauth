@@ -70,6 +70,7 @@ AUTHENTICATION_BACKENDS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -88,6 +89,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -173,8 +175,15 @@ PASSWORD_HASHERS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
-
-LANGUAGE_CODE = 'fr-fr'
+from django.utils.translation import ugettext_lazy as _
+LANGUAGES = (
+    ('en', _('English')),
+    ('fr', _('French')),
+    ('vi', _('Vietnamese')),
+    ('zh-tw', _('Chinese traditional')),
+    ('zh-cn', _('Chinese simplified')),
+)
+LANGUAGE_CODE = 'vi'
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'third_party', 'zxcvbn_password', 'locale'),
@@ -203,9 +212,9 @@ OIDC_IDTOKEN_SUB_GENERATOR = 'xorgauth.accounts.oidc_provider_settings.user_sub_
 # reset user forgotten password
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
 
-EMAIL_HOST = 'smtp.orange.fr'
-EMAIL_PORT = 25
-EMAIL_HOST_USER = 'info-ax@orange.fr'
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = False
+EMAIL_HOST = 'ssl.polytechnique.org'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'quoc-anh.tran.1962@polytechnique.org'
+EMAIL_HOST_PASSWORD = 'BnQF0-vOj'
+EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
