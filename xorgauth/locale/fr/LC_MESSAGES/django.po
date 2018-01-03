@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-30 23:23+0100\n"
+"POT-Creation-Date: 2018-01-03 03:09+0100\n"
 "PO-Revision-Date: 2017-12-03 22:42+0100\n"
 "Last-Translator: Nicolas Iooss\n"
 "Language: \n"
@@ -125,51 +125,61 @@ msgstr ""
 msgid "graduation year"
 msgstr "année du diplôme"
 
-#: xorgauth/accounts/models.py:79
+#: xorgauth/accounts/models.py:80
 msgid "Year of the graduation"
 msgstr "Année d'obtention du diplôme"
 
-#: xorgauth/accounts/models.py:84
+#: xorgauth/accounts/models.py:82
+msgid "active"
+msgstr ""
+
+#: xorgauth/accounts/models.py:83
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: xorgauth/accounts/models.py:91
 msgid "user account"
 msgstr "compte utilisateur"
 
-#: xorgauth/accounts/models.py:85
+#: xorgauth/accounts/models.py:92
 msgid "user accounts"
 msgstr "comptes utilisateurs"
 
-#: xorgauth/accounts/models.py:130
+#: xorgauth/accounts/models.py:137
 msgid "user"
 msgstr "utilisateur"
 
-#: xorgauth/accounts/models.py:131
+#: xorgauth/accounts/models.py:138
 msgid "email alias"
 msgstr "alias couriel"
 
-#: xorgauth/accounts/models.py:134
+#: xorgauth/accounts/models.py:141
 msgid "user alias"
 msgstr "alias utilisateur"
 
-#: xorgauth/accounts/models.py:135
+#: xorgauth/accounts/models.py:142
 msgid "user aliases"
 msgstr "aliases utilisateurs"
 
-#: xorgauth/accounts/models.py:143
+#: xorgauth/accounts/models.py:150
 msgid "short name"
 msgstr "nom court"
 
-#: xorgauth/accounts/models.py:146 xorgauth/accounts/models.py:159
+#: xorgauth/accounts/models.py:153 xorgauth/accounts/models.py:166
 msgid "group"
 msgstr "groupe"
 
-#: xorgauth/accounts/models.py:147
+#: xorgauth/accounts/models.py:154
 msgid "groups"
 msgstr "groupes"
 
-#: xorgauth/accounts/models.py:156 xorgauth/accounts/models.py:160
+#: xorgauth/accounts/models.py:163 xorgauth/accounts/models.py:167
 msgid "member"
 msgstr "membres"
 
-#: xorgauth/accounts/models.py:157
+#: xorgauth/accounts/models.py:164
 msgid "administrator"
 msgstr "administrateur"
 
@@ -240,7 +250,8 @@ msgstr "autorise xnet"
 
 #: xorgauth/authgroupex/models.py:41
 msgid "Allow account with type 'xnet' (external) to log in to this client"
-msgstr "Autorise les comptes de type 'xnet' (externes) à se connecter à ce client"
+msgstr ""
+"Autorise les comptes de type 'xnet' (externes) à se connecter à ce client"
 
 #: xorgauth/authgroupex/models.py:46
 msgid "AuthGroupeX client"
@@ -264,6 +275,16 @@ msgstr ""
 #: xorgauth/templates/registration/login.html:10
 msgid "Log in"
 msgstr "Connexion"
+
+#: xorgauth/forms.py:8
+#, fuzzy
+#| msgid "Change your password"
+msgid "New password"
+msgstr "Modification de ton mot de passe"
+
+#: xorgauth/forms.py:13
+msgid "New password confirmation"
+msgstr ""
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:18
 msgid "OIDC Relying Party"

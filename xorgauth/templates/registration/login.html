@@ -11,5 +11,12 @@
     {% endbuttons %}
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
+<form method="post" action="{% url 'password_reset' %}" class="form">
+    {% csrf_token %}
+    {% buttons %}
+        <input type="submit" value="{% trans 'Password forgotten ?' %}" class="btn btn-primary" />
+    {% endbuttons %}
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
 
 {% endblock %}

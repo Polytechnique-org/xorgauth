@@ -199,3 +199,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 OIDC_USERINFO = 'xorgauth.accounts.oidc_provider_settings.userinfo'
 OIDC_EXTRA_SCOPE_CLAIMS = 'xorgauth.accounts.oidc_provider_settings.XorgScopeClaims'
 OIDC_IDTOKEN_SUB_GENERATOR = 'xorgauth.accounts.oidc_provider_settings.user_sub_generator'
+
+# reset user forgotten password
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+
+EMAIL_HOST = 'smtp.orange.fr'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'info-ax@orange.fr'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'TestSite Team <noreply@example.com>'
