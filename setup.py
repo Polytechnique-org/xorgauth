@@ -54,10 +54,9 @@ setup(
     packages=find_packages(include=[PACKAGE, '%s.*' % PACKAGE]),
     include_package_data=True,
 
-    #python_requires='>=3.4.2',
-    python_requires='>=2.7',
+    python_requires='>=3.4.2' if sys.version_info >= (3,) else '>=2.7',
     install_requires=[
-        'Django>=1.11',
+        'Django>=1.11' if sys.version_info >= (3,) else 'Django>=1.11,<2.0',
         'django-oidc-provider',
         'django-bootstrap3',
         'django-zxcvbn-password',
