@@ -1,0 +1,389 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-03 03:08+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: xorgauth/accounts/models.py:19
+msgid "system role"
+msgstr ""
+
+#: xorgauth/accounts/models.py:20
+msgid "human-readable identifier"
+msgstr ""
+
+#: xorgauth/accounts/models.py:21
+msgid "display name"
+msgstr ""
+
+#: xorgauth/accounts/models.py:24
+msgid "role"
+msgstr ""
+
+#: xorgauth/accounts/models.py:25 xorgauth/accounts/models.py:70
+msgid "roles"
+msgstr ""
+
+#: xorgauth/accounts/models.py:57
+msgid "Male"
+msgstr ""
+
+#: xorgauth/accounts/models.py:58
+msgid "Female"
+msgstr ""
+
+#: xorgauth/accounts/models.py:62
+msgid "username"
+msgstr ""
+
+#: xorgauth/accounts/models.py:63
+msgid "Human-readable identifier, usually firstname.lastname.study-year"
+msgstr ""
+
+#: xorgauth/accounts/models.py:64
+msgid "full name"
+msgstr ""
+
+#: xorgauth/accounts/models.py:64
+msgid "Name to display to other users"
+msgstr ""
+
+#: xorgauth/accounts/models.py:65
+msgid "preferred name"
+msgstr ""
+
+#: xorgauth/accounts/models.py:65
+msgid "Name used when addressing the user"
+msgstr ""
+
+#: xorgauth/accounts/models.py:66
+msgid "first name"
+msgstr ""
+
+#: xorgauth/accounts/models.py:67
+msgid "last name"
+msgstr ""
+
+#: xorgauth/accounts/models.py:68
+msgid "sex"
+msgstr ""
+
+#: xorgauth/accounts/models.py:69
+msgid "email"
+msgstr ""
+
+#: xorgauth/accounts/models.py:71
+#: xorgauth/accounts/oidc_provider_settings.py:35
+#: xorgauth/relying_party_test/templates/relying-party-test.html:39
+msgid "AX ID"
+msgstr ""
+
+#: xorgauth/accounts/models.py:71
+msgid "Identification in AX directory"
+msgstr ""
+
+#: xorgauth/accounts/models.py:72
+msgid "School ID"
+msgstr ""
+
+#: xorgauth/accounts/models.py:73
+msgid "Identification defined by the School"
+msgstr ""
+
+#: xorgauth/accounts/models.py:74
+msgid "Polytechnique.org database user ID"
+msgstr ""
+
+#: xorgauth/accounts/models.py:75
+msgid "User ID in Polytechnique.org database"
+msgstr ""
+
+#: xorgauth/accounts/models.py:76
+msgid "study year"
+msgstr ""
+
+#: xorgauth/accounts/models.py:77
+msgid ""
+"Kind and main year of the study ('X1829' means 'entered the school in 1829 "
+"but 'M2005' means 'graduated in 2005')"
+msgstr ""
+
+#: xorgauth/accounts/models.py:79
+msgid "graduation year"
+msgstr ""
+
+#: xorgauth/accounts/models.py:80
+msgid "Year of the graduation"
+msgstr ""
+
+#: xorgauth/accounts/models.py:82
+msgid "active"
+msgstr ""
+
+#: xorgauth/accounts/models.py:83
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: xorgauth/accounts/models.py:91
+msgid "user account"
+msgstr ""
+
+#: xorgauth/accounts/models.py:92
+msgid "user accounts"
+msgstr ""
+
+#: xorgauth/accounts/models.py:137
+msgid "user"
+msgstr ""
+
+#: xorgauth/accounts/models.py:138
+msgid "email alias"
+msgstr ""
+
+#: xorgauth/accounts/models.py:141
+msgid "user alias"
+msgstr ""
+
+#: xorgauth/accounts/models.py:142
+msgid "user aliases"
+msgstr ""
+
+#: xorgauth/accounts/models.py:150
+msgid "short name"
+msgstr ""
+
+#: xorgauth/accounts/models.py:153 xorgauth/accounts/models.py:166
+msgid "group"
+msgstr ""
+
+#: xorgauth/accounts/models.py:154
+msgid "groups"
+msgstr ""
+
+#: xorgauth/accounts/models.py:163 xorgauth/accounts/models.py:167
+msgid "member"
+msgstr ""
+
+#: xorgauth/accounts/models.py:164
+msgid "administrator"
+msgstr ""
+
+#: xorgauth/accounts/oidc_provider_settings.py:27
+msgid "X Groups"
+msgstr ""
+
+#: xorgauth/accounts/oidc_provider_settings.py:28
+msgid "The list of the X Groups you belong to"
+msgstr ""
+
+#: xorgauth/accounts/oidc_provider_settings.py:31
+#: xorgauth/relying_party_test/templates/relying-party-test.html:41
+msgid "Study year"
+msgstr ""
+
+#: xorgauth/accounts/oidc_provider_settings.py:32
+msgid "The year of your study at the Ecole polytechnique"
+msgstr ""
+
+#: xorgauth/accounts/oidc_provider_settings.py:36
+msgid "Your identification in AX directory"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:33
+msgid "private key"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:34
+msgid "Secret key shared with the client"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:35
+msgid "name"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:35
+msgid "Name of the client"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:36
+msgid "data fields"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:36
+msgid "Fields requested by the client"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:37
+msgid "return URLs"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:38
+msgid "Regular expression pattern of the allowed return URLs"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:39
+msgid "last used"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:39
+msgid "Date of the last use of this client"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:40
+msgid "allow xnet"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:41
+msgid "Allow account with type 'xnet' (external) to log in to this client"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:46
+msgid "AuthGroupeX client"
+msgstr ""
+
+#: xorgauth/authgroupex/models.py:47
+msgid "AuthGroupeX clients"
+msgstr ""
+
+#: xorgauth/authgroupex/templates/authgroupex/login.html:6
+#, python-format
+msgid ""
+"The website you requested, <strong>%(ext_url)s</strong>, requires an "
+"authentification."
+msgstr ""
+
+#: xorgauth/authgroupex/templates/authgroupex/login.html:12
+#: xorgauth/templates/base.html:28
+#: xorgauth/templates/registration/login.html:10
+msgid "Log in"
+msgstr ""
+
+#: xorgauth/forms.py:8
+msgid "New password"
+msgstr ""
+
+#: xorgauth/forms.py:13
+msgid "New password confirmation"
+msgstr ""
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:18
+msgid "OIDC Relying Party"
+msgstr ""
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:34
+msgid "Development accounts (password is \"password\"):"
+msgstr ""
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:38
+msgid "Human-readable ID"
+msgstr ""
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:40
+msgid "Type"
+msgstr ""
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:42
+msgid "Admin"
+msgstr ""
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:43
+msgid "Email"
+msgstr ""
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:44
+msgid "Groups"
+msgstr ""
+
+#: xorgauth/relying_party_test/templates/relying-party-test.html:54
+msgid "admin"
+msgstr ""
+
+#: xorgauth/templates/base.html:10 xorgauth/templates/base.html:21
+msgid "Polytechnique.org"
+msgstr ""
+
+#: xorgauth/templates/base.html:26
+msgid "Log out"
+msgstr ""
+
+#: xorgauth/templates/oidc_provider/authorize.html:8
+msgid "Request for Permission"
+msgstr ""
+
+#: xorgauth/templates/oidc_provider/authorize.html:9
+#, python-format
+msgid ""
+"Client <i>%(clientname)s</i> would like to access this information of you."
+msgstr ""
+
+#: xorgauth/templates/oidc_provider/authorize.html:19
+msgid "Accept"
+msgstr ""
+
+#: xorgauth/templates/oidc_provider/authorize.html:20
+msgid "Decline"
+msgstr ""
+
+#: xorgauth/templates/profile.html:8
+#, python-format
+msgid "Hello %(username)s!"
+msgstr ""
+
+#: xorgauth/templates/profile.html:9
+msgid "Welcome to Polytechnique.org's authentication service."
+msgstr ""
+
+#: xorgauth/templates/profile.html:10
+msgid "Here are some pages you can access while you are logged in:"
+msgstr ""
+
+#: xorgauth/templates/profile.html:13
+msgid "List of consents given to web sites"
+msgstr ""
+
+#: xorgauth/templates/profile.html:14
+msgid "Change your password"
+msgstr ""
+
+#: xorgauth/templates/registration/logged_out.html:6
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr ""
+
+#: xorgauth/templates/registration/logged_out.html:8
+msgid "Log in again"
+msgstr ""
+
+#: xorgauth/templates/registration/password_change_done.html:4
+msgid "Your password was changed."
+msgstr ""
+
+#: xorgauth/templates/registration/password_change_form.html:9
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: xorgauth/templates/registration/password_change_form.html:13
+msgid "Submit"
+msgstr ""
+
+#: xorgauth/utils/fields.py:29
+msgid ""
+"Enter a valid 'slug' consisting of letters, numbers, underscores, dots or "
+"hyphens."
+msgstr ""
