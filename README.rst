@@ -80,6 +80,8 @@ Here are instructions specific to xorgauth application for upgrading::
     make update
     python manage.py migrate
     python manage.py collectstatic
+    # Recompile the translation files
+    make
 
 
 Notes
