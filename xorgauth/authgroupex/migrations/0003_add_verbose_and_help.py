@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='authgroupexclient',
             name='name',
-            field=xorgauth.utils.fields.UnboundedCharField(help_text='Name of the client', unique=True,
+            field=xorgauth.utils.fields.UnboundedCharField(help_text='Name of the client', unique=False,
                                                            verbose_name='name'),
         ),
         migrations.AlterField(
