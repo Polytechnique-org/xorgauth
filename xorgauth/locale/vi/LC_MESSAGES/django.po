@@ -1,401 +1,456 @@
-# xorgauth French translation
-# Copyright (C) Polytechnique.org
-# This file is distributed under the same license as the xorgauth package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xorgauth 0.1\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-03 03:09+0100\n"
-"PO-Revision-Date: 2017-12-03 22:42+0100\n"
-"Last-Translator: Nicolas Iooss\n"
+"POT-Creation-Date: 2018-01-03 21:42+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
+"Plural-Forms: nplurals=1; plural=0;\n"
 #: xorgauth/accounts/models.py:19
 msgid "system role"
-msgstr "rôle système"
+msgstr "vai trò hệ thống"
 
 #: xorgauth/accounts/models.py:20
 msgid "human-readable identifier"
-msgstr "identifiant humainement lisible"
+msgstr "nhận dạng người đọc được"
 
 #: xorgauth/accounts/models.py:21
 msgid "display name"
-msgstr "nom affiché"
+msgstr "tên hiển thị"
 
 #: xorgauth/accounts/models.py:24
 msgid "role"
-msgstr "rôle"
+msgstr "vai trò"
 
 #: xorgauth/accounts/models.py:25 xorgauth/accounts/models.py:70
 msgid "roles"
-msgstr "rôles"
+msgstr "vai trò"
 
 #: xorgauth/accounts/models.py:57
 msgid "Male"
-msgstr "Homme"
+msgstr "Nam"
 
 #: xorgauth/accounts/models.py:58
 msgid "Female"
-msgstr "Femme"
+msgstr "nữ"
 
 #: xorgauth/accounts/models.py:62
 msgid "username"
-msgstr "nom d'utilisateur"
+msgstr "tên người dùng"
 
 #: xorgauth/accounts/models.py:63
 msgid "Human-readable identifier, usually firstname.lastname.study-year"
-msgstr "Identifiant humainement lisible, généralement prenom.nom.promo"
+msgstr "Mã nhận dạng có thể đọc được của con người, thường là firstname.lastname.study-year"
 
 #: xorgauth/accounts/models.py:64
 msgid "full name"
-msgstr "nom complet"
+msgstr "Họ và tên"
 
 #: xorgauth/accounts/models.py:64
 msgid "Name to display to other users"
-msgstr "Nom affiché aux autres utilisateurs"
+msgstr "Tên để hiển thị cho người dùng khác"
 
 #: xorgauth/accounts/models.py:65
 msgid "preferred name"
-msgstr "nom préféré"
+msgstr "tên ưa thích"
 
 #: xorgauth/accounts/models.py:65
 msgid "Name used when addressing the user"
-msgstr "Nom utilisé pour s'adresser à l'utilisateur"
+msgstr "Tên được sử dụng khi xác định địa chỉ người dùng"
 
 #: xorgauth/accounts/models.py:66
 msgid "first name"
-msgstr "prénom"
+msgstr "tên"
 
 #: xorgauth/accounts/models.py:67
 msgid "last name"
-msgstr "nom de famille"
+msgstr "họ"
 
 #: xorgauth/accounts/models.py:68
 msgid "sex"
-msgstr "Sexe"
+msgstr "nam / nữ"
 
 #: xorgauth/accounts/models.py:69
 msgid "email"
-msgstr "couriel"
+msgstr "e-mail"
 
 #: xorgauth/accounts/models.py:71
 #: xorgauth/accounts/oidc_provider_settings.py:35
 #: xorgauth/relying_party_test/templates/relying-party-test.html:39
 msgid "AX ID"
-msgstr "ID AX"
+msgstr "AX ID"
 
 #: xorgauth/accounts/models.py:71
 msgid "Identification in AX directory"
-msgstr "Matricule dans l'annuaire de l'AX"
+msgstr "Xác định trong thư mục AX"
 
 #: xorgauth/accounts/models.py:72
 msgid "School ID"
-msgstr "ID École"
+msgstr "ID từ khi nhập trường"
 
 #: xorgauth/accounts/models.py:73
 msgid "Identification defined by the School"
-msgstr "Matricule donné par l'École"
+msgstr "ID từ khi nhập trường"
 
 #: xorgauth/accounts/models.py:74
 msgid "Polytechnique.org database user ID"
-msgstr "ID dans la base de données de Polytechnique.org"
+msgstr "IDID trong cơ sở dữ liệu Polytechnique.org"
 
 #: xorgauth/accounts/models.py:75
 msgid "User ID in Polytechnique.org database"
-msgstr "Identifiant utilisateur dans la base de données de Polytechnique.org"
+msgstr "User ID trong cơ sở dữ liệu Polytechnique.org"
 
 #: xorgauth/accounts/models.py:76
 msgid "study year"
-msgstr "promotion"
+msgstr "năm học"
 
 #: xorgauth/accounts/models.py:77
 msgid ""
 "Kind and main year of the study ('X1829' means 'entered the school in 1829 "
 "but 'M2005' means 'graduated in 2005')"
-msgstr ""
-"Catégorie et année de référence de la scolarité ('X1829' signifie 'est entré "
-"à l'école en 1829 mais 'M2005' signifié 'diplomé en 2005')"
+msgstr "Ngànhh và năm học chính"
 
 #: xorgauth/accounts/models.py:79
 msgid "graduation year"
-msgstr "année du diplôme"
+msgstr "năm tốt nghiệp"
 
 #: xorgauth/accounts/models.py:80
 msgid "Year of the graduation"
-msgstr "Année d'obtention du diplôme"
+msgstr "Năm tốt nghiệp"
 
 #: xorgauth/accounts/models.py:82
 msgid "active"
-msgstr ""
+msgstr "đang hoạt động"
 
 #: xorgauth/accounts/models.py:83
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
-msgstr ""
+msgstr "Chỉ định xem người dùng này có được coi là hoạt động hay không."
 
 #: xorgauth/accounts/models.py:91
 msgid "user account"
-msgstr "compte utilisateur"
+msgstr ""
 
 #: xorgauth/accounts/models.py:92
 msgid "user accounts"
-msgstr "comptes utilisateurs"
+msgstr "tài khoản người dùng"
 
 #: xorgauth/accounts/models.py:137
 msgid "user"
-msgstr "utilisateur"
+msgstr "người dùng"
 
 #: xorgauth/accounts/models.py:138
 msgid "email alias"
-msgstr "alias couriel"
+msgstr "bí danh email"
 
 #: xorgauth/accounts/models.py:141
 msgid "user alias"
-msgstr "alias utilisateur"
+msgstr "bí danh người dùng"
 
 #: xorgauth/accounts/models.py:142
 msgid "user aliases"
-msgstr "aliases utilisateurs"
+msgstr "bí danh người dùng"
 
 #: xorgauth/accounts/models.py:150
 msgid "short name"
-msgstr "nom court"
+msgstr "tên ngắn"
 
 #: xorgauth/accounts/models.py:153 xorgauth/accounts/models.py:166
 msgid "group"
-msgstr "groupe"
+msgstr "nhóm"
 
 #: xorgauth/accounts/models.py:154
 msgid "groups"
-msgstr "groupes"
+msgstr "nhóm"
 
 #: xorgauth/accounts/models.py:163 xorgauth/accounts/models.py:167
 msgid "member"
-msgstr "membres"
+msgstr "thành viên"
 
 #: xorgauth/accounts/models.py:164
 msgid "administrator"
-msgstr "administrateur"
+msgstr "người quản lý"
 
 #: xorgauth/accounts/oidc_provider_settings.py:27
 msgid "X Groups"
-msgstr "Groupes X"
+msgstr ""
 
 #: xorgauth/accounts/oidc_provider_settings.py:28
 msgid "The list of the X Groups you belong to"
-msgstr "La liste des Groupes X auxquels tu appartiens"
+msgstr ""
 
 #: xorgauth/accounts/oidc_provider_settings.py:31
 #: xorgauth/relying_party_test/templates/relying-party-test.html:41
 msgid "Study year"
-msgstr "Promotion"
+msgstr ""
 
 #: xorgauth/accounts/oidc_provider_settings.py:32
 msgid "The year of your study at the Ecole polytechnique"
-msgstr "L'année de scolarité à l'École polytechnique"
+msgstr ""
 
 #: xorgauth/accounts/oidc_provider_settings.py:36
 msgid "Your identification in AX directory"
-msgstr "Ton identifiant dans l'annuaire de l'AX"
+msgstr ""
 
 #: xorgauth/authgroupex/models.py:33
 msgid "private key"
-msgstr "clé privée"
+msgstr ""
 
 #: xorgauth/authgroupex/models.py:34
 msgid "Secret key shared with the client"
-msgstr "Clé secrète partagée avec le client"
+msgstr ""
 
 #: xorgauth/authgroupex/models.py:35
 msgid "name"
-msgstr "nom"
+msgstr ""
 
 #: xorgauth/authgroupex/models.py:35
 msgid "Name of the client"
-msgstr "Nom du client"
+msgstr ""
 
 #: xorgauth/authgroupex/models.py:36
 msgid "data fields"
-msgstr "champs de donnée"
+msgstr ""
 
 #: xorgauth/authgroupex/models.py:36
 msgid "Fields requested by the client"
-msgstr "Champs demandés par le client"
+msgstr ""
 
 #: xorgauth/authgroupex/models.py:37
 msgid "return URLs"
-msgstr "URLs de retour"
+msgstr ""
 
 #: xorgauth/authgroupex/models.py:38
 msgid "Regular expression pattern of the allowed return URLs"
-msgstr "Expression régulière des URLs de retour autorisées"
+msgstr ""
 
 #: xorgauth/authgroupex/models.py:39
 msgid "last used"
-msgstr "dernière utilisation"
+msgstr ""
 
 #: xorgauth/authgroupex/models.py:39
 msgid "Date of the last use of this client"
-msgstr "Date de la dernière utilisation par ce client"
+msgstr ""
 
 #: xorgauth/authgroupex/models.py:40
 msgid "allow xnet"
-msgstr "autorise xnet"
+msgstr ""
 
 #: xorgauth/authgroupex/models.py:41
 msgid "Allow account with type 'xnet' (external) to log in to this client"
 msgstr ""
-"Autorise les comptes de type 'xnet' (externes) à se connecter à ce client"
 
 #: xorgauth/authgroupex/models.py:46
 msgid "AuthGroupeX client"
-msgstr "Client AuthGroupeX"
+msgstr "Khách  AuthGroupeX"
 
 #: xorgauth/authgroupex/models.py:47
 msgid "AuthGroupeX clients"
-msgstr "Clients AuthGroupeX"
+msgstr "Khách  AuthGroupeX"
 
 #: xorgauth/authgroupex/templates/authgroupex/login.html:6
 #, python-format
 msgid ""
 "The website you requested, <strong>%(ext_url)s</strong>, requires an "
 "authentification."
-msgstr ""
-"Le site demandé, <strong>%(ext_url)s</strong>, nécessite une "
-"authentification."
+msgstr "Trang web bạn yêu cầu, <strong>%(ext_url)s </ strong>, yêu cầu phải có "
+"xác thực"
 
 #: xorgauth/authgroupex/templates/authgroupex/login.html:12
 #: xorgauth/templates/base.html:28
 #: xorgauth/templates/registration/login.html:10
 msgid "Log in"
-msgstr "Connexion"
+msgstr "Đăng nhập"
 
 #: xorgauth/forms.py:8
-#, fuzzy
-#| msgid "Change your password"
 msgid "New password"
-msgstr "Modification de ton mot de passe"
+msgstr "Mật khẩu mới"
 
 #: xorgauth/forms.py:13
 msgid "New password confirmation"
-msgstr ""
+msgstr "Xác nhận mật khẩu mới"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:18
 msgid "OIDC Relying Party"
-msgstr ""
+msgstr "OIDC Relying Party"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:34
 msgid "Development accounts (password is \"password\"):"
-msgstr "Comptes de développement (le mot de passe est \"password\") :"
+msgstr "Tài khoản Development (mật khẩu là \"password\"):"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:38
 msgid "Human-readable ID"
-msgstr "ID humainement lisible"
+msgstr "ID người có thể đọc được"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:40
 msgid "Type"
-msgstr ""
+msgstr "Kiểu"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:42
 msgid "Admin"
-msgstr ""
+msgstr "quản trị viên"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:43
 msgid "Email"
-msgstr "Couriel"
+msgstr "E-mail"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:44
 msgid "Groups"
-msgstr "Groupes"
+msgstr "Các nhóm"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:54
 msgid "admin"
-msgstr ""
+msgstr "quản trị viên"
+
+#: xorgauth/settings.py:182
+msgid "English"
+msgstr "Anh"
+
+#: xorgauth/settings.py:183
+msgid "French"
+msgstr "Pháp"
+
+#: xorgauth/settings.py:184
+msgid "Vietnamese"
+msgstr "Tiêng Viêt"
+
+#: xorgauth/settings.py:185
+msgid "Chinese traditional"
+msgstr "hán ngữ cổ điển"
+
+#: xorgauth/settings.py:186
+msgid "Chinese simplified"
+msgstr "Hán ngữ giản hoá"
 
 #: xorgauth/templates/base.html:10 xorgauth/templates/base.html:21
 msgid "Polytechnique.org"
-msgstr ""
+msgstr "Polytechnique.org"
 
 #: xorgauth/templates/base.html:26
 msgid "Log out"
-msgstr "Déconnexion"
+msgstr "Đăng xuất"
 
 #: xorgauth/templates/oidc_provider/authorize.html:8
 msgid "Request for Permission"
-msgstr "Demande de Permission"
+msgstr "Yêu cầu cho phép"
 
 #: xorgauth/templates/oidc_provider/authorize.html:9
 #, python-format
 msgid ""
 "Client <i>%(clientname)s</i> would like to access this information of you."
 msgstr ""
-"Le site <i>%(clientname)s</i> souhaiterait accéder à tes informations "
-"suivantes."
 
 #: xorgauth/templates/oidc_provider/authorize.html:19
 msgid "Accept"
-msgstr "Accepter"
+msgstr "Chấp nhận"
 
 #: xorgauth/templates/oidc_provider/authorize.html:20
 msgid "Decline"
-msgstr "Refuser"
+msgstr "Từ chối"
 
 #: xorgauth/templates/profile.html:8
 #, python-format
 msgid "Hello %(username)s!"
-msgstr "Bonjour %(username)s!"
+msgstr "Xin chào %(username)s !"
 
 #: xorgauth/templates/profile.html:9
 msgid "Welcome to Polytechnique.org's authentication service."
-msgstr "Bienvenue sur le service d'authentification de Polytechnique.org."
+msgstr "Chào mừng bạn đến với dịch vụ chứng thực của Polytechnique.org."
 
 #: xorgauth/templates/profile.html:10
 msgid "Here are some pages you can access while you are logged in:"
-msgstr "Voici quelques pages auxquelles tu peux accéder en étant connecté :"
+msgstr "Dưới đây là một số trang bạn có thể truy cập khi bạn đăng nhập:"
 
 #: xorgauth/templates/profile.html:13
 msgid "List of consents given to web sites"
-msgstr "Liste des autorisations données aux sites web"
+msgstr "Danh sách các sự đồng ý cho các trang web"
 
 #: xorgauth/templates/profile.html:14
 msgid "Change your password"
-msgstr "Modification de ton mot de passe"
+msgstr "Thay đổi mật khẩu của bạn"
 
 #: xorgauth/templates/registration/logged_out.html:6
 msgid "Thanks for spending some quality time with the Web site today."
-msgstr "Merci pour le temps que vous avez accordé à ce site aujourd'hui."
+msgstr "Cảm ơn bạn đã dành thời gian chất lượng với trang Web hôm nay"
 
 #: xorgauth/templates/registration/logged_out.html:8
 msgid "Log in again"
-msgstr "Connectez-vous à nouveau"
+msgstr "Đăng nhập lại"
+
+#: xorgauth/templates/registration/login.html:17
+msgid "Password forgotten ?"
+msgstr "Quên mật khẩu ?"
 
 #: xorgauth/templates/registration/password_change_done.html:4
 msgid "Your password was changed."
-msgstr "Votre mot de passe a été modifié."
+msgstr "Mật khẩu của bạn đã được thay đổi"
 
 #: xorgauth/templates/registration/password_change_form.html:9
 msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
-msgstr ""
-"Pour des raisons de sécurité, saisissez votre ancien mot de passe puis votre "
-"nouveau mot de passe à deux reprises afin de vérifier qu'il est correctement "
-"saisi."
+msgstr "Hãy nhập mật khẩu cũ của bạn, vì lợi ích của bảo mật, và sau đó nhập "
+"mật khẩu hai lần để chúng tôi có thể xác minh bạn đã gõ đúng."
 
 #: xorgauth/templates/registration/password_change_form.html:13
+#: xorgauth/templates/registration/password_reset_form.html:8
 msgid "Submit"
-msgstr "Soumettre"
+msgstr "Gửi đi"
+
+#: xorgauth/templates/registration/password_reset_complete.html:5
+msgid "Your password has been set. You may go ahead and "
+msgstr "Mật khẩu của bạn đã được thiết lập. Bạn có thể tiếp tục và"
+
+#: xorgauth/templates/registration/password_reset_complete.html:5
+msgid "log in"
+msgstr "đăng nhập"
+
+#: xorgauth/templates/registration/password_reset_complete.html:5
+msgid "now."
+msgstr "ngay bây giờ"
+
+#: xorgauth/templates/registration/password_reset_confirm.html:6
+#: xorgauth/templates/registration/password_reset_confirm.html:10
+msgid "Change password"
+msgstr "Đổi mật khẩu"
+
+#: xorgauth/templates/registration/password_reset_email.html:3
+#, python-format
+msgid ""
+"To initiate the password reset process for your %(username)s TestSite "
+"Account,\n"
+"click the link below:"
+msgstr "Để bắt đầu quá trình đặt lại mật khẩu cho %(username)s của bạn TestSite "
+"Tài khoản \n"
+"nhấp vào liên kết dưới đây:"
+
+#: xorgauth/templates/registration/password_reset_email.html:11
+msgid "Sincerely,"
+msgstr "Trân trọng,"
+
+#: xorgauth/templates/registration/password_reset_email.html:12
+msgid "The TestSite Team"
+msgstr "Nhóm TestSite"
+
+#: xorgauth/templates/registration/password_reset_form.html:4
+msgid "Reset password ?"
+msgstr "Đặt lại mật khẩu ?"
 
 #: xorgauth/utils/fields.py:29
 msgid ""
 "Enter a valid 'slug' consisting of letters, numbers, underscores, dots or "
 "hyphens."
-msgstr ""
-"Ce champ ne doit contenir que des lettres, des nombres, des tirets bas _, "
-"des points et des traits d'union."
+msgstr "Nhập 'slug' hợp lệ gồm các chữ cái, số, dấu gạch dưới, dấu chấm hoặc "
+"dấu gạch nối."

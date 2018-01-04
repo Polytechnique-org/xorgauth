@@ -1,15 +1,17 @@
-# xorgauth French translation
-# Copyright (C) Polytechnique.org
-# This file is distributed under the same license as the xorgauth package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Tran <EMAIL@ADDRESS>, 2018.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xorgauth 0.1\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-03 03:09+0100\n"
-"PO-Revision-Date: 2017-12-03 22:42+0100\n"
-"Last-Translator: Nicolas Iooss\n"
+"POT-Creation-Date: 2018-01-03 21:42+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,385 +19,432 @@ msgstr ""
 
 #: xorgauth/accounts/models.py:19
 msgid "system role"
-msgstr "rôle système"
+msgstr "系统角色"
 
 #: xorgauth/accounts/models.py:20
 msgid "human-readable identifier"
-msgstr "identifiant humainement lisible"
+msgstr "人类可读的标识符"
 
 #: xorgauth/accounts/models.py:21
 msgid "display name"
-msgstr "nom affiché"
+msgstr "显示名称"
 
 #: xorgauth/accounts/models.py:24
 msgid "role"
-msgstr "rôle"
+msgstr "角色"
 
 #: xorgauth/accounts/models.py:25 xorgauth/accounts/models.py:70
 msgid "roles"
-msgstr "rôles"
+msgstr "角色"
 
 #: xorgauth/accounts/models.py:57
 msgid "Male"
-msgstr "Homme"
+msgstr "男"
 
 #: xorgauth/accounts/models.py:58
 msgid "Female"
-msgstr "Femme"
+msgstr "女"
 
 #: xorgauth/accounts/models.py:62
 msgid "username"
-msgstr "nom d'utilisateur"
+msgstr "用户名"
 
 #: xorgauth/accounts/models.py:63
 msgid "Human-readable identifier, usually firstname.lastname.study-year"
-msgstr "Identifiant humainement lisible, généralement prenom.nom.promo"
+msgstr "人类可读的标识符，通常是firstname.lastname.study-year"
 
 #: xorgauth/accounts/models.py:64
 msgid "full name"
-msgstr "nom complet"
+msgstr "全名"
 
 #: xorgauth/accounts/models.py:64
 msgid "Name to display to other users"
-msgstr "Nom affiché aux autres utilisateurs"
+msgstr "名称显示给其他用户"
 
 #: xorgauth/accounts/models.py:65
 msgid "preferred name"
-msgstr "nom préféré"
+msgstr "首选名称"
 
 #: xorgauth/accounts/models.py:65
 msgid "Name used when addressing the user"
-msgstr "Nom utilisé pour s'adresser à l'utilisateur"
+msgstr "寻址用户时使用的名称"
 
 #: xorgauth/accounts/models.py:66
 msgid "first name"
-msgstr "prénom"
+msgstr "名字"
 
 #: xorgauth/accounts/models.py:67
 msgid "last name"
-msgstr "nom de famille"
+msgstr "姓"
 
 #: xorgauth/accounts/models.py:68
 msgid "sex"
-msgstr "Sexe"
+msgstr "性别"
 
 #: xorgauth/accounts/models.py:69
 msgid "email"
-msgstr "couriel"
+msgstr "电子邮件"
 
 #: xorgauth/accounts/models.py:71
 #: xorgauth/accounts/oidc_provider_settings.py:35
 #: xorgauth/relying_party_test/templates/relying-party-test.html:39
 msgid "AX ID"
-msgstr "ID AX"
+msgstr "AX ID"
 
 #: xorgauth/accounts/models.py:71
 msgid "Identification in AX directory"
-msgstr "Matricule dans l'annuaire de l'AX"
+msgstr "在AX目录中标识"
 
 #: xorgauth/accounts/models.py:72
 msgid "School ID"
-msgstr "ID École"
+msgstr "学校编号"
 
 #: xorgauth/accounts/models.py:73
 msgid "Identification defined by the School"
-msgstr "Matricule donné par l'École"
+msgstr "由学校定义的标识"
 
 #: xorgauth/accounts/models.py:74
 msgid "Polytechnique.org database user ID"
-msgstr "ID dans la base de données de Polytechnique.org"
+msgstr "Polytechnique.org数据库用户ID"
 
 #: xorgauth/accounts/models.py:75
 msgid "User ID in Polytechnique.org database"
-msgstr "Identifiant utilisateur dans la base de données de Polytechnique.org"
+msgstr "Polytechnique.org数据库中的用户ID"
 
 #: xorgauth/accounts/models.py:76
 msgid "study year"
-msgstr "promotion"
+msgstr "学习一年"
 
 #: xorgauth/accounts/models.py:77
 msgid ""
 "Kind and main year of the study ('X1829' means 'entered the school in 1829 "
 "but 'M2005' means 'graduated in 2005')"
-msgstr ""
-"Catégorie et année de référence de la scolarité ('X1829' signifie 'est entré "
-"à l'école en 1829 mais 'M2005' signifié 'diplomé en 2005')"
+msgstr "研究的种类和主要年份"
 
 #: xorgauth/accounts/models.py:79
 msgid "graduation year"
-msgstr "année du diplôme"
+msgstr "毕业年"
 
 #: xorgauth/accounts/models.py:80
 msgid "Year of the graduation"
-msgstr "Année d'obtention du diplôme"
+msgstr "毕业年"
 
 #: xorgauth/accounts/models.py:82
 msgid "active"
-msgstr ""
+msgstr "活性"
 
 #: xorgauth/accounts/models.py:83
 msgid ""
 "Designates whether this user should be treated as active. Unselect this "
 "instead of deleting accounts."
-msgstr ""
+msgstr "指定是否应将此用户视为活动。取消选择这个而不是删除帐户"
 
 #: xorgauth/accounts/models.py:91
 msgid "user account"
-msgstr "compte utilisateur"
+msgstr "用户帐号"
 
 #: xorgauth/accounts/models.py:92
 msgid "user accounts"
-msgstr "comptes utilisateurs"
+msgstr "用户帐号"
 
 #: xorgauth/accounts/models.py:137
 msgid "user"
-msgstr "utilisateur"
+msgstr "用户"
 
 #: xorgauth/accounts/models.py:138
 msgid "email alias"
-msgstr "alias couriel"
+msgstr "电子邮件别名"
 
 #: xorgauth/accounts/models.py:141
 msgid "user alias"
-msgstr "alias utilisateur"
+msgstr "用户别名"
 
 #: xorgauth/accounts/models.py:142
 msgid "user aliases"
-msgstr "aliases utilisateurs"
+msgstr "用户别名"
 
 #: xorgauth/accounts/models.py:150
 msgid "short name"
-msgstr "nom court"
+msgstr "简称"
 
 #: xorgauth/accounts/models.py:153 xorgauth/accounts/models.py:166
 msgid "group"
-msgstr "groupe"
+msgstr "组"
 
 #: xorgauth/accounts/models.py:154
 msgid "groups"
-msgstr "groupes"
+msgstr "组"
 
 #: xorgauth/accounts/models.py:163 xorgauth/accounts/models.py:167
 msgid "member"
-msgstr "membres"
+msgstr "会员"
 
 #: xorgauth/accounts/models.py:164
 msgid "administrator"
-msgstr "administrateur"
+msgstr "管理员"
 
 #: xorgauth/accounts/oidc_provider_settings.py:27
 msgid "X Groups"
-msgstr "Groupes X"
+msgstr "X组"
 
 #: xorgauth/accounts/oidc_provider_settings.py:28
 msgid "The list of the X Groups you belong to"
-msgstr "La liste des Groupes X auxquels tu appartiens"
+msgstr "你属于的X组列表"
 
 #: xorgauth/accounts/oidc_provider_settings.py:31
 #: xorgauth/relying_party_test/templates/relying-party-test.html:41
 msgid "Study year"
-msgstr "Promotion"
+msgstr "学习一年"
 
 #: xorgauth/accounts/oidc_provider_settings.py:32
 msgid "The year of your study at the Ecole polytechnique"
-msgstr "L'année de scolarité à l'École polytechnique"
+msgstr "你在高等理工学院学习的一年"
 
 #: xorgauth/accounts/oidc_provider_settings.py:36
 msgid "Your identification in AX directory"
-msgstr "Ton identifiant dans l'annuaire de l'AX"
+msgstr "您在AX目录中的身份"
 
 #: xorgauth/authgroupex/models.py:33
 msgid "private key"
-msgstr "clé privée"
+msgstr "私钥"
 
 #: xorgauth/authgroupex/models.py:34
 msgid "Secret key shared with the client"
-msgstr "Clé secrète partagée avec le client"
+msgstr "与客户共享密钥"
 
 #: xorgauth/authgroupex/models.py:35
 msgid "name"
-msgstr "nom"
+msgstr "名称"
 
 #: xorgauth/authgroupex/models.py:35
 msgid "Name of the client"
-msgstr "Nom du client"
+msgstr "客户的名字"
 
 #: xorgauth/authgroupex/models.py:36
 msgid "data fields"
-msgstr "champs de donnée"
+msgstr "数据字段"
 
 #: xorgauth/authgroupex/models.py:36
 msgid "Fields requested by the client"
-msgstr "Champs demandés par le client"
+msgstr "客户请求的字段"
 
 #: xorgauth/authgroupex/models.py:37
 msgid "return URLs"
-msgstr "URLs de retour"
+msgstr "返回网址"
 
 #: xorgauth/authgroupex/models.py:38
 msgid "Regular expression pattern of the allowed return URLs"
-msgstr "Expression régulière des URLs de retour autorisées"
+msgstr "允许的返回URL的正则表达式模式"
 
 #: xorgauth/authgroupex/models.py:39
 msgid "last used"
-msgstr "dernière utilisation"
+msgstr "最后使用"
 
 #: xorgauth/authgroupex/models.py:39
 msgid "Date of the last use of this client"
-msgstr "Date de la dernière utilisation par ce client"
+msgstr "这个客户最后一次使用的日期"
 
 #: xorgauth/authgroupex/models.py:40
 msgid "allow xnet"
-msgstr "autorise xnet"
+msgstr "允许xnet"
 
 #: xorgauth/authgroupex/models.py:41
 msgid "Allow account with type 'xnet' (external) to log in to this client"
-msgstr ""
-"Autorise les comptes de type 'xnet' (externes) à se connecter à ce client"
+msgstr "允许使用类型为“xnet”（外部）的帐户登录到此客户端"
 
 #: xorgauth/authgroupex/models.py:46
 msgid "AuthGroupeX client"
-msgstr "Client AuthGroupeX"
+msgstr "AuthGroupeX 客户端"
 
 #: xorgauth/authgroupex/models.py:47
 msgid "AuthGroupeX clients"
-msgstr "Clients AuthGroupeX"
+msgstr "AuthGroupeX客户端"
 
 #: xorgauth/authgroupex/templates/authgroupex/login.html:6
 #, python-format
 msgid ""
 "The website you requested, <strong>%(ext_url)s</strong>, requires an "
 "authentification."
-msgstr ""
-"Le site demandé, <strong>%(ext_url)s</strong>, nécessite une "
-"authentification."
+msgstr "您请求的网站 <strong>%(ext_url)s</strong>需要认证 "
 
 #: xorgauth/authgroupex/templates/authgroupex/login.html:12
 #: xorgauth/templates/base.html:28
 #: xorgauth/templates/registration/login.html:10
 msgid "Log in"
-msgstr "Connexion"
+msgstr "登录"
 
 #: xorgauth/forms.py:8
-#, fuzzy
-#| msgid "Change your password"
 msgid "New password"
-msgstr "Modification de ton mot de passe"
+msgstr "新密码"
 
 #: xorgauth/forms.py:13
 msgid "New password confirmation"
-msgstr ""
+msgstr "新的密码确认"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:18
 msgid "OIDC Relying Party"
-msgstr ""
+msgstr "OIDC依赖部分"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:34
 msgid "Development accounts (password is \"password\"):"
-msgstr "Comptes de développement (le mot de passe est \"password\") :"
+msgstr "开发账户(密码是 \"password\"):"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:38
 msgid "Human-readable ID"
-msgstr "ID humainement lisible"
+msgstr "人类可读的ID"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:40
 msgid "Type"
-msgstr ""
+msgstr "类型"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:42
 msgid "Admin"
-msgstr ""
+msgstr "管理员"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:43
 msgid "Email"
-msgstr "Couriel"
+msgstr "电子邮件"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:44
 msgid "Groups"
-msgstr "Groupes"
+msgstr "组"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:54
 msgid "admin"
-msgstr ""
+msgstr "管理"
+
+#: xorgauth/settings.py:182
+msgid "English"
+msgstr "英语"
+
+#: xorgauth/settings.py:183
+msgid "French"
+msgstr "法国"
+
+#: xorgauth/settings.py:184
+msgid "Vietnamese"
+msgstr "越南"
+
+#: xorgauth/settings.py:185
+msgid "Chinese traditional"
+msgstr "繁体中文"
+
+#: xorgauth/settings.py:186
+msgid "Chinese simplified"
+msgstr "简体中文"
 
 #: xorgauth/templates/base.html:10 xorgauth/templates/base.html:21
 msgid "Polytechnique.org"
-msgstr ""
+msgstr "Polytechnique.org"
 
 #: xorgauth/templates/base.html:26
 msgid "Log out"
-msgstr "Déconnexion"
+msgstr "登出"
 
 #: xorgauth/templates/oidc_provider/authorize.html:8
 msgid "Request for Permission"
-msgstr "Demande de Permission"
+msgstr "请求权限"
 
 #: xorgauth/templates/oidc_provider/authorize.html:9
 #, python-format
 msgid ""
 "Client <i>%(clientname)s</i> would like to access this information of you."
-msgstr ""
-"Le site <i>%(clientname)s</i> souhaiterait accéder à tes informations "
-"suivantes."
+msgstr "客户端<i>%(clientname)s </i>想要访问您的这个信息。"
 
 #: xorgauth/templates/oidc_provider/authorize.html:19
 msgid "Accept"
-msgstr "Accepter"
+msgstr "接受"
 
 #: xorgauth/templates/oidc_provider/authorize.html:20
 msgid "Decline"
-msgstr "Refuser"
+msgstr "下降"
 
 #: xorgauth/templates/profile.html:8
 #, python-format
 msgid "Hello %(username)s!"
-msgstr "Bonjour %(username)s!"
+msgstr "你好 %(username)s！"
 
 #: xorgauth/templates/profile.html:9
 msgid "Welcome to Polytechnique.org's authentication service."
-msgstr "Bienvenue sur le service d'authentification de Polytechnique.org."
+msgstr "欢迎来到Polytechnique.org的认证服务。"
 
 #: xorgauth/templates/profile.html:10
 msgid "Here are some pages you can access while you are logged in:"
-msgstr "Voici quelques pages auxquelles tu peux accéder en étant connecté :"
+msgstr "以下是您在登录时可以访问的一些页面："
 
 #: xorgauth/templates/profile.html:13
 msgid "List of consents given to web sites"
-msgstr "Liste des autorisations données aux sites web"
+msgstr "同意书列表给网站"
 
 #: xorgauth/templates/profile.html:14
 msgid "Change your password"
-msgstr "Modification de ton mot de passe"
+msgstr "更改您的密码"
 
 #: xorgauth/templates/registration/logged_out.html:6
 msgid "Thanks for spending some quality time with the Web site today."
-msgstr "Merci pour le temps que vous avez accordé à ce site aujourd'hui."
+msgstr "感谢您今天在网站上花费了一些高质量的时间。"
 
 #: xorgauth/templates/registration/logged_out.html:8
 msgid "Log in again"
-msgstr "Connectez-vous à nouveau"
+msgstr "再次登录"
+
+#: xorgauth/templates/registration/login.html:17
+msgid "Password forgotten ?"
+msgstr "密码忘记了？"
 
 #: xorgauth/templates/registration/password_change_done.html:4
 msgid "Your password was changed."
-msgstr "Votre mot de passe a été modifié."
+msgstr "您的密码已更改。"
 
 #: xorgauth/templates/registration/password_change_form.html:9
 msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
-msgstr ""
-"Pour des raisons de sécurité, saisissez votre ancien mot de passe puis votre "
-"nouveau mot de passe à deux reprises afin de vérifier qu'il est correctement "
-"saisi."
+msgstr "为了安全起见,然后输入新的 密码两次 所以我们可以验证你输入正确"
 
 #: xorgauth/templates/registration/password_change_form.html:13
+#: xorgauth/templates/registration/password_reset_form.html:8
 msgid "Submit"
-msgstr "Soumettre"
+msgstr "提交"
+
+#: xorgauth/templates/registration/password_reset_complete.html:5
+msgid "Your password has been set. You may go ahead and "
+msgstr "您的密码已设置。你可以继续"
+
+#: xorgauth/templates/registration/password_reset_complete.html:5
+msgid "log in"
+msgstr "登录"
+
+#: xorgauth/templates/registration/password_reset_complete.html:5
+msgid "now."
+msgstr "现在"
+
+#: xorgauth/templates/registration/password_reset_confirm.html:6
+#: xorgauth/templates/registration/password_reset_confirm.html:10
+msgid "Change password"
+msgstr "更改密码"
+
+#: xorgauth/templates/registration/password_reset_email.html:3
+#, python-format
+msgid ""
+"To initiate the password reset process for your %(username)s TestSite "
+"Account,"
+"click the link below:"
+msgstr "为您的％（%(username)s 的TestSite启动密码重置过程 帐户点击下面的链接"
+
+#: xorgauth/templates/registration/password_reset_email.html:11
+msgid "Sincerely,"
+msgstr "此致"
+
+#: xorgauth/templates/registration/password_reset_email.html:12
+msgid "The TestSite Team"
+msgstr "TestSite团队"
+
+#: xorgauth/templates/registration/password_reset_form.html:4
+msgid "Reset password ?"
+msgstr "重设密码 ？"
 
 #: xorgauth/utils/fields.py:29
 msgid ""
-"Enter a valid 'slug' consisting of letters, numbers, underscores, dots or "
-"hyphens."
-msgstr ""
-"Ce champ ne doit contenir que des lettres, des nombres, des tirets bas _, "
-"des points et des traits d'union."
+"Enter a valid 'slug' consisting of letters, numbers, underscores, dots or hyphens."
+msgstr "输入一个由字母，数字，下划线，点或 连字符。"

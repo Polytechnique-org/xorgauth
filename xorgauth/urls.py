@@ -30,6 +30,13 @@ urlpatterns = [
     url(r'^accounts/list_consents/$', xorgauth_views.list_consents, name='list_consents'),
     url(r'^accounts/password/change/$', xorgauth_views.PasswordChangeView.as_view(), name='password_change'),
     url(r'^accounts/password/change/done/$', auth_views.password_change_done, name='password_change_done'),
+    
+    url(r'^accounts/password_reset/$', auth_views.password_reset, name='password_reset'),
+    url(r'^accounts/password_reset/done/$', auth_views.password_reset_done, name='password_reset_done'),
+    url(r'^accounts/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        auth_views.password_reset_confirm, name='password_reset_confirm'),
+    url(r'^accounts/reset/done/$', auth_views.password_reset_complete, name='password_reset_complete'),
+  
     url(r'^accounts/profile/$', xorgauth_views.ProfileView.as_view(), name='profile'),
     url(r'^auth-groupex$', authgpx_views.AuthGroupeXView.as_view(), name='auth-groupex'),
     url(r'^auth-groupex-login$', authgpx_views.AuthGroupeXLoginView.as_view(), name='auth-groupex-login'),
