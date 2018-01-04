@@ -230,6 +230,29 @@
         "XMP": "admin",
         "X-ENSTA": "member"
       }
+    },
+    {
+      "uid": 104,
+      "hruid": "adressemail.example.com.ext",
+      "password": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+      "type": "xnet",
+      "is_admin": 0,
+      "firstname": "",
+      "lastname": "",
+      "full_name": "",
+      "directory_name": "",
+      "display_name": "",
+      "sex": null,
+      "email": "adressemail@example.com",
+      "ax_id": null,
+      "xorg_id": null,
+      "promo": null,
+      "grad_year": null,
+      "email_source": {},
+      "email_redirect": {},
+      "groups": {
+        "XMP": "member"
+      }
     }
   ],
   "authgroupex": [

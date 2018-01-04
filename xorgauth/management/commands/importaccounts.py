@@ -59,17 +59,28 @@ class Command(BaseCommand):
                 if is_verbose:
                     print("Creating user %s (%d/%d)" % (hrid, idx_account + 1, accounts_num))
 
-            # Sometimes, first_name or display_name is empty
+            # Sometimes, display_name is empty. Use the first name or a name
+            # from the email address
             if not account_data['display_name']:
-                if not account_data['firstname']:
-                    raise CommandError("No display_name nor firstname in account data")
-                if is_verbose:
-                    print("... using first name (%r) as display name" % account_data['firstname'])
-                account_data['display_name'] = account_data['firstname']
-            elif not account_data['firstname']:
-                if is_verbose:
-                    print("... using display name (%r) as first name" % account_data['display_name'])
-                account_data['firstname'] = account_data['display_name']
+                if account_data['firstname']:
+                    if is_verbose:
+                        print("... using first name (%r) as display name" % account_data['firstname'])
+                    account_data['display_name'] = account_data['firstname']
+                else:
+                    # This should only happen for external accounts
+                    if account_data['type'] != 'xnet':
+                        raise CommandError("No display_name nor firstname for a non-external account")
+
+                    display_name = account_data['email'].split('@')[0]
+                    if not display_name:
+                        raise CommandError("No display_name nor firstname nor email in account data")
+                    if is_verbose:
+                        print("... using email user (%r) as display name" % display_name)
+                    account_data['display_name'] = display_name
+
+                    # If full name is empty too, use the same display name
+                    if not account_data['full_name']:
+                        account_data['full_name'] = display_name
 
             user.fullname = account_data['full_name']
             user.preferred_name = account_data['display_name']
