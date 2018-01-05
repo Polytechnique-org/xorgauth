@@ -199,3 +199,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 OIDC_USERINFO = 'xorgauth.accounts.oidc_provider_settings.userinfo'
 OIDC_EXTRA_SCOPE_CLAIMS = 'xorgauth.accounts.oidc_provider_settings.XorgScopeClaims'
 OIDC_IDTOKEN_SUB_GENERATOR = 'xorgauth.accounts.oidc_provider_settings.user_sub_generator'
+
+EMAIL_HOST = config.getstr("email.host")
+EMAIL_PORT = config.getint("email.port")
+EMAIL_HOST_USER = config.getstr("email.user")
+EMAIL_HOST_PASSWORD = config.getstr("email.password")
+EMAIL_USE_TLS = config.getbool("email.tls")
+DEFAULT_FROM_EMAIL = config.getstr("email.default_from_email", "Polytechnique.org <noreply@polytechnique.org>")
+
+# In development mode, send messages to the console
+if APPMODE == 'dev':
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
