@@ -12,6 +12,10 @@ class ViewTests(TestCase):
         'login',
         'logout',
         'test-relying-party',
+        'password_reset',
+        'password_reset_done',
+        #'password_reset_confirm',
+        'password_reset_complete',
     )
     # Views which need an authenticated user
     LOGIN_REQUIRED_VIEW_IDS = (
