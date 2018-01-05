@@ -77,6 +77,8 @@ class User(base_user.AbstractBaseUser):
         "Kind and main year of the study ('X1829' means 'entered the school in 1829 " +
         "but 'M2005' means 'graduated in 2005')"))
     grad_year = models.IntegerField(_("graduation year"), blank=True, null=True, help_text=_("Year of the graduation"))
+    is_active = models.BooleanField(_('active'), default=True,
+                                    help_text=_('Active user'))
 
     objects = UserManager()
 
