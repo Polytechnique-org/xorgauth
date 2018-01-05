@@ -14,7 +14,6 @@ class ViewTests(TestCase):
         'test-relying-party',
         'password_reset',
         'password_reset_done',
-        #'password_reset_confirm',
         'password_reset_complete',
     )
     # Views which need an authenticated user
@@ -26,12 +25,17 @@ class ViewTests(TestCase):
         'password_change_done',
         'profile',
     )
+    # Views which can not be tested because they need parameters
+    PARAMETERIZED_VIEW_IDS = (
+        'password_reset_confirm',
+    )
 
     def test_know_all_views(self):
         """Check that every accessible view is either in PUBLIC_VIEW_IDS or in LOGIN_REQUIRED_VIEW_IDS"""
         known_views = set()
         known_views.update(self.PUBLIC_VIEW_IDS)
         known_views.update(self.LOGIN_REQUIRED_VIEW_IDS)
+        known_views.update(self.PARAMETERIZED_VIEW_IDS)
         for urlpattern in xorgauth_urlpatterns:
             try:
                 self.assertIn(urlpattern.name, known_views)
