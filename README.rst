@@ -44,6 +44,7 @@ Run the following commands in order to setup a development environment on a loca
 
     make update
     make createdb
+    make
     python manage.py createsuperuser --fullname me --hrid me --preferred_name me --main_email me@localhost.localdomain
     python manage.py importaccounts scripts/dev_data.json
     python manage.py importauthgroupex scripts/dev_data.json
@@ -80,6 +81,8 @@ Here are instructions specific to xorgauth application for upgrading::
     make update
     python manage.py migrate
     python manage.py collectstatic
+    # Recompile the translation files
+    make
 
 
 Notes
