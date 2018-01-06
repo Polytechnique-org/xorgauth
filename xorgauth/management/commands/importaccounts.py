@@ -62,7 +62,10 @@ class Command(BaseCommand):
             user.fullname = account_data['full_name']
             user.preferred_name = account_data['display_name']
             user.main_email = account_data['email']
-            user.password = hasher.encode_sha1_hash(account_data['password'])
+            if account_data['password']:
+                user.password = hasher.encode_sha1_hash(account_data['password'])
+            else:
+                user.set_unusable_password()
             user.axid = account_data['ax_id']
             user.schoolid = account_data['xorg_id']
             user.xorgdb_uid = account_data['uid']
