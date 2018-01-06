@@ -56,7 +56,8 @@ setup(
 
     python_requires='>=3.4.2' if sys.version_info >= (3,) else '>=2.7',
     install_requires=[
-        'Django>=1.11' if sys.version_info >= (3,) else 'Django>=1.11,<2.0',
+        # TODO: drop "Django<2.0" once django-oidc-provider 0.5.3 is released
+        'Django>=1.11,<2.0' if sys.version_info >= (3,) else 'Django>=1.11,<2.0',
         'django-oidc-provider',
         'django-bootstrap3',
         'django-zxcvbn-password',
