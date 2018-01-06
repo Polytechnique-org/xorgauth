@@ -69,11 +69,13 @@ class Command(BaseCommand):
                 else:
                     # This should only happen for external accounts
                     if account_data['type'] != 'xnet':
-                        raise CommandError("No display_name nor firstname for a non-external account")
+                        raise CommandError(
+                            "No display_name nor firstname for a non-external account: %r" % account_data)
 
                     display_name = account_data['email'].split('@')[0]
                     if not display_name:
-                        raise CommandError("No display_name nor firstname nor email in account data")
+                        raise CommandError(
+                            "No display_name nor firstname nor email in account data: %r" % account_data)
                     if is_verbose:
                         print("... using email user (%r) as display name" % display_name)
                     account_data['display_name'] = display_name
