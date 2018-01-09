@@ -108,10 +108,17 @@ class Command(BaseCommand):
             # Import groups
             for groupname, perms in account_data['groups'].items():
                 group = Group.objects.get_or_create(shortname=groupname)[0]
-                GroupMembership.objects.get_or_create(
+                membership, created = GroupMembership.objects.get_or_create(
                     group=group,
                     user=user,
-                    perms=perms)
+                    defaults={'perms': perms})
+                if not created and membership.perms != perms:
+                    membership.perms = perms
+                    membership.full_clean()
+                    membership.save()
+                else:
+                    # check values, to ensure a sane database
+                    membership.full_clean()
 
             # Import email aliases
             for email in account_data['email_source'].keys():
