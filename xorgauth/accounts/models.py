@@ -18,7 +18,7 @@ ADMIN_ROLE_HRID = 'admin'
 class Role(models.Model):
     system = models.BooleanField(_("system role"), default=False, editable=False)
     hrid = models.SlugField(_("human-readable identifier"), unique=True)
-    display = UnboundedCharField(_("display name"), unique=True)
+    display = UnboundedCharField(_("display name"))
 
     class Meta:
         verbose_name = _("role")
@@ -68,9 +68,10 @@ class User(base_user.AbstractBaseUser):
     sex = models.CharField(_("sex"), max_length=6, choices=SEX, blank=True, null=True)
     main_email = models.EmailField(_("email"), unique=True)
     roles = models.ManyToManyField(Role, related_name='members', blank=True, verbose_name=_("roles"))
-    axid = UnboundedCharField(_("AX ID"), blank=True, null=True, help_text=_("Identification in AX directory"))
-    schoolid = UnboundedCharField(_("School ID"), blank=True, null=True, unique=True,
-                                  help_text=_("Identification defined by the School"))
+    axid = models.CharField(_("AX ID"), max_length=20, blank=True, null=True, unique=True,
+                            help_text=_("Identification in AX directory"))
+    schoolid = models.CharField(_("School ID"), max_length=20, blank=True, null=True, unique=True,
+                                help_text=_("Identification defined by the School"))
     xorgdb_uid = models.IntegerField(_("Polytechnique.org database user ID"), null=True, unique=True,
                                      help_text=_("User ID in Polytechnique.org database"))
     study_year = UnboundedCharField(_("study year"), blank=True, null=True, help_text=_(
