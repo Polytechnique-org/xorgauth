@@ -49,7 +49,7 @@ class UserManager(base_user.BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def get_for_login(self, username):
+    def get_for_login(self, username, need_is_active):
         """Get a user for the given username, mail email or email alias
 
         For example the given username can come from a login form in order to
@@ -60,38 +60,39 @@ class UserManager(base_user.BaseUserManager):
         if '@' not in username:
             # try to login with hrid (human-readable identifier)
             try:
-                return self.get(hrid=username)
+                user = self.get(hrid=username)
             except User.DoesNotExist:
-                pass
-
-            # if the username is "firstname.lastname", try builing an hrid
-            user = None
-            hrid_prefix = username + '.'
-            for possible_user in self.filter(hrid__startswith=hrid_prefix):
-                # Sanity check
-                if not possible_user.hrid.startswith(hrid_prefix):
-                    return None
-                # No dot in the last part
-                if '.' in possible_user.hrid[len(hrid_prefix):]:
-                    continue
-                # Several users share the same firstname.lastname prefix,
-                # refuse to log in.
-                if user is not None:
-                    return None
-                user = possible_user
-            # Return nothing if no user has been found, and the user otherwise
-            return user
+                # if the username is "firstname.lastname", try builing an hrid
+                user = None
+                hrid_prefix = username + '.'
+                for possible_user in self.filter(hrid__startswith=hrid_prefix):
+                    # Sanity check
+                    if not possible_user.hrid.startswith(hrid_prefix):
+                        return None
+                    # No dot in the last part
+                    if '.' in possible_user.hrid[len(hrid_prefix):]:
+                        continue
+                    # Several users share the same firstname.lastname prefix,
+                    # refuse to log in.
+                    if user is not None:
+                        return None
+                    user = possible_user
         else:
             # try to login with email
             try:
                 # try main email
-                return self.get(main_email=username)
+                user = self.get(main_email=username)
             except User.DoesNotExist:
                 # try aliases
                 try:
-                    return UserAlias.objects.get(email=username).user
+                    user = UserAlias.objects.get(email=username).user
                 except UserAlias.DoesNotExist:
                     return None
+
+        # do not return an inactive user if an active one has been requested
+        if user is not None and need_is_active and not user.is_active:
+            return
+        return user
 
 
 class User(base_user.AbstractBaseUser):
