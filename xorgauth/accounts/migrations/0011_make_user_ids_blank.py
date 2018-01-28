@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
             model_name='user',
             name='schoolid',
             field=xorgauth.utils.fields.UnboundedCharField(blank=True, help_text='Identification defined by the School',
-                                                           null=True, unique=True, verbose_name='School ID'),
+                                                           null=True, unique=False, verbose_name='School ID'),
         ),
         migrations.AlterField(
             model_name='user',

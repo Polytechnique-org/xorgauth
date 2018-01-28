@@ -70,6 +70,8 @@ with db.cursor() as cursor:
     for row in cursor:
         entry = OrderedDict(zip(cols, row))
         uid = int(entry['uid'])
+        if entry['xorg_id'] == 0:
+            entry['xorg_id'] = None
         entry['email_source'] = OrderedDict()
         entry['email_redirect'] = OrderedDict()
         entry['groups'] = OrderedDict()

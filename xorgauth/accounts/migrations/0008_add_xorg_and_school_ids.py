@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             model_name='user',
             name='schoolid',
             field=xorgauth.utils.fields.UnboundedCharField(help_text='Identification defined by the School',
-                                                           null=True, unique=True, verbose_name='School ID'),
+                                                           null=True, unique=False, verbose_name='School ID'),
         ),
         migrations.AddField(
             model_name='user',

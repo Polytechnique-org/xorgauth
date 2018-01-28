@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('system', models.BooleanField(default=False, editable=False, verbose_name='system role')),
                 ('hrid', models.SlugField(unique=True, verbose_name='human-readable identifier')),
-                ('display', xorgauth.utils.fields.UnboundedCharField(unique=True, verbose_name='display name')),
+                ('display', xorgauth.utils.fields.UnboundedCharField(unique=False, verbose_name='display name')),
             ],
             options={
                 'verbose_name_plural': 'roles',

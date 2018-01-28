@@ -32,7 +32,7 @@ class AuthGroupeXClientManager(models.Manager):
 class AuthGroupeXClient(models.Model):
     privkey = models.CharField(_("private key"), unique=True, max_length=40,
                                help_text=_("Secret key shared with the client"))
-    name = UnboundedCharField(_("name"), unique=True, help_text=_("Name of the client"))
+    name = UnboundedCharField(_("name"), help_text=_("Name of the client"))
     data_fields = UnboundedCharField(_("data fields"), help_text=_("Fields requested by the client"))
     return_urls = UnboundedCharField(_("return URLs"),
                                      help_text=_("Regular expression pattern of the allowed return URLs"))

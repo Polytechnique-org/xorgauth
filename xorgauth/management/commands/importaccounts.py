@@ -59,10 +59,38 @@ class Command(BaseCommand):
                 if is_verbose:
                     print("Creating user %s (%d/%d)" % (hrid, idx_account + 1, accounts_num))
 
+            # Sometimes, display_name is empty. Use the first name or a name
+            # from the email address
+            if not account_data['display_name']:
+                if account_data['firstname']:
+                    if is_verbose:
+                        print("... using first name (%r) as display name" % account_data['firstname'])
+                    account_data['display_name'] = account_data['firstname']
+                else:
+                    # This should only happen for external accounts
+                    if account_data['type'] != 'xnet':
+                        raise CommandError(
+                            "No display_name nor firstname for a non-external account: %r" % account_data)
+
+                    display_name = account_data['email'].split('@')[0]
+                    if not display_name:
+                        raise CommandError(
+                            "No display_name nor firstname nor email in account data: %r" % account_data)
+                    if is_verbose:
+                        print("... using email user (%r) as display name" % display_name)
+                    account_data['display_name'] = display_name
+
+                    # If full name is empty too, use the same display name
+                    if not account_data['full_name']:
+                        account_data['full_name'] = display_name
+
             user.fullname = account_data['full_name']
             user.preferred_name = account_data['display_name']
             user.main_email = account_data['email']
-            user.password = hasher.encode_sha1_hash(account_data['password'])
+            if account_data['password']:
+                user.password = hasher.encode_sha1_hash(account_data['password'])
+            else:
+                user.set_unusable_password()
             user.axid = account_data['ax_id']
             user.schoolid = account_data['xorg_id']
             user.xorgdb_uid = account_data['uid']
@@ -80,10 +108,17 @@ class Command(BaseCommand):
             # Import groups
             for groupname, perms in account_data['groups'].items():
                 group = Group.objects.get_or_create(shortname=groupname)[0]
-                GroupMembership.objects.get_or_create(
+                membership, created = GroupMembership.objects.get_or_create(
                     group=group,
                     user=user,
-                    perms=perms)
+                    defaults={'perms': perms})
+                if not created and membership.perms != perms:
+                    membership.perms = perms
+                    membership.full_clean()
+                    membership.save()
+                else:
+                    # check values, to ensure a sane database
+                    membership.full_clean()
 
             # Import email aliases
             for email in account_data['email_source'].keys():

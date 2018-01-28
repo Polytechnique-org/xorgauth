@@ -18,6 +18,10 @@ class UnboundedCharField(models.TextField):
     Like the standard :class:`~django.db.models.fields.CharField` widget,
     a ``select`` widget is automatically used if the field defines ``choices``.
     """
+    def __init__(self, *args, **kwargs):
+        if kwargs.get('unique'):
+            raise ValueError("UnboundedCharField can not be 'unique' as this is not supported by MySQL")
+        return super(UnboundedCharField, self).__init__(*args, **kwargs)
 
     def formfield(self, **kwargs):
         kwargs['widget'] = None if self.choices else forms.TextInput
