@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^accounts/password/reset/$', xorgauth_views.PasswordResetView.as_view(), name='password_reset'),
     url(r'^accounts/password/reset/done/$', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     url(r'^accounts/password/reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',  # noqa
-        auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+        xorgauth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     url(r'^accounts/password/reset/complete/$', auth_views.PasswordResetCompleteView.as_view(),
         name='password_reset_complete'),
     url(r'^accounts/profile/$', xorgauth_views.ProfileView.as_view(), name='profile'),
