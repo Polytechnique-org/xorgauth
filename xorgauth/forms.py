@@ -1,6 +1,9 @@
 from django.contrib.auth import forms as auth_forms
+import django.forms
 from django.utils.translation import gettext_lazy as _
 from zxcvbn_password.fields import PasswordField, PasswordConfirmationField
+
+from xorgauth.accounts.models import User
 
 
 class SetPasswordForm(auth_forms.SetPasswordForm):
@@ -17,3 +20,33 @@ class SetPasswordForm(auth_forms.SetPasswordForm):
 
 class PasswordChangeForm(SetPasswordForm, auth_forms.PasswordChangeForm):
     pass
+
+
+class PasswordResetFrom(auth_forms.PasswordResetForm):
+    """Override PasswordResetForm from django.contrib.auth in order to allow
+    any user alias when recovering a lost password
+    """
+    email = auth_forms.UsernameField(
+        label=_("User name or email address"),
+        widget=django.forms.TextInput(attrs={'placeholder': _('firstname.lastname.gradyear')}),
+        max_length=254)
+
+    def clean(self):
+        cleaned_data = super(PasswordResetFrom, self).clean()
+        # Transform a login or an email alias to a main email address
+        email = cleaned_data['email']
+        user = User.objects.get_for_login(email, True)
+        if user is None:
+            self._errors['email'] = self.error_class([_("Unknown user account")])
+            del cleaned_data['email']
+            return cleaned_data
+
+        cleaned_data['user'] = user
+        cleaned_data['email'] = user.main_email
+
+    def get_users(self, email):
+        # get_users is only called when self.cleaned_data has been populated,
+        # otherwise there is an internal (Django) error
+        assert self.cleaned_data["email"] == email
+        assert self.cleaned_data['user'] is not None
+        return [self.cleaned_data['user']]

@@ -49,6 +49,51 @@ class UserManager(base_user.BaseUserManager):
         user.save(using=self._db)
         return user
 
+    def get_for_login(self, username, need_is_active):
+        """Get a user for the given username, mail email or email alias
+
+        For example the given username can come from a login form in order to
+        identify a user.
+
+        Returns None if no user has been found
+        """
+        if '@' not in username:
+            # try to login with hrid (human-readable identifier)
+            try:
+                user = self.get(hrid=username)
+            except User.DoesNotExist:
+                # if the username is "firstname.lastname", try builing an hrid
+                user = None
+                hrid_prefix = username + '.'
+                for possible_user in self.filter(hrid__startswith=hrid_prefix):
+                    # Sanity check
+                    if not possible_user.hrid.startswith(hrid_prefix):
+                        return None
+                    # No dot in the last part
+                    if '.' in possible_user.hrid[len(hrid_prefix):]:
+                        continue
+                    # Several users share the same firstname.lastname prefix,
+                    # refuse to log in.
+                    if user is not None:
+                        return None
+                    user = possible_user
+        else:
+            # try to login with email
+            try:
+                # try main email
+                user = self.get(main_email=username)
+            except User.DoesNotExist:
+                # try aliases
+                try:
+                    user = UserAlias.objects.get(email=username).user
+                except UserAlias.DoesNotExist:
+                    return None
+
+        # do not return an inactive user if an active one has been requested
+        if user is not None and need_is_active and not user.is_active:
+            return
+        return user
+
 
 class User(base_user.AbstractBaseUser):
     MALE = 'male'
@@ -78,6 +123,8 @@ class User(base_user.AbstractBaseUser):
         "Kind and main year of the study ('X1829' means 'entered the school in 1829 " +
         "but 'M2005' means 'graduated in 2005')"))
     grad_year = models.IntegerField(_("graduation year"), blank=True, null=True, help_text=_("Year of the graduation"))
+    is_active = models.BooleanField(_('active'), default=True,
+                                    help_text=_('Active user'))
 
     objects = UserManager()
 

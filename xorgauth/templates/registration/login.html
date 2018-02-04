@@ -11,5 +11,6 @@
     {% endbuttons %}
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
+<a href="{% url 'password_reset' %}" class="btn btn-primary">{% trans 'Forgotten password?' %}</a>
 
 {% endblock %}
