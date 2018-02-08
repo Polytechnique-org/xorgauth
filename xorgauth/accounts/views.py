@@ -40,6 +40,10 @@ class IndexView(LoginRequiredMixin, RedirectView):
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'profile.html'
 
+    def user_has_consents(self):
+        """Return true if the logged user has any consent"""
+        return UserConsent.objects.filter(user=self.request.user).exists()
+
 
 class PasswordChangeView(auth_views.PasswordChangeView):
     form_class = PasswordChangeForm
