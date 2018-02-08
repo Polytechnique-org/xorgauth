@@ -17,11 +17,20 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     {% bootstrap_javascript %}
 
+    <style type="text/css"><!--
+        .navbar-brand-logo {
+            padding: 5px;
+        }
+        .navbar-brand-logo>img {
+            height: 100%;
+        }
+    --></style>
 </head>
 <body>
     <nav class="navbar navbar-fixed-top navbar-default">
         <div class="container">
             <div class="navbar-header">
+                <a class="navbar-brand navbar-brand-logo"><img src="{% static 'logo-xorg.png' %}"></a>
                 <a class="navbar-brand m-b-0">{% trans 'Polytechnique.org' %}</a>
             </div>
             <ul  class="nav navbar-nav navbar-right">
