@@ -5,6 +5,8 @@
 
 # Dev-related files
 dev/
+/static/
+/.tox/
 
 # Build-related files
 doc/_build/
