@@ -27,6 +27,7 @@ class ViewTests(TestCase):
     )
     # Views which can not be tested because they need parameters
     PARAMETERIZED_VIEW_IDS = (
+        'auth-groupex-logout',
         'password_reset_confirm',
     )
 
