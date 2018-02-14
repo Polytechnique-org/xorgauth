@@ -39,5 +39,6 @@ urlpatterns = [
     url(r'^accounts/profile/$', xorgauth_views.ProfileView.as_view(), name='profile'),
     url(r'^auth-groupex$', authgpx_views.AuthGroupeXView.as_view(), name='auth-groupex'),
     url(r'^auth-groupex-login$', authgpx_views.AuthGroupeXLoginView.as_view(), name='auth-groupex-login'),
+    url(r'^auth-groupex-logout$', authgpx_views.AuthGroupeXLogoutView.as_view(), name='auth-groupex-logout'),
     url(r'^test-relying-party/$', rptest_views.RelyingParty.as_view(), name='test-relying-party'),
 ]

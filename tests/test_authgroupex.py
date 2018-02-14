@@ -2,7 +2,9 @@ import hashlib
 import random
 import struct
 
+import django
 from django import http
+import django.contrib.auth
 from django.test import Client, TestCase
 from django.urls import reverse
 
@@ -42,6 +44,22 @@ class AuthGroupeXTests(TestCase):
         UserAlias(user=vaneau, email='vaneau@melix.net').save()
 
     @staticmethod
+    def _get_logout_req_url(privkey, return_url, session=None):
+        """Generate a request challenge for logout and compute its signature"""
+        challenge = hashlib.sha1(
+            b''.join(struct.pack(b'B', random.randrange(0, 256)) for i in range(64)))
+        challenge = challenge.hexdigest()
+        sig = hashlib.md5((challenge + privkey).encode('ascii')).hexdigest()
+        query = http.QueryDict('', mutable=True)
+        query['challenge'] = challenge
+        query['pass'] = sig
+        query['url'] = return_url
+        if session:
+            query['session'] = session
+        requrl = reverse('auth-groupex-logout') + '?' + query.urlencode()
+        return requrl, challenge
+
+    @staticmethod
     def _get_req_url(privkey, return_url, group=None):
         """Generate a request challenge and compute its signature"""
         challenge = hashlib.sha1(
@@ -75,6 +93,12 @@ class AuthGroupeXTests(TestCase):
         self.assertEqual(known_resp_fields, set(query_params.keys()),
                          "unexpected fields in response")
         return query_params, expected_auth
+
+    @staticmethod
+    def _is_user_authenticated(client):
+        """Is the user of the given client object authenticated?"""
+        user = django.contrib.auth.get_user(client)
+        return user.is_authenticated if django.VERSION >= (1, 10) else user.is_authenticated()
 
     def test_unlogged_request(self):
         requrl, challenge = self._get_req_url(self.client_simple.privkey, 'https://example.com/')
@@ -266,3 +290,55 @@ class AuthGroupeXTests(TestCase):
                 'prenom': 'Louis',
                 'sex': 'male',
             })
+
+    def test_logout_request(self):
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        self.assertTrue(self._is_user_authenticated(c))
+
+        # Test the logout endpoint
+        requrl, _ = self._get_logout_req_url(self.client_simple.privkey, 'https://example.com/logout')
+        resp = c.get(requrl)
+        self.assertEqual(302, resp.status_code)
+        self.assertEqual('https://example.com/logout', resp['Location'])
+
+        # Ensure that the user is disconnected
+        self.assertFalse(self._is_user_authenticated(c))
+
+    def test_logout_phpsession_request(self):
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        self.assertTrue(self._is_user_authenticated(c))
+
+        requrl, _ = self._get_logout_req_url(
+            self.client_simple.privkey,
+            'https://example.com/logout',
+            session='0123456789')
+        resp = c.get(requrl)
+        self.assertEqual(302, resp.status_code)
+        self.assertEqual('https://example.com/logout?PHPSESSID=0123456789', resp['Location'])
+        self.assertFalse(self._is_user_authenticated(c))
+
+    def test_logout_unknown_url(self):
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        self.assertTrue(self._is_user_authenticated(c))
+
+        # Test the logout endpoint
+        requrl, _ = self._get_logout_req_url(self.client_simple.privkey, 'https://unknown.example.com/logout')
+        resp = c.get(requrl)
+        self.assertEqual(400, resp.status_code)
+        self.assertNotIn('Location', resp)
+        self.assertTrue(self._is_user_authenticated(c))
+
+    def test_logout_incorrect_secret(self):
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        self.assertTrue(self._is_user_authenticated(c))
+
+        # Test the logout endpoint
+        requrl, _ = self._get_logout_req_url(self.client_simple.privkey + '!', 'https://example.com/logout')
+        resp = c.get(requrl)
+        self.assertEqual(400, resp.status_code)
+        self.assertNotIn('Location', resp)
+        self.assertTrue(self._is_user_authenticated(c))
