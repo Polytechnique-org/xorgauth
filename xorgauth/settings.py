@@ -170,6 +170,14 @@ PASSWORD_HASHERS = [
     'xorgauth.accounts.hashers.PBKDF2WrappedSHA1PasswordHasher',
 ]
 
+# Password validators
+# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'xorgauth.accounts.password_validators.GoogleAppsPasswordValidator',
+    }
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
