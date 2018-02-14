@@ -210,3 +210,15 @@ class GroupMembership(models.Model):
 
     class Meta:
         unique_together = ('group', 'user',)
+
+
+class GoogleAppsPassword(models.Model):
+    """Password for the associated Google Apps account"""
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True, related_name='gapps_password',
+                                verbose_name=_("user"))
+    password = UnboundedCharField(_("password"))
+    last_update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = _("Google Apps password")
+        verbose_name_plural = _("Google Apps passwords")
