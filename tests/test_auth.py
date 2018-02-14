@@ -1,4 +1,8 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 import crypt
+import sys
 
 from django.test import Client, TestCase
 
@@ -74,8 +78,11 @@ class AuthenticationTests(TestCase):
         gapps_password = self.vaneau.gapps_password.password
         self.assertEqual(crypt.crypt('Depuis Vaneau!', gapps_password), gapps_password)
 
-        self.vaneau.set_password('Mot de passe différent?')
+        password = 'Mot de passe différent?'
+        self.vaneau.set_password(password)
         self.vaneau.save()
         self.vaneau = User.objects.get(hrid='louis.vaneau.1829')
         gapps_password = self.vaneau.gapps_password.password
-        self.assertEqual(crypt.crypt('Mot de passe différent?', gapps_password), gapps_password)
+        if sys.version_info < (3,):
+            password = password.encode('utf-8')
+        self.assertEqual(crypt.crypt(password, gapps_password), gapps_password)
