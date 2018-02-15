@@ -20,12 +20,15 @@ from django.contrib.auth import views as auth_views
 from xorgauth.accounts import views as xorgauth_views
 from xorgauth.authgroupex import views as authgpx_views
 from xorgauth.relying_party_test import views as rptest_views
+from xorgauth import forms as xorgauth_forms
 
 urlpatterns = [
     url(r'^$', xorgauth_views.IndexView.as_view(), name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^openid/', include('oidc_provider.urls', namespace='oidc_provider')),
-    url(r'^accounts/login/$', auth_views.LoginView.as_view(), name='login'),
+    url(r'^accounts/login/$',
+        auth_views.LoginView.as_view(authentication_form=xorgauth_forms.AuthenticationForm),
+        name='login'),
     url(r'^accounts/logout/$', auth_views.LogoutView.as_view(), name='logout'),
     url(r'^accounts/list_consents/$', xorgauth_views.list_consents, name='list_consents'),
     url(r'^accounts/password/change/$', xorgauth_views.PasswordChangeView.as_view(), name='password_change'),
