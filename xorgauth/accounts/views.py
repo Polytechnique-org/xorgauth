@@ -44,6 +44,11 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         """Return true if the logged user has any consent"""
         return UserConsent.objects.filter(user=self.request.user).exists()
 
+    def user_xorg_email(self):
+        """Return an email address managed by Polytechnique.org if the user is an alumni"""
+        user = self.request.user
+        return user.main_email if user.is_x_alumni() else None
+
 
 class PasswordChangeView(auth_views.PasswordChangeView):
     form_class = PasswordChangeForm

@@ -13,7 +13,11 @@
         {% if view.user_has_consents %}
         <li><a href="{% url 'list_consents' %}">{% trans "List of consents given to web sites" %}</li>
         {% endif %}
-        <li><a href="{% url 'password_change' %}"> {% trans "Change your password" %}</li>
+        <li><a href="{% url 'password_change' %}">{% trans "Change your password" %}</li>
+        {% if view.user_xorg_email %}
+        <li><a href="https://ax.polytechnique.org/my-profile/preferences/contact-info">{% trans 'Update your profile on ax.polytechnique.org (click on "Je me connecte" if you get to the front page)' %}</li>
+        <li><a href="https://www.polytechnique.org/emails/redirect">{% blocktrans with email=view.user_xorg_email %}Update your email redirections for {{ email }} on polytechnique.org{% endblocktrans %}</a></li>
+        {% endif %}
         </ul>
     </div>
 </div>
