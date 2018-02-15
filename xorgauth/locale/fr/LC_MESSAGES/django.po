@@ -144,51 +144,51 @@ msgstr "compte utilisateur"
 msgid "user accounts"
 msgstr "comptes utilisateurs"
 
-#: xorgauth/accounts/models.py:178 xorgauth/accounts/models.py:218
+#: xorgauth/accounts/models.py:182 xorgauth/accounts/models.py:222
 msgid "user"
 msgstr "utilisateur"
 
-#: xorgauth/accounts/models.py:179
+#: xorgauth/accounts/models.py:183
 msgid "email alias"
 msgstr "alias couriel"
 
-#: xorgauth/accounts/models.py:182
+#: xorgauth/accounts/models.py:186
 msgid "user alias"
 msgstr "alias utilisateur"
 
-#: xorgauth/accounts/models.py:183
+#: xorgauth/accounts/models.py:187
 msgid "user aliases"
 msgstr "aliases utilisateurs"
 
-#: xorgauth/accounts/models.py:191
+#: xorgauth/accounts/models.py:195
 msgid "short name"
 msgstr "nom court"
 
-#: xorgauth/accounts/models.py:194 xorgauth/accounts/models.py:207
+#: xorgauth/accounts/models.py:198 xorgauth/accounts/models.py:211
 msgid "group"
 msgstr "groupe"
 
-#: xorgauth/accounts/models.py:195
+#: xorgauth/accounts/models.py:199
 msgid "groups"
 msgstr "groupes"
 
-#: xorgauth/accounts/models.py:204 xorgauth/accounts/models.py:208
+#: xorgauth/accounts/models.py:208 xorgauth/accounts/models.py:212
 msgid "member"
 msgstr "membres"
 
-#: xorgauth/accounts/models.py:205
+#: xorgauth/accounts/models.py:209
 msgid "administrator"
 msgstr "administrateur"
 
-#: xorgauth/accounts/models.py:219
+#: xorgauth/accounts/models.py:223
 msgid "password"
 msgstr "mot de passe"
 
-#: xorgauth/accounts/models.py:223
+#: xorgauth/accounts/models.py:227
 msgid "Google Apps password"
 msgstr "mot de passe Google Apps"
 
-#: xorgauth/accounts/models.py:224
+#: xorgauth/accounts/models.py:228
 msgid "Google Apps passwords"
 msgstr "mots de passe Google Apps"
 
@@ -385,6 +385,19 @@ msgstr "Liste des autorisations données aux sites web"
 #: xorgauth/templates/profile.html:16
 msgid "Change your password"
 msgstr "Modification de ton mot de passe"
+
+#: xorgauth/templates/profile.html:17
+msgid ""
+"Update your profile on ax.polytechnique.org (click on \"Je me connecte\" if "
+"you get to the front page)"
+msgstr ""
+"Mise à jour de ta fiche dans l'annuaire sur ax.polytechnique.org (clique sur "
+"\"Je me connect\" si tu arrives sur la page d'accueil)"
+
+#: xorgauth/templates/profile.html:19
+#, python-format
+msgid "Update your email redirections for %(email)s on polytechnique.org"
+msgstr "Mise à jour de la redirection email de %(email)s sur polytechnique.org"
 
 #: xorgauth/templates/registration/logged_out.html:6
 msgid "Thanks for spending some quality time with the Web site today."

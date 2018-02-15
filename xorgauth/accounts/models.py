@@ -172,6 +172,10 @@ class User(base_user.AbstractBaseUser):
         # FIXME implement permissions for other user kinds
         return False
 
+    def is_x_alumni(self):
+        """The user is an alumni of Ecole Polytechnique (not an external account)"""
+        return self.roles.filter(hrid__in=('x', 'master', 'phd')).exists()
+
 
 class UserAlias(models.Model):
     """Alias login"""

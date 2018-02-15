@@ -73,7 +73,7 @@ class AuthGroupeXView(LoginRequiredMixin, View):
         # If the client does not allow external accounts, restrict access accordingly
         if not client.allow_xnet:
             # if user.roles.filter(hrid='xnet').exists():
-            if not request.user.roles.filter(hrid__in=('x', 'master', 'phd')).exists():
+            if not request.user.is_x_alumni():
                 return HttpResponseForbidden("The requested site is restricted to Ecole polytechnique's alumni")
 
         # Prepare the response data
