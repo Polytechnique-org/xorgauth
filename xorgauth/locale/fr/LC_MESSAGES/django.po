@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-14 23:48+0100\n"
+"POT-Creation-Date: 2018-02-15 15:57+0100\n"
 "PO-Revision-Date: 2017-12-03 22:42+0100\n"
 "Last-Translator: Nicolas Iooss\n"
 "Language: \n"
@@ -285,23 +285,23 @@ msgstr ""
 msgid "Log in"
 msgstr "Connexion"
 
-#: xorgauth/forms.py:11
-msgid "New password"
-msgstr "Nouveau mot de passe"
-
-#: xorgauth/forms.py:16
-msgid "New password confirmation"
-msgstr "Confirmation du nouveau mot de passe"
-
-#: xorgauth/forms.py:30
+#: xorgauth/forms.py:12 xorgauth/forms.py:37
 msgid "User name or email address"
 msgstr "Nom d'utilisateur ou couriel"
 
-#: xorgauth/forms.py:31
+#: xorgauth/forms.py:13 xorgauth/forms.py:38
 msgid "firstname.lastname.gradyear"
 msgstr "prenom.nom.promo"
 
-#: xorgauth/forms.py:40
+#: xorgauth/forms.py:18
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: xorgauth/forms.py:23
+msgid "New password confirmation"
+msgstr "Confirmation du nouveau mot de passe"
+
+#: xorgauth/forms.py:47
 msgid "Unknown user account"
 msgstr "Compte utilisateur inconnu"
 
@@ -344,6 +344,10 @@ msgstr ""
 #: xorgauth/templates/base.html:39
 msgid "Log out"
 msgstr "Déconnexion"
+
+#: xorgauth/templates/list_consents.html:27
+msgid "Revoke"
+msgstr "Révoquer"
 
 #: xorgauth/templates/oidc_provider/authorize.html:8
 msgid "Request for Permission"

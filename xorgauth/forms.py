@@ -6,6 +6,14 @@ from zxcvbn_password.fields import PasswordField, PasswordConfirmationField
 from xorgauth.accounts.models import User
 
 
+class AuthenticationForm(auth_forms.AuthenticationForm):
+    # override username label
+    username = auth_forms.UsernameField(
+        label=_("User name or email address"),
+        widget=django.forms.TextInput(attrs={'placeholder': _('firstname.lastname.gradyear')}),
+        max_length=254)
+
+
 class SetPasswordForm(auth_forms.SetPasswordForm):
     new_password1 = PasswordField(
         label=_("New password"),
