@@ -134,6 +134,13 @@ DATABASES = {
     },
 }
 
+if _engine == 'mysql':
+    # Detect data integrity problems in MySQL early
+    # https://django-mysql.readthedocs.io/en/latest/checks.html#django-mysql-w001-strict-mode
+    DATABASES['default']['OPTIONS'] = {
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+    }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
