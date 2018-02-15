@@ -24,7 +24,7 @@
             <form action="{{ request.path }}" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="revoke" value="{{ consent.client.client_id }}" />
-                <input type="submit" value="Revoke" class="btn btn-secondary" />
+                <input type="submit" value="{% trans "Revoke" %}" class="btn btn-secondary" />
             </form>
         </td>
     </tr>

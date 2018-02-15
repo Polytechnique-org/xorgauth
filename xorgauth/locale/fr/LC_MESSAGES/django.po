@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-14 23:48+0100\n"
+"POT-Creation-Date: 2018-02-15 15:31+0100\n"
 "PO-Revision-Date: 2017-12-03 22:42+0100\n"
 "Last-Translator: Nicolas Iooss\n"
 "Language: \n"
@@ -344,6 +344,10 @@ msgstr ""
 #: xorgauth/templates/base.html:39
 msgid "Log out"
 msgstr "Déconnexion"
+
+#: xorgauth/templates/list_consents.html:27
+msgid "Revoke"
+msgstr "Révoquer"
 
 #: xorgauth/templates/oidc_provider/authorize.html:8
 msgid "Request for Permission"
