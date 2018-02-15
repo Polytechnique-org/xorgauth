@@ -499,6 +499,10 @@ msgstr "L'équipe Polytechnique.org"
 msgid "Reset password?"
 msgstr "Réinitialiser le mot de passe ?"
 
+#: xorgauth/templates/registration/password_reset_subject.txt:2
+msgid "Polytechnique.org password reset"
+msgstr "Réinitialisation du mot de passe Polytechnique.org"
+
 #: xorgauth/utils/fields.py:33
 msgid ""
 "Enter a valid 'slug' consisting of letters, numbers, underscores, dots or "
