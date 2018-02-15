@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-28 17:44+0100\n"
+"POT-Creation-Date: 2018-02-14 23:48+0100\n"
 "PO-Revision-Date: 2017-12-03 22:42+0100\n"
 "Last-Translator: Nicolas Iooss\n"
 "Language: \n"
@@ -88,31 +88,31 @@ msgstr "couriel"
 msgid "AX ID"
 msgstr "ID AX"
 
-#: xorgauth/accounts/models.py:116
+#: xorgauth/accounts/models.py:117
 msgid "Identification in AX directory"
 msgstr "Matricule dans l'annuaire de l'AX"
 
-#: xorgauth/accounts/models.py:117
+#: xorgauth/accounts/models.py:118
 msgid "School ID"
 msgstr "ID École"
 
-#: xorgauth/accounts/models.py:118
+#: xorgauth/accounts/models.py:119
 msgid "Identification defined by the School"
 msgstr "Matricule donné par l'École"
 
-#: xorgauth/accounts/models.py:119
+#: xorgauth/accounts/models.py:120
 msgid "Polytechnique.org database user ID"
 msgstr "ID dans la base de données de Polytechnique.org"
 
-#: xorgauth/accounts/models.py:120
+#: xorgauth/accounts/models.py:121
 msgid "User ID in Polytechnique.org database"
 msgstr "Identifiant utilisateur dans la base de données de Polytechnique.org"
 
-#: xorgauth/accounts/models.py:121
+#: xorgauth/accounts/models.py:122
 msgid "study year"
 msgstr "promotion"
 
-#: xorgauth/accounts/models.py:122
+#: xorgauth/accounts/models.py:123
 msgid ""
 "Kind and main year of the study ('X1829' means 'entered the school in 1829 "
 "but 'M2005' means 'graduated in 2005')"
@@ -120,65 +120,77 @@ msgstr ""
 "Catégorie et année de référence de la scolarité ('X1829' signifie 'est entré "
 "à l'école en 1829 mais 'M2005' signifié 'diplomé en 2005')"
 
-#: xorgauth/accounts/models.py:124
+#: xorgauth/accounts/models.py:125
 msgid "graduation year"
 msgstr "année du diplôme"
 
-#: xorgauth/accounts/models.py:124
+#: xorgauth/accounts/models.py:125
 msgid "Year of the graduation"
 msgstr "Année d'obtention du diplôme"
 
-#: xorgauth/accounts/models.py:125
+#: xorgauth/accounts/models.py:126
 msgid "active"
 msgstr "actif"
 
-#: xorgauth/accounts/models.py:126
+#: xorgauth/accounts/models.py:127
 msgid "Active user"
 msgstr "Utilisateur actif"
 
-#: xorgauth/accounts/models.py:131
+#: xorgauth/accounts/models.py:132
 msgid "user account"
 msgstr "compte utilisateur"
 
-#: xorgauth/accounts/models.py:132
+#: xorgauth/accounts/models.py:133
 msgid "user accounts"
 msgstr "comptes utilisateurs"
 
-#: xorgauth/accounts/models.py:177
+#: xorgauth/accounts/models.py:178 xorgauth/accounts/models.py:218
 msgid "user"
 msgstr "utilisateur"
 
-#: xorgauth/accounts/models.py:178
+#: xorgauth/accounts/models.py:179
 msgid "email alias"
 msgstr "alias couriel"
 
-#: xorgauth/accounts/models.py:181
+#: xorgauth/accounts/models.py:182
 msgid "user alias"
 msgstr "alias utilisateur"
 
-#: xorgauth/accounts/models.py:182
+#: xorgauth/accounts/models.py:183
 msgid "user aliases"
 msgstr "aliases utilisateurs"
 
-#: xorgauth/accounts/models.py:190
+#: xorgauth/accounts/models.py:191
 msgid "short name"
 msgstr "nom court"
 
-#: xorgauth/accounts/models.py:193 xorgauth/accounts/models.py:206
+#: xorgauth/accounts/models.py:194 xorgauth/accounts/models.py:207
 msgid "group"
 msgstr "groupe"
 
-#: xorgauth/accounts/models.py:194
+#: xorgauth/accounts/models.py:195
 msgid "groups"
 msgstr "groupes"
 
-#: xorgauth/accounts/models.py:203 xorgauth/accounts/models.py:207
+#: xorgauth/accounts/models.py:204 xorgauth/accounts/models.py:208
 msgid "member"
 msgstr "membres"
 
-#: xorgauth/accounts/models.py:204
+#: xorgauth/accounts/models.py:205
 msgid "administrator"
 msgstr "administrateur"
+
+#: xorgauth/accounts/models.py:219
+msgid "password"
+msgstr "mot de passe"
+
+#: xorgauth/accounts/models.py:223
+msgid "Google Apps password"
+msgstr "mot de passe Google Apps"
+
+#: xorgauth/accounts/models.py:224
+msgid "Google Apps passwords"
+msgstr "mots de passe Google Apps"
 
 #: xorgauth/accounts/oidc_provider_settings.py:27
 msgid "X Groups"
@@ -268,7 +280,7 @@ msgstr ""
 "authentification."
 
 #: xorgauth/authgroupex/templates/authgroupex/login.html:12
-#: xorgauth/templates/base.html:28
+#: xorgauth/templates/base.html:41
 #: xorgauth/templates/registration/login.html:10
 msgid "Log in"
 msgstr "Connexion"
@@ -325,11 +337,11 @@ msgstr "Groupes"
 msgid "admin"
 msgstr ""
 
-#: xorgauth/templates/base.html:10 xorgauth/templates/base.html:21
+#: xorgauth/templates/base.html:14 xorgauth/templates/base.html:34
 msgid "Polytechnique.org"
 msgstr ""
 
-#: xorgauth/templates/base.html:26
+#: xorgauth/templates/base.html:39
 msgid "Log out"
 msgstr "Déconnexion"
 
@@ -366,11 +378,11 @@ msgstr "Bienvenue sur le service d'authentification de Polytechnique.org."
 msgid "Here are some pages you can access while you are logged in:"
 msgstr "Voici quelques pages auxquelles tu peux accéder en étant connecté :"
 
-#: xorgauth/templates/profile.html:13
+#: xorgauth/templates/profile.html:14
 msgid "List of consents given to web sites"
 msgstr "Liste des autorisations données aux sites web"
 
-#: xorgauth/templates/profile.html:14
+#: xorgauth/templates/profile.html:16
 msgid "Change your password"
 msgstr "Modification de ton mot de passe"
 
@@ -474,7 +486,7 @@ msgstr "L'équipe Polytechnique.org"
 msgid "Reset password?"
 msgstr "Réinitialiser le mot de passe ?"
 
-#: xorgauth/utils/fields.py:29
+#: xorgauth/utils/fields.py:33
 msgid ""
 "Enter a valid 'slug' consisting of letters, numbers, underscores, dots or "
 "hyphens."

@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+import crypt
+import sys
+
 from django.test import Client, TestCase
 
 from xorgauth.accounts.models import User, UserAlias
@@ -64,3 +70,19 @@ class AuthenticationTests(TestCase):
         self.assertEqual(None, User.objects.get_for_login('louis.vaneau.1830@polytechnique.org', True))
         c = Client()
         self.assertFalse(c.login(username='louis.vaneau.1830@polytechnique.org', password='Depuis Vaneau!'))
+
+    def test_googleapps_password(self):
+        """Test setting the Google Apps password when setting the password"""
+        self.vaneau.set_password('Depuis Vaneau!')
+        self.vaneau.save()
+        gapps_password = self.vaneau.gapps_password.password
+        self.assertEqual(crypt.crypt('Depuis Vaneau!', gapps_password), gapps_password)
+
+        password = 'Mot de passe différent?'
+        self.vaneau.set_password(password)
+        self.vaneau.save()
+        self.vaneau = User.objects.get(hrid='louis.vaneau.1829')
+        gapps_password = self.vaneau.gapps_password.password
+        if sys.version_info < (3,):
+            password = password.encode('utf-8')
+        self.assertEqual(crypt.crypt(password, gapps_password), gapps_password)

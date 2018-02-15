@@ -15,8 +15,15 @@ class RoleAdmin(admin.ModelAdmin):
     list_filter = ['system']
 
 
+class GoogleAppsPasswordInline(admin.TabularInline):
+    model = models.GoogleAppsPassword
+
+
 @admin.register(models.User)
 class UserAdmin(admin.ModelAdmin):
+    inlines = [
+        GoogleAppsPasswordInline,
+    ]
     search_fields = ['hrid', 'main_email', 'fullname', 'preferred_name']
 
     list_display = ['hrid', 'main_email', 'fullname']
