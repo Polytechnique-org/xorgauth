@@ -13,6 +13,9 @@ from . import models
 class GoogleAppsPasswordValidator(object):
     """Update the Google Apps password when a user changes her password"""
 
+    def validate(self, password, user=None):
+        return
+
     def password_changed(self, raw_password, user):
         # Hash the password in a way compatible with Google Apps: crypt with $6
         if sys.version_info >= (3,):
