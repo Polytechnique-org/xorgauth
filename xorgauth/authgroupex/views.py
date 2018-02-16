@@ -19,7 +19,7 @@ def extract_url_from_next_param(next_value, cut_length=120):
     """Parse the next parameter of the login page in order to display a nice URL"""
     if '?' not in next_value:
         return
-    query_params = QueryDict(next_value.split('?', 1)[1])
+    query_params = QueryDict(next_value.split('?', 1)[1].encode('utf-8'))
     ext_url = query_params.get('url', '')
     # make exturl printable
     if cut_length and len(ext_url) >= cut_length:

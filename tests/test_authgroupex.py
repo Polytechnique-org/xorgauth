@@ -158,6 +158,27 @@ class AuthGroupeXTests(TestCase):
             'perms': 'user',
         })
 
+    def test_unicode_return_url(self):
+        """Test returning from the authentication with an Unicode URL"""
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        requrl, challenge = self._get_req_url(self.client_simple.privkey, 'https://example.com/→«àéîöùÿ»‽😇')
+        resp = c.get(requrl)
+        self.assertEqual(302, resp.status_code)
+        query_params, expected_auth = self._check_resp_auth(
+            self.client_simple.privkey,
+            'https://example.com/%E2%86%92%C2%AB%C3%A0%C3%A9%C3%AE%C3%B6%C3%B9%C3%BF%C2%BB%E2%80%BD%F0%9F%98%87',
+            challenge, resp['Location'])
+        self.assertEqual(query_params.dict(), {
+            'auth': expected_auth,
+            'forlife': 'louis.vaneau.1829',
+            'full_promo': 'X1829',
+            'matricule_ax': '18290001',
+            'nom': 'Vaneau',
+            'prenom': 'Louis',
+            'sex': 'male',
+        })
+
     def test_logged_request__groupadm(self):
         grp = Group.objects.create(shortname='X1829')
         grp.save()
