@@ -27,7 +27,7 @@ class AuthGroupeXLoginView(auth_views.LoginView):
             ext_url = query_params.get('url', '')
             # make exturl printable
             if len(ext_url) >= 120:
-                ext_url = ext_url[120:] + '...'
+                ext_url = ext_url[:120] + '...'
             context['ext_url'] = ext_url
         return context
 
