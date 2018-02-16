@@ -10,6 +10,7 @@ from django.urls import reverse
 
 from xorgauth.accounts.models import User, UserAlias, Role, Group, GroupMembership
 from xorgauth.authgroupex.models import AuthGroupeXClient
+import xorgauth.authgroupex.views as authgroupex_views
 
 
 class AuthGroupeXTests(TestCase):
@@ -342,3 +343,27 @@ class AuthGroupeXTests(TestCase):
         self.assertEqual(400, resp.status_code)
         self.assertNotIn('Location', resp)
         self.assertTrue(self._is_user_authenticated(c))
+
+    def test_displayed_url(self):
+        """Test the URL displayed in the login page"""
+        # Wikix through old Polytechnique.org
+        next_value = '/auth-groupex?session=0123456789'
+        next_value += '&challenge=0123456789abcdef0123456789abcdef01234567'
+        next_value += '&pass=0123456789abcdef0123456789abcdef01234567'
+        next_value += '&url=https%3A%2F%2Fwww.polytechnique.org%2Fauth-groupex'
+        next_value += '%3Fchallenge%3Dfedcba9876543210%26pass%3Dfedcba9876543210'
+        next_value += '%26url%3Dhttps%3A%2F%2Fwikix.polytechnique.org%2FSpecial%3AUserlogin'
+        next_value += '%3Freturnto%3DAccueil'
+        self.assertEqual(
+            'https://www.polytechnique.org/auth-groupex?challenge=fedcba9876543210&pass=fedcb...',
+            authgroupex_views.extract_url_from_next_param(next_value, cut_length=80))
+
+        # forum.polytechnique.org
+        next_value = '/auth-groupex?session=0123456789'
+        next_value += '&challenge=0123456789abcdef0123456789abcdef01234567'
+        next_value += '&pass=0123456789abcdef0123456789abcdef01234567'
+        next_value += '&url=https%3A%2F%2Fwww.polytechnique.org%2Fauth-discourse%2Fforum.polytechnique.org'
+        next_value += '%3Fsso%3Dbase64blabla%253D%250A%26sig%3Dxyz'
+        self.assertEqual(
+            'https://www.polytechnique.org/auth-discourse/forum.polytechnique.org?sso=base64blabla%3D%0A&sig=xyz',
+            authgroupex_views.extract_url_from_next_param(next_value))
