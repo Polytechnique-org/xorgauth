@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 import hashlib
 import random
 import struct
@@ -366,4 +368,15 @@ class AuthGroupeXTests(TestCase):
         next_value += '%3Fsso%3Dbase64blabla%253D%250A%26sig%3Dxyz'
         self.assertEqual(
             'https://www.polytechnique.org/auth-discourse/forum.polytechnique.org?sso=base64blabla%3D%0A&sig=xyz',
+            authgroupex_views.extract_url_from_next_param(next_value))
+
+        # x-suisse.polytechnique.org, with Unicode issues
+        next_value = '/auth-groupex?session=0123456789'
+        next_value += '&challenge=0123456789abcdef0123456789abcdef01234567'
+        next_value += '&pass=0123456789abcdef0123456789abcdef01234567'
+        next_value += '&group=x-suisse'
+        next_value += '&url=https%3A%2F%2Fx-suisse.polytechnique.org%2Fauth%2FXorgReturn'
+        next_value += '%3Fpath%3D%2Ffeed%2Fcategory%2FG%C3%A9n%C3%A9ral%2Fatom'
+        self.assertEqual(
+            'https://x-suisse.polytechnique.org/auth/XorgReturn?path=/feed/category/Général/atom',
             authgroupex_views.extract_url_from_next_param(next_value))
