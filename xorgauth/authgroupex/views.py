@@ -57,7 +57,7 @@ class AuthGroupeXView(LoginRequiredMixin, View):
         # Split the external URL parameters
         if '?' in ext_url:
             ext_url, params = ext_url.split('?', 1)
-            ext_url_params = QueryDict(params, mutable=True)
+            ext_url_params = QueryDict(params.encode('utf-8'), mutable=True)
         else:
             ext_url_params = QueryDict(mutable=True)
 
@@ -108,7 +108,7 @@ class AuthGroupeXLogoutView(View):
         # Split the external URL parameters
         if '?' in ext_url:
             ext_url, params = ext_url.split('?', 1)
-            ext_url_params = QueryDict(params, mutable=True)
+            ext_url_params = QueryDict(params.encode('utf-8'), mutable=True)
         else:
             ext_url_params = QueryDict(mutable=True)
 

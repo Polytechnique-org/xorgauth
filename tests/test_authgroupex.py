@@ -78,7 +78,7 @@ class AuthGroupeXTests(TestCase):
         requrl = reverse('auth-groupex') + '?' + query.urlencode()
         return requrl, challenge
 
-    def _check_resp_auth(self, privkey, return_url, challenge, location):
+    def _check_resp_auth(self, privkey, return_url, challenge, location, additional_fields=None):
         """Check that the response has the right authorization result"""
         self.assertTrue(location.startswith(return_url + '?'),
                         "unexpected Location header: %r" % location)
@@ -87,6 +87,8 @@ class AuthGroupeXTests(TestCase):
         # Compute expected auth
         check_str = '1%s%s' % (challenge, privkey)
         known_resp_fields = set(('auth', ))
+        if additional_fields:
+            known_resp_fields.update(additional_fields)
         for field in self.client_simple.data_fields.split(','):
             self.assertTrue(field in query_params, "missing field %r in response" % field)
             check_str += query_params[field]
@@ -162,13 +164,15 @@ class AuthGroupeXTests(TestCase):
         """Test returning from the authentication with an Unicode URL"""
         c = Client()
         self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
-        requrl, challenge = self._get_req_url(self.client_simple.privkey, 'https://example.com/→«àéîöùÿ»‽😇')
+        requrl, challenge = self._get_req_url(self.client_simple.privkey, 'https://example.com/→«àéîöùÿ»‽?!=😇&☀=★')
         resp = c.get(requrl)
         self.assertEqual(302, resp.status_code)
         query_params, expected_auth = self._check_resp_auth(
             self.client_simple.privkey,
-            'https://example.com/%E2%86%92%C2%AB%C3%A0%C3%A9%C3%AE%C3%B6%C3%B9%C3%BF%C2%BB%E2%80%BD%F0%9F%98%87',
-            challenge, resp['Location'])
+            'https://example.com/%E2%86%92%C2%AB%C3%A0%C3%A9%C3%AE%C3%B6%C3%B9%C3%BF%C2%BB%E2%80%BD',
+            challenge,
+            resp['Location'],
+            additional_fields=('!', '☀'))
         self.assertEqual(query_params.dict(), {
             'auth': expected_auth,
             'forlife': 'louis.vaneau.1829',
@@ -177,6 +181,8 @@ class AuthGroupeXTests(TestCase):
             'nom': 'Vaneau',
             'prenom': 'Louis',
             'sex': 'male',
+            '!': '😇',
+            '☀': '★',
         })
 
     def test_logged_request__groupadm(self):
