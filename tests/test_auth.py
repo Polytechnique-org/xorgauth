@@ -4,13 +4,18 @@ from __future__ import unicode_literals
 import crypt
 import sys
 
+from django.core import mail
 from django.test import Client, TestCase
+from django.utils import translation
 
 from xorgauth.accounts.models import User, UserAlias
+import xorgauth.forms
 
 
 class AuthenticationTests(TestCase):
     def setUp(cls):
+        # Run tests in French in order to test translations
+        translation.activate('fr')
         cls.vaneau = User.objects.create_user(
             hrid='louis.vaneau.1829',
             main_email='louis.vaneau.1829@polytechnique.org',
@@ -86,3 +91,37 @@ class AuthenticationTests(TestCase):
         if sys.version_info < (3,):
             password = password.encode('utf-8')
         self.assertEqual(crypt.crypt(password, gapps_password), gapps_password)
+
+    def test_password_reset_form(self):
+        """Test using the password reset form"""
+        form = xorgauth.forms.PasswordResetForm({
+            'email': 'louis.vaneau.1829',
+        })
+        self.assertTrue(form.is_valid())
+        self.assertEqual('louis.vaneau.1829@polytechnique.org', form.cleaned_data['email'])
+        form.save(domain_override='test.localhost')
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual('Réinitialisation du mot de passe Polytechnique.org', mail.outbox[0].subject)
+        self.assertEqual(['louis.vaneau.1829@polytechnique.org'], mail.outbox[0].to)
+
+    def test_password_reset_form_unknown_user(self):
+        """Test using the password reset form"""
+        form = xorgauth.forms.PasswordResetForm({
+            'email': 'louis.vaneau.1830',
+        })
+        self.assertFalse(form.is_valid())
+        self.assertEqual({
+            'email': ['Compte utilisateur inconnu'],
+        }, form.errors)
+        self.assertEqual({}, form.cleaned_data)
+
+    def test_password_reset_form_space(self):
+        """Entering a space is invalid"""
+        form = xorgauth.forms.PasswordResetForm({
+            'email': ' ',
+        })
+        self.assertFalse(form.is_valid())
+        self.assertEqual({
+            'email': ['Ce champ est obligatoire.'],
+        }, form.errors)
+        self.assertEqual({}, form.cleaned_data)
