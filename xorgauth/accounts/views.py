@@ -7,7 +7,7 @@ from django.views.generic.base import RedirectView, TemplateView
 
 from oidc_provider.models import UserConsent, Client
 
-from xorgauth.forms import PasswordChangeForm, PasswordResetFrom, SetPasswordForm
+from xorgauth.forms import PasswordChangeForm, PasswordResetForm, SetPasswordForm
 
 
 @login_required
@@ -55,7 +55,7 @@ class PasswordChangeView(auth_views.PasswordChangeView):
 
 
 class PasswordResetView(auth_views.PasswordResetView):
-    form_class = PasswordResetFrom
+    form_class = PasswordResetForm
 
 
 class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):

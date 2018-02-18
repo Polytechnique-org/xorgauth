@@ -30,7 +30,7 @@ class PasswordChangeForm(SetPasswordForm, auth_forms.PasswordChangeForm):
     pass
 
 
-class PasswordResetFrom(auth_forms.PasswordResetForm):
+class PasswordResetForm(auth_forms.PasswordResetForm):
     """Override PasswordResetForm from django.contrib.auth in order to allow
     any user alias when recovering a lost password
     """
@@ -40,7 +40,7 @@ class PasswordResetFrom(auth_forms.PasswordResetForm):
         max_length=254)
 
     def clean(self):
-        cleaned_data = super(PasswordResetFrom, self).clean()
+        cleaned_data = super(PasswordResetForm, self).clean()
         # Transform a login or an email alias to a main email address
         if 'email' not in cleaned_data:
             return
