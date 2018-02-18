@@ -86,32 +86,53 @@ class Command(BaseCommand):
                     if not account_data['full_name']:
                         account_data['full_name'] = display_name
 
-            user.fullname = account_data['full_name']
-            user.preferred_name = account_data['display_name']
-            user.main_email = account_data['email']
+            # Update the fields of user, if needed
+            user_fields = {
+                'fullname': account_data['full_name'],
+                'preferred_name': account_data['display_name'],
+                'main_email': account_data['email'],
+                'axid': account_data['ax_id'],
+                'schoolid': str(account_data['xorg_id']) if account_data['xorg_id'] else None,
+                'xorgdb_uid': account_data['uid'],
+                'firstname': account_data['firstname'],
+                'lastname': account_data['lastname'],
+                'sex': account_data['sex'],
+                'study_year': account_data['promo'],
+                'grad_year': account_data['grad_year'],
+            }
+            is_user_modified = is_creating_user
+            for field_name, new_value in user_fields.items():
+                if getattr(user, field_name) != new_value:
+                    if not is_creating_user and is_verbose:
+                        print("... updating %r because %r is %r, not %r" % (
+                            user,
+                            field_name,
+                            getattr(user, field_name),
+                            new_value))
+                    is_user_modified = True
+                    setattr(user, field_name, new_value)
+
             if is_creating_user:
                 # Do not override the password when updating an existing account
                 if account_data['password']:
                     user.password = hasher.encode_sha1_hash(account_data['password'])
                 else:
                     user.set_unusable_password()
-            user.axid = account_data['ax_id']
-            user.schoolid = account_data['xorg_id']
-            user.xorgdb_uid = account_data['uid']
-            user.firstname = account_data['firstname']
-            user.lastname = account_data['lastname']
-            user.sex = account_data['sex']
-            user.study_year = account_data['promo']
-            user.grad_year = account_data['grad_year']
-            user.full_clean()
-            user.save()
-            if account_data['is_admin']:
+
+            # Validate and save the user only if it has been modified
+            if is_user_modified:
+                user.full_clean()
+                user.save()
+
+            # Add new administrators
+            if account_data['is_admin'] and not user.roles.filter(pk=admin_role.pk).exists():
                 user.roles.add(admin_role)
                 user.save()
 
             # Import groups
             for groupname, perms in account_data['groups'].items():
                 group = Group.objects.get_or_create(shortname=groupname)[0]
+                # Perform an "update_or_create" on the membership, calling full_clean() also
                 membership, created = GroupMembership.objects.get_or_create(
                     group=group,
                     user=user,
@@ -125,7 +146,10 @@ class Command(BaseCommand):
                     membership.full_clean()
 
             # Import email aliases
+            current_user_aliases = set(a.email for a in user.aliases.all())
             for email in account_data['email_source'].keys():
+                if email in current_user_aliases:
+                    continue
                 try:
                     alias = UserAlias.objects.get(email=email)
                 except ObjectDoesNotExist:
@@ -137,6 +161,8 @@ class Command(BaseCommand):
                         raise CommandError("Duplicate email %r" % email)
 
             # Import account type into role
-            user.roles.add(type_roles[account_data['type']])
-            user.full_clean()
-            user.save()
+            user_type_role = type_roles[account_data['type']]
+            if not user.roles.filter(pk=user_type_role.pk).exists():
+                user.roles.add(user_type_role)
+                user.full_clean()
+                user.save()
