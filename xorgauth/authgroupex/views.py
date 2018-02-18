@@ -12,6 +12,8 @@ from django.urls import reverse
 from django.utils import timezone
 from django.views.generic import View
 
+from xorgauth import forms as xorgauth_forms
+
 from .models import AuthGroupeXClient
 
 
@@ -29,6 +31,7 @@ def extract_url_from_next_param(next_value, cut_length=120):
 
 class AuthGroupeXLoginView(auth_views.LoginView):
     template_name = 'authgroupex/login.html'
+    authentication_form = xorgauth_forms.AuthenticationForm
 
     def get_context_data(self, **kwargs):
         context = super(AuthGroupeXLoginView, self).get_context_data(**kwargs)
