@@ -52,10 +52,12 @@ class Command(BaseCommand):
             hrid = account_data['hruid']
             try:
                 user = User.objects.get(hrid=hrid)
+                is_creating_user = False
                 if is_verbose:
                     print("Updating user %s (%d/%d)" % (hrid, idx_account + 1, accounts_num))
             except ObjectDoesNotExist:
                 user = User(hrid=hrid)
+                is_creating_user = True
                 if is_verbose:
                     print("Creating user %s (%d/%d)" % (hrid, idx_account + 1, accounts_num))
 
@@ -87,10 +89,12 @@ class Command(BaseCommand):
             user.fullname = account_data['full_name']
             user.preferred_name = account_data['display_name']
             user.main_email = account_data['email']
-            if account_data['password']:
-                user.password = hasher.encode_sha1_hash(account_data['password'])
-            else:
-                user.set_unusable_password()
+            if is_creating_user:
+                # Do not override the password when updating an existing account
+                if account_data['password']:
+                    user.password = hasher.encode_sha1_hash(account_data['password'])
+                else:
+                    user.set_unusable_password()
             user.axid = account_data['ax_id']
             user.schoolid = account_data['xorg_id']
             user.xorgdb_uid = account_data['uid']
