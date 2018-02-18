@@ -53,6 +53,7 @@ class PasswordResetForm(auth_forms.PasswordResetForm):
 
         cleaned_data['user'] = user
         cleaned_data['email'] = user.main_email
+        return cleaned_data
 
     def get_users(self, email):
         # get_users is only called when self.cleaned_data has been populated,
