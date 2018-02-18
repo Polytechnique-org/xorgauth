@@ -15,20 +15,25 @@ from django.views.generic import View
 from .models import AuthGroupeXClient
 
 
+def extract_url_from_next_param(next_value, cut_length=120):
+    """Parse the next parameter of the login page in order to display a nice URL"""
+    if '?' not in next_value:
+        return
+    query_params = QueryDict(next_value.split('?', 1)[1].encode('utf-8'))
+    ext_url = query_params.get('url', '')
+    # make exturl printable
+    if cut_length and len(ext_url) >= cut_length:
+        ext_url = ext_url[:cut_length] + '...'
+    return ext_url
+
+
 class AuthGroupeXLoginView(auth_views.LoginView):
     template_name = 'authgroupex/login.html'
 
     def get_context_data(self, **kwargs):
         context = super(AuthGroupeXLoginView, self).get_context_data(**kwargs)
         # Find the external URL in next value
-        next_value = context.get('next', '')
-        if '?' in next_value:
-            query_params = QueryDict(next_value.split('?', 1)[1])
-            ext_url = query_params.get('url', '')
-            # make exturl printable
-            if len(ext_url) >= 120:
-                ext_url = ext_url[120:] + '...'
-            context['ext_url'] = ext_url
+        context['ext_url'] = extract_url_from_next_param(context.get('next', ''))
         return context
 
 
@@ -52,7 +57,7 @@ class AuthGroupeXView(LoginRequiredMixin, View):
         # Split the external URL parameters
         if '?' in ext_url:
             ext_url, params = ext_url.split('?', 1)
-            ext_url_params = QueryDict(params, mutable=True)
+            ext_url_params = QueryDict(params.encode('utf-8'), mutable=True)
         else:
             ext_url_params = QueryDict(mutable=True)
 
@@ -103,7 +108,7 @@ class AuthGroupeXLogoutView(View):
         # Split the external URL parameters
         if '?' in ext_url:
             ext_url, params = ext_url.split('?', 1)
-            ext_url_params = QueryDict(params, mutable=True)
+            ext_url_params = QueryDict(params.encode('utf-8'), mutable=True)
         else:
             ext_url_params = QueryDict(mutable=True)
 
