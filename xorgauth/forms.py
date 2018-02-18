@@ -43,7 +43,7 @@ class PasswordResetForm(auth_forms.PasswordResetForm):
         cleaned_data = super(PasswordResetForm, self).clean()
         # Transform a login or an email alias to a main email address
         if 'email' not in cleaned_data:
-            return
+            return cleaned_data
         email = cleaned_data['email']
         user = User.objects.get_for_login(email, True)
         if user is None:
