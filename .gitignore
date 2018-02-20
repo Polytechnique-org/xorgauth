@@ -2,6 +2,7 @@
 .*.swp
 *.pyc
 *.pyo
+*.mo
 
 # Dev-related files
 dev/
