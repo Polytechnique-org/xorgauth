@@ -396,7 +396,7 @@ msgid ""
 "you get to the front page)"
 msgstr ""
 "Mise à jour de ta fiche dans l'annuaire sur ax.polytechnique.org (clique sur "
-"\"Je me connect\" si tu arrives sur la page d'accueil)"
+"\"Je me connecte\" si tu arrives sur la page d'accueil)"
 
 #: xorgauth/templates/profile.html:19
 #, python-format
