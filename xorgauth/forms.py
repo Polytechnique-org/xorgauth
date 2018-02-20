@@ -13,7 +13,7 @@ class AuthenticationForm(auth_forms.AuthenticationForm):
         widget=django.forms.TextInput(attrs={'placeholder': _('firstname.lastname.gradyear')}),
         max_length=254)
     expiry = django.forms.ChoiceField(
-        choices=[('now', _("When I close my browser")), ('5min', _("After 5 minutes")), ('nerver', _("Never"))],
+        choices=[('now', _("When I close my browser")), ('5min', _("After 5 minutes of inactivity")), ('nerver', _("Never"))],
         label=_("Expire my session"),
         widget=django.forms.RadioSelect,
         initial='5min'

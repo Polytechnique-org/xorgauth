@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-20 07:35+0100\n"
+"POT-Creation-Date: 2018-02-20 09:26+0100\n"
 "PO-Revision-Date: 2017-12-03 22:42+0100\n"
 "Last-Translator: Nicolas Iooss\n"
 "Language: \n"
@@ -285,11 +285,11 @@ msgstr ""
 msgid "Log in"
 msgstr "Connexion"
 
-#: xorgauth/forms.py:12 xorgauth/forms.py:52
+#: xorgauth/forms.py:12 xorgauth/forms.py:53
 msgid "User name or email address"
 msgstr "Nom d'utilisateur ou couriel"
 
-#: xorgauth/forms.py:13 xorgauth/forms.py:53
+#: xorgauth/forms.py:13 xorgauth/forms.py:54
 msgid "firstname.lastname.gradyear"
 msgstr "prenom.nom.promo"
 
@@ -298,8 +298,8 @@ msgid "When I close my browser"
 msgstr "À la fermeture de mon navigateur"
 
 #: xorgauth/forms.py:16
-msgid "After 5 minutes"
-msgstr "Après 5 minutes"
+msgid "After 5 minutes of inactivity"
+msgstr "Après 5 minutes d'inactivité"
 
 #: xorgauth/forms.py:16
 msgid "Never"
@@ -309,15 +309,15 @@ msgstr "Jamais"
 msgid "Expire my session"
 msgstr "Expiration de ma session"
 
-#: xorgauth/forms.py:33
+#: xorgauth/forms.py:34
 msgid "New password"
 msgstr "Nouveau mot de passe"
 
-#: xorgauth/forms.py:38
+#: xorgauth/forms.py:39
 msgid "New password confirmation"
 msgstr "Confirmation du nouveau mot de passe"
 
-#: xorgauth/forms.py:64
+#: xorgauth/forms.py:65
 msgid "Unknown user account"
 msgstr "Compte utilisateur inconnu"
 
