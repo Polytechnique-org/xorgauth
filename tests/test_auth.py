@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import crypt
 import sys
 
+from django.contrib import auth
 from django.core import mail
 from django.test import Client, TestCase
 from django.utils import translation
@@ -125,3 +126,9 @@ class AuthenticationTests(TestCase):
             'email': ['Ce champ est obligatoire.'],
         }, form.errors)
         self.assertEqual({}, form.cleaned_data)
+
+    def test_auth_session_expiry(self):
+        c = Client()
+        c.post('/accounts/login/', {'username': 'louis.vaneau.1829', 'password': 'Depuis Vaneau!', 'expiry': 'now'})
+        self.assertTrue(auth.get_user(c).is_authenticated)
+        self.assertTrue(c.session.get_expire_at_browser_close())
