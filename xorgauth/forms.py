@@ -12,6 +12,25 @@ class AuthenticationForm(auth_forms.AuthenticationForm):
         label=_("User name or email address"),
         widget=django.forms.TextInput(attrs={'placeholder': _('firstname.lastname.gradyear')}),
         max_length=254)
+    expiry = django.forms.ChoiceField(
+        choices=[
+            ('now', _("When I close my browser")),
+            ('5min', _("After 5 minutes of inactivity")),
+            ('nerver', _("Never"))
+        ],
+        label=_("Expire my session"),
+        widget=django.forms.RadioSelect,
+        initial='5min'
+    )
+
+    def clean(self):
+        super(AuthenticationForm, self).clean()
+        expiry = self.cleaned_data.get('expiry')
+        if expiry == 'now':
+            self.request.session.set_expiry(0)
+        elif expiry == '5min':
+            self.request.session.set_expiry(300)
+        return self.cleaned_data
 
 
 class SetPasswordForm(auth_forms.SetPasswordForm):
