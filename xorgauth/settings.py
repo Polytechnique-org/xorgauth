@@ -227,3 +227,9 @@ EMAIL_SUBJECT_PREFIX = config.getstr('email.subject_prefix', '[Django xorgauth]'
 # In development mode, send messages to the console
 if APPMODE == 'dev':
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Security
+USE_HTTPS = (APPMODE == 'prod') or config.getbool("security.use_ssl")
+SECURE_SSL_REDIRECT = USE_HTTPS
+SESSION_COOKIE_SECURE = USE_HTTPS
+CSRF_COOKIE_SECURE = USE_HTTPS
