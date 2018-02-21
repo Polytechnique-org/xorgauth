@@ -57,36 +57,30 @@ class UserManager(base_user.BaseUserManager):
 
         Returns None if no user has been found
         """
-        if '@' not in username:
-            # try to login with hrid (human-readable identifier)
+        if "@" in username:
+            # The username seems to be an email
             try:
-                user = self.get(hrid=username)
-            except User.DoesNotExist:
-                # if the username is "firstname.lastname", try builing an hrid
-                user = None
-                hrid_prefix = username + '.'
-                for possible_user in self.filter(hrid__startswith=hrid_prefix):
-                    # Sanity check
-                    if not possible_user.hrid.startswith(hrid_prefix):
-                        return None
-                    # No dot in the last part
-                    if '.' in possible_user.hrid[len(hrid_prefix):]:
-                        continue
-                    # Several users share the same firstname.lastname prefix,
-                    # refuse to log in.
-                    if user is not None:
-                        return None
-                    user = possible_user
-        else:
-            # try to login with email
-            try:
-                # try main email
                 user = self.get(main_email=username)
             except User.DoesNotExist:
                 # try aliases
                 try:
                     user = UserAlias.objects.get(email=username).user
                 except UserAlias.DoesNotExist:
+                    return None
+        else:
+            # The username is either a hrid or the beginning of an alias email
+            try:
+                # try to get user by exact hrid
+                user = self.get(hrid=username)
+            except User.DoesNotExist:
+                # look up in alias emails
+                email_prefix = username + "@"
+                try:
+                    user = self.filter(aliases__email__startswith=email_prefix).distinct().get()
+                except User.DoesNotExist:
+                    return None
+                except User.MultipleObjectsReturned:
+                    # TODO: exploit this exception to display error message in form
                     return None
 
         # do not return an inactive user if an active one has been requested
