@@ -14,15 +14,15 @@ import xorgauth.forms
 
 
 class AuthenticationTests(TestCase):
-    def setUp(cls):
+    def setUp(self):
         # Run tests in French in order to test translations
         translation.activate('fr')
-        cls.vaneau = User.objects.create_user(
+        self.vaneau = User.objects.create_user(
             hrid='louis.vaneau.1829',
             main_email='louis.vaneau.1829@polytechnique.org',
             password='Depuis Vaneau!'
         )
-        UserAlias(user=cls.vaneau, email='vaneau@melix.net').save()
+        UserAlias(user=self.vaneau, email='vaneau@melix.net').save()
 
     def test_auth_hrid(self):
         self.assertEqual(self.vaneau, User.objects.get_for_login('louis.vaneau.1829', True))
