@@ -23,6 +23,12 @@ class AuthenticationTests(TestCase):
             password='Depuis Vaneau!'
         )
         UserAlias(user=self.vaneau, email='vaneau@melix.net').save()
+        # Add classic aliases
+        UserAlias(user=self.vaneau, email='louis.vaneau@polytechnique.org').save()
+        UserAlias(user=self.vaneau, email='louis.vaneau.29@polytechnique.org').save()
+        UserAlias(user=self.vaneau, email='louis.vaneau@m4x.org').save()
+        UserAlias(user=self.vaneau, email='louis.vaneau.29@m4x.org').save()
+        UserAlias(user=self.vaneau, email='louis.vaneau.1829@m4x.org').save()
 
     def test_auth_hrid(self):
         self.assertEqual(self.vaneau, User.objects.get_for_login('louis.vaneau.1829', True))
@@ -52,16 +58,6 @@ class AuthenticationTests(TestCase):
         c = Client()
         self.assertTrue(c.login(username='louis.vaneau', password='Depuis Vaneau!'))
 
-    def test_auth_homonym(self):
-        c = Client()
-        User.objects.create_user(
-            hrid='louis.vaneau.m1829',
-            main_email='louis.vaneau.d1829@doc.polytechnique.org',
-            password='Depuis Vaneau!'
-        )
-        self.assertEqual(None, User.objects.get_for_login('louis.vaneau', True))
-        self.assertFalse(c.login(username='louis.vaneau', password='Depuis Vaneau!'))
-
     def test_auth_main_email(self):
         self.assertEqual(self.vaneau, User.objects.get_for_login('louis.vaneau.1829@polytechnique.org', True))
         c = Client()
@@ -76,6 +72,57 @@ class AuthenticationTests(TestCase):
         self.assertEqual(None, User.objects.get_for_login('louis.vaneau.1830@polytechnique.org', True))
         c = Client()
         self.assertFalse(c.login(username='louis.vaneau.1830@polytechnique.org', password='Depuis Vaneau!'))
+
+    def test_auth_firstname_lastname_2_digits(self):
+        self.assertEqual(self.vaneau, User.objects.get_for_login('louis.vaneau.29', True))
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.29', password='Depuis Vaneau!'))
+
+    def test_auth_homonym_same_curriculum(self):
+        c = Client()
+        homonym = User.objects.create_user(
+            hrid="louis.vaneau.1830",  # same name, same curriculum, different year
+            main_email="louis.vaneau.1830@polytechnique.org",
+            password="Depuis Vaneau again!"
+        )
+        UserAlias(user=homonym, email="louis.vaneau.30@polytechnique.org").save()
+        UserAlias(user=homonym, email="louis.vaneau.30@m4x.org").save()
+        UserAlias(user=homonym, email="louis.vaneau.1830@m4x.org").save()
+        UserAlias.objects.filter(user=self.vaneau, email__startswith="louis.vaneau@").delete()
+        self.assertEqual(None, User.objects.get_for_login("louis.vaneau", True))
+        self.assertFalse(c.login(username='louis.vaneau', password='Depuis Vaneau!'))
+        self.assertTrue(c.login(username='louis.vaneau.29', password='Depuis Vaneau!'))
+        self.assertTrue(c.login(username='louis.vaneau.30', password='Depuis Vaneau again!'))
+
+    def test_auth_homonym_different_curriculum(self):
+        c = Client()
+        homonym = User.objects.create_user(
+            hrid='louis.vaneau.d1829',  # same name, same year, different curriculum
+            main_email='louis.vaneau.d1829@doc.polytechnique.org',
+            password='Depuis Dr. Vaneau!'
+        )
+        UserAlias(user=homonym, email="louis.vaneau@doc.polytechnique.org").save()
+        UserAlias(user=homonym, email="louis.vaneau.d29@doc.polytechnique.org").save()
+        UserAlias(user=homonym, email="louis.vaneau@doc.m4x.org").save()
+        UserAlias(user=homonym, email="louis.vaneau.d29@doc.m4x.org").save()
+        UserAlias(user=homonym, email="louis.vaneau.d1929@doc.m4x.org").save()
+        self.assertIsNone(User.objects.get_for_login('louis.vaneau', True))
+        self.assertFalse(c.login(username='louis.vaneau', password='Depuis Vaneau!'))
+        self.assertTrue(c.login(username='louis.vaneau.29', password='Depuis Vaneau!'))
+        self.assertTrue(c.login(username='louis.vaneau.d29', password='Depuis Dr. Vaneau!'))
+
+    def test_auth_homonym_2_digits(self):
+        c = Client()
+        homonym = User.objects.create_user(
+            hrid='louis.vaneau.1929',  # same name, same curriculum, different year but same "2 digits"
+            main_email='louis.vaneau.1929@polytechnique.org',
+            password='Depuis Vaneau!'
+        )
+        UserAlias(user=homonym, email="louis.vaneau.1929@m4x.org").save()
+        UserAlias.objects.filter(user=self.vaneau, email__startswith="louis.vaneau@").delete()
+        UserAlias.objects.filter(user=self.vaneau, email__startswith="louis.vaneau.29@").delete()
+        self.assertEqual(None, User.objects.get_for_login('louis.vaneau.29', True))
+        self.assertFalse(c.login(username='louis.vaneau.29', password='Depuis Vaneau!'))
 
     def test_googleapps_password(self):
         """Test setting the Google Apps password when setting the password"""
