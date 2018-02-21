@@ -49,6 +49,40 @@ class UserManager(base_user.BaseUserManager):
         user.save(using=self._db)
         return user
 
+    def get_user_from_alias_hrid(self, username):
+        # Build a prefix and a suffix to select candidate hrids
+        parts = username.split(".")
+        hrid_prefix = ""
+        hrid_suffix = ""
+        if len(parts) == 2:
+            hrid_prefix = username + "."
+        elif len(parts) == 3:
+            hrid_prefix = ".".join(parts[:2]) + "."
+            cursus = parts[2][0]
+            if cursus in ["m", "d"]:
+                hrid_prefix = hrid_prefix + cursus
+                hrid_suffix = parts[2][1:]
+            else:
+                hrid_suffix = parts[2]
+        else:
+            # too many dots is this username...
+            return None
+
+        user = None
+        for possible_user in self.filter(hrid__startswith=hrid_prefix, hrid__endswith=hrid_suffix):
+            # Sanity check
+            if not (possible_user.hrid.startswith(hrid_prefix) and possible_user.hrid.endswith(hrid_suffix)):
+                return None
+            # No dot in the last part
+            if '.' in possible_user.hrid[len(hrid_prefix):]:
+                continue
+            # Several users share the same firstname.lastname prefix,
+            # refuse to log in.
+            if user is not None:
+                return None
+            user = possible_user
+        return user
+
     def get_for_login(self, username, need_is_active):
         """Get a user for the given username, mail email or email alias
 
@@ -62,21 +96,8 @@ class UserManager(base_user.BaseUserManager):
             try:
                 user = self.get(hrid=username)
             except User.DoesNotExist:
-                # if the username is "firstname.lastname", try builing an hrid
-                user = None
-                hrid_prefix = username + '.'
-                for possible_user in self.filter(hrid__startswith=hrid_prefix):
-                    # Sanity check
-                    if not possible_user.hrid.startswith(hrid_prefix):
-                        return None
-                    # No dot in the last part
-                    if '.' in possible_user.hrid[len(hrid_prefix):]:
-                        continue
-                    # Several users share the same firstname.lastname prefix,
-                    # refuse to log in.
-                    if user is not None:
-                        return None
-                    user = possible_user
+                # maybe the username is an alis-hrid (e.g. prenom.nom.XX)
+                user = self.get_user_from_alias_hrid(username)
         else:
             # try to login with email
             try:

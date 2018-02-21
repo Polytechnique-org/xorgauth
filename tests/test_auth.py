@@ -14,15 +14,15 @@ import xorgauth.forms
 
 
 class AuthenticationTests(TestCase):
-    def setUp(cls):
+    def setUp(self):
         # Run tests in French in order to test translations
         translation.activate('fr')
-        cls.vaneau = User.objects.create_user(
+        self.vaneau = User.objects.create_user(
             hrid='louis.vaneau.1829',
             main_email='louis.vaneau.1829@polytechnique.org',
             password='Depuis Vaneau!'
         )
-        UserAlias(user=cls.vaneau, email='vaneau@melix.net').save()
+        UserAlias(user=self.vaneau, email='vaneau@melix.net').save()
 
     def test_auth_hrid(self):
         self.assertEqual(self.vaneau, User.objects.get_for_login('louis.vaneau.1829', True))
@@ -52,15 +52,30 @@ class AuthenticationTests(TestCase):
         c = Client()
         self.assertTrue(c.login(username='louis.vaneau', password='Depuis Vaneau!'))
 
+    def test_auth_firstname_lastname_2_digits(self):
+        self.assertEqual(self.vaneau, User.objects.get_for_login('louis.vaneau.29', True))
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.29', password='Depuis Vaneau!'))
+
     def test_auth_homonym(self):
         c = Client()
         User.objects.create_user(
-            hrid='louis.vaneau.m1829',
+            hrid='louis.vaneau.d1829',
             main_email='louis.vaneau.d1829@doc.polytechnique.org',
             password='Depuis Vaneau!'
         )
         self.assertEqual(None, User.objects.get_for_login('louis.vaneau', True))
         self.assertFalse(c.login(username='louis.vaneau', password='Depuis Vaneau!'))
+
+    def test_auth_homonym_2_digits(self):
+        c = Client()
+        User.objects.create_user(
+            hrid='louis.vaneau.1929',
+            main_email='louis.vaneau.1929@polytechnique.org',
+            password='Depuis Vaneau!'
+        )
+        self.assertEqual(None, User.objects.get_for_login('louis.vaneau.29', True))
+        self.assertFalse(c.login(username='louis.vaneau.29', password='Depuis Vaneau!'))
 
     def test_auth_main_email(self):
         self.assertEqual(self.vaneau, User.objects.get_for_login('louis.vaneau.1829@polytechnique.org', True))
