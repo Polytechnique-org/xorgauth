@@ -229,7 +229,17 @@ if APPMODE == 'dev':
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Security
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
+
 USE_HTTPS = (APPMODE == 'prod') or config.getbool("security.use_ssl")
 SECURE_SSL_REDIRECT = USE_HTTPS
 SESSION_COOKIE_SECURE = USE_HTTPS
 CSRF_COOKIE_SECURE = USE_HTTPS
+
+if USE_HTTPS:
+    # Force using HSTS with HTTPS
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_SECONDS = config.getint('security.hsts_seconds', 15768000)
