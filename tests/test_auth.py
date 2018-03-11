@@ -174,6 +174,55 @@ class AuthenticationTests(TestCase):
         }, form.errors)
         self.assertEqual({}, form.cleaned_data)
 
+    def test_password_set_form(self):
+        """Test using the password set form"""
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        form = xorgauth.forms.SetPasswordForm(user=self.vaneau, data={
+            'new_password1': 'Mot de passe différent?',
+            'new_password2': 'Mot de passe différent?',
+        })
+        self.assertTrue(form.is_valid())
+        self.assertEqual('Mot de passe différent?', form.cleaned_data['new_password1'])
+        form.save()
+        # Athentication with the previous password fails and it works with the new password
+        self.assertFalse(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Mot de passe différent?'))
+
+    def test_password_change_form(self):
+        """Test using the password change form"""
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        form = xorgauth.forms.PasswordChangeForm(user=self.vaneau, data={
+            'old_password': 'Depuis Vaneau!',
+            'new_password1': 'Mot de passe différent?',
+            'new_password2': 'Mot de passe différent?',
+        })
+        self.assertTrue(form.is_valid())
+        self.assertEqual('Mot de passe différent?', form.cleaned_data['new_password1'])
+        form.save()
+        # Athentication with the previous password fails and it works with the new password
+        self.assertFalse(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Mot de passe différent?'))
+
+    def test_password_change_form_incorrect_oldpass(self):
+        """Test using the password change form with an incorrect old password"""
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        form = xorgauth.forms.PasswordChangeForm(user=self.vaneau, data={
+            'old_password': 'Depuis Vaneau?',
+            'new_password1': 'Mot de passe différent?',
+            'new_password2': 'Mot de passe différent?',
+        })
+        self.assertFalse(form.is_valid())
+        self.assertEqual({
+            'old_password': ['Votre ancien mot de passe est incorrect. Veuillez le rectifier.'],
+        }, form.errors)
+        self.assertEqual({
+            'new_password1': 'Mot de passe différent?',
+            'new_password2': 'Mot de passe différent?',
+        }, form.cleaned_data)
+
     def test_auth_session_expiry(self):
         c = Client()
         c.post('/accounts/login/', {'username': 'louis.vaneau.1829', 'password': 'Depuis Vaneau!', 'expiry': 'now'})
