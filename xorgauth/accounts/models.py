@@ -111,7 +111,7 @@ class User(base_user.AbstractBaseUser):
                             help_text=_("Identification in AX directory"))
     schoolid = models.CharField(_("School ID"), max_length=20, blank=True, null=True, unique=True,
                                 help_text=_("Identification defined by the School"))
-    xorgdb_uid = models.IntegerField(_("Polytechnique.org database user ID"), null=True, unique=True,
+    xorgdb_uid = models.IntegerField(_("Polytechnique.org database user ID"), blank=True, null=True, unique=True,
                                      help_text=_("User ID in Polytechnique.org database"))
     study_year = UnboundedCharField(_("study year"), blank=True, null=True, help_text=_(
         "Kind and main year of the study ('X1829' means 'entered the school in 1829 " +

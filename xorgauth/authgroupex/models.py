@@ -36,7 +36,8 @@ class AuthGroupeXClient(models.Model):
     data_fields = UnboundedCharField(_("data fields"), help_text=_("Fields requested by the client"))
     return_urls = UnboundedCharField(_("return URLs"),
                                      help_text=_("Regular expression pattern of the allowed return URLs"))
-    last_used = models.DateField(_("last used"), null=True, help_text=_("Date of the last use of this client"))
+    last_used = models.DateField(_("last used"), blank=True, null=True,
+                                 help_text=_("Date of the last use of this client"))
     allow_xnet = models.BooleanField(_("allow xnet"), default=False,
                                      help_text=_("Allow account with type 'xnet' (external) to log in to this client"))
 
