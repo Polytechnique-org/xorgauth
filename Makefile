@@ -50,6 +50,8 @@ testall:
 test: build
 	PYTHONPATH=. python -Wdefault manage.py test $(TESTS_DIR)
 
+checkdeploy:
+	python manage.py check --deploy --fail-level WARNING
 
 
 lint:
@@ -67,4 +69,4 @@ doc:
 	$(MAKE) -C $(DOC_DIR) html
 
 
-.PHONY: all default clean coverage createdb doc install-deps lint update poupdate test testall
+.PHONY: all checkdeploy clean coverage createdb default doc install-deps lint poupdate test testall update
