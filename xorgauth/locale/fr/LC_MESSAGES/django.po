@@ -382,6 +382,17 @@ msgstr ""
 msgid "Log out"
 msgstr "Déconnexion"
 
+#: xorgauth/templates/base.html:51
+msgid ""
+"<strong>Warning!</strong> Due to a maintenance operation, some features on "
+"this website are currently disabled. No data will be saved and the password "
+"change page is temporarily disabled."
+msgstr ""
+"<strong>Attention&nbsp;!</strong> En raison d'une maintenance, une partie "
+"des fonctionnalités du site est actuellement désactivée, en particulier "
+"aucune donnée ne sera sauvegardée et la page de modification de mot de passe "
+"est temporairement désactivée."
+
 #: xorgauth/templates/list_consents.html:8 xorgauth/templates/profile.html:14
 msgid "List of consents given to web sites"
 msgstr "Liste des autorisations données aux sites web"
@@ -457,7 +468,17 @@ msgstr "Mot de passe oublié ?"
 msgid "Your password was changed."
 msgstr "Votre mot de passe a été modifié."
 
-#: xorgauth/templates/registration/password_change_form.html:13
+#: xorgauth/templates/registration/password_change_form.html:9
+#: xorgauth/templates/registration/password_reset_confirm.html:6
+#: xorgauth/templates/registration/password_reset_form.html:7
+msgid ""
+"Due to a maintenance operation, this page is temporarily disabled. Sorry for "
+"the inconvenience."
+msgstr ""
+"En raison d'une maintenance, cette page est temporairement désactivée. "
+"Veuillez nous excuser pour la gêne occasionée."
+
+#: xorgauth/templates/registration/password_change_form.html:15
 msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
@@ -466,8 +487,8 @@ msgstr ""
 "nouveau mot de passe à deux reprises afin de vérifier qu'il est correctement "
 "saisi."
 
-#: xorgauth/templates/registration/password_change_form.html:17
-#: xorgauth/templates/registration/password_reset_form.html:8
+#: xorgauth/templates/registration/password_change_form.html:19
+#: xorgauth/templates/registration/password_reset_form.html:12
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -480,12 +501,12 @@ msgstr ""
 "Votre mot de passe a été défini. Vous pouvez maintenant <a href="
 "\"%(login_url)s\">vous connecter</a>."
 
-#: xorgauth/templates/registration/password_reset_confirm.html:6
-#: xorgauth/templates/registration/password_reset_confirm.html:10
+#: xorgauth/templates/registration/password_reset_confirm.html:9
+#: xorgauth/templates/registration/password_reset_confirm.html:13
 msgid "Change password"
 msgstr "Modifier le mot de passe"
 
-#: xorgauth/templates/registration/password_reset_confirm.html:24
+#: xorgauth/templates/registration/password_reset_confirm.html:27
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."

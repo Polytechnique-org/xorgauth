@@ -28,6 +28,8 @@ config = getconf.ConfigGetter('xorgauth', [
 APPMODE = config.getstr('app.mode', 'dev')
 assert APPMODE in ('dev', 'dist', 'prod'), "Invalid application mode %s" % APPMODE
 
+MAINTENANCE = config.getbool('app.maintenance', False)
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -90,6 +92,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'xorgauth.context_processors.maintenance',
             ],
         },
     },

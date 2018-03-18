@@ -45,6 +45,12 @@
     </nav>
 
     <div class="container" style="margin-top: 10em;">
+    {% if MAINTENANCE %}
+        <div class="alert alert-warning">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            {% trans '<strong>Warning!</strong> Due to a maintenance operation, some features on this website are currently disabled. No data will be saved and the password change page is temporarily disabled.' %}
+        </div>
+    {% endif %}
     {% block content %}{% endblock %}
     </div>
 
