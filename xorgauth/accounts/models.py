@@ -113,12 +113,17 @@ class User(base_user.AbstractBaseUser):
                                 help_text=_("Identification defined by the School"))
     xorgdb_uid = models.IntegerField(_("Polytechnique.org database user ID"), blank=True, null=True, unique=True,
                                      help_text=_("User ID in Polytechnique.org database"))
+    alumnforce_id = models.CharField(_("AlumnForce ID"), max_length=20, blank=True, null=True, unique=True,
+                                     help_text=_("User ID in ax.polytechnique.org database"))
     study_year = UnboundedCharField(_("study year"), blank=True, null=True, help_text=_(
         "Kind and main year of the study ('X1829' means 'entered the school in 1829 " +
         "but 'M2005' means 'graduated in 2005')"))
     grad_year = models.IntegerField(_("graduation year"), blank=True, null=True, help_text=_("Year of the graduation"))
     is_active = models.BooleanField(_('active'), default=True,
                                     help_text=_('Active user'))
+    birth_date = models.DateField(_("birthdate"), blank=True, null=True)
+    is_dead = models.BooleanField(_("dead"), default=False)
+    death_date = models.DateField(_("death date"), blank=True, null=True)
 
     objects = UserManager()
 
@@ -169,6 +174,11 @@ class User(base_user.AbstractBaseUser):
     def is_x_alumni(self):
         """The user is an alumni of Ecole Polytechnique (not an external account)"""
         return self.roles.filter(hrid__in=('x', 'master', 'phd')).exists()
+
+    def clean(self):
+        # If the death date is filled, the user is dead
+        if self.death_date is not None and not self.is_dead:
+            self.is_dead = True
 
 
 class UserAlias(models.Model):

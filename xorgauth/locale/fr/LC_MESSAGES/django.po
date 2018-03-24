@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-20 09:26+0100\n"
+"POT-Creation-Date: 2018-03-17 12:08+0100\n"
 "PO-Revision-Date: 2017-12-03 22:42+0100\n"
 "Last-Translator: Nicolas Iooss\n"
 "Language: \n"
@@ -30,89 +30,98 @@ msgstr "nom affiché"
 msgid "role"
 msgstr "rôle"
 
-#: xorgauth/accounts/models.py:25 xorgauth/accounts/models.py:115
+#: xorgauth/accounts/models.py:25 xorgauth/accounts/models.py:109
 msgid "roles"
 msgstr "rôles"
 
-#: xorgauth/accounts/models.py:102
+#: xorgauth/accounts/models.py:96
 msgid "Male"
 msgstr "Homme"
 
-#: xorgauth/accounts/models.py:103
+#: xorgauth/accounts/models.py:97
 msgid "Female"
 msgstr "Femme"
 
-#: xorgauth/accounts/models.py:107
+#: xorgauth/accounts/models.py:101
 msgid "username"
 msgstr "nom d'utilisateur"
 
-#: xorgauth/accounts/models.py:108
+#: xorgauth/accounts/models.py:102
 msgid "Human-readable identifier, usually firstname.lastname.study-year"
 msgstr "Identifiant humainement lisible, généralement prenom.nom.promo"
 
-#: xorgauth/accounts/models.py:109
+#: xorgauth/accounts/models.py:103
 msgid "full name"
 msgstr "nom complet"
 
-#: xorgauth/accounts/models.py:109
+#: xorgauth/accounts/models.py:103
 msgid "Name to display to other users"
 msgstr "Nom affiché aux autres utilisateurs"
 
-#: xorgauth/accounts/models.py:110
+#: xorgauth/accounts/models.py:104
 msgid "preferred name"
 msgstr "nom préféré"
 
-#: xorgauth/accounts/models.py:110
+#: xorgauth/accounts/models.py:104
 msgid "Name used when addressing the user"
 msgstr "Nom utilisé pour s'adresser à l'utilisateur"
 
-#: xorgauth/accounts/models.py:111
+#: xorgauth/accounts/models.py:105
 msgid "first name"
 msgstr "prénom"
 
-#: xorgauth/accounts/models.py:112
+#: xorgauth/accounts/models.py:106
 msgid "last name"
 msgstr "nom de famille"
 
-#: xorgauth/accounts/models.py:113
+#: xorgauth/accounts/models.py:107
 msgid "sex"
 msgstr "Sexe"
 
-#: xorgauth/accounts/models.py:114
+#: xorgauth/accounts/models.py:108
 msgid "email"
 msgstr "couriel"
 
-#: xorgauth/accounts/models.py:116
+#: xorgauth/accounts/models.py:110
 #: xorgauth/accounts/oidc_provider_settings.py:35
 #: xorgauth/relying_party_test/templates/relying-party-test.html:39
 msgid "AX ID"
 msgstr "ID AX"
 
-#: xorgauth/accounts/models.py:117
+#: xorgauth/accounts/models.py:111
 msgid "Identification in AX directory"
 msgstr "Matricule dans l'annuaire de l'AX"
 
-#: xorgauth/accounts/models.py:118
+#: xorgauth/accounts/models.py:112
 msgid "School ID"
 msgstr "ID École"
 
-#: xorgauth/accounts/models.py:119
+#: xorgauth/accounts/models.py:113
 msgid "Identification defined by the School"
 msgstr "Matricule donné par l'École"
 
-#: xorgauth/accounts/models.py:120
+#: xorgauth/accounts/models.py:114
 msgid "Polytechnique.org database user ID"
 msgstr "ID dans la base de données de Polytechnique.org"
 
-#: xorgauth/accounts/models.py:121
+#: xorgauth/accounts/models.py:115
 msgid "User ID in Polytechnique.org database"
 msgstr "Identifiant utilisateur dans la base de données de Polytechnique.org"
 
-#: xorgauth/accounts/models.py:122
+#: xorgauth/accounts/models.py:116
+msgid "AlumnForce ID"
+msgstr "ID AlumnForce"
+
+#: xorgauth/accounts/models.py:117
+msgid "User ID in ax.polytechnique.org database"
+msgstr ""
+"Identifiant utilisateur dans la base de données de ax.polytechnique.org"
+
+#: xorgauth/accounts/models.py:118
 msgid "study year"
 msgstr "promotion"
 
-#: xorgauth/accounts/models.py:123
+#: xorgauth/accounts/models.py:119
 msgid ""
 "Kind and main year of the study ('X1829' means 'entered the school in 1829 "
 "but 'M2005' means 'graduated in 2005')"
@@ -120,75 +129,87 @@ msgstr ""
 "Catégorie et année de référence de la scolarité ('X1829' signifie 'est entré "
 "à l'école en 1829 mais 'M2005' signifié 'diplomé en 2005')"
 
-#: xorgauth/accounts/models.py:125
+#: xorgauth/accounts/models.py:121
 msgid "graduation year"
 msgstr "année du diplôme"
 
-#: xorgauth/accounts/models.py:125
+#: xorgauth/accounts/models.py:121
 msgid "Year of the graduation"
 msgstr "Année d'obtention du diplôme"
 
-#: xorgauth/accounts/models.py:126
+#: xorgauth/accounts/models.py:122
 msgid "active"
 msgstr "actif"
 
-#: xorgauth/accounts/models.py:127
+#: xorgauth/accounts/models.py:123
 msgid "Active user"
 msgstr "Utilisateur actif"
 
-#: xorgauth/accounts/models.py:132
+#: xorgauth/accounts/models.py:124
+msgid "birthdate"
+msgstr "date de naissance"
+
+#: xorgauth/accounts/models.py:125
+msgid "dead"
+msgstr "mort"
+
+#: xorgauth/accounts/models.py:126
+msgid "death date"
+msgstr "date de décès"
+
+#: xorgauth/accounts/models.py:131
 msgid "user account"
 msgstr "compte utilisateur"
 
-#: xorgauth/accounts/models.py:133
+#: xorgauth/accounts/models.py:132
 msgid "user accounts"
 msgstr "comptes utilisateurs"
 
-#: xorgauth/accounts/models.py:182 xorgauth/accounts/models.py:222
+#: xorgauth/accounts/models.py:186 xorgauth/accounts/models.py:226
 msgid "user"
 msgstr "utilisateur"
 
-#: xorgauth/accounts/models.py:183
+#: xorgauth/accounts/models.py:187
 msgid "email alias"
 msgstr "alias couriel"
 
-#: xorgauth/accounts/models.py:186
+#: xorgauth/accounts/models.py:190
 msgid "user alias"
 msgstr "alias utilisateur"
 
-#: xorgauth/accounts/models.py:187
+#: xorgauth/accounts/models.py:191
 msgid "user aliases"
 msgstr "aliases utilisateurs"
 
-#: xorgauth/accounts/models.py:195
+#: xorgauth/accounts/models.py:199
 msgid "short name"
 msgstr "nom court"
 
-#: xorgauth/accounts/models.py:198 xorgauth/accounts/models.py:211
+#: xorgauth/accounts/models.py:202 xorgauth/accounts/models.py:215
 msgid "group"
 msgstr "groupe"
 
-#: xorgauth/accounts/models.py:199
+#: xorgauth/accounts/models.py:203
 msgid "groups"
 msgstr "groupes"
 
-#: xorgauth/accounts/models.py:208 xorgauth/accounts/models.py:212
+#: xorgauth/accounts/models.py:212 xorgauth/accounts/models.py:216
 msgid "member"
 msgstr "membres"
 
-#: xorgauth/accounts/models.py:209
+#: xorgauth/accounts/models.py:213
 msgid "administrator"
 msgstr "administrateur"
 
-#: xorgauth/accounts/models.py:223
+#: xorgauth/accounts/models.py:227
 msgid "password"
 msgstr "mot de passe"
 
-#: xorgauth/accounts/models.py:227
+#: xorgauth/accounts/models.py:231
 msgid "Google Apps password"
 msgstr "mot de passe Google Apps"
 
-#: xorgauth/accounts/models.py:228
+#: xorgauth/accounts/models.py:232
 msgid "Google Apps passwords"
 msgstr "mots de passe Google Apps"
 
@@ -249,24 +270,24 @@ msgstr "Expression régulière des URLs de retour autorisées"
 msgid "last used"
 msgstr "dernière utilisation"
 
-#: xorgauth/authgroupex/models.py:39
+#: xorgauth/authgroupex/models.py:40
 msgid "Date of the last use of this client"
 msgstr "Date de la dernière utilisation par ce client"
 
-#: xorgauth/authgroupex/models.py:40
+#: xorgauth/authgroupex/models.py:41
 msgid "allow xnet"
 msgstr "autorise xnet"
 
-#: xorgauth/authgroupex/models.py:41
+#: xorgauth/authgroupex/models.py:42
 msgid "Allow account with type 'xnet' (external) to log in to this client"
 msgstr ""
 "Autorise les comptes de type 'xnet' (externes) à se connecter à ce client"
 
-#: xorgauth/authgroupex/models.py:46
+#: xorgauth/authgroupex/models.py:47
 msgid "AuthGroupeX client"
 msgstr "Client AuthGroupeX"
 
-#: xorgauth/authgroupex/models.py:47
+#: xorgauth/authgroupex/models.py:48
 msgid "AuthGroupeX clients"
 msgstr "Clients AuthGroupeX"
 
@@ -285,39 +306,39 @@ msgstr ""
 msgid "Log in"
 msgstr "Connexion"
 
-#: xorgauth/forms.py:12 xorgauth/forms.py:53
+#: xorgauth/forms.py:12 xorgauth/forms.py:57
 msgid "User name or email address"
 msgstr "Nom d'utilisateur ou couriel"
 
-#: xorgauth/forms.py:13 xorgauth/forms.py:54
+#: xorgauth/forms.py:13 xorgauth/forms.py:58
 msgid "firstname.lastname.gradyear"
 msgstr "prenom.nom.promo"
 
-#: xorgauth/forms.py:16
+#: xorgauth/forms.py:17
 msgid "When I close my browser"
 msgstr "À la fermeture de mon navigateur"
 
-#: xorgauth/forms.py:16
+#: xorgauth/forms.py:18
 msgid "After 5 minutes of inactivity"
 msgstr "Après 5 minutes d'inactivité"
 
-#: xorgauth/forms.py:16
+#: xorgauth/forms.py:19
 msgid "Never"
 msgstr "Jamais"
 
-#: xorgauth/forms.py:17
+#: xorgauth/forms.py:21
 msgid "Expire my session"
 msgstr "Expiration de ma session"
 
-#: xorgauth/forms.py:34
+#: xorgauth/forms.py:38
 msgid "New password"
 msgstr "Nouveau mot de passe"
 
-#: xorgauth/forms.py:39
+#: xorgauth/forms.py:43
 msgid "New password confirmation"
 msgstr "Confirmation du nouveau mot de passe"
 
-#: xorgauth/forms.py:65
+#: xorgauth/forms.py:69
 msgid "Unknown user account"
 msgstr "Compte utilisateur inconnu"
 
@@ -361,7 +382,11 @@ msgstr ""
 msgid "Log out"
 msgstr "Déconnexion"
 
-#: xorgauth/templates/list_consents.html:27
+#: xorgauth/templates/list_consents.html:8 xorgauth/templates/profile.html:14
+msgid "List of consents given to web sites"
+msgstr "Liste des autorisations données aux sites web"
+
+#: xorgauth/templates/list_consents.html:29
 msgid "Revoke"
 msgstr "Révoquer"
 
@@ -398,11 +423,8 @@ msgstr "Bienvenue sur le service d'authentification de Polytechnique.org."
 msgid "Here are some pages you can access while you are logged in:"
 msgstr "Voici quelques pages auxquelles tu peux accéder en étant connecté :"
 
-#: xorgauth/templates/profile.html:14
-msgid "List of consents given to web sites"
-msgstr "Liste des autorisations données aux sites web"
-
 #: xorgauth/templates/profile.html:16
+#: xorgauth/templates/registration/password_change_form.html:6
 msgid "Change your password"
 msgstr "Modification de ton mot de passe"
 
@@ -435,7 +457,7 @@ msgstr "Mot de passe oublié ?"
 msgid "Your password was changed."
 msgstr "Votre mot de passe a été modifié."
 
-#: xorgauth/templates/registration/password_change_form.html:9
+#: xorgauth/templates/registration/password_change_form.html:13
 msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
@@ -444,7 +466,7 @@ msgstr ""
 "nouveau mot de passe à deux reprises afin de vérifier qu'il est correctement "
 "saisi."
 
-#: xorgauth/templates/registration/password_change_form.html:13
+#: xorgauth/templates/registration/password_change_form.html:17
 #: xorgauth/templates/registration/password_reset_form.html:8
 msgid "Submit"
 msgstr "Soumettre"
