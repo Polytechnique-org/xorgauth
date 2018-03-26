@@ -72,6 +72,8 @@ with db.cursor() as cursor:
         uid = int(entry['uid'])
         if entry['xorg_id'] == 0:
             entry['xorg_id'] = None
+        if entry['ax_id'] == '':
+            entry['ax_id'] = None
         entry['email_source'] = OrderedDict()
         entry['email_redirect'] = OrderedDict()
         entry['groups'] = OrderedDict()
