@@ -9,7 +9,7 @@ from collections import OrderedDict
 import configparser
 import pymysql
 import json
-import sys
+
 
 # Load platal.conf and connect
 conf = configparser.SafeConfigParser()
