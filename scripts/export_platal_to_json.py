@@ -9,6 +9,7 @@ from collections import OrderedDict
 import configparser
 import pymysql
 import json
+import sys
 
 
 # Load platal.conf and connect
@@ -133,12 +134,67 @@ with db.cursor() as cursor:
         accounts[uid]['groups'][groupid] = perms
 
 print("Removing pending accounts without email addresses")
+is_data_valid = True
+user_for_email = {}  # ensure that "email" field is unique
 for uid in list(accounts.keys()):
     user = accounts[uid]
     if not user['email']:
         if user['state'] != 'pending':
             print("Warning: account %r does not have an email address" % user['hruid'])
         del accounts[uid]
+        continue
+
+    other_user = user_for_email.get(user['email'])
+    if other_user is None:
+        # Easy case: the email has not been already seen
+        user_for_email[user['email']] = user
+        continue
+
+    other_uid = other_user['uid']
+    # Two users share the same email address
+    # This can occur if one of them is pending
+    best_uid = None
+    if user['state'] == 'pending':
+        best_uid = other_uid
+    elif other_user['state'] == 'pending':
+        best_uid = uid
+    else:
+        # Some users have two accounts, like:
+        # - a FX member who also has an external account
+        # - some external accounts who changed their email
+        # Find the best matching account for them
+        if user['type'] == 'xnet' and other_user['type'] != 'xnet':
+            best_uid = other_uid
+        elif user['type'] != 'xnet' and other_user['type'] == 'xnet':
+            best_uid = uid
+        elif user['type'] == 'xnet' and other_user['type'] == 'xnet':
+            # Make the hruid from the email address and compare
+            # NB: at the time of writing this, there were only 2 accounts in
+            # such a situation
+            assert user['hruid'] != other_user['hruid'], "hruid is not unique in the database!"
+            hruid_from_email = user['email'].lower().replace('@', '.') + '.ext'
+            if hruid_from_email == user['hruid']:
+                best_uid = uid
+            elif hruid_from_email == other_user['hruid']:
+                best_uid = uid
+
+    if best_uid is None:
+        print("Error: accounts %r and %r share the same email address %r!" % (
+            user['hruid'], other_user['hruid'], user['email']))
+        is_data_valid = False
+        continue
+
+    # Merge the groups
+    if best_uid == uid:
+        user['groups'].update(other_user['groups'])
+        del accounts[other_uid]
+        user_for_email[user['email']] = user
+    else:
+        other_user['groups'].update(user['groups'])
+        del accounts[uid]
+
+if not is_data_valid:
+    sys.exit(1)
 
 result['accounts'] = list(accounts.values())
 
