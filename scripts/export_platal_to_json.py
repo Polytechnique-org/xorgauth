@@ -62,7 +62,7 @@ with db.cursor() as cursor:
      LEFT JOIN  profiles AS p ON (p.pid = ap.pid)
      LEFT JOIN  profile_display AS pd ON (pd.pid = p.pid)
      LEFT JOIN  profile_education AS pe ON (pe.pid = p.pid AND FIND_IN_SET(\'primary\', pe.flags))
-         WHERE  a.state IN ('active', 'pending')
+         WHERE  a.state IN ('active', 'pending') AND p.deathdate IS NULL
       GROUP BY  a.uid
      """
     cols = get_cols_from_query(sql)
