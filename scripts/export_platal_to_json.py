@@ -144,6 +144,13 @@ for uid in list(accounts.keys()):
         del accounts[uid]
         continue
 
+    if '.@' in user['email']:
+        # Using an invalid email is not fatal if the account is not active
+        if user['state'] != 'pending':
+            print("Warning: account %r does not use a valid email (%s)" % (user['hruid'], user['email']))
+        del accounts[uid]
+        continue
+
     other_user = user_for_email.get(user['email'])
     if other_user is None:
         # Easy case: the email has not been already seen
