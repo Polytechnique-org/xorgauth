@@ -55,14 +55,14 @@ with db.cursor() as cursor:
     sql = """
         SELECT  a.uid, a.hruid, a.password, a.type, a.is_admin,
                 a.firstname, a.lastname, a.full_name, a.directory_name, a.display_name,
-                a.sex, a.email,
+                a.sex, a.email, a.state,
                 p.ax_id, p.xorg_id, pd.promo, pe.grad_year
           FROM  accounts AS a
      LEFT JOIN  account_profiles AS ap ON (ap.uid = a.uid AND FIND_IN_SET('owner', ap.perms))
      LEFT JOIN  profiles AS p ON (p.pid = ap.pid)
      LEFT JOIN  profile_display AS pd ON (pd.pid = p.pid)
      LEFT JOIN  profile_education AS pe ON (pe.pid = p.pid AND FIND_IN_SET(\'primary\', pe.flags))
-         WHERE  a.state = 'active'
+         WHERE  a.state IN ('active', 'pending')
       GROUP BY  a.uid
      """
     cols = get_cols_from_query(sql)
@@ -129,6 +129,14 @@ with db.cursor() as cursor:
             perms = 'member'
         assert groupid not in accounts[uid]['groups']
         accounts[uid]['groups'][groupid] = perms
+
+print("Removing pending accounts without email addresses")
+for uid in list(accounts.keys()):
+    user = accounts[uid]
+    if not user['email']:
+        if user['state'] != 'pending':
+            print("Warning: account %r does not have an email address" % user['hruid'])
+        del accounts[uid]
 
 result['accounts'] = list(accounts.values())
 
