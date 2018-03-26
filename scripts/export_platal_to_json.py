@@ -144,17 +144,18 @@ for uid in list(accounts.keys()):
         del accounts[uid]
         continue
 
-    if '.@' in user['email']:
+    user_email = user['email'].lower()
+    if '.@' in user_email:
         # Using an invalid email is not fatal if the account is not active
         if user['state'] != 'pending':
             print("Warning: account %r does not use a valid email (%s)" % (user['hruid'], user['email']))
         del accounts[uid]
         continue
 
-    other_user = user_for_email.get(user['email'])
+    other_user = user_for_email.get(user_email)
     if other_user is None:
         # Easy case: the email has not been already seen
-        user_for_email[user['email']] = user
+        user_for_email[user_email] = user
         continue
 
     other_uid = other_user['uid']
@@ -179,7 +180,7 @@ for uid in list(accounts.keys()):
             # NB: at the time of writing this, there were only 2 accounts in
             # such a situation
             assert user['hruid'] != other_user['hruid'], "hruid is not unique in the database!"
-            hruid_from_email = user['email'].lower().replace('@', '.') + '.ext'
+            hruid_from_email = user_email.lower().replace('@', '.') + '.ext'
             if hruid_from_email == user['hruid']:
                 best_uid = uid
             elif hruid_from_email == other_user['hruid']:
@@ -195,7 +196,7 @@ for uid in list(accounts.keys()):
     if best_uid == uid:
         user['groups'].update(other_user['groups'])
         del accounts[other_uid]
-        user_for_email[user['email']] = user
+        user_for_email[user_email] = user
     else:
         other_user['groups'].update(user['groups'])
         del accounts[uid]
