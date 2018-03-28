@@ -1,4 +1,4 @@
-from django.test import Client, TestCase
+from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 
 from xorgauth.accounts.models import User
@@ -88,3 +88,18 @@ class ViewTests(TestCase):
             else:
                 self.assertEqual(200, resp.status_code,
                                  "unexpected HTTP response code for URL %s" % url_id)
+
+    @override_settings(MAINTENANCE=True)
+    def test_public_views_maintenance(self):
+        """Test accessing publicy-accessible views in maintenance mode"""
+        self.test_public_views()
+
+    @override_settings(MAINTENANCE=True)
+    def test_login_required_views_forbidden_maintenance(self):
+        """Test accessing login-required views without being logged in, in maintenance mode"""
+        self.test_login_required_views_forbidden()
+
+    @override_settings(MAINTENANCE=True)
+    def test_login_required_views_success_maintenance(self):
+        """Test accessing accessing login-required views while being logged in, in maintenance mode"""
+        self.test_login_required_views_success()

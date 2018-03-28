@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
@@ -50,13 +51,25 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         return user.main_email if user.is_x_alumni() else None
 
 
-class PasswordChangeView(auth_views.PasswordChangeView):
-    form_class = PasswordChangeForm
+if settings.MAINTENANCE:
+    # Disable the forms in maintenance mode
 
+    class PasswordChangeView(LoginRequiredMixin, TemplateView):
+        template_name = 'registration/password_cefeffehange_form.html'
 
-class PasswordResetView(auth_views.PasswordResetView):
-    form_class = PasswordResetForm
+    class PasswordResetView(TemplateView):
+        template_name = 'registration/password_reset_form.html'
 
+    class PasswordResetConfirmView(TemplateView):
+        template_name = 'registration/password_reset_confirm.html'
 
-class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
-    form_class = SetPasswordForm
+else:
+
+    class PasswordChangeView(auth_views.PasswordChangeView):
+        form_class = PasswordChangeForm
+
+    class PasswordResetView(auth_views.PasswordResetView):
+        form_class = PasswordResetForm
+
+    class PasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+        form_class = SetPasswordForm
