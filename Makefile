@@ -48,7 +48,7 @@ testall:
 	tox
 
 test: build
-	PYTHONPATH=. python -Wdefault manage.py test $(TESTS_DIR)
+	PYTHONPATH=.:$$PYTHONPATH python -Wdefault manage.py test $(TESTS_DIR)
 
 checkdeploy:
 	python manage.py check --deploy --fail-level WARNING
