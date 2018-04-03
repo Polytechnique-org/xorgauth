@@ -25,6 +25,7 @@ from xorgauth import forms as xorgauth_forms
 urlpatterns = [
     url(r'^$', xorgauth_views.IndexView.as_view(), name='index'),
     url(r'^admin/', admin.site.urls),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^openid/', include('oidc_provider.urls', namespace='oidc_provider')),
     url(r'^accounts/login/$',
         auth_views.LoginView.as_view(authentication_form=xorgauth_forms.AuthenticationForm),

@@ -16,7 +16,6 @@ import os
 
 from django.core.exceptions import ImproperlyConfigured
 
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -72,6 +71,7 @@ AUTHENTICATION_BACKENDS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -193,6 +193,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
 LANGUAGE_CODE = 'fr-fr'
+
+# this restricts which languages are in the selection dropdown
+LANGUAGES = (
+    ('en', 'English'),
+    ('fr', 'Français'),
+)
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'third_party', 'zxcvbn_password', 'locale'),
