@@ -306,6 +306,11 @@ msgstr ""
 msgid "Log in"
 msgstr "Connexion"
 
+#: xorgauth/authgroupex/templates/authgroupex/login.html:16
+#: xorgauth/templates/registration/login.html:14
+msgid "Forgotten password?"
+msgstr "Mot de passe oublié ?"
+
 #: xorgauth/forms.py:12 xorgauth/forms.py:57
 msgid "User name or email address"
 msgstr "Nom d'utilisateur ou couriel"
@@ -452,6 +457,11 @@ msgstr ""
 msgid "Update your email redirections for %(email)s on polytechnique.org"
 msgstr "Mise à jour de la redirection email de %(email)s sur polytechnique.org"
 
+#: xorgauth/templates/profile.html:20
+#, python-format
+msgid "Update your SMTP/NNTP password for %(email)s on polytechnique.org"
+msgstr "Mise à jour du mot de passe SMTP/NNTP de %(email)s sur polytechnique.org"
+
 #: xorgauth/templates/registration/logged_out.html:6
 msgid "Thanks for spending some quality time with the Web site today."
 msgstr "Merci pour le temps que vous avez accordé à ce site aujourd'hui."
@@ -459,10 +469,6 @@ msgstr "Merci pour le temps que vous avez accordé à ce site aujourd'hui."
 #: xorgauth/templates/registration/logged_out.html:8
 msgid "Log in again"
 msgstr "Connectez-vous à nouveau"
-
-#: xorgauth/templates/registration/login.html:14
-msgid "Forgotten password?"
-msgstr "Mot de passe oublié ?"
 
 #: xorgauth/templates/registration/password_change_done.html:4
 msgid "Your password was changed."
@@ -478,7 +484,28 @@ msgstr ""
 "En raison d'une maintenance, cette page est temporairement désactivée. "
 "Veuillez nous excuser pour la gêne occasionée."
 
-#: xorgauth/templates/registration/password_change_form.html:15
+#: xorgauth/templates/registration/password_change_form.html:13
+msgid ""
+"\n"
+"    <b>Note:</b> You are currently changing your main password.  This "
+"password\n"
+"    is used by most Polytechnique.org services but not some less secure\n"
+"    ones like SMTP or NNTP. See\n"
+"    <a href=\"https://www.polytechnique.org/password/smtp\"><b>this page</"
+"b></a> to\n"
+"    change the password used for those services.\n"
+"    "
+msgstr ""
+"\n"
+"    <b>Remarque:</b> Le mot de passe que vous êtes en train de modifier est\n"
+"    celui utilisé par la plupart des services de Polytechnique.org mais pas certains\n"
+"    jugés moins sûrs, comme SMTP ou NNTP. Cliquez \n"
+"    <a href=\"https://www.polytechnique.org/password/smtp\"><b>ici</"
+"b></a>\n"
+"    pour changer le mot de passe de ces services.\n"
+"    "
+
+#: xorgauth/templates/registration/password_change_form.html:25
 msgid ""
 "Please enter your old password, for security's sake, and then enter your new "
 "password twice so we can verify you typed it in correctly."
@@ -487,7 +514,7 @@ msgstr ""
 "nouveau mot de passe à deux reprises afin de vérifier qu'il est correctement "
 "saisi."
 
-#: xorgauth/templates/registration/password_change_form.html:19
+#: xorgauth/templates/registration/password_change_form.html:29
 #: xorgauth/templates/registration/password_reset_form.html:12
 msgid "Submit"
 msgstr "Soumettre"

@@ -17,6 +17,7 @@
         {% if view.user_xorg_email %}
         <li><a href="https://ax.polytechnique.org/my-profile/preferences/contact-info">{% trans 'Update your profile on ax.polytechnique.org (click on "Je me connecte" if you get to the front page)' %}</li>
         <li><a href="https://www.polytechnique.org/emails/redirect">{% blocktrans with email=view.user_xorg_email %}Update your email redirections for {{ email }} on polytechnique.org{% endblocktrans %}</a></li>
+        <li><a href="https://www.polytechnique.org/password/smtp">{% blocktrans with email=view.user_xorg_email %}Update your SMTP/NNTP password for {{ email }} on polytechnique.org{% endblocktrans %}</a></li>
         {% endif %}
         </ul>
     </div>
