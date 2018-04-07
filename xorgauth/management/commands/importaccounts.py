@@ -118,6 +118,13 @@ class Command(BaseCommand):
                     user.password = hasher.encode_sha1_hash(account_data['password'])
                 else:
                     user.set_unusable_password()
+            elif not user.has_usable_password() and account_data['password']:
+                # Allow defining a new password if it was previously unusable.
+                # This happens for example when pending accounts get activated
+                user.password = hasher.encode_sha1_hash(account_data['password'])
+                is_user_modified = True
+                if is_verbose:
+                    print("... adding password for %r" % user)
 
             # Validate and save the user only if it has been modified
             if is_user_modified:
