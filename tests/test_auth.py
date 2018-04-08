@@ -48,6 +48,11 @@ class AuthenticationTests(TestCase):
         c = Client()
         self.assertFalse(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
 
+    def test_auth_non_lowercase_hrid(self):
+        self.assertEqual(self.vaneau, User.objects.get_for_login('lOuIs.vANeaU.1829', True))
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+
     def test_auth_nonexisting_hrid(self):
         self.assertEqual(None, User.objects.get_for_login('louis.vaneau.1830', True))
         c = Client()
@@ -58,8 +63,18 @@ class AuthenticationTests(TestCase):
         c = Client()
         self.assertTrue(c.login(username='louis.vaneau', password='Depuis Vaneau!'))
 
+    def test_auth_firstname_lastname_non_lowercase(self):
+        self.assertEqual(self.vaneau, User.objects.get_for_login('loUIs.vANEau', True))
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau', password='Depuis Vaneau!'))
+
     def test_auth_main_email(self):
         self.assertEqual(self.vaneau, User.objects.get_for_login('louis.vaneau.1829@polytechnique.org', True))
+        c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.1829@polytechnique.org', password='Depuis Vaneau!'))
+
+    def test_auth_main_email_non_lowercase(self):
+        self.assertEqual(self.vaneau, User.objects.get_for_login('louiS.VaneaU.1829@pOLYTechnIQUE.org', True))
         c = Client()
         self.assertTrue(c.login(username='louis.vaneau.1829@polytechnique.org', password='Depuis Vaneau!'))
 
@@ -76,6 +91,12 @@ class AuthenticationTests(TestCase):
     def test_auth_firstname_lastname_2_digits(self):
         self.assertEqual(self.vaneau, User.objects.get_for_login('louis.vaneau.29', True))
         c = Client()
+        self.assertTrue(c.login(username='louis.vaneau.29', password='Depuis Vaneau!'))
+
+    def test_auth_firstname_lastname_2_digits_non_lowercase(self):
+        self.assertEqual(self.vaneau, User.objects.get_for_login('lOUIs.vANEau.29', True))
+        c = Client()
+
         self.assertTrue(c.login(username='louis.vaneau.29', password='Depuis Vaneau!'))
 
     def test_auth_homonym_same_curriculum(self):
