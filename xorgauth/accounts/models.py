@@ -5,6 +5,7 @@
 import uuid
 
 from django.contrib.auth import base_user
+from django.core.exceptions import ValidationError
 from django.db import models
 
 from django.utils.translation import ugettext_lazy as _
@@ -183,6 +184,12 @@ class User(base_user.AbstractBaseUser):
         if self.death_date is not None and not self.is_dead:
             self.is_dead = True
 
+        # Make sure the email address is in lowercase
+        if self.main_email != self.main_email.lower():
+            raise ValidationError({
+                'main_email': ValidationError(_("Enter an email address in lowercase.")),
+            })
+
 
 class UserAlias(models.Model):
     """Alias login"""
@@ -195,6 +202,13 @@ class UserAlias(models.Model):
 
     def __str__(self):
         return self.email
+
+    def clean(self):
+        # Make sure the email address is in lowercase
+        if self.email != self.email.lower():
+            raise ValidationError({
+                'email': ValidationError(_("Enter an email address in lowercase.")),
+            })
 
 
 class Group(models.Model):
