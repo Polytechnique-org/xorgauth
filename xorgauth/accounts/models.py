@@ -88,6 +88,7 @@ class UserManager(base_user.BaseUserManager):
             if user is not None and need_is_active and not user.is_active:
                 return
             return user
+        # also accept non lowercase login attempts
         return lookup(username) or lookup(username.lower())
 
 
