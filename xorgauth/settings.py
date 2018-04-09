@@ -1,4 +1,4 @@
-# coding: utf8
+# coding: utf-8
 """
 Django settings for xorgauth project.
 

@@ -14,114 +14,114 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: xorgauth/accounts/models.py:19
+#: xorgauth/accounts/models.py:20
 msgid "system role"
 msgstr "rôle système"
 
-#: xorgauth/accounts/models.py:20
+#: xorgauth/accounts/models.py:21
 msgid "human-readable identifier"
 msgstr "identifiant humainement lisible"
 
-#: xorgauth/accounts/models.py:21
+#: xorgauth/accounts/models.py:22
 msgid "display name"
 msgstr "nom affiché"
 
-#: xorgauth/accounts/models.py:24
+#: xorgauth/accounts/models.py:25
 msgid "role"
 msgstr "rôle"
 
-#: xorgauth/accounts/models.py:25 xorgauth/accounts/models.py:109
+#: xorgauth/accounts/models.py:26 xorgauth/accounts/models.py:113
 msgid "roles"
 msgstr "rôles"
 
-#: xorgauth/accounts/models.py:96
+#: xorgauth/accounts/models.py:100
 msgid "Male"
 msgstr "Homme"
 
-#: xorgauth/accounts/models.py:97
+#: xorgauth/accounts/models.py:101
 msgid "Female"
 msgstr "Femme"
 
-#: xorgauth/accounts/models.py:101
+#: xorgauth/accounts/models.py:105
 msgid "username"
 msgstr "nom d'utilisateur"
 
-#: xorgauth/accounts/models.py:102
+#: xorgauth/accounts/models.py:106
 msgid "Human-readable identifier, usually firstname.lastname.study-year"
 msgstr "Identifiant humainement lisible, généralement prenom.nom.promo"
 
-#: xorgauth/accounts/models.py:103
+#: xorgauth/accounts/models.py:107
 msgid "full name"
 msgstr "nom complet"
 
-#: xorgauth/accounts/models.py:103
+#: xorgauth/accounts/models.py:107
 msgid "Name to display to other users"
 msgstr "Nom affiché aux autres utilisateurs"
 
-#: xorgauth/accounts/models.py:104
+#: xorgauth/accounts/models.py:108
 msgid "preferred name"
 msgstr "nom préféré"
 
-#: xorgauth/accounts/models.py:104
+#: xorgauth/accounts/models.py:108
 msgid "Name used when addressing the user"
 msgstr "Nom utilisé pour s'adresser à l'utilisateur"
 
-#: xorgauth/accounts/models.py:105
+#: xorgauth/accounts/models.py:109
 msgid "first name"
 msgstr "prénom"
 
-#: xorgauth/accounts/models.py:106
+#: xorgauth/accounts/models.py:110
 msgid "last name"
 msgstr "nom de famille"
 
-#: xorgauth/accounts/models.py:107
+#: xorgauth/accounts/models.py:111
 msgid "sex"
 msgstr "Sexe"
 
-#: xorgauth/accounts/models.py:108
+#: xorgauth/accounts/models.py:112
 msgid "email"
 msgstr "couriel"
 
-#: xorgauth/accounts/models.py:110
+#: xorgauth/accounts/models.py:114
 #: xorgauth/accounts/oidc_provider_settings.py:35
 #: xorgauth/relying_party_test/templates/relying-party-test.html:39
 msgid "AX ID"
 msgstr "ID AX"
 
-#: xorgauth/accounts/models.py:111
+#: xorgauth/accounts/models.py:115
 msgid "Identification in AX directory"
 msgstr "Matricule dans l'annuaire de l'AX"
 
-#: xorgauth/accounts/models.py:112
+#: xorgauth/accounts/models.py:116
 msgid "School ID"
 msgstr "ID École"
 
-#: xorgauth/accounts/models.py:113
+#: xorgauth/accounts/models.py:117
 msgid "Identification defined by the School"
 msgstr "Matricule donné par l'École"
 
-#: xorgauth/accounts/models.py:114
+#: xorgauth/accounts/models.py:118
 msgid "Polytechnique.org database user ID"
 msgstr "ID dans la base de données de Polytechnique.org"
 
-#: xorgauth/accounts/models.py:115
+#: xorgauth/accounts/models.py:119
 msgid "User ID in Polytechnique.org database"
 msgstr "Identifiant utilisateur dans la base de données de Polytechnique.org"
 
-#: xorgauth/accounts/models.py:116
+#: xorgauth/accounts/models.py:120
 msgid "AlumnForce ID"
 msgstr "ID AlumnForce"
 
-#: xorgauth/accounts/models.py:117
+#: xorgauth/accounts/models.py:121
 msgid "User ID in ax.polytechnique.org database"
 msgstr ""
 "Identifiant utilisateur dans la base de données de ax.polytechnique.org"
 
-#: xorgauth/accounts/models.py:118
+#: xorgauth/accounts/models.py:122
 msgid "study year"
 msgstr "promotion"
 
-#: xorgauth/accounts/models.py:119
+#: xorgauth/accounts/models.py:123
 msgid ""
 "Kind and main year of the study ('X1829' means 'entered the school in 1829 "
 "but 'M2005' means 'graduated in 2005')"
@@ -129,87 +129,95 @@ msgstr ""
 "Catégorie et année de référence de la scolarité ('X1829' signifie 'est entré "
 "à l'école en 1829 mais 'M2005' signifié 'diplomé en 2005')"
 
-#: xorgauth/accounts/models.py:121
+#: xorgauth/accounts/models.py:125
 msgid "graduation year"
 msgstr "année du diplôme"
 
-#: xorgauth/accounts/models.py:121
+#: xorgauth/accounts/models.py:125
 msgid "Year of the graduation"
 msgstr "Année d'obtention du diplôme"
 
-#: xorgauth/accounts/models.py:122
+#: xorgauth/accounts/models.py:126
 msgid "active"
 msgstr "actif"
 
-#: xorgauth/accounts/models.py:123
+#: xorgauth/accounts/models.py:127
 msgid "Active user"
 msgstr "Utilisateur actif"
 
-#: xorgauth/accounts/models.py:124
+#: xorgauth/accounts/models.py:128
 msgid "birthdate"
 msgstr "date de naissance"
 
-#: xorgauth/accounts/models.py:125
+#: xorgauth/accounts/models.py:129
 msgid "dead"
 msgstr "mort"
 
-#: xorgauth/accounts/models.py:126
+#: xorgauth/accounts/models.py:130
 msgid "death date"
 msgstr "date de décès"
 
-#: xorgauth/accounts/models.py:131
+#: xorgauth/accounts/models.py:135
 msgid "user account"
 msgstr "compte utilisateur"
 
-#: xorgauth/accounts/models.py:132
+#: xorgauth/accounts/models.py:136
 msgid "user accounts"
 msgstr "comptes utilisateurs"
 
-#: xorgauth/accounts/models.py:186 xorgauth/accounts/models.py:226
+#: xorgauth/accounts/models.py:190
+msgid "Enter a human-readable ID in lowercase."
+msgstr "Saisissez un identifiant humainement lisible en minuscules."
+
+#: xorgauth/accounts/models.py:196 xorgauth/accounts/models.py:216
+msgid "Enter an email address in lowercase."
+msgstr "Saisissez une adresse de courriel en minuscules."
+
+#: xorgauth/accounts/models.py:202 xorgauth/accounts/models.py:249
 msgid "user"
 msgstr "utilisateur"
 
-#: xorgauth/accounts/models.py:187
+#: xorgauth/accounts/models.py:203
 msgid "email alias"
 msgstr "alias couriel"
 
-#: xorgauth/accounts/models.py:190
+#: xorgauth/accounts/models.py:206
 msgid "user alias"
 msgstr "alias utilisateur"
 
-#: xorgauth/accounts/models.py:191
+#: xorgauth/accounts/models.py:207
 msgid "user aliases"
 msgstr "aliases utilisateurs"
 
-#: xorgauth/accounts/models.py:199
+#: xorgauth/accounts/models.py:222
 msgid "short name"
 msgstr "nom court"
 
-#: xorgauth/accounts/models.py:202 xorgauth/accounts/models.py:215
+#: xorgauth/accounts/models.py:225 xorgauth/accounts/models.py:238
 msgid "group"
 msgstr "groupe"
 
-#: xorgauth/accounts/models.py:203
+#: xorgauth/accounts/models.py:226
 msgid "groups"
 msgstr "groupes"
 
-#: xorgauth/accounts/models.py:212 xorgauth/accounts/models.py:216
+#: xorgauth/accounts/models.py:235 xorgauth/accounts/models.py:239
 msgid "member"
 msgstr "membres"
 
-#: xorgauth/accounts/models.py:213
+#: xorgauth/accounts/models.py:236
 msgid "administrator"
 msgstr "administrateur"
 
-#: xorgauth/accounts/models.py:227
+#: xorgauth/accounts/models.py:250
 msgid "password"
 msgstr "mot de passe"
 
-#: xorgauth/accounts/models.py:231
+#: xorgauth/accounts/models.py:254
 msgid "Google Apps password"
 msgstr "mot de passe Google Apps"
 
-#: xorgauth/accounts/models.py:232
+#: xorgauth/accounts/models.py:255
 msgid "Google Apps passwords"
 msgstr "mots de passe Google Apps"
 
@@ -387,7 +395,7 @@ msgstr ""
 msgid "Log out"
 msgstr "Déconnexion"
 
-#: xorgauth/templates/base.html:51
+#: xorgauth/templates/base.html:69
 msgid ""
 "<strong>Warning!</strong> Due to a maintenance operation, some features on "
 "this website are currently disabled. No data will be saved and the password "
@@ -460,7 +468,8 @@ msgstr "Mise à jour de la redirection email de %(email)s sur polytechnique.org"
 #: xorgauth/templates/profile.html:20
 #, python-format
 msgid "Update your SMTP/NNTP password for %(email)s on polytechnique.org"
-msgstr "Mise à jour du mot de passe SMTP/NNTP de %(email)s sur polytechnique.org"
+msgstr ""
+"Mise à jour du mot de passe SMTP/NNTP de %(email)s sur polytechnique.org"
 
 #: xorgauth/templates/registration/logged_out.html:6
 msgid "Thanks for spending some quality time with the Web site today."
@@ -498,10 +507,10 @@ msgid ""
 msgstr ""
 "\n"
 "    <b>Remarque:</b> Le mot de passe que vous êtes en train de modifier est\n"
-"    celui utilisé par la plupart des services de Polytechnique.org mais pas certains\n"
+"    celui utilisé par la plupart des services de Polytechnique.org mais pas "
+"certains\n"
 "    jugés moins sûrs, comme SMTP ou NNTP. Cliquez \n"
-"    <a href=\"https://www.polytechnique.org/password/smtp\"><b>ici</"
-"b></a>\n"
+"    <a href=\"https://www.polytechnique.org/password/smtp\"><b>ici</b></a>\n"
 "    pour changer le mot de passe de ces services.\n"
 "    "
 
