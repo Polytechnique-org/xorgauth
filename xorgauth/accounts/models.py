@@ -184,6 +184,12 @@ class User(base_user.AbstractBaseUser):
         if self.death_date is not None and not self.is_dead:
             self.is_dead = True
 
+        # Make sure the human-readable identifier is in lowercase
+        if self.hrid != self.hrid.lower():
+            raise ValidationError({
+                'hrid': ValidationError(_("Enter a human-readable ID in lowercase.")),
+            })
+
         # Make sure the email address is in lowercase
         if self.main_email != self.main_email.lower():
             raise ValidationError({

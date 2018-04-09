@@ -24,6 +24,20 @@ class AccountsModelTests(TestCase):
         user.full_clean()
         self.assertTrue(user.is_dead)
 
+    def test_non_lowercase_hruid(self):
+        """Test using non-lowercase human-readable IDss"""
+        user = User(
+            hrid='louis.vaneau.1829',
+            fullname='Louis Vaneau',
+            preferred_name='Louis Vaneau',
+            main_email='louis.vaneau.1829@polytechnique.org',
+            password='Depuis Vaneau!'
+        )
+        user.full_clean()
+        user.hrid = 'Louis.Vaneau.1829'
+        with self.assertRaises(ValidationError):
+            user.full_clean()
+
     def test_non_lowercase_main_email(self):
         """Test using non-lowercase main email addresses"""
         user = User(
