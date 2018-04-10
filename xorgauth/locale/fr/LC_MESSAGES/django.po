@@ -80,7 +80,7 @@ msgstr "Sexe"
 
 #: xorgauth/accounts/models.py:108
 msgid "email"
-msgstr "couriel"
+msgstr "courriel"
 
 #: xorgauth/accounts/models.py:110
 #: xorgauth/accounts/oidc_provider_settings.py:35
@@ -171,7 +171,7 @@ msgstr "utilisateur"
 
 #: xorgauth/accounts/models.py:187
 msgid "email alias"
-msgstr "alias couriel"
+msgstr "alias courriel"
 
 #: xorgauth/accounts/models.py:190
 msgid "user alias"
@@ -313,7 +313,7 @@ msgstr "Mot de passe oublié ?"
 
 #: xorgauth/forms.py:12 xorgauth/forms.py:57
 msgid "User name or email address"
-msgstr "Nom d'utilisateur ou couriel"
+msgstr "Nom d'utilisateur ou courriel"
 
 #: xorgauth/forms.py:13 xorgauth/forms.py:58
 msgid "firstname.lastname.gradyear"
@@ -369,7 +369,7 @@ msgstr ""
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:43
 msgid "Email"
-msgstr "Couriel"
+msgstr "Courriel"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:44
 msgid "Groups"
@@ -482,7 +482,7 @@ msgid ""
 "the inconvenience."
 msgstr ""
 "En raison d'une maintenance, cette page est temporairement désactivée. "
-"Veuillez nous excuser pour la gêne occasionée."
+"Veuillez nous excuser pour la gêne occasionnée."
 
 #: xorgauth/templates/registration/password_change_form.html:13
 msgid ""
