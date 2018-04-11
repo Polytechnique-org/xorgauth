@@ -90,7 +90,7 @@ class Command(BaseCommand):
             user_fields = {
                 'fullname': account_data['full_name'],
                 'preferred_name': account_data['display_name'],
-                'main_email': account_data['email'],
+                'main_email': account_data['email'].lower(),
                 'axid': account_data['ax_id'],
                 'schoolid': str(account_data['xorg_id']) if account_data['xorg_id'] else None,
                 'xorgdb_uid': account_data['uid'],
@@ -155,6 +155,7 @@ class Command(BaseCommand):
             # Import email aliases
             current_user_aliases = set(a.email for a in user.aliases.all())
             for email in account_data['email_source'].keys():
+                email = email.lower()
                 if email in current_user_aliases:
                     continue
                 try:
