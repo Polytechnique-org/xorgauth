@@ -40,24 +40,9 @@
             {% else %}
             <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">{% trans 'Log in' %}</a></li>
             {% endif %}
-            <form class="navbar-form navbar-left" action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                <div class="form-group">
-                    <input name="next" type="hidden" value="{{ redirect_to }}" />
-                    <select class="form-control" name="language" onchange="this.form.submit()">
-                        {% get_current_language as LANGUAGE_CODE %}
-                        {% get_available_languages as LANGUAGES %}
-                        {% get_language_info_list for LANGUAGES as languages %}
-                        {% for language in languages %}
-                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                        {{ language.name_local }}
-                        </option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <button id="change-language-button" type="submit" class="btn btn-default">Go</button>
-                <!-- the button above is useless if js is enabled; and this appears to be more reliable than <noscript> -->
-                <script>document.getElementById("change-language-button").style.display="none";</script>
-            </form>
+            {% with "navbar-form navbar-left hidden-xs" as extra_classes %}
+            {% include "./language_selection.html" %}
+            {% endwith %}
             </ul>
         </div>
     </nav>
@@ -72,5 +57,13 @@
     {% block content %}{% endblock %}
     </div>
 
+    <div class="visible-xs-block">
+        <hr/>
+        <div class="container">
+            {% with "" as extra_classes %}
+            {% include "./language_selection.html" %}
+            {% endwith %}
+        </div>
+    </div>
 </body>
 </html>
