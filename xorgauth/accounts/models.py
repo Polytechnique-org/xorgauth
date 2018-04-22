@@ -17,6 +17,15 @@ ADMIN_ROLE_HRID = 'admin'
 
 
 class Role(models.Model):
+    ALUMNI_ROLES_HRID = (
+        'x',
+        'master',
+        'phd',
+        'bachelor',
+        'executive',
+        'graduate',
+        'masterspe',
+    )
     system = models.BooleanField(_("system role"), default=False, editable=False)
     hrid = models.SlugField(_("human-readable identifier"), unique=True)
     display = UnboundedCharField(_("display name"))
@@ -177,7 +186,7 @@ class User(base_user.AbstractBaseUser):
 
     def is_x_alumni(self):
         """The user is an alumni of Ecole Polytechnique (not an external account)"""
-        return self.roles.filter(hrid__in=('x', 'master', 'phd')).exists()
+        return self.roles.filter(hrid__in=Role.ALUMNI_ROLES_HRID).exists()
 
     def clean(self):
         # If the death date is filled, the user is dead
