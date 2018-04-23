@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import json
 
 from django.core.exceptions import ObjectDoesNotExist
@@ -26,6 +27,10 @@ class Command(BaseCommand):
             'x': 'X',
             'master': 'Master',
             'phd': 'PhD',
+            'bachelor': 'Bachelor',
+            'executive': 'Executive',
+            'graduate': 'Graduate Degree',
+            'masterspe': 'Master spécialisé',
             # Staff
             'ax': 'AX',
             'fx': 'FX',
