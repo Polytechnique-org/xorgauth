@@ -71,7 +71,7 @@ with db.cursor() as cursor:
     for row in cursor:
         entry = OrderedDict(zip(cols, row))
         uid = int(entry['uid'])
-        if entry['xorg_id'] == 0:
+        if entry['xorg_id'] in ('0', ''):
             entry['xorg_id'] = None
         if entry['ax_id'] == '':
             entry['ax_id'] = None
