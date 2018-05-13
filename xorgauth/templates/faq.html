@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<h2>{% trans "Frequently asked questions" %}</h2>
+
+{% url 'login' as login_url %}
+{% url 'password_reset' as pwd_reset_url %}
+{% url 'profile' as profile_url %}
+
+<h3>{% trans "My email address is not recognized. What is my login?" %}</h3>
+<p>{% blocktrans %}Your Polytechnique.org's identifier is <tt>firstname.lastname.promotion</tt>. For example if Albert Bonnaventure is a polytechnicien who entered the school in 1842, his login will be <tt>albert.bonnaventure.1842</tt>. If Catherine Du Chateau defended the PhD that she prepared at the Ecole Polytechnique in 2345, her login will be <tt>catherine.du-chateau.d2345</tt>. If nobody else shared her name in Polytechnique.org's directory, she can also use <tt>catherine.du-chateau</tt> to log in.{% endblocktrans %}</p>
+<p>{% blocktrans %}The email addresses provided by Polytechnique.org can also be used, like <tt>albert.bonnaventure.1842@polytechnique.org</tt> and <tt>catherine.dupont.d2345@alumni.polytechnique.org</tt>.{% endblocktrans %}</p>
+
+<h3>{% trans "I have forgotten my password. How do I reset it?" %}</h3>
+<p>{% blocktrans %}You need to enter your login in the <a href="{{ pwd_reset_url }}">password recovery page</a> and check the mailbox associated with your Polytechnique.org's email address.{% endblocktrans %}</p>
+
+<h3>{% trans "I have forgotten my password and I no longer receive the Polytechnique.org emails. Could you help me?" %}</h3>
+<p>{% blocktrans %}Yes, of course. Please send your request and some details which will allow Polytechnique.org's team to check your identity (birthdate, scan of your ID card, mobile phone number which has been defined in the direcroty, etc.) to <a href="mailto:contact@polytechnique.org">contact@polytechnique.org</a>. Please be aware that answering to all the messages we receive takes much time, so we may reply several weeks later. This is why it is so important to keep your Polytechnique.org email address working.{% endblocktrans %}</p>
+
+<h3>{% trans "I do not have an account. Where do I register?" %}</h3>
+<p>{% blocktrans with xorg_link='<a href="https://www.polytechnique.org">https://www.polytechnique.org</a>' xorg_reg_link='<a href="https://www.polytechnique.org/register">https://www.polytechnique.org/register</a>' %}You need to create an account on {{ xorg_link }} in order to create a Polytechnique.org's email address. The registration page is {{ xorg_reg_link }}.{% endblocktrans %}</p>
+
+<h3>{% blocktrans with xorg_link='<a href="https://www.polytechnique.org">www.polytechnique.org</a>' %}I have just created my account on {{ xorg_link }} and it does not work. What's wrong?{% endblocktrans %}</h3>
+<p>{% blocktrans with xorg_link='<a href="https://www.polytechnique.org">https://www.polytechnique.org</a>' auth_xorg_link='<a href="https://auth.polytechnique.org">https://auth.polytechnique.org</a>' %}{{ xorg_link }} and {{ auth_xorg_link }} use two distinct databases. When creating an account on {{ xorg_link }}, you give information which is used by the mail servers (they need to know where messages written to your Polytechnique.org's email address are transmitted) and by the authentication system (in order to recognize the password you enter when you log in). This requires propagating the information, which is currently done in a quite inefficient way (it takes at most an hour to propagate the information everywhere). This is why right after you register, you have to wait a little bit before being able to log in with your password.{% endblocktrans %}</p>
+
+<h3>{% blocktrans with ax_link='<a href="https://ax.polytechnique.org">https://ax.polytechnique.org</a>' %}How do I log in {{ ax_link }}?{% endblocktrans %}</h3>
+<p>{% blocktrans with ax_link='<a href="https://ax.polytechnique.org">https://ax.polytechnique.org</a>' auth_xorg_link='<a href="https://auth.polytechnique.org">https://auth.polytechnique.org</a>' %}Make sure you click on the big button "Je me connecte" on the front page. This would redirect you to {{ auth_xorg_link }}. If you encounter an error, be sure to write down the website where the error occurs ({{ ax_link }} or {{ auth_xorg_link }}) before reporting a problem.{% endblocktrans %}</p>
+
+<h3>{% trans "I have found a bug! How can I report it?" %}</h3>
+<p>{% blocktrans %}The way which has the highest odds of getting a quick response is by creating a new issue on the project's issue tracker: <a hred="https://github.com/Polytechnique-org/xorgauth/issues">https://github.com/Polytechnique-org/xorgauth/issues</a>.{% endblocktrans %}</p>
+<p>{% blocktrans %}If the bug can not be public, it is possible to send en email to the support, <a href="mailto:support@polytechnique.org">support@polytechnique.org</a>. Please be aware that answering to all the messages we receive takes much time, so we may reply several weeks later.{% endblocktrans %}</p>
+
+<h3>{% trans "I would like to help improving the services managed by Polytechnique.org (developing new features, modernizing the web pages, helping users, writing more documentation, etc.). Where can I meet Polytechnique.org's members?" %}</h3>
+<p>{% blocktrans %}The members of Polytechnique.org live in several cities and countries. We use email and IRC a lot, so if you are interested in joining us, please send an email to <a href="mailto:ca@staff.polytechnique.org">ca@staff.polytechnique.org</a> or leave a message on channel <tt>#poly.org</tt> on chat.freenode.net, for example by joining <tt>#freenode_#poly.org:matrix.org</tt> on <a href="https://titus.binets.fr/">https://titus.binets.fr/</a> or using the <a href="https://webchat.freenode.net/">webchat</a>.{% endblocktrans %}</p>
+
+{% if user.is_authenticated %}
+<h3>{% trans "How do I go back to the front page?" %}</h3>
+<p>{% blocktrans %}By clinking on <a href="{{ profile_url }}">this link</a>.{% endblocktrans %}</p>
+{% else %}
+<h3>{% trans "How do I go back to the login form?" %}</h3>
+<p>{% blocktrans %}By clinking on the <a href="{{ login_url }}">Log in</a> link.{% endblocktrans %}</p>
+{% endif %}
+
+{% endblock %}
