@@ -445,7 +445,7 @@ msgid ""
 "d2345@alumni.polytechnique.org</tt>."
 msgstr ""
 "Les adresses électroniques fournies par Polytechnique.org peuvent aussi être "
-"utlisées, comme<tt>albert.bonnaventure.1842@polytechnique.org</tt> et "
+"utlisées, comme <tt>albert.bonnaventure.1842@polytechnique.org</tt> et "
 "<tt>catherine.dupont.d2345@alumni.polytechnique.org</tt>."
 
 #: xorgauth/templates/faq.html:14
@@ -554,8 +554,8 @@ msgstr ""
 "Si tu ne te trouves pas dans l'annuaire de Polytechnique.org, il faut faire "
 "transmettre tes informations personnelles à Polytechnique.org par l'École "
 "polytechnique. Si tu es encore étudiant, rends-toi sur %(school_cnil_link)s, "
-"lis le contenu de cette page et coche les cases concernant Polytechnique."
-"org et l'AX."
+"lis le contenu de cette page et coche les cases concernant Polytechnique.org "
+"et l'AX."
 
 #: xorgauth/templates/faq.html:28
 #, python-format
