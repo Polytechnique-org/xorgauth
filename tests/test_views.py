@@ -9,6 +9,7 @@ class ViewTests(TestCase):
     # Views which are publicy accessible
     PUBLIC_VIEW_IDS = (
         'auth-groupex-login',
+        'faq',
         'login',
         'logout',
         'test-relying-party',

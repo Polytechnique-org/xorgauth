@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.views.generic.base import TemplateView
 
 from xorgauth.accounts import views as xorgauth_views
 from xorgauth.authgroupex import views as authgpx_views
@@ -44,5 +45,6 @@ urlpatterns = [
     url(r'^auth-groupex$', authgpx_views.AuthGroupeXView.as_view(), name='auth-groupex'),
     url(r'^auth-groupex-login$', authgpx_views.AuthGroupeXLoginView.as_view(), name='auth-groupex-login'),
     url(r'^auth-groupex-logout$', authgpx_views.AuthGroupeXLogoutView.as_view(), name='auth-groupex-logout'),
+    url(r'^faq$', TemplateView.as_view(template_name='faq.html'), name='faq'),
     url(r'^test-relying-party/$', rptest_views.RelyingParty.as_view(), name='test-relying-party'),
 ]

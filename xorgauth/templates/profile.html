@@ -19,6 +19,7 @@
         <li><a href="https://www.polytechnique.org/emails/redirect">{% blocktrans with email=view.user_xorg_email %}Update your email redirections for {{ email }} on polytechnique.org{% endblocktrans %}</a></li>
         <li><a href="https://www.polytechnique.org/password/smtp">{% blocktrans with email=view.user_xorg_email %}Update your SMTP/NNTP password for {{ email }} on polytechnique.org{% endblocktrans %}</a></li>
         {% endif %}
+        <li><a href="{% url 'faq' %}">{% trans "Frequently asked questions" %}</li>
         </ul>
     </div>
 </div>
