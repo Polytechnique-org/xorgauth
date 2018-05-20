@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-17 12:08+0100\n"
+"POT-Creation-Date: 2018-05-20 15:49+0200\n"
 "PO-Revision-Date: 2017-12-03 22:42+0100\n"
 "Last-Translator: Nicolas Iooss\n"
 "Language: \n"
@@ -14,114 +14,114 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: xorgauth/accounts/models.py:20
+#: xorgauth/accounts/models.py:29
 msgid "system role"
 msgstr "rôle système"
 
-#: xorgauth/accounts/models.py:21
+#: xorgauth/accounts/models.py:30
 msgid "human-readable identifier"
 msgstr "identifiant humainement lisible"
 
-#: xorgauth/accounts/models.py:22
+#: xorgauth/accounts/models.py:31
 msgid "display name"
 msgstr "nom affiché"
 
-#: xorgauth/accounts/models.py:25
+#: xorgauth/accounts/models.py:34
 msgid "role"
 msgstr "rôle"
 
-#: xorgauth/accounts/models.py:26 xorgauth/accounts/models.py:113
+#: xorgauth/accounts/models.py:35 xorgauth/accounts/models.py:122
 msgid "roles"
 msgstr "rôles"
 
-#: xorgauth/accounts/models.py:100
+#: xorgauth/accounts/models.py:109
 msgid "Male"
 msgstr "Homme"
 
-#: xorgauth/accounts/models.py:101
+#: xorgauth/accounts/models.py:110
 msgid "Female"
 msgstr "Femme"
 
-#: xorgauth/accounts/models.py:105
+#: xorgauth/accounts/models.py:114
 msgid "username"
 msgstr "nom d'utilisateur"
 
-#: xorgauth/accounts/models.py:106
+#: xorgauth/accounts/models.py:115
 msgid "Human-readable identifier, usually firstname.lastname.study-year"
 msgstr "Identifiant humainement lisible, généralement prenom.nom.promo"
 
-#: xorgauth/accounts/models.py:107
+#: xorgauth/accounts/models.py:116
 msgid "full name"
 msgstr "nom complet"
 
-#: xorgauth/accounts/models.py:107
+#: xorgauth/accounts/models.py:116
 msgid "Name to display to other users"
 msgstr "Nom affiché aux autres utilisateurs"
 
-#: xorgauth/accounts/models.py:108
+#: xorgauth/accounts/models.py:117
 msgid "preferred name"
 msgstr "nom préféré"
 
-#: xorgauth/accounts/models.py:108
+#: xorgauth/accounts/models.py:117
 msgid "Name used when addressing the user"
 msgstr "Nom utilisé pour s'adresser à l'utilisateur"
 
-#: xorgauth/accounts/models.py:109
+#: xorgauth/accounts/models.py:118
 msgid "first name"
 msgstr "prénom"
 
-#: xorgauth/accounts/models.py:110
+#: xorgauth/accounts/models.py:119
 msgid "last name"
 msgstr "nom de famille"
 
-#: xorgauth/accounts/models.py:111
+#: xorgauth/accounts/models.py:120
 msgid "sex"
 msgstr "Sexe"
 
-#: xorgauth/accounts/models.py:112
+#: xorgauth/accounts/models.py:121
 msgid "email"
 msgstr "courriel"
 
-#: xorgauth/accounts/models.py:114
+#: xorgauth/accounts/models.py:123
 #: xorgauth/accounts/oidc_provider_settings.py:35
 #: xorgauth/relying_party_test/templates/relying-party-test.html:39
 msgid "AX ID"
 msgstr "ID AX"
 
-#: xorgauth/accounts/models.py:115
+#: xorgauth/accounts/models.py:124
 msgid "Identification in AX directory"
 msgstr "Matricule dans l'annuaire de l'AX"
 
-#: xorgauth/accounts/models.py:116
+#: xorgauth/accounts/models.py:125
 msgid "School ID"
 msgstr "ID École"
 
-#: xorgauth/accounts/models.py:117
+#: xorgauth/accounts/models.py:126
 msgid "Identification defined by the School"
 msgstr "Matricule donné par l'École"
 
-#: xorgauth/accounts/models.py:118
+#: xorgauth/accounts/models.py:127
 msgid "Polytechnique.org database user ID"
 msgstr "ID dans la base de données de Polytechnique.org"
 
-#: xorgauth/accounts/models.py:119
+#: xorgauth/accounts/models.py:128
 msgid "User ID in Polytechnique.org database"
 msgstr "Identifiant utilisateur dans la base de données de Polytechnique.org"
 
-#: xorgauth/accounts/models.py:120
+#: xorgauth/accounts/models.py:129
 msgid "AlumnForce ID"
 msgstr "ID AlumnForce"
 
-#: xorgauth/accounts/models.py:121
+#: xorgauth/accounts/models.py:130
 msgid "User ID in ax.polytechnique.org database"
 msgstr ""
 "Identifiant utilisateur dans la base de données de ax.polytechnique.org"
 
-#: xorgauth/accounts/models.py:122
+#: xorgauth/accounts/models.py:131
 msgid "study year"
 msgstr "promotion"
 
-#: xorgauth/accounts/models.py:123
+#: xorgauth/accounts/models.py:132
 msgid ""
 "Kind and main year of the study ('X1829' means 'entered the school in 1829 "
 "but 'M2005' means 'graduated in 2005')"
@@ -129,95 +129,95 @@ msgstr ""
 "Catégorie et année de référence de la scolarité ('X1829' signifie 'est entré "
 "à l'école en 1829 mais 'M2005' signifié 'diplomé en 2005')"
 
-#: xorgauth/accounts/models.py:125
+#: xorgauth/accounts/models.py:134
 msgid "graduation year"
 msgstr "année du diplôme"
 
-#: xorgauth/accounts/models.py:125
+#: xorgauth/accounts/models.py:134
 msgid "Year of the graduation"
 msgstr "Année d'obtention du diplôme"
 
-#: xorgauth/accounts/models.py:126
+#: xorgauth/accounts/models.py:135
 msgid "active"
 msgstr "actif"
 
-#: xorgauth/accounts/models.py:127
+#: xorgauth/accounts/models.py:136
 msgid "Active user"
 msgstr "Utilisateur actif"
 
-#: xorgauth/accounts/models.py:128
+#: xorgauth/accounts/models.py:137
 msgid "birthdate"
 msgstr "date de naissance"
 
-#: xorgauth/accounts/models.py:129
+#: xorgauth/accounts/models.py:138
 msgid "dead"
 msgstr "mort"
 
-#: xorgauth/accounts/models.py:130
+#: xorgauth/accounts/models.py:139
 msgid "death date"
 msgstr "date de décès"
 
-#: xorgauth/accounts/models.py:135
+#: xorgauth/accounts/models.py:144
 msgid "user account"
 msgstr "compte utilisateur"
 
-#: xorgauth/accounts/models.py:136
+#: xorgauth/accounts/models.py:145
 msgid "user accounts"
 msgstr "comptes utilisateurs"
 
-#: xorgauth/accounts/models.py:190
+#: xorgauth/accounts/models.py:199
 msgid "Enter a human-readable ID in lowercase."
 msgstr "Saisissez un identifiant humainement lisible en minuscules."
 
-#: xorgauth/accounts/models.py:196 xorgauth/accounts/models.py:216
+#: xorgauth/accounts/models.py:205 xorgauth/accounts/models.py:225
 msgid "Enter an email address in lowercase."
 msgstr "Saisissez une adresse de courriel en minuscules."
 
-#: xorgauth/accounts/models.py:202 xorgauth/accounts/models.py:249
+#: xorgauth/accounts/models.py:211 xorgauth/accounts/models.py:258
 msgid "user"
 msgstr "utilisateur"
 
-#: xorgauth/accounts/models.py:203
+#: xorgauth/accounts/models.py:212
 msgid "email alias"
 msgstr "alias courriel"
 
-#: xorgauth/accounts/models.py:206
+#: xorgauth/accounts/models.py:215
 msgid "user alias"
 msgstr "alias utilisateur"
 
-#: xorgauth/accounts/models.py:207
+#: xorgauth/accounts/models.py:216
 msgid "user aliases"
 msgstr "aliases utilisateurs"
 
-#: xorgauth/accounts/models.py:222
+#: xorgauth/accounts/models.py:231
 msgid "short name"
 msgstr "nom court"
 
-#: xorgauth/accounts/models.py:225 xorgauth/accounts/models.py:238
+#: xorgauth/accounts/models.py:234 xorgauth/accounts/models.py:247
 msgid "group"
 msgstr "groupe"
 
-#: xorgauth/accounts/models.py:226
+#: xorgauth/accounts/models.py:235
 msgid "groups"
 msgstr "groupes"
 
-#: xorgauth/accounts/models.py:235 xorgauth/accounts/models.py:239
+#: xorgauth/accounts/models.py:244 xorgauth/accounts/models.py:248
 msgid "member"
 msgstr "membres"
 
-#: xorgauth/accounts/models.py:236
+#: xorgauth/accounts/models.py:245
 msgid "administrator"
 msgstr "administrateur"
 
-#: xorgauth/accounts/models.py:250
+#: xorgauth/accounts/models.py:259
 msgid "password"
 msgstr "mot de passe"
 
-#: xorgauth/accounts/models.py:254
+#: xorgauth/accounts/models.py:263
 msgid "Google Apps password"
 msgstr "mot de passe Google Apps"
 
-#: xorgauth/accounts/models.py:255
+#: xorgauth/accounts/models.py:264
 msgid "Google Apps passwords"
 msgstr "mots de passe Google Apps"
 
@@ -319,6 +319,12 @@ msgstr "Connexion"
 msgid "Forgotten password?"
 msgstr "Mot de passe oublié ?"
 
+#: xorgauth/authgroupex/templates/authgroupex/login.html:17
+#: xorgauth/templates/faq.html:5 xorgauth/templates/profile.html:22
+#: xorgauth/templates/registration/login.html:15
+msgid "Frequently asked questions"
+msgstr "Foire aux questions"
+
 #: xorgauth/forms.py:12 xorgauth/forms.py:57
 msgid "User name or email address"
 msgstr "Nom d'utilisateur ou courriel"
@@ -395,7 +401,7 @@ msgstr ""
 msgid "Log out"
 msgstr "Déconnexion"
 
-#: xorgauth/templates/base.html:69
+#: xorgauth/templates/base.html:54
 msgid ""
 "<strong>Warning!</strong> Due to a maintenance operation, some features on "
 "this website are currently disabled. No data will be saved and the password "
@@ -405,6 +411,282 @@ msgstr ""
 "des fonctionnalités du site est actuellement désactivée, en particulier "
 "aucune donnée ne sera sauvegardée et la page de modification de mot de passe "
 "est temporairement désactivée."
+
+#: xorgauth/templates/faq.html:11
+msgid "My email address is not recognized. What is my login?"
+msgstr ""
+"Mon adresse email n'est pas reconnue. Quel est mon identifiant de "
+"connexion&nbsp;?"
+
+#: xorgauth/templates/faq.html:12
+msgid ""
+"If you studied at the École polytechnique, your Polytechnique.org identifier "
+"is <tt>firstname.lastname.promotion</tt>. For example if Albert Bonnaventure "
+"is a polytechnicien who entered the school in 1842, his login will be "
+"<tt>albert.bonnaventure.1842</tt>. If Catherine Du Chateau defended the PhD "
+"that she prepared at the École polytechnique in 2345, her login will be "
+"<tt>catherine.du-chateau.d2345</tt>. If nobody else shared her name in "
+"Polytechnique.org's directory, she can also use <tt>catherine.du-chateau</"
+"tt> to log in."
+msgstr ""
+"Si tu as étudié à l'École polytechnique, ton identifiant Polytechnique.org "
+"est <tt>prenom.nom.promotion</tt>. Par exemple si Albert Bonnaventure est un "
+"polytechnicien qui a intégré l'école en 1842, son identifiant sera "
+"<tt>albert.bonnaventure.1842</tt>. Si Catherine Du Chateau a soutenu la "
+"thèse qu'elle a préparé à l'École polytechnique en 2345, son identifiant "
+"sera <tt>catherine.du-chateau.d2345</tt>. Si personne d'autre ne partage son "
+"nom dans l'annuaire de Polytechnique.org, elle peut aussi utiliser "
+"<tt>catherine.du-chateau</tt> pour se connecter."
+
+#: xorgauth/templates/faq.html:13
+msgid ""
+"The email addresses provided by Polytechnique.org can also be used, like "
+"<tt>albert.bonnaventure.1842@polytechnique.org</tt> and <tt>catherine.dupont."
+"d2345@alumni.polytechnique.org</tt>."
+msgstr ""
+"Les adresses électroniques fournies par Polytechnique.org peuvent aussi être "
+"utlisées, comme<tt>albert.bonnaventure.1842@polytechnique.org</tt> et "
+"<tt>catherine.dupont.d2345@alumni.polytechnique.org</tt>."
+
+#: xorgauth/templates/faq.html:14
+#, python-format
+msgid ""
+"If you did not study at the École polytechnique, you may still have an "
+"account, for example if you are participating in activities of a <i>Groupe "
+"X</i> or if you are a school staff. Such an account is identified by an "
+"email address. Please contact us at %(contact_mail_link)s if you encounter "
+"difficulties using your account."
+msgstr ""
+"Si tu n'as pas étudié à l'École polytechnique, il est tout de même possible "
+"que tu aies un compte, par exemple si tu participes aux activités d'un "
+"<i>Groupe X</i> ou si tu est un personnel de l'École. L'identifiant associé "
+"à un tel compte est une adresse email. Merci de nous contacter à "
+"%(contact_mail_link)s si tu rencontres des difficultés de connexion."
+
+#: xorgauth/templates/faq.html:16
+msgid "I have forgotten my password. How do I reset it?"
+msgstr "J'ai oublié mon mot de passe. Comment je le réinitialise&nbsp;?"
+
+#: xorgauth/templates/faq.html:17
+#, python-format
+msgid ""
+"You need to enter your login in the <a href=\"%(pwd_reset_url)s\">password "
+"recovery page</a> and check the mailbox associated with your Polytechnique."
+"org email address."
+msgstr ""
+"Tu dois entrer ton identifiant de connexion dans la <a href="
+"\"%(pwd_reset_url)s\">page de récupération de mot de passe</a> et relever le "
+"courrier de la boîte courriel associée à ton adresse Polytechnique.org."
+
+#: xorgauth/templates/faq.html:19
+msgid ""
+"I have forgotten my password and I no longer receive the Polytechnique.org "
+"emails. Could you help me?"
+msgstr ""
+"J'ai oublié mon mot de passe et je ne reçois plus les courriels "
+"Polytechnique.org. Pouvez-vous m'aider&nbsp;?"
+
+#: xorgauth/templates/faq.html:20
+#, python-format
+msgid ""
+"Yes, of course. Please send your request and some details which will allow "
+"Polytechnique.org team to check your identity (birth date, scan of your ID "
+"card, mobile phone number which has been defined in the directory, etc.) to "
+"%(contact_mail_link)s. Please be aware that answering to all the messages we "
+"receive takes much time, so we may reply several weeks later. This is why it "
+"is so important to keep your Polytechnique.org email address working."
+msgstr ""
+"Oui, bien sûr&nbsp;! Envoie ta demande et quelques informations qui "
+"permettront à l'équipe de Polytechnique.org de vérifier ton identité (date "
+"de naissance, scan de ta carte d'identité, numéro de téléphone qui a été "
+"écrit dans l'annuaire, etc.) à %(contact_mail_link)s. Comme répondre à "
+"l'ensemble des messages que nous recevons prend beaucoup de temps, il est "
+"possible d'attendre plusieurs semaines avant de recevoir une réponse. C'est "
+"pourquoi il est si important de t'assurer que ton adresse e-mail "
+"Polytechnique.org fonctionne bien."
+
+#: xorgauth/templates/faq.html:22
+msgid ""
+"I studied at the École polytechnique and I do not have an account. Where do "
+"I register?"
+msgstr ""
+"J'ai étudié à l'École polytechnique et n'ai pas de compte. Où est-ce que je "
+"m'inscris&nbsp;?"
+
+#: xorgauth/templates/faq.html:23
+#, python-format
+msgid ""
+"You need to create an account on %(xorg_link)s in order to create a "
+"Polytechnique.org email address. The registration page is %(xorg_reg_link)s. "
+"Please note that only alumni of the École polytechnique can register on "
+"%(xorg_link)s."
+msgstr ""
+"Il faut créer un compte sur %(xorg_link)s pour obtenir une adresse "
+"électronique Polytechnique.org. La page d'inscription est %(xorg_reg_link)s "
+"et n'est utilisable que par les anciens élèves de l'École polytechnique."
+
+#: xorgauth/templates/faq.html:24
+#, python-format
+msgid ""
+"If the registration page does not recognize your name, search your profile "
+"in Polytechnique.org's directory, %(xorg_search_link)s. If your profile "
+"exists, please check the special characters (é, è, ç, etc.) and your school "
+"ID if you have one. It may also mean that your account has already been "
+"activated (in which case, please take a look at the previous questions in "
+"order to recover your password)."
+msgstr ""
+"Si le formulaire d'inscription ne reconnaît pas ton nom, recherche ta fiche "
+"dans l'annuaire de Polytechnique.org, %(xorg_search_link)s. Si ta fiche "
+"existe, vérifie bien les caractères spéciaux de ton nom (é, è, ç, etc.) et "
+"le matricule école renseigné si tu en as un. Cela peut aussi signifier que "
+"ton compte a déjà été activé (dans ce cas, regarde les questions précédentes "
+"afin de récupérer ton mot de passe)."
+
+#: xorgauth/templates/faq.html:26
+#, python-format
+msgid ""
+"If your profile does not exist in Polytechnique.org's directory, you need to "
+"make the École polytechnique transmit your personal information to "
+"Polytechnique.org. If you are still studying, please go to "
+"%(school_cnil_link)s, read its content and tick the checkboxes for "
+"Polytechnique.org and AX."
+msgstr ""
+"Si tu ne te trouves pas dans l'annuaire de Polytechnique.org, il faut faire "
+"transmettre tes informations personnelles à Polytechnique.org par l'École "
+"polytechnique. Si tu es encore étudiant, rends-toi sur %(school_cnil_link)s, "
+"lis le contenu de cette page et coche les cases concernant Polytechnique."
+"org et l'AX."
+
+#: xorgauth/templates/faq.html:28
+#, python-format
+msgid ""
+"I have just created my account on %(xorg_link)s and it does not work. What's "
+"wrong?"
+msgstr ""
+"Je viens de créer mon compte sur %(xorg_link)s et ça ne fonctionne pas. "
+"Qu'est-ce qui ne va pas&nbsp;?"
+
+#: xorgauth/templates/faq.html:29
+#, python-format
+msgid ""
+"When creating an account on %(xorg_link)s, it takes some time to "
+"automatically enable the account everywhere (at most an hour) and in the "
+"meantime, %(auth_xorg_link)s does not know a thing about you. This is why "
+"you have to wait a little bit before being able to log in."
+msgstr ""
+"Après la création d'un compte sur %(xorg_link)s, cela prend un peu de temps "
+"pour que le compte soit activé partout (au maximum une heure). Tant que cela "
+"n'est pas terminé, %(auth_xorg_link)s ignore tout de toi, ce pourquoi il "
+"faut attendre un peu avant de pouvoir te connecter."
+
+#: xorgauth/templates/faq.html:31
+#, python-format
+msgid "How do I log in %(ax_link)s?"
+msgstr "Comment me connecter sur %(ax_link)s&nbsp;?"
+
+#: xorgauth/templates/faq.html:32
+#, python-format
+msgid ""
+"Make sure you click on the big button \"Je me connecte\" on the front page. "
+"This would redirect you to %(auth_xorg_link)s. If you encounter an error, be "
+"sure to write down the address of the website where the error occurs "
+"(%(ax_link)s or %(auth_xorg_link)s) before reporting a problem."
+msgstr ""
+"Assures-toi de bien cliquer sur le bouton «&nbsp;Je me connecte&nbsp;» sur "
+"la page d'accueil. Ce bouton redirige vers %(auth_xorg_link)s. Si tu "
+"rencontres une erreur, note bien l'adresse du site sur lequel l'erreur se "
+"produit (%(ax_link)s ou %(auth_xorg_link)s) avant de la signaler."
+
+#: xorgauth/templates/faq.html:34
+#, python-format
+msgid "How do I log in %(xorg_link)s and %(xnet_link)s?"
+msgstr "Comment me connecter sur %(xorg_link)s et %(xnet_link)s&nbsp;?"
+
+#: xorgauth/templates/faq.html:35
+#, python-format
+msgid ""
+"Both these websites automatically redirect to %(auth_xorg_link)s when "
+"accessing a page which requires authentication. They also provide login "
+"buttons to authenticate on every page."
+msgstr ""
+"Ces deux sites redirigent automatiquement vers %(auth_xorg_link)s lors d'une "
+"tentative d'accès à une page qui nécessite d'être authentifié. Ils "
+"fournissent également des boutons de connexion pour s'authentifier sur "
+"toutes leurs pages."
+
+#: xorgauth/templates/faq.html:37
+msgid "I have found a bug! How can I report it?"
+msgstr "J'ai trouvé un bug&nbsp;! Comment puis-je le signaler&nbsp;?"
+
+#: xorgauth/templates/faq.html:38
+#, python-format
+msgid ""
+"The way which has the highest odds of getting a quick response is by "
+"creating a new issue on the project's issue tracker: "
+"%(github_xorgauth_issues_link)s."
+msgstr ""
+"La manière la plus susceptible d'obtenir rapidement une réponse consiste à "
+"créer un nouveau rapport d'anomalie dans le système de suivi des problèmes "
+"du projet, %(github_xorgauth_issues_link)s."
+
+#: xorgauth/templates/faq.html:39
+#, python-format
+msgid ""
+"If the bug can not be public, it is possible to send en email to the "
+"support, %(support_mail_link)s. Please be aware that answering to all the "
+"messages we receive takes much time, so we may reply several weeks later."
+msgstr ""
+"Si le bug ne doit pas être public, il est possible de le signaler par "
+"courriel au support,  %(support_mail_link)s. Comme répondre à l'ensemble des "
+"messages que nous recevons prend beaucoup de temps, il est possible "
+"d'attendre plusieurs semaines avant de recevoir une réponse."
+
+#: xorgauth/templates/faq.html:41
+msgid ""
+"I would like to help improving the services managed by Polytechnique.org "
+"(developing new features, modernizing the web pages, helping users, writing "
+"more documentation, etc.). Where can I meet Polytechnique.org's members?"
+msgstr ""
+"Je souhaite proposer mon aider pour améliorer les services gérés par "
+"Polytechnique.org (développer de nouvelles fonctionnalités, moderniser des "
+"interfaces web, aider les utilisateurs, rédiger la documentation, etc.). Où "
+"puis-je rencontrer les membres de Polytechnique.org&nbsp;?"
+
+#: xorgauth/templates/faq.html:42
+#, python-format
+msgid ""
+"The members of Polytechnique.org live in several cities and countries. We "
+"use email and IRC a lot, so if you are interested in joining us, please send "
+"an email to %(ca_mail_link)s or leave a message on channel <tt>#poly.org</"
+"tt> on chat.freenode.net, for example by joining <tt>#freenode_#poly.org:"
+"matrix.org</tt> on %(titus_link)s or using the <a href=\"https://webchat."
+"freenode.net/\">webchat</a>."
+msgstr ""
+"Les membres de Polytechnique.org habitent dans plusieurs villes et pays. "
+"Nous utilisons beaucoup le courrier électronique et IRC pour communiquer en "
+"interne, donc si tu es intéressé par nous rejoindre, n'hésite pas à envoyer "
+"un courriel à %(ca_mail_link)s ou à laisser un message sur le canal "
+"<tt>#poly.org</tt> sur chat.freenode.net, par exemple en rejoignant "
+"<tt>#freenode_#poly.org:matrix.org</tt> sur %(titus_link)s ou en utilisant "
+"le <a href=\"https://webchat.freenode.net/\">webchat de Freenode</a>."
+
+#: xorgauth/templates/faq.html:45
+msgid "How do I go back to the front page?"
+msgstr "Comment revenir à la page d'accueil&nbsp;?"
+
+#: xorgauth/templates/faq.html:46
+#, python-format
+msgid "By clinking on <a href=\"%(profile_url)s\">this link</a>."
+msgstr "En cliquant sur <a href=\"%(profile_url)s\">ce lien</a>."
+
+#: xorgauth/templates/faq.html:48
+msgid "How do I go back to the login form?"
+msgstr "Comment revenir au formulaire de connexion&nbsp;?"
+
+#: xorgauth/templates/faq.html:49
+#, python-format
+msgid "By clinking on the <a href=\"%(login_url)s\">Log in</a> link."
+msgstr "En cliquant sur le <a href=\"%(login_url)s\">lien Connexion</a>."
 
 #: xorgauth/templates/list_consents.html:8 xorgauth/templates/profile.html:14
 msgid "List of consents given to web sites"
