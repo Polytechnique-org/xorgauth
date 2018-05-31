@@ -599,10 +599,19 @@ msgstr ""
 
 #: xorgauth/templates/faq.html:34
 #, python-format
+msgid ""
+"The AX published a document which describes how to connect to its website "
+"(with explainations and screenshots) here: %(ax_login_help_link)s."
+msgstr ""
+"L'AX a publié un document qui décrit comment accéder à son site (avec des "
+"explications et des captures d'écran) ici : %(ax_login_help_link)s."
+
+#: xorgauth/templates/faq.html:36
+#, python-format
 msgid "How do I log in %(xorg_link)s and %(xnet_link)s?"
 msgstr "Comment me connecter sur %(xorg_link)s et %(xnet_link)s&nbsp;?"
 
-#: xorgauth/templates/faq.html:35
+#: xorgauth/templates/faq.html:37
 #, python-format
 msgid ""
 "Both these websites automatically redirect to %(auth_xorg_link)s when "
@@ -614,11 +623,11 @@ msgstr ""
 "fournissent également des boutons de connexion pour s'authentifier sur "
 "toutes leurs pages."
 
-#: xorgauth/templates/faq.html:37
+#: xorgauth/templates/faq.html:39
 msgid "I have found a bug! How can I report it?"
 msgstr "J'ai trouvé un bug&nbsp;! Comment puis-je le signaler&nbsp;?"
 
-#: xorgauth/templates/faq.html:38
+#: xorgauth/templates/faq.html:40
 #, python-format
 msgid ""
 "The way which has the highest odds of getting a quick response is by "
@@ -629,7 +638,7 @@ msgstr ""
 "créer un nouveau rapport d'anomalie dans le système de suivi des problèmes "
 "du projet, %(github_xorgauth_issues_link)s."
 
-#: xorgauth/templates/faq.html:39
+#: xorgauth/templates/faq.html:41
 #, python-format
 msgid ""
 "If the bug can not be public, it is possible to send en email to the "
@@ -641,7 +650,7 @@ msgstr ""
 "messages que nous recevons prend beaucoup de temps, il est possible "
 "d'attendre plusieurs semaines avant de recevoir une réponse."
 
-#: xorgauth/templates/faq.html:41
+#: xorgauth/templates/faq.html:43
 msgid ""
 "I would like to help improving the services managed by Polytechnique.org "
 "(developing new features, modernizing the web pages, helping users, writing "
@@ -652,7 +661,7 @@ msgstr ""
 "interfaces web, aider les utilisateurs, rédiger la documentation, etc.). Où "
 "puis-je rencontrer les membres de Polytechnique.org&nbsp;?"
 
-#: xorgauth/templates/faq.html:42
+#: xorgauth/templates/faq.html:44
 #, python-format
 msgid ""
 "The members of Polytechnique.org live in several cities and countries. We "
@@ -670,20 +679,20 @@ msgstr ""
 "<tt>#freenode_#poly.org:matrix.org</tt> sur %(titus_link)s ou en utilisant "
 "le <a href=\"https://webchat.freenode.net/\">webchat de Freenode</a>."
 
-#: xorgauth/templates/faq.html:45
+#: xorgauth/templates/faq.html:47
 msgid "How do I go back to the front page?"
 msgstr "Comment revenir à la page d'accueil&nbsp;?"
 
-#: xorgauth/templates/faq.html:46
+#: xorgauth/templates/faq.html:48
 #, python-format
 msgid "By clinking on <a href=\"%(profile_url)s\">this link</a>."
 msgstr "En cliquant sur <a href=\"%(profile_url)s\">ce lien</a>."
 
-#: xorgauth/templates/faq.html:48
+#: xorgauth/templates/faq.html:50
 msgid "How do I go back to the login form?"
 msgstr "Comment revenir au formulaire de connexion&nbsp;?"
 
-#: xorgauth/templates/faq.html:49
+#: xorgauth/templates/faq.html:51
 #, python-format
 msgid "By clinking on the <a href=\"%(login_url)s\">Log in</a> link."
 msgstr "En cliquant sur le <a href=\"%(login_url)s\">lien Connexion</a>."
