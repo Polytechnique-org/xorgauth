@@ -71,7 +71,7 @@ class Command(BaseCommand):
             # from the email address
             if not account_data['display_name']:
                 if account_data['firstname']:
-                    if is_verbose:
+                    if is_creating_user and is_verbose:
                         print("... using first name (%r) as display name" % account_data['firstname'])
                     account_data['display_name'] = account_data['firstname']
                 else:
@@ -84,7 +84,7 @@ class Command(BaseCommand):
                     if not display_name:
                         raise CommandError(
                             "No display_name nor firstname nor email in account data: %r" % account_data)
-                    if is_verbose:
+                    if is_creating_user and is_verbose:
                         print("... using email user (%r) as display name" % display_name)
                     account_data['display_name'] = display_name
 
