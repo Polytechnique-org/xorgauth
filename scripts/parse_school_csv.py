@@ -48,8 +48,11 @@ def parse_ax_file(filepath):
             # print(row_fields)
             first_name = fix_name_case(row_fields['prénom'])
             last_name = fix_name_case(row_fields['nom'])
-            birthdate = row_fields['date de naissance']
-            ax_id = row_fields['IDENT AX']
+            birthdate = row_fields['date de naissance'].strip()
+            if 'IDENT AX' in row_fields:
+                ax_id = row_fields['IDENT AX'].strip()
+            else:
+                ax_id = row_fields['ID AX'].strip()
 
             ax_data[(last_name, first_name)] = {
                 'birthdate': birthdate,
@@ -105,7 +108,7 @@ def main():
             ax_key = (last_name, first_name)
             if ax_key in ax_data:
                 row_ax_data = ax_data[ax_key]
-                if row_ax_data['birthdate'] != birthdate:
+                if row_ax_data['birthdate'] and row_ax_data['birthdate'] != birthdate:
                     sys.stderr.write("Error: mismatched birthdate for {}: {} vs {}\n".format(
                         repr(ax_key),
                         row_ax_data['birthdate'],
@@ -114,7 +117,8 @@ def main():
                 else:
                     ax_id = row_ax_data['ax_id']
             elif ax_data:
-                sys.stderr.write("Warning: {} not in AX data\n".format(repr(ax_key)))
+                sys.stderr.write("Warning: {} not in AX data ({} {})\n".format(
+                    repr(ax_key), promo_kind, promo_year))
 
             # Table header:
             #   Nom Prénom Date de naissance (JJ/MM/AAAA) Sexe (F/M) Matricule École Matricule AX
