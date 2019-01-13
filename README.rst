@@ -57,9 +57,10 @@ In such a development environment, in order to use the test relying party:
 
   .. code-block:: python
 
-      from oidc_provider.models import Client
-      c = Client(name='Test RP', client_id='123456', response_type='id_token token', redirect_uris=['http://localhost:8000/test-relying-party/','http://127.0.0.1:8000/test-relying-party/'])
+      from oidc_provider.models import Client, ResponseType
+      c = Client(name='Test RP', client_id='123456', redirect_uris=['http://localhost:8000/test-relying-party/','http://127.0.0.1:8000/test-relying-party/'])
       c.save()
+      c.response_types.add(ResponseType.objects.get(value='id_token token'))
 
 * run ``python manage.py runserver 8000``
 * open http://localhost:8000/test-relying-party/ in a web browser and click on the log in button

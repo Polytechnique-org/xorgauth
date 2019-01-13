@@ -26,10 +26,12 @@ class AuthenticationTests(TestCase):
             client_id='123456789',
             client_type='public',
             client_secret='',
-            response_type='id_token token',
             redirect_uris=['http://example.com/'],
             require_consent=False)
         client_public_noconsent.save()
+
+        response_type = oidc_provider.models.ResponseType.objects.get(value='id_token token')
+        client_public_noconsent.response_types.add(response_type)
 
         vaneau = User.objects.create_user(
             hrid='louis.vaneau.1829',
