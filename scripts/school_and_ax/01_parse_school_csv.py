@@ -146,7 +146,8 @@ def main():
             filepath = os.path.join(args.outdir, '{}.csv'.format(promo))
             print("Writing {}".format(filepath))
             with open(filepath, 'w') as fcsv:
-                writer = csv.writer(fcsv, delimiter=',', quotechar='"', escapechar='\\')
+                # X.org uses ; instead of , as delimiter
+                writer = csv.writer(fcsv, delimiter=';', quotechar='"', escapechar='\\')
                 writer.writerow(['Nom', 'Prénom', 'Date de naissance', 'Sexe', 'Matricule École', 'Matricule AX'])
                 for xorg_fields in promo_data:
                     writer.writerow(xorg_fields)
