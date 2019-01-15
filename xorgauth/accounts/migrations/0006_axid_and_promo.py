@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
             model_name='user',
             name='study_year',
             field=xorgauth.utils.fields.UnboundedCharField(
-                help_text="Kind and main year of the study ('X1829' means 'entered the school in 1829 " +
+                help_text="Kind and main year of the study ('X1829' means 'entered the school in 1829 "
                 "but 'M2005' means 'graduated in 2005')", null=True, verbose_name='study year'),
         ),
     ]
