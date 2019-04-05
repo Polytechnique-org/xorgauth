@@ -24,26 +24,26 @@ from openpyxl import load_workbook, Workbook
 # Fields in the output file, with their origin file and field name
 # Multiple iterations of a field is used to verify the data
 OUTPUT_FIELDS = (
-    ('Matricule École', 'school', 'matricule'),
+    ('Matricule École', 'school', 'Matricule'),
     ('Matricule AX', 'xorg', 'ax_id'),
     ('Identifiant X.org', 'xorg', 'hrid'),
     ('Couriel X.org', 'xorg', 'email'),
-    ('Civilité (École)', 'school', 'civilité'),
+    ('Civilité (École)', 'school', 'Civilité'),
     ('Civilité (X.org)', 'xorg', 'civility'),
-    ('Nom (École)', 'school', 'nom'),
+    ('Nom (École)', 'school', 'Nom'),
     ('Nom (X.org)', 'xorg', 'lastname'),
-    ('Prénom (École)', 'school', 'prénom'),
+    ('Prénom (École)', 'school', 'Prénom'),
     ('Prénom (X.org)', 'xorg', 'firstname'),
-    ('Autre prénoms', 'school', 'autres prénoms'),
-    ('Date de naissance', 'school', 'date de naissance'),
-    ('Ville de naissance', 'school', 'ville de naissance'),
-    ('Pays de naissance', 'school', 'pays de naissance'),
-    ('Type de filière (École)', 'school', 'type'),
+    ('Autres prénoms', 'school', 'Autres prénom'),
+    ('Date de naissance', 'school', 'Date de naissance'),
+    ('Ville de naissance', 'school', 'Ville de naissance'),
+    ('Pays de naissance', 'school', 'Pays de naissance'),
+    ('Type de filière (École)', 'school', 'Type'),
     ('Type de filière (X.org)', 'xorg', 'degree'),
-    ('Promotion (École)', 'school', 'promotion'),
-    ('Année d\'admission (École)', 'school', 'année admission'),
+    ('Promotion (École)', 'school', 'Promotion'),
+    ('Année d\'admission (École)', 'school', 'Année admission'),
     ('Promotion (X.org)', 'xorg', 'study_year'),
-    ('Date de modification (École)', 'school', 'date de modification'),
+    ('Date de modification (École)', 'school', 'Date de modification'),
 )
 
 
@@ -104,18 +104,25 @@ def main():
 
     # Read header and verify every field is known
     school_column_for_data = {}
-    for cell in next(school_ws.iter_rows()):
-        school_column_for_data[cell.value] = cell.column - 1
+    number_of_header_rows = 0
+    for school_row in school_ws.iter_rows():
+        number_of_header_rows += 1
+        if len(school_row) == 1:
+            # Skip title row
+            continue
+        for cell in school_row:
+            school_column_for_data[cell.value] = cell.column - 1
+        break
     for field_name, origin, origin_name in OUTPUT_FIELDS:
         assert origin in ('school', 'xorg'), "Invalid origin {} in OUTPUT_FIELDS".format(repr(origin))
         if origin == 'school' and origin_name not in school_column_for_data:
             raise RuntimeError("Missing field {} (for {}) in school data".format(origin_name, field_name))
 
     output_data = []
-    school_id_column = school_column_for_data['matricule']
-    birthdate_column = school_column_for_data['date de naissance']
+    school_id_column = school_column_for_data['Matricule']
+    birthdate_column = school_column_for_data['Date de naissance']
     for school_row in school_ws.iter_rows():
-        if school_row[0].row == 1:
+        if school_row[0].row <= number_of_header_rows:
             continue
         school_id = str(school_row[school_id_column].value)
         xorg_row = xorg_data_from_schoolid.get(school_id)
@@ -127,7 +134,11 @@ def main():
         current_row = []
         for field in OUTPUT_FIELDS:
             if field[1] == 'school':
-                current_row.append(str(school_row[school_column_for_data[field[2]]].value))
+                school_col = school_column_for_data[field[2]]
+                if school_col < len(school_row) and school_row[school_col].value is not None:
+                    current_row.append(str(school_row[school_col].value))
+                else:
+                    current_row.append('')
             else:
                 assert field[1] == 'xorg'
                 if xorg_row is not None:

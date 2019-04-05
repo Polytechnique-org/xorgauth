@@ -40,10 +40,17 @@ def parse_ax_file(filepath):
     header_row = None
     ax_data = {}
     with open(filepath, 'r') as fcsv:
-        reader = csv.reader(fcsv, delimiter=',', quotechar='"', escapechar='\\', strict=True)
+        reader = csv.reader(fcsv, delimiter=';', quotechar='"', escapechar='\\', strict=True)
         for row in reader:
             if header_row is None:
-                header_row = row
+                # Normalize headers
+                header_row = [field_name.lower() for field_name in row]
+                if 'matricule ax' not in header_row:
+                    # The AX ID may be named differently
+                    for possible_axid_name in ('ident ax', 'id ax'):
+                        if possible_axid_name in header_row:
+                            header_row[header_row.index(possible_axid_name)] = 'matricule ax'
+                            break
                 continue
             assert len(header_row) == len(row), "CSV file is ill-formed"""
             row_fields = dict(zip(header_row, row))
@@ -51,10 +58,7 @@ def parse_ax_file(filepath):
             first_name = fix_name_case(row_fields['prénom'])
             last_name = fix_name_case(row_fields['nom'])
             birthdate = row_fields['date de naissance'].strip()
-            if 'IDENT AX' in row_fields:
-                ax_id = row_fields['IDENT AX'].strip()
-            else:
-                ax_id = row_fields['ID AX'].strip()
+            ax_id = row_fields['matricule ax'].strip()
 
             ax_data[(last_name, first_name)] = {
                 'birthdate': birthdate,
@@ -87,9 +91,9 @@ def main():
             reader = csv.reader(fcsv, delimiter=',', quotechar='"', escapechar='\\', strict=True)
             for row in reader:
                 if header_row is None:
-                    header_row = row
+                    header_row = [field_name.lower() for field_name in row]
                     continue
-                assert len(header_row) == len(row), "CSV file is ill-formed"""
+                assert len(header_row) == len(row), "CSV file is ill-formed"
                 row_fields = dict(zip(header_row, row))
                 school_data.append(row_fields)
     elif args.school_excel_file.lower().endswith('.xlsx'):
@@ -97,11 +101,21 @@ def main():
         school_wb = load_workbook(filename=args.school_excel_file, read_only=True)
         school_ws = school_wb.worksheets[0]
         for school_row in school_ws.iter_rows():
-            if school_row[0].row == 1:
-                header_row = [cell.value for cell in school_row]
+            if header_row is None:
+                # Find the header line
+                # From March 2019, the file has a new first row, with the name of the file
+                # ... skip it
+                if school_row[0].row == 1 and len(school_row) == 1:
+                    continue
+                header_row = [cell.value.lower() for cell in school_row]
                 continue
-            assert len(header_row) == len(school_row), "Excel file is ill-formed"""
-            row_fields = dict((name, str(cell.value)) for (name, cell) in zip(header_row, school_row))
+            if len(school_row) < len(header_row):
+                # Add enough empty fields to fill the row
+                school_row += tuple([None] * (len(header_row) - len(school_row)))
+            assert len(header_row) == len(school_row), "Excel file is ill-formed"
+            row_fields = dict(
+                (name, str(cell.value) if cell is not None and cell.value is not None else '')
+                for (name, cell) in zip(header_row, school_row))
             school_data.append(row_fields)
     else:
         parser.error("Unsupported file extension of school CSV or Excel file ({})".format(
@@ -111,7 +125,7 @@ def main():
         first_name = fix_name_case(school_fields['prénom'])
         last_name = fix_name_case(school_fields['nom'])
         birthdate = school_fields['date de naissance']
-        sex = {'M': 'M', 'MME': 'F'}[school_fields['civilité']]
+        sex = {'M': 'M', 'MME': 'F', '': '?'}[school_fields['civilité']]
         school_id = school_fields['matricule']
         promo_kind = school_fields['type']
         promo_year = school_fields['promotion']
