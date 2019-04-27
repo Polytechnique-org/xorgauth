@@ -125,7 +125,7 @@ def main():
         first_name = fix_name_case(school_fields['prénom'])
         last_name = fix_name_case(school_fields['nom'])
         birthdate = school_fields['date de naissance']
-        sex = {'M': 'M', 'MME': 'F', '': '?'}[school_fields['civilité']]
+        sex = {'M': 'M', 'MME': 'F', '': '?', 'Autre': '?'}[school_fields['civilité']]
         school_id = school_fields['matricule']
         promo_kind = school_fields['type']
         promo_year = school_fields['promotion']
