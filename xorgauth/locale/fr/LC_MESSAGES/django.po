@@ -309,7 +309,7 @@ msgstr ""
 "authentification."
 
 #: xorgauth/authgroupex/templates/authgroupex/login.html:12
-#: xorgauth/templates/base.html:41
+#: xorgauth/templates/base.html:42
 #: xorgauth/templates/registration/login.html:10
 msgid "Log in"
 msgstr "Connexion"
@@ -393,15 +393,15 @@ msgstr "Groupes"
 msgid "admin"
 msgstr ""
 
-#: xorgauth/templates/base.html:14 xorgauth/templates/base.html:34
+#: xorgauth/templates/base.html:15 xorgauth/templates/base.html:35
 msgid "Polytechnique.org"
 msgstr ""
 
-#: xorgauth/templates/base.html:39
+#: xorgauth/templates/base.html:40
 msgid "Log out"
 msgstr "Déconnexion"
 
-#: xorgauth/templates/base.html:54
+#: xorgauth/templates/base.html:55
 msgid ""
 "<strong>Warning!</strong> Due to a maintenance operation, some features on "
 "this website are currently disabled. No data will be saved and the password "
@@ -551,14 +551,14 @@ msgid ""
 "If your profile does not exist in Polytechnique.org's directory, you need to "
 "make the École polytechnique transmit your personal information to "
 "Polytechnique.org. If you are still studying, please go to "
-"%(school_cnil_link)s, read its content and tick the checkboxes for "
-"Polytechnique.org and AX."
+"%(school_pegase_link)s, read its content, connect to Pegase and tick the "
+"checkboxes for Polytechnique.org and AX."
 msgstr ""
 "Si tu ne te trouves pas dans l'annuaire de Polytechnique.org, il faut faire "
 "transmettre tes informations personnelles à Polytechnique.org par l'École "
-"polytechnique. Si tu es encore étudiant, rends-toi sur %(school_cnil_link)s, "
-"lis le contenu de cette page et coche les cases concernant Polytechnique.org "
-"et l'AX."
+"polytechnique. Si tu es encore étudiant, rends-toi sur "
+"%(school_pegase_link)s, lis le contenu de cette page, connecte-toi sur "
+"Pegase et coche les cases concernant Polytechnique.org et l'AX."
 
 #: xorgauth/templates/faq.html:28
 #, python-format
