@@ -3,7 +3,7 @@
 
 {% block content %}
 
-{% blocktrans %}The website you requested, <strong>{{ ext_url }}</strong>, requires an authentification.{% endblocktrans %}
+{% blocktrans %}The website you requested, <strong>{{ ext_url }}</strong>, requires an authentication.{% endblocktrans %}
 
 <form method="post" action="{% url 'auth-groupex-login' %}" class="form">
     {% csrf_token %}
