@@ -52,6 +52,7 @@ urlpatterns = [
     url(r'^auth-groupex$', authgpx_views.AuthGroupeXView.as_view(), name='auth-groupex'),
     url(r'^auth-groupex-login$', authgpx_views.AuthGroupeXLoginView.as_view(), name='auth-groupex-login'),
     url(r'^auth-groupex-logout$', authgpx_views.AuthGroupeXLogoutView.as_view(), name='auth-groupex-logout'),
+    url(r'^sync/axdata$', xorgauth_views.SyncAxData.as_view(), name='sync-ax-data'),
     url(r'^faq$', TemplateView.as_view(template_name='faq.html'), name='faq'),
     url(r'^test-relying-party/$', rptest_views.RelyingParty.as_view(), name='test-relying-party'),
 ]
