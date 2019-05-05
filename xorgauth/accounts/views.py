@@ -55,7 +55,7 @@ if settings.MAINTENANCE:
     # Disable the forms in maintenance mode
 
     class PasswordChangeView(LoginRequiredMixin, TemplateView):
-        template_name = 'registration/password_cefeffehange_form.html'
+        template_name = 'registration/password_change_form.html'
 
     class PasswordResetView(TemplateView):
         template_name = 'registration/password_reset_form.html'
