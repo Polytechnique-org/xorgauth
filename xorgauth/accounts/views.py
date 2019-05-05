@@ -66,7 +66,7 @@ class SyncAxData(View):
             raise Http404("AX sync has not been configured")
 
         try:
-            data = json.loads(request.body)
+            data = json.loads(request.body.decode('ascii'))
         except ValueError:
             return HttpResponseBadRequest("Unable to load request")
 
