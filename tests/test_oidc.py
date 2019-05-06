@@ -18,7 +18,7 @@ else:
 
 
 class AuthenticationTests(TestCase):
-    def setUp(cls):
+    def setUp(self):
         call_command('creatersakey')
 
         client_public_noconsent = oidc_provider.models.Client(
@@ -33,7 +33,7 @@ class AuthenticationTests(TestCase):
         response_type = oidc_provider.models.ResponseType.objects.get(value='id_token token')
         client_public_noconsent.response_types.add(response_type)
 
-        vaneau = User.objects.create_user(
+        self.vaneau = User.objects.create_user(
             hrid='louis.vaneau.1829',
             fullname='Louis Vaneau',
             main_email='louis.vaneau.1829@polytechnique.org',
@@ -42,7 +42,7 @@ class AuthenticationTests(TestCase):
             study_year='X1829',
             grad_year=1829,
         )
-        UserAlias(user=vaneau, email='vaneau@melix.net').save()
+        UserAlias(user=self.vaneau, email='vaneau@melix.net').save()
 
     def _request_access_token(self, client, scopes):
         self.assertTrue(client.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
@@ -109,4 +109,38 @@ class AuthenticationTests(TestCase):
             'name': 'Louis Vaneau',
             'email': 'louis.vaneau.1829@polytechnique.org',
             'study_years': ['X1829'],
+        }, userinfo)
+
+    def test_axinfo(self):
+        """Test acquiring AX information through OIDC"""
+        c = Client()
+        access_token = self._request_access_token(c, 'openid profile email xorg_axinfo')
+        response = c.get(reverse('oidc_provider:userinfo'), {
+            'access_token': access_token,
+        })
+        self.assertEqual(200, response.status_code)
+        userinfo = json.loads(response.content.decode('utf-8'))
+        # At first, there is no information => no new information
+        self.assertEqual({
+            'sub': 'louis.vaneau.1829',
+            'name': 'Louis Vaneau',
+            'email': 'louis.vaneau.1829@polytechnique.org',
+        }, userinfo)
+
+        # Then, fill some information
+        self.vaneau.ax_contributor = True
+        self.vaneau.axjr_subscriber = True
+        self.vaneau.save()
+        access_token = self._request_access_token(c, 'openid profile email xorg_axinfo')
+        response = c.get(reverse('oidc_provider:userinfo'), {
+            'access_token': access_token,
+        })
+        self.assertEqual(200, response.status_code)
+        userinfo = json.loads(response.content.decode('utf-8'))
+        self.assertEqual({
+            'sub': 'louis.vaneau.1829',
+            'name': 'Louis Vaneau',
+            'email': 'louis.vaneau.1829@polytechnique.org',
+            'ax_contributor': True,
+            'axjr_subscriber': True,
         }, userinfo)

@@ -30,6 +30,7 @@ class ViewTests(TestCase):
     PARAMETERIZED_VIEW_IDS = (
         'auth-groupex-logout',
         'password_reset_confirm',
+        'sync-ax-data',
     )
 
     def test_know_all_views(self):

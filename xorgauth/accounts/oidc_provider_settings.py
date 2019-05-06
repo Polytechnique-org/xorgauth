@@ -35,6 +35,10 @@ class XorgScopeClaims(ScopeClaims):
         _("AX ID"),
         _("Your identification in AX directory")
     )
+    info_xorg_axinfo = (
+        _("AX subscription"),
+        _("Your subscription information related to AX and the Jaune et la Rouge")
+    )
 
     def scope_xorg_groups(self):
         groups = [membership.group for membership in self.user.groups.all()]
@@ -51,4 +55,10 @@ class XorgScopeClaims(ScopeClaims):
     def scope_xorg_axid(self):
         return {
             'axid': self.user.axid,
+        }
+
+    def scope_xorg_axinfo(self):
+        return {
+            'ax_contributor': self.user.ax_contributor,
+            'axjr_subscriber': self.user.axjr_subscriber,
         }

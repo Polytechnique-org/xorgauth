@@ -137,6 +137,9 @@ class User(base_user.AbstractBaseUser):
     birth_date = models.DateField(_("birthdate"), blank=True, null=True)
     is_dead = models.BooleanField(_("dead"), default=False)
     death_date = models.DateField(_("death date"), blank=True, null=True)
+    ax_contributor = models.NullBooleanField(_('AX contributor'), help_text=_('Paid a contribution to AX'))
+    axjr_subscriber = models.NullBooleanField(_('J&R subscriber'), help_text=_('Subscribed to La Jaune et la Rouge'))
+    ax_last_synced = models.DateField(_("last sync with AX"), blank=True, null=True)
 
     objects = UserManager()
 

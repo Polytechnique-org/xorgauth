@@ -157,67 +157,87 @@ msgstr "mort"
 msgid "death date"
 msgstr "date de décès"
 
-#: xorgauth/accounts/models.py:144
+#: xorgauth/accounts/models.py:140
+msgid "AX contributor"
+msgstr "cotisant AX"
+
+#: xorgauth/accounts/models.py:140
+msgid "Paid a contribution to AX"
+msgstr "Est à jour de cotisation à l'AX"
+
+#: xorgauth/accounts/models.py:141
+msgid "J&R subscriber"
+msgstr "Abonné J&R"
+
+#: xorgauth/accounts/models.py:141
+msgid "Subscribed to La Jaune et la Rouge"
+msgstr "Abonné à La Jaune et la Rouge"
+
+#: xorgauth/accounts/models.py:142
+msgid "last sync with AX"
+msgstr "dernière synchronisation avec l'AX"
+
+#: xorgauth/accounts/models.py:147
 msgid "user account"
 msgstr "compte utilisateur"
 
-#: xorgauth/accounts/models.py:145
+#: xorgauth/accounts/models.py:148
 msgid "user accounts"
 msgstr "comptes utilisateurs"
 
-#: xorgauth/accounts/models.py:199
+#: xorgauth/accounts/models.py:202
 msgid "Enter a human-readable ID in lowercase."
 msgstr "Saisissez un identifiant humainement lisible en minuscules."
 
-#: xorgauth/accounts/models.py:205 xorgauth/accounts/models.py:225
+#: xorgauth/accounts/models.py:208 xorgauth/accounts/models.py:228
 msgid "Enter an email address in lowercase."
 msgstr "Saisissez une adresse de courriel en minuscules."
 
-#: xorgauth/accounts/models.py:211 xorgauth/accounts/models.py:258
+#: xorgauth/accounts/models.py:214 xorgauth/accounts/models.py:261
 msgid "user"
 msgstr "utilisateur"
 
-#: xorgauth/accounts/models.py:212
+#: xorgauth/accounts/models.py:215
 msgid "email alias"
 msgstr "alias courriel"
 
-#: xorgauth/accounts/models.py:215
+#: xorgauth/accounts/models.py:218
 msgid "user alias"
 msgstr "alias utilisateur"
 
-#: xorgauth/accounts/models.py:216
+#: xorgauth/accounts/models.py:219
 msgid "user aliases"
 msgstr "aliases utilisateurs"
 
-#: xorgauth/accounts/models.py:231
+#: xorgauth/accounts/models.py:234
 msgid "short name"
 msgstr "nom court"
 
-#: xorgauth/accounts/models.py:234 xorgauth/accounts/models.py:247
+#: xorgauth/accounts/models.py:237 xorgauth/accounts/models.py:250
 msgid "group"
 msgstr "groupe"
 
-#: xorgauth/accounts/models.py:235
+#: xorgauth/accounts/models.py:238
 msgid "groups"
 msgstr "groupes"
 
-#: xorgauth/accounts/models.py:244 xorgauth/accounts/models.py:248
+#: xorgauth/accounts/models.py:247 xorgauth/accounts/models.py:251
 msgid "member"
 msgstr "membres"
 
-#: xorgauth/accounts/models.py:245
+#: xorgauth/accounts/models.py:248
 msgid "administrator"
 msgstr "administrateur"
 
-#: xorgauth/accounts/models.py:259
+#: xorgauth/accounts/models.py:262
 msgid "password"
 msgstr "mot de passe"
 
-#: xorgauth/accounts/models.py:263
+#: xorgauth/accounts/models.py:266
 msgid "Google Apps password"
 msgstr "mot de passe Google Apps"
 
-#: xorgauth/accounts/models.py:264
+#: xorgauth/accounts/models.py:267
 msgid "Google Apps passwords"
 msgstr "mots de passe Google Apps"
 
@@ -241,6 +261,15 @@ msgstr "L'année de scolarité à l'École polytechnique"
 #: xorgauth/accounts/oidc_provider_settings.py:36
 msgid "Your identification in AX directory"
 msgstr "Ton identifiant dans l'annuaire de l'AX"
+
+#: xorgauth/accounts/oidc_provider_settings.py:39
+msgid "AX subscription"
+msgstr "cotisation AX"
+
+#: xorgauth/accounts/oidc_provider_settings.py:40
+msgid "Your subscription information related to AX and the Jaune et la Rouge"
+msgstr ""
+"Tes informations de cotisation AX et d'abonnement à la Jaune et la Rouge"
 
 #: xorgauth/authgroupex/models.py:33
 msgid "private key"

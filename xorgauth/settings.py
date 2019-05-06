@@ -234,6 +234,9 @@ DEFAULT_FROM_EMAIL = config.getstr("email.default_from_email", "Polytechnique.or
 SERVER_EMAIL = config.getstr("email.server_email", "Polytechnique.org <noreply@polytechnique.org>")
 EMAIL_SUBJECT_PREFIX = config.getstr('email.subject_prefix', '[Django xorgauth]') + ' '
 
+# Sync with data from AX website (xorgdata)
+AX_SYNC_SECRET_CRYPT = config.getstr("ax_sync.secret_crypt")
+
 # In development mode, send messages to the console
 if APPMODE == 'dev':
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
