@@ -1,6 +1,5 @@
 import crypt
 import json
-import hmac
 
 from django.conf import settings
 from django.contrib import messages
@@ -9,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404, HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.shortcuts import render
+from django.utils.crypto import constant_time_compare
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import RedirectView, TemplateView, View
 
 from oidc_provider.models import UserConsent, Client
@@ -58,6 +60,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         return user.main_email if user.is_x_alumni() else None
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class SyncAxData(View):
     def post(self, request, *args, **kwargs):
         """Receive some data for syncing"""
@@ -71,8 +74,8 @@ class SyncAxData(View):
             return HttpResponseBadRequest("Unable to load request")
 
         # data['secret'] is a password for authenticating the data provider
-        digest = crypt.crypt(data.get('secret'), settings.AX_SYNC_SECRET_CRYPT)
-        if not hmac.compare_digest(digest, settings.AX_SYNC_SECRET_CRYPT):
+        digest = crypt.crypt(data.get('secret', ''), settings.AX_SYNC_SECRET_CRYPT)
+        if not constant_time_compare(digest, settings.AX_SYNC_SECRET_CRYPT):
             return HttpResponseForbidden("Unauthenticated")
 
         # Mapping from User model to value in JSON request
