@@ -143,6 +143,8 @@ if _engine == 'mysql':
     # https://django-mysql.readthedocs.io/en/latest/checks.html#django-mysql-w001-strict-mode
     DATABASES['default']['OPTIONS'] = {
         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        # Use an isolation level compatible with database replication
+        'isolation_level': "repeatable read",
     }
 
 
