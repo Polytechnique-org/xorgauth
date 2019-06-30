@@ -137,6 +137,15 @@ def main():
         # Graduate degrees have promotion = entry year
         if promo_kind in ('GD', 'BC'):
             promo_year = school_fields['année admission']
+            if not re.match(r'^[0-9]{4}$', promo_year):
+                # Sometimes the year is repeated (eg. "2018;2018")
+                if re.match(r'^[0-9]{4};', promo_year) and len(set(promo_year.split(';'))) == 1:
+                    promo_year = promo_year[:4]
+                    sys.stderr.write("Warning: modifying admission year from {} to {}\n".format(
+                        repr(school_fields['année admission']), repr(promo_year)))
+                else:
+                    sys.stderr.write("Error: unknown admission year {}\n".format(repr(promo_year)))
+                continue
 
         # Get the AX ID
         ax_id = ''
