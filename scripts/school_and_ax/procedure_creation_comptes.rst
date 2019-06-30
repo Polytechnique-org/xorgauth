@@ -5,7 +5,7 @@ Voici comment devrait se passer l'import d'une promotion d'anciens élèves dans
 
 * L'AX :
 
-  - récupère la liste de la nouvelle promotion sur le guichet de la DSI de l'École polytechnique (sauf cas particuliers des étudiants en Executive Education et des docteurs, récupérés directement) ;
+  - récupère la liste de la nouvelle promotion sur le guichet de la DSI de l'École polytechnique (sauf cas particuliers des docteurs, récupérés directement) ;
   - définit des matricules AX ;
   - envoie le fichier résultant à Polytechnique.org (au format CSV, LibreOffice ou Excel) ;
   - supprime le mail envoyé du dossier "messages envoyés" après son envoi.
