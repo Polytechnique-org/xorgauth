@@ -30,6 +30,10 @@ from openpyxl import load_workbook, Workbook
 def fix_name_case(name):
     """Fix the case of some names in order to match AX file"""
     name = name.strip().title()
+
+    # Sometimes, there are two spaces...
+    name = name.replace('  ', ' ')
+
     if name == 'Clemence':
         name = 'Clémence'
     return name
@@ -127,8 +131,16 @@ def main():
         birthdate = school_fields['date de naissance']
         sex = {'M': 'M', 'MME': 'F', '': '?', 'Autre': '?'}[school_fields['civilité']]
         school_id = school_fields['matricule']
-        promo_kind = school_fields['type']
+        promo_kind = school_fields['type'].strip()
         promo_year = school_fields['promotion']
+
+        # Executive Master Students do not have a promotion type in the school file
+        if not promo_kind and re.match(r'^EMS[0-9][0-9][0-9][0-9]$', school_id):
+            promo_kind = 'EMS'
+
+        if not promo_kind:
+            sys.stderr.write("Error: empty promotion type for {}\n".format(repr(school_id)))
+            continue
 
         # Reject people who did not agree to share their data
         if not birthdate:
