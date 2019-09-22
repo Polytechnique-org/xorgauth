@@ -63,6 +63,8 @@ with open(csv_name, 'w', newline='', encoding='utf-8') as fout:
                    AND p.deathdate IS NULL
                    AND pd.promo IS NOT NULL
                    AND d.name = "alumni.polytechnique.org"
+         GROUP BY  a.uid
+         ORDER BY  pd.promo, pd.sort_name, a.uid
         """
         cursor.execute(sql, SCHOOL_NL_ID)
         for row in cursor:
