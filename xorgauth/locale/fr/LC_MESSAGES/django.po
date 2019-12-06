@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-20 15:49+0200\n"
+"POT-Creation-Date: 2019-12-06 21:16+0100\n"
 "PO-Revision-Date: 2017-12-03 22:42+0100\n"
-"Last-Translator: Nicolas Iooss\n"
+"Last-Translator: Victor Berger\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -350,7 +350,6 @@ msgstr "Mot de passe oublié ?"
 
 #: xorgauth/authgroupex/templates/authgroupex/login.html:17
 #: xorgauth/templates/faq.html:5 xorgauth/templates/profile.html:22
-#: xorgauth/templates/registration/login.html:15
 msgid "Frequently asked questions"
 msgstr "Foire aux questions"
 
@@ -442,12 +441,40 @@ msgstr ""
 "est temporairement désactivée."
 
 #: xorgauth/templates/faq.html:11
+msgid "I am a first year student, how can I activate my account?"
+msgstr "Je suis élève en première année, comment puis-je activer mon compte ?"
+
+#: xorgauth/templates/faq.html:13
+#, python-format
+msgid ""
+"First of all, make sure you have given your authorization to the school to "
+"share your informations with us. You can do so by connecting to Pegase "
+"(%(school_pegase_link)s) and ticking the checkboxes for Polytechnique.org "
+"and AX. You may need to wait a few days after ticking the checkboxes for us "
+"to receive your informations."
+msgstr ""
+"Avant tout, assure-toi d'avoir autorisé l'École à nous transférer tes informations. "
+"Tu peux le faire en te connectant sur Pegase (%(school_pegase_link)s) et en "
+"cochant les cases pour Polytechnique.org et l'AX. Il faut en général ensuite "
+"attendre quelques jours pour que tes informations nous parviennent."
+
+#: xorgauth/templates/faq.html:15
+msgid ""
+"You can now register on %(xorg_link)s in order to activate your "
+"Polytechnique.org email address and account. The registration page is "
+"%(xorg_reg_link)s."
+msgstr ""
+"Tu peux ensuite t'enregistrer sur %(xorg_link)s pour activer ton adresse "
+"électronique et ton compte Polytechnique.org. La page d'inscription est "
+"%(xorg_reg_link)s."
+
+#: xorgauth/templates/faq.html:17
 msgid "My email address is not recognized. What is my login?"
 msgstr ""
 "Mon adresse email n'est pas reconnue. Quel est mon identifiant de "
 "connexion&nbsp;?"
 
-#: xorgauth/templates/faq.html:12
+#: xorgauth/templates/faq.html:18
 msgid ""
 "If you studied at the École polytechnique, your Polytechnique.org identifier "
 "is <tt>firstname.lastname.promotion</tt>. For example if Albert Bonnaventure "
@@ -467,7 +494,7 @@ msgstr ""
 "nom dans l'annuaire de Polytechnique.org, elle peut aussi utiliser "
 "<tt>catherine.du-chateau</tt> pour se connecter."
 
-#: xorgauth/templates/faq.html:13
+#: xorgauth/templates/faq.html:19
 msgid ""
 "The email addresses provided by Polytechnique.org can also be used, like "
 "<tt>albert.bonnaventure.1842@polytechnique.org</tt> and <tt>catherine.dupont."
@@ -477,7 +504,7 @@ msgstr ""
 "utlisées, comme <tt>albert.bonnaventure.1842@polytechnique.org</tt> et "
 "<tt>catherine.dupont.d2345@alumni.polytechnique.org</tt>."
 
-#: xorgauth/templates/faq.html:14
+#: xorgauth/templates/faq.html:20
 #, python-format
 msgid ""
 "If you did not study at the École polytechnique, you may still have an "
@@ -492,11 +519,11 @@ msgstr ""
 "à un tel compte est une adresse email. Merci de nous contacter à "
 "%(contact_mail_link)s si tu rencontres des difficultés de connexion."
 
-#: xorgauth/templates/faq.html:16
+#: xorgauth/templates/faq.html:22
 msgid "I have forgotten my password. How do I reset it?"
 msgstr "J'ai oublié mon mot de passe. Comment je le réinitialise&nbsp;?"
 
-#: xorgauth/templates/faq.html:17
+#: xorgauth/templates/faq.html:23
 #, python-format
 msgid ""
 "You need to enter your login in the <a href=\"%(pwd_reset_url)s\">password "
@@ -507,7 +534,7 @@ msgstr ""
 "\"%(pwd_reset_url)s\">page de récupération de mot de passe</a> et relever le "
 "courrier de la boîte courriel associée à ton adresse Polytechnique.org."
 
-#: xorgauth/templates/faq.html:19
+#: xorgauth/templates/faq.html:25
 msgid ""
 "I have forgotten my password and I changed my email address so I no longer "
 "receive the Polytechnique.org emails. Could you help me?"
@@ -516,7 +543,7 @@ msgstr ""
 "que je ne reçois plus les courriels Polytechnique.org. Pouvez-vous "
 "m'aider&nbsp;?"
 
-#: xorgauth/templates/faq.html:20
+#: xorgauth/templates/faq.html:26
 #, python-format
 msgid ""
 "Yes, of course. Please send your request and some details which will allow "
@@ -539,7 +566,7 @@ msgstr ""
 "pourquoi il est si important de t'assurer que ton adresse e-mail "
 "Polytechnique.org fonctionne bien."
 
-#: xorgauth/templates/faq.html:22
+#: xorgauth/templates/faq.html:28
 msgid ""
 "I studied at the École polytechnique and I do not have an account. Where do "
 "I register?"
@@ -547,7 +574,7 @@ msgstr ""
 "J'ai étudié à l'École polytechnique et n'ai pas de compte. Où est-ce que je "
 "m'inscris&nbsp;?"
 
-#: xorgauth/templates/faq.html:23
+#: xorgauth/templates/faq.html:29
 #, python-format
 msgid ""
 "You need to create an account on %(xorg_link)s in order to create a "
@@ -559,7 +586,7 @@ msgstr ""
 "électronique Polytechnique.org. La page d'inscription est %(xorg_reg_link)s "
 "et n'est utilisable que par les anciens élèves de l'École polytechnique."
 
-#: xorgauth/templates/faq.html:24
+#: xorgauth/templates/faq.html:30
 #, python-format
 msgid ""
 "If the registration page does not recognize your name, search your profile "
@@ -576,7 +603,7 @@ msgstr ""
 "ton compte a déjà été activé (dans ce cas, regarde les questions précédentes "
 "afin de récupérer ton mot de passe)."
 
-#: xorgauth/templates/faq.html:26
+#: xorgauth/templates/faq.html:32
 #, python-format
 msgid ""
 "If your profile does not exist in Polytechnique.org's directory, you need to "
@@ -591,7 +618,7 @@ msgstr ""
 "%(school_pegase_link)s, lis le contenu de cette page, connecte-toi sur "
 "Pegase et coche les cases concernant Polytechnique.org et l'AX."
 
-#: xorgauth/templates/faq.html:28
+#: xorgauth/templates/faq.html:34
 #, python-format
 msgid ""
 "I have just created my account on %(xorg_link)s and it does not work. What's "
@@ -600,7 +627,7 @@ msgstr ""
 "Je viens de créer mon compte sur %(xorg_link)s et ça ne fonctionne pas. "
 "Qu'est-ce qui ne va pas&nbsp;?"
 
-#: xorgauth/templates/faq.html:29
+#: xorgauth/templates/faq.html:35
 #, python-format
 msgid ""
 "When creating an account on %(xorg_link)s, it takes some time to "
@@ -613,12 +640,12 @@ msgstr ""
 "n'est pas terminé, %(auth_xorg_link)s ignore tout de toi, ce pourquoi il "
 "faut attendre un peu avant de pouvoir te connecter."
 
-#: xorgauth/templates/faq.html:31
+#: xorgauth/templates/faq.html:37
 #, python-format
 msgid "How do I log in %(ax_link)s?"
 msgstr "Comment me connecter sur %(ax_link)s&nbsp;?"
 
-#: xorgauth/templates/faq.html:32
+#: xorgauth/templates/faq.html:38
 #, python-format
 msgid ""
 "Make sure you click on the big button \"Je me connecte\" on the front page. "
@@ -631,7 +658,7 @@ msgstr ""
 "rencontres une erreur, note bien l'adresse du site sur lequel l'erreur se "
 "produit (%(ax_link)s ou %(auth_xorg_link)s) avant de la signaler."
 
-#: xorgauth/templates/faq.html:34
+#: xorgauth/templates/faq.html:40
 #, python-format
 msgid ""
 "The AX published a document which describes how to connect to its website "
@@ -640,12 +667,12 @@ msgstr ""
 "L'AX a publié un document qui décrit comment accéder à son site (avec des "
 "explications et des captures d'écran) ici : %(ax_login_help_link)s."
 
-#: xorgauth/templates/faq.html:36
+#: xorgauth/templates/faq.html:42
 #, python-format
 msgid "How do I log in %(xorg_link)s and %(xnet_link)s?"
 msgstr "Comment me connecter sur %(xorg_link)s et %(xnet_link)s&nbsp;?"
 
-#: xorgauth/templates/faq.html:37
+#: xorgauth/templates/faq.html:43
 #, python-format
 msgid ""
 "Both these websites automatically redirect to %(auth_xorg_link)s when "
@@ -657,11 +684,11 @@ msgstr ""
 "fournissent également des boutons de connexion pour s'authentifier sur "
 "toutes leurs pages."
 
-#: xorgauth/templates/faq.html:39
+#: xorgauth/templates/faq.html:45
 msgid "I have found a bug! How can I report it?"
 msgstr "J'ai trouvé un bug&nbsp;! Comment puis-je le signaler&nbsp;?"
 
-#: xorgauth/templates/faq.html:40
+#: xorgauth/templates/faq.html:46
 #, python-format
 msgid ""
 "The way which has the highest odds of getting a quick response is by "
@@ -672,7 +699,7 @@ msgstr ""
 "créer un nouveau rapport d'anomalie dans le système de suivi des problèmes "
 "du projet, %(github_xorgauth_issues_link)s."
 
-#: xorgauth/templates/faq.html:41
+#: xorgauth/templates/faq.html:47
 #, python-format
 msgid ""
 "If the bug can not be public, it is possible to send en email to the "
@@ -684,7 +711,7 @@ msgstr ""
 "messages que nous recevons prend beaucoup de temps, il est possible "
 "d'attendre plusieurs semaines avant de recevoir une réponse."
 
-#: xorgauth/templates/faq.html:43
+#: xorgauth/templates/faq.html:49
 msgid ""
 "I would like to help improving the services managed by Polytechnique.org "
 "(developing new features, modernizing the web pages, helping users, writing "
@@ -695,7 +722,7 @@ msgstr ""
 "interfaces web, aider les utilisateurs, rédiger la documentation, etc.). Où "
 "puis-je rencontrer les membres de Polytechnique.org&nbsp;?"
 
-#: xorgauth/templates/faq.html:44
+#: xorgauth/templates/faq.html:50
 #, python-format
 msgid ""
 "The members of Polytechnique.org live in several cities and countries. We "
@@ -713,20 +740,20 @@ msgstr ""
 "<tt>#freenode_#poly.org:matrix.org</tt> sur %(titus_link)s ou en utilisant "
 "le <a href=\"https://webchat.freenode.net/\">webchat de Freenode</a>."
 
-#: xorgauth/templates/faq.html:47
+#: xorgauth/templates/faq.html:53
 msgid "How do I go back to the front page?"
 msgstr "Comment revenir à la page d'accueil&nbsp;?"
 
-#: xorgauth/templates/faq.html:48
+#: xorgauth/templates/faq.html:54
 #, python-format
 msgid "By clinking on <a href=\"%(profile_url)s\">this link</a>."
 msgstr "En cliquant sur <a href=\"%(profile_url)s\">ce lien</a>."
 
-#: xorgauth/templates/faq.html:50
+#: xorgauth/templates/faq.html:56
 msgid "How do I go back to the login form?"
 msgstr "Comment revenir au formulaire de connexion&nbsp;?"
 
-#: xorgauth/templates/faq.html:51
+#: xorgauth/templates/faq.html:57
 #, python-format
 msgid "By clinking on the <a href=\"%(login_url)s\">Log in</a> link."
 msgstr "En cliquant sur le <a href=\"%(login_url)s\">lien Connexion</a>."
@@ -803,6 +830,10 @@ msgstr "Merci pour le temps que vous avez accordé à ce site aujourd'hui."
 #: xorgauth/templates/registration/logged_out.html:8
 msgid "Log in again"
 msgstr "Connectez-vous à nouveau"
+
+#: xorgauth/templates/registration/login.html:15
+msgid "I cannot connect"
+msgstr "Je n'arrive pas à me connecter"
 
 #: xorgauth/templates/registration/password_change_done.html:4
 msgid "Your password was changed."
