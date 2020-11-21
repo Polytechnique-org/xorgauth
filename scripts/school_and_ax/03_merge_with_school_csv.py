@@ -43,7 +43,6 @@ OUTPUT_FIELDS = (
     ('Promotion (École)', 'school', 'Promotion'),
     ('Année d\'admission (École)', 'school', 'Année admission'),
     ('Promotion (X.org)', 'xorg', 'study_year'),
-    ('Date de modification (École)', 'school', 'Date de modification'),
 )
 
 
