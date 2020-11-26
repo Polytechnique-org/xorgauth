@@ -39,7 +39,7 @@ def fix_name_case(name):
 
     # If there is a dot (like in 'Moira I.'), drop it
     if '.' in name:
-        new_name = name.replace('.', ' ').replace('  ', ' ')
+        new_name = name.replace('.', ' ').replace('  ', ' ').strip()
         sys.stderr.write("Warning: there is a dot in the name: {} -> {}\n".format(
                          repr(name), repr(new_name)))
         name = new_name
