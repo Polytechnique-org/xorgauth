@@ -350,7 +350,6 @@ msgstr "Mot de passe oublié ?"
 
 #: xorgauth/authgroupex/templates/authgroupex/login.html:17
 #: xorgauth/templates/faq.html:5 xorgauth/templates/profile.html:22
-#: xorgauth/templates/registration/login.html:15
 msgid "Frequently asked questions"
 msgstr "Foire aux questions"
 
@@ -803,6 +802,18 @@ msgstr "Merci pour le temps que vous avez accordé à ce site aujourd'hui."
 #: xorgauth/templates/registration/logged_out.html:8
 msgid "Log in again"
 msgstr "Connectez-vous à nouveau"
+
+#: xorgauth/templates/registration/login.html:15
+msgid "If you encounter a problem"
+msgstr "Si vous rencontrez un problème"
+
+#: xorgauth/templates/registration/login.html:15
+msgid "consult the"
+msgstr "consultez la"
+
+#: xorgauth/templates/registration/login.html:15
+msgid "frequently asked questions"
+msgstr "foire aux questions"
 
 #: xorgauth/templates/registration/password_change_done.html:4
 msgid "Your password was changed."
