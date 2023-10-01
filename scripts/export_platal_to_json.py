@@ -95,7 +95,12 @@ with db.cursor() as cursor:
         if uid not in accounts:
             # Skip disabled accounts
             continue
-        assert email not in accounts[uid]['email_source']
+        try:
+            assert email not in accounts[uid]['email_source']
+        except AssertionError:
+            if accounts[uid]['email_source'][email] == stype:
+                continue
+            raise
         accounts[uid]['email_source'][email] = stype
         if 'bestalias' in flags and accounts[uid]['email'] is None:
             accounts[uid]['email'] = email
