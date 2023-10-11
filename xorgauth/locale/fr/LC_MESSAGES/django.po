@@ -2,6 +2,18 @@
 # Copyright (C) Polytechnique.org
 # This file is distributed under the same license as the xorgauth package.
 #
+# WARNING: Remember the English message here is a *key* to associate
+# the English text to the French translation.  If you want to change
+# the English text of any existing entry here, you also have to change
+# it in every place it is used. Failure to follow this will result in
+# an English message shown when French was requested. -- SG 2023-10-11
+#
+# WARNING: Also, variables in html templates look like {{
+# xorg_reg_link }}, while they look like %(xorg_reg_link)s in this PO
+# file.  Failure to follow this may result in an English message shown
+# when French was requested, with text like %(xorg_reg_link)s shown to
+# the end user. -- SG 2023-10-11
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
