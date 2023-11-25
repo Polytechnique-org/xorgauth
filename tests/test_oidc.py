@@ -94,6 +94,36 @@ class AuthenticationTests(TestCase):
             'axid': '18290001',
         }, userinfo)
 
+    def test_axid_mangled_query(self):
+        client = Client()
+        self.assertTrue(client.login(username='louis.vaneau.1829', password='Depuis Vaneau!'))
+        response = client.get(reverse('oidc_provider:authorize'), {
+            'amp;client_id': '123456789',
+            'amp;redirect_uri': 'http://example.com/',
+            'amp;response_type': 'id_token token',
+            'amp;scope': 'openid profile email xorg_axid',
+            'amp;nonce': 'abcdef',
+        })
+        self.assertEqual(302, response.status_code)
+        loc = response['location']
+        self.assertEqual('http://example.com/', loc.split('#')[0],
+                         "invalid Location header: %r" % loc)
+        query_values = urllib.parse.parse_qs(loc.split('#', 1)[1])
+        self.assertIn('access_token', query_values.keys())
+        access_token = query_values['access_token'][0]
+
+        response = client.get(reverse('oidc_provider:userinfo'), {
+            'access_token': access_token,
+        })
+        self.assertEqual(200, response.status_code)
+        userinfo = json.loads(response.content.decode('utf-8'))
+        self.assertEqual({
+            'sub': 'louis.vaneau.1829',
+            'name': 'Louis Vaneau',
+            'email': 'louis.vaneau.1829@polytechnique.org',
+            'axid': '18290001',
+        }, userinfo)
+
     def test_study_years(self):
         """Test acquiring study years through OIDC"""
         c = Client()
