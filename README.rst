@@ -40,6 +40,9 @@ Features (planned)
 Configuring a development environment
 -------------------------------------
 
+Dependencies:
+gettext
+
 Run the following commands in order to setup a development environment on a local computer::
 
     make update

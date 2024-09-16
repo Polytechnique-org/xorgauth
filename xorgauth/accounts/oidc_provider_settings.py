@@ -27,6 +27,10 @@ class XorgScopeClaims(ScopeClaims):
         _("X Groups"),
         _("The list of the X Groups you belong to")
     )
+    info_xorg_groups_perm = (
+        _("X Groups Perms"),
+        _("The list of the X Groups you belong to, suffix with admin if you are an admin")
+    )
     info_xorg_study_years = (
         _("Study year"),
         _("The year of your study at the Ecole polytechnique")
@@ -44,6 +48,18 @@ class XorgScopeClaims(ScopeClaims):
         groups = [membership.group for membership in self.user.groups.all()]
         dic = {
             'x_groups': [g.shortname for g in groups]
+        }
+        return dic
+
+    def scope_xorg_groups_perm(self):
+        groups = []
+        for g in self.user.groups.all():
+            name = g.group.shortname
+            groups.append(name)
+            if g.perms == 'admin':
+                groups.append(name + '_admin')
+        dic = {
+            'x_groups_perm': groups
         }
         return dic
 
