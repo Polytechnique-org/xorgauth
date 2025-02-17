@@ -49,6 +49,9 @@ class Command(BaseCommand):
                 type_roles[rolename].full_clean()
                 type_roles[rolename].save()
 
+        groups = {group.shortname: group for group in Group.objects.all()}
+        users = {user.hrid: user for user in User.objects.prefetch_related("aliases", "groups", "roles").all()}
+
         accounts_num = len(jsondata['accounts'])
         for idx_account, account_data in enumerate(jsondata['accounts']):
             # Do not import virtual accounts
@@ -57,11 +60,11 @@ class Command(BaseCommand):
 
             hrid = account_data['hruid']
             try:
-                user = User.objects.get(hrid=hrid)
+                user = users[hrid]
                 is_creating_user = False
                 if is_verbose:
                     print("Updating user %s (%d/%d)" % (hrid, idx_account + 1, accounts_num))
-            except ObjectDoesNotExist:
+            except KeyError:
                 user = User(hrid=hrid)
                 is_creating_user = True
                 if is_verbose:
@@ -137,26 +140,28 @@ class Command(BaseCommand):
                 user.full_clean()
                 user.save()
 
-            # Add new administrators
-            if account_data['is_admin'] and not user.roles.filter(pk=admin_role.pk).exists():
-                user.roles.add(admin_role)
-                user.save()
-
             # Import groups
+            memberships = {m.group_id: m for m in user.groups.all()}
             for groupname, perms in account_data['groups'].items():
-                group = Group.objects.get_or_create(shortname=groupname)[0]
+                if groupname not in groups:
+                    groups[groupname] = Group.objects.create(shortname=groupname)
+                group = groups[groupname]
+
                 # Perform an "update_or_create" on the membership, calling full_clean() also
-                membership, created = GroupMembership.objects.get_or_create(
-                    group=group,
-                    user=user,
-                    defaults={'perms': perms})
-                if not created and membership.perms != perms:
+                changed = False
+                if group.pk not in memberships:
+                    memberships[group.pk] = GroupMembership(group=group, user=user)
+                    changed = True
+
+                membership = memberships[group.pk]
+                if membership.perms != perms:
                     membership.perms = perms
-                    membership.full_clean()
+                    changed = True
+
+                # Ensure a sane database
+                membership.full_clean()
+                if changed:
                     membership.save()
-                else:
-                    # check values, to ensure a sane database
-                    membership.full_clean()
 
             # Import email aliases
             current_user_aliases = set(a.email for a in user.aliases.all())
@@ -164,19 +169,17 @@ class Command(BaseCommand):
                 email = email.lower()
                 if email in current_user_aliases:
                     continue
-                try:
-                    alias = UserAlias.objects.get(email=email)
-                except ObjectDoesNotExist:
-                    alias = UserAlias(user=user, email=email)
-                    alias.full_clean()
-                    alias.save()
-                else:
-                    if alias.user != user:
-                        raise CommandError("Duplicate email %r" % email)
+                alias = UserAlias(user=user, email=email)
+                alias.full_clean()
+                alias.save()
+
+            user_roles = {role.pk for role in user.roles.all()}
+
+            # Add new administrators
+            if account_data['is_admin'] and admin_role.pk not in user_roles:
+                user.roles.add(admin_role)
 
             # Import account type into role
             user_type_role = type_roles[account_data['type']]
-            if not user.roles.filter(pk=user_type_role.pk).exists():
+            if user_type_role.pk not in user_roles:
                 user.roles.add(user_type_role)
-                user.full_clean()
-                user.save()
