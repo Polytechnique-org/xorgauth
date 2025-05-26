@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles bootstrap3 %}
+{% load i18n static django_bootstrap5 %}
 
 {% block content %}
 
@@ -10,6 +10,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <!-- Traduction required here -->
             <th scope="col">Client name</th>
             <th scope="col">Authorized scopes</th>
             <th scope="col">Expiration date</th>
