@@ -13,11 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import include
+from django.urls import re_path as url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import TemplateView
-
 from xorgauth.accounts import views as xorgauth_views
 from xorgauth.authgroupex import views as authgpx_views
 from xorgauth.relying_party_test import views as rptest_views
@@ -44,7 +44,7 @@ urlpatterns = [
     url(r'^accounts/password/change/done/$', auth_password_change_done_view, name='password_change_done'),
     url(r'^accounts/password/reset/$', xorgauth_views.PasswordResetView.as_view(), name='password_reset'),
     url(r'^accounts/password/reset/done/$', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    url(r'^accounts/password/reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',  # noqa
+    url(r'^accounts/password/reset/confirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,32})/$',  # noqa
         xorgauth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     url(r'^accounts/password/reset/complete/$', auth_views.PasswordResetCompleteView.as_view(),
         name='password_reset_complete'),
