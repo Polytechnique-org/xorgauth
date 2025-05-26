@@ -61,8 +61,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.auth',
     'oidc_provider',
-    'zxcvbn_password',
-    'bootstrap3',
+    "zxcvbn_password",
+    'django_bootstrap5',
 ]
 
 AUTHENTICATION_BACKENDS = [
@@ -166,6 +166,9 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
     {
+        'NAME': 'xorgauth.accounts.password_validators.GoogleAppsPasswordValidator',
+    },
+    {
         'NAME': 'zxcvbn_password.ZXCVBNValidator',
         'OPTIONS': {
             'min_score': 3,
@@ -182,14 +185,6 @@ AUTH_PASSWORD_VALIDATORS = [
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.PBKDF2PasswordHasher',
     'xorgauth.accounts.hashers.PBKDF2WrappedSHA1PasswordHasher',
-]
-
-# Password validators
-# https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'xorgauth.accounts.password_validators.GoogleAppsPasswordValidator',
-    }
 ]
 
 

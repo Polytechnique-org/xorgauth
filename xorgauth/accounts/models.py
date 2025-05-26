@@ -8,7 +8,7 @@ from django.contrib.auth import base_user
 from django.core.exceptions import ValidationError
 from django.db import models
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from xorgauth.utils.fields import DottedSlugField, UnboundedCharField
 
@@ -137,8 +137,8 @@ class User(base_user.AbstractBaseUser):
     birth_date = models.DateField(_("birthdate"), blank=True, null=True)
     is_dead = models.BooleanField(_("dead"), default=False)
     death_date = models.DateField(_("death date"), blank=True, null=True)
-    ax_contributor = models.NullBooleanField(_('AX contributor'), help_text=_('Paid a contribution to AX'))
-    axjr_subscriber = models.NullBooleanField(_('J&R subscriber'), help_text=_('Subscribed to La Jaune et la Rouge'))
+    ax_contributor = models.BooleanField(_('AX contributor'), help_text=_('Paid a contribution to AX'), null=True, blank=True)
+    axjr_subscriber = models.BooleanField(_('J&R subscriber'), help_text=_('Subscribed to La Jaune et la Rouge,'), null=True, blank=True)
     ax_last_synced = models.DateField(_("last sync with AX"), blank=True, null=True)
 
     objects = UserManager()

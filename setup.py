@@ -56,11 +56,11 @@ setup(
 
     python_requires='>=3.4.2' if sys.version_info >= (3,) else '>=2.7',
     install_requires=[
-        'Django>=1.11,<2.3' if sys.version_info >= (3, 5) else (
-            'Django>=1.11,<2.1' if sys.version_info >= (3,) else 'Django>=1.11,<2.0'),
+        'Django>=2.2,<5.3' if sys.version_info >= (3, 5) else (
+            'Django>=1.11,<2.1' if sys.version_info >= (3,) else 'Django>=1.11,<2.0')
         'django-oidc-provider>=0.7.0',  # Version 0.7.0 has a breaking change in response types
-        'django-bootstrap3',
-        'django-zxcvbn-password',
+        'django-bootstrap5',
+        'django_zxcvbn_password',
         'getconf',
     ],
     setup_requires=[
@@ -75,7 +75,7 @@ setup(
         'Natural Language :: French',
         'Natural Language :: English',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 3 :: Only',
+        'Programming Languge :: Python :: 3 :: Only',
         'Topic :: Internet :: WWW/HTTP :: Session',
         'Topic :: System :: Systems Administration :: Authentication/Directory'
     ],
