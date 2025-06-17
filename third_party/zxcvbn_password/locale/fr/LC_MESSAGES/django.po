@@ -37,6 +37,3 @@ msgstr ""
 #: third_party/zxcvbn_password/widgets.py:81
 msgid "Your passwords don't match."
 msgstr "Les mots de passe ne sont pas identiques."
-
-
-
