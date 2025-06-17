@@ -15,31 +15,21 @@ install:
 
 matrix:
   include:
-    - python: "2.7"
-      env: TOXENV=py27-django111
-    - python: "3.6"
-      env: TOXENV=py36-django111
-    - python: "3.6"
-      env: TOXENV=py36-django20
-    - python: "3.7"
-      env: TOXENV=py37-django20
-    - python: "3.6"
-      env: TOXENV=py36-django21
-    - python: "3.7"
-      env: TOXENV=py37-django21
-    - python: "3.6"
-      env: TOXENV=py36-django22
-    - python: "3.7"
-      env: TOXENV=py37-django22
+    - python: "3.10"
+      env: TOXENV=py310-django52
+    - python: "3.11"
+      env: TOXENV=py311-django52
+    - python: "3.12"
+      env: TOXENV=py312-django52
 
     # Linting
-    - python: "3.7"
+    - python: "3.12"
       env: TOXENV=lint
     # Test dev makefile
-    - python: "3.7"
+    - python: "3.12"
       env: TOXENV=dev
     # Check default production settings
-    - python: "3.7"
+    - python: "3.12"
       env: TOXENV=prodsettings
 
 notifications:
