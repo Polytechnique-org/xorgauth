@@ -11,7 +11,7 @@ class ViewTests(TestCase):
         'auth-groupex-login',
         'faq',
         'login',
-        'logout', 
+        'logout',
         'test-relying-party',
         'password_reset',
         'password_reset_done',
