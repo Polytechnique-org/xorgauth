@@ -74,7 +74,7 @@ setup(
         'Natural Language :: French',
         'Natural Language :: English',
         'Operating System :: OS Independent',
-        'Programming Languge :: Python :: 3 :: Only',
+        'Programming Language :: Python :: 3 :: Only',
         'Topic :: Internet :: WWW/HTTP :: Session',
         'Topic :: System :: Systems Administration :: Authentication/Directory'
     ],
