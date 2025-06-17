@@ -51,9 +51,14 @@ class ViewTests(TestCase):
     def test_public_views(self):
         """Test accessing publicy-accessible views"""
         for url_id in self.PUBLIC_VIEW_IDS:
-            c = Client()
-            resp = c.get(reverse(url_id))
-            self.assertEqual(200, resp.status_code)
+            if url_id == 'logout':
+                c = Client()
+                resp = c.post(reverse(url_id))
+                self.assertEqual(200, resp.status_code)
+            else :    
+                c = Client()
+                resp = c.get(reverse(url_id))
+                self.assertEqual(200, resp.status_code)
 
     def test_login_required_views_forbidden(self):
         """Test accessing login-required views without being logged in"""

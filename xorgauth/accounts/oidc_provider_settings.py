@@ -2,7 +2,7 @@
 # Copyright (c) Polytechnique.org
 # This code is distributed under the Affero General Public License version 3
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from oidc_provider.lib.claims import ScopeClaims
 
 

@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='user',
             name='ax_contributor',
-            field=models.NullBooleanField(help_text='Paid a contribution to AX', verbose_name='AX contributor'),
+            field=models.BooleanField(help_text='Paid a contribution to AX', verbose_name='AX contributor', null=True),
         ),
         migrations.AddField(
             model_name='user',
@@ -23,7 +23,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='user',
             name='axjr_subscriber',
-            field=models.NullBooleanField(help_text='Subscribed to La Jaune et la Rouge',
-                                          verbose_name='J&R subscriber'),
+            field=models.BooleanField(help_text='Subscribed to La Jaune et la Rouge',
+                                          verbose_name='J&R subscriber',
+                                          null=True),
         ),
     ]

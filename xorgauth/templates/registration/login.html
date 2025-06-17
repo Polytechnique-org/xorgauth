@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% load bootstrap3 i18n %}
+{% load i18n %}
+{% load django_bootstrap5 %}
 
 {% block content %}
 
 <form method="post" action="{% url 'login' %}" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
-    {% buttons %}
-        <input type="submit" value="{% trans 'Log in' %}" class="btn btn-primary" />
-    {% endbuttons %}
+    {% trans "Log in" as log_in_text %}
+    {% bootstrap_button content=log_in_text button_type="submit" button_class="btn btn-primary" %} 
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
 <p><a href="{% url 'password_reset' %}" class="btn btn-primary">{% trans 'Forgotten password?' %}</a></p>
