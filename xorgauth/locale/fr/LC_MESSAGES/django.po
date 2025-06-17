@@ -1,24 +1,24 @@
 # xorgauth French translation
 # Copyright (C) Polytechnique.org
 # This file is distributed under the same license as the xorgauth package.
-#
+# 
 # WARNING: Remember the English message here is a *key* to associate
 # the English text to the French translation.  If you want to change
 # the English text of any existing entry here, you also have to change
 # it in every place it is used. Failure to follow this will result in
 # an English message shown when French was requested. -- SG 2023-10-11
-#
+# 
 # WARNING: Also, variables in html templates look like {{
 # xorg_reg_link }}, while they look like %(xorg_reg_link)s in this PO
 # file.  Failure to follow this may result in an English message shown
 # when French was requested, with text like %(xorg_reg_link)s shown to
 # the end user. -- SG 2023-10-11
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: xorgauth 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-12 17:46+0200\n"
+"POT-Creation-Date: 2025-06-18 00:55+0200\n"
 "PO-Revision-Date: 2017-12-03 22:42+0100\n"
 "Last-Translator: Nicolas Iooss\n"
 "Language: \n"
@@ -182,7 +182,7 @@ msgid "J&R subscriber"
 msgstr "Abonné J&R"
 
 #: xorgauth/accounts/models.py:141
-msgid "Subscribed to La Jaune et la Rouge"
+msgid "Subscribed to La Jaune et la Rouge,"
 msgstr "Abonné à La Jaune et la Rouge"
 
 #: xorgauth/accounts/models.py:142
@@ -349,14 +349,13 @@ msgstr ""
 "Le site demandé, <strong>%(ext_url)s</strong>, nécessite une "
 "authentification."
 
-#: xorgauth/authgroupex/templates/authgroupex/login.html:12
-#: xorgauth/templates/base.html:42
-#: xorgauth/templates/registration/login.html:10
+#: xorgauth/authgroupex/templates/authgroupex/login.html:11
+#: xorgauth/templates/base.html:47 xorgauth/templates/registration/login.html:9
 msgid "Log in"
 msgstr "Connexion"
 
 #: xorgauth/authgroupex/templates/authgroupex/login.html:16
-#: xorgauth/templates/registration/login.html:14
+#: xorgauth/templates/registration/login.html:13
 msgid "Forgotten password?"
 msgstr "Mot de passe oublié ?"
 
@@ -401,9 +400,9 @@ msgstr "Confirmation du nouveau mot de passe"
 msgid "Unknown user account"
 msgstr "Compte utilisateur inconnu"
 
-#: xorgauth/relying_party_test/templates/relying-party-test.html:18
+#: xorgauth/relying_party_test/templates/relying-party-test.html:19
 msgid "OIDC Relying Party"
-msgstr ""
+msgstr "Partie utilisatrice d'OIDC"
 
 #: xorgauth/relying_party_test/templates/relying-party-test.html:34
 msgid "Development accounts (password is \"password\"):"
@@ -437,11 +436,11 @@ msgstr ""
 msgid "Polytechnique.org"
 msgstr ""
 
-#: xorgauth/templates/base.html:40
+#: xorgauth/templates/base.html:43
 msgid "Log out"
 msgstr "Déconnexion"
 
-#: xorgauth/templates/base.html:55
+#: xorgauth/templates/base.html:60
 msgid ""
 "<strong>Warning!</strong> Due to a maintenance operation, some features on "
 "this website are currently disabled. No data will be saved and the password "
@@ -514,9 +513,10 @@ msgid ""
 "recovery page</a> and check the mailbox associated with your Polytechnique."
 "org email address."
 msgstr ""
-"Tu dois entrer ton identifiant de connexion dans la <a href="
-"\"%(pwd_reset_url)s\">page de récupération de mot de passe</a> et relever le "
-"courrier de la boîte courriel associée à ton adresse Polytechnique.org."
+"Tu dois entrer ton identifiant de connexion dans la <a "
+"href=\"%(pwd_reset_url)s\">page de récupération de mot de passe</a> et "
+"relever le courrier de la boîte courriel associée à ton adresse "
+"Polytechnique.org."
 
 #: xorgauth/templates/faq.html:19
 msgid ""
@@ -745,6 +745,18 @@ msgstr "En cliquant sur le <a href=\"%(login_url)s\">lien Connexion</a>."
 msgid "List of consents given to web sites"
 msgstr "Liste des autorisations données aux sites web"
 
+#: xorgauth/templates/list_consents.html:13
+msgid "Client name"
+msgstr "Nom du client"
+
+#: xorgauth/templates/list_consents.html:14
+msgid "Authorized scopes"
+msgstr "Champs d'application autorisés"
+
+#: xorgauth/templates/list_consents.html:15
+msgid "Expiration date"
+msgstr "Date d'expiration"
+
 #: xorgauth/templates/list_consents.html:29
 msgid "Revoke"
 msgstr "Révoquer"
@@ -814,15 +826,15 @@ msgstr "Merci pour le temps que vous avez accordé à ce site aujourd'hui."
 msgid "Log in again"
 msgstr "Connectez-vous à nouveau"
 
-#: xorgauth/templates/registration/login.html:15
+#: xorgauth/templates/registration/login.html:14
 msgid "If you encounter a problem"
 msgstr "Si vous rencontrez un problème"
 
-#: xorgauth/templates/registration/login.html:15
+#: xorgauth/templates/registration/login.html:14
 msgid "consult the"
 msgstr "consultez la"
 
-#: xorgauth/templates/registration/login.html:15
+#: xorgauth/templates/registration/login.html:14
 msgid "frequently asked questions"
 msgstr "foire aux questions"
 
@@ -870,7 +882,7 @@ msgstr ""
 "nouveau mot de passe à deux reprises afin de vérifier qu'il est correctement "
 "saisi."
 
-#: xorgauth/templates/registration/password_change_form.html:29
+#: xorgauth/templates/registration/password_change_form.html:28
 #: xorgauth/templates/registration/password_reset_form.html:12
 msgid "Submit"
 msgstr "Soumettre"
@@ -878,11 +890,11 @@ msgstr "Soumettre"
 #: xorgauth/templates/registration/password_reset_complete.html:6
 #, python-format
 msgid ""
-"Your password has been set. You may go ahead and <a href=\"%(login_url)s"
-"\">log in</a> now."
+"Your password has been set. You may go ahead and <a "
+"href=\"%(login_url)s\">log in</a> now."
 msgstr ""
-"Votre mot de passe a été défini. Vous pouvez maintenant <a href="
-"\"%(login_url)s\">vous connecter</a>."
+"Votre mot de passe a été défini. Vous pouvez maintenant <a "
+"href=\"%(login_url)s\">vous connecter</a>."
 
 #: xorgauth/templates/registration/password_reset_confirm.html:9
 #: xorgauth/templates/registration/password_reset_confirm.html:13

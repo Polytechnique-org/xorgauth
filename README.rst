@@ -89,7 +89,8 @@ Here are instructions specific to xorgauth application for upgrading::
 Notes
 -----
 
-* Before running the ``collectstatic`` command, make sure to manually add all necessary static files to the project. In particular, the JavaScript file available at `https://code.jquery.com/jquery-3.7.1.js <https://code.jquery.com/jquery-3.7.1.js>`_ must be downloaded and placed in the xorgauth/static/ directory of this project.
+* After adding a new translation tag in an html template, you can recreate the translation file with the command `django-admin makemessages -l fr` (the blocks with "fuzzy" are ignored)
+* Before running the ``collectstatic`` command, make sure to manually add all necessary static files to the project. In particular, the JavaScript file available at `https://code.jquery.com/jquery-3.7.1.js <https://code.jquery.com/jquery-3.7.1.js>`_ must be downloaded and placed in the xorgauth/static/ directory of this project
 * Use https://testpypi.python.org/pypi/django-zxcvbn-password/2.0.0 for password entry
 * As a provider, return a list of "group access levels" + "role-based permissions"
 
