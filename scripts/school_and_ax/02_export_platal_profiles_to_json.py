@@ -40,7 +40,7 @@ with db.cursor() as cursor:
         SELECT  p.ax_id, p.hrpid, p.xorg_id, p.sex,
                 pn.lastname_main, pn.firstname_main,
                 pd.public_name, pd.promo, pede.degree,
-                a.state
+                a.state, p.deathdate
           FROM  profiles AS p
      LEFT JOIN  profile_public_names AS pn ON pn.pid=p.pid
      LEFT JOIN  profile_display AS pd ON pd.pid=p.pid
