@@ -39,13 +39,15 @@ with db.cursor() as cursor:
     sql = """
         SELECT  p.ax_id, p.hrpid, p.xorg_id, p.sex,
                 pn.lastname_main, pn.firstname_main,
-                pd.public_name, pd.promo, pede.degree
+                pd.public_name, pd.promo, pede.degree,
+                a.state
           FROM  profiles AS p
      LEFT JOIN  profile_public_names AS pn ON pn.pid=p.pid
      LEFT JOIN  profile_display AS pd ON pd.pid=p.pid
      LEFT JOIN  profile_education AS pe ON (pe.pid = p.pid AND FIND_IN_SET(\'primary\', pe.flags))
      LEFT JOIN  profile_education_enum AS pee ON (pee.id = pe.eduid AND pee.abbreviation = 'X')
      LEFT JOIN  profile_education_degree_enum AS pede ON (pede.id = pe.degreeid AND pee.abbreviation = 'X')
+     LEFT JOIN  accounts AS a ON (a.hruid = p.hrpid)
       ORDER BY  p.pid
     """
     cols = get_cols_from_query(sql)
