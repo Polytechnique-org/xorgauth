@@ -7,7 +7,7 @@ ARG XORG_VENV=/srv/venv
 RUN apt update
 
 # install dependencies
-RUN apt install -y python3 uwsgi-plugin-python3 uwsgi
+RUN apt install -y python3 uwsgi-plugin-python3 uwsgi python3-passlib
 
 # install build-dependencies
 RUN apt install -y python3-setuptools python3-venv make gettext
