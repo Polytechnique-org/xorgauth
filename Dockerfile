@@ -16,7 +16,7 @@ RUN apt install -y python3-setuptools python3-venv make gettext
 COPY --exclude=Dockerfile --exclude=docker-compose.yml . $XORG_ROOT
 
 # install and activate venv
-RUN python3 -m venv $XORG_VENV
+RUN python3 -m venv --system-site-packages $XORG_VENV
 
 # build project
 ENV DJANGO_ADMIN=$XORG_VENV/bin/django-admin
