@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import crypt
 import sys
+from passlib.hash import sha512_crypt
 
 from django.contrib import auth
 from django.core import mail
@@ -150,7 +150,7 @@ class AuthenticationTests(TestCase):
         self.vaneau.set_password('Depuis Vaneau!')
         self.vaneau.save()
         gapps_password = self.vaneau.gapps_password.password
-        self.assertEqual(crypt.crypt('Depuis Vaneau!', gapps_password), gapps_password)
+        self.assertEqual(sha512_crypt.hash('Depuis Vaneau!', salt=gapps_password), gapps_password)
 
         password = 'Mot de passe différent?'
         self.vaneau.set_password(password)
@@ -159,7 +159,7 @@ class AuthenticationTests(TestCase):
         gapps_password = self.vaneau.gapps_password.password
         if sys.version_info < (3,):
             password = password.encode('utf-8')
-        self.assertEqual(crypt.crypt(password, gapps_password), gapps_password)
+        self.assertEqual(sha512_crypt.hash(password, salt=gapps_password), gapps_password)
 
     def test_password_reset_form(self):
         """Test using the password reset form"""

@@ -60,6 +60,7 @@ setup(
         'django-bootstrap5',
         'django_zxcvbn_password',
         'getconf',
+        'passlib'
     ],
     setup_requires=[
         'setuptools>=0.8',

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) Polytechnique.org
 # This code is distributed under the Affero General Public License version 3
-import crypt
 import sys
+from passlib.hash import sha512_crypt
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.crypto import get_random_string
@@ -19,9 +19,9 @@ class GoogleAppsPasswordValidator(object):
     def password_changed(self, raw_password, user):
         # Hash the password in a way compatible with Google Apps: crypt with $6
         if sys.version_info >= (3,):
-            password = crypt.crypt(raw_password, salt=crypt.METHOD_SHA512)
+            password = sha512_crypt.hash(raw_password, salt=crypt.METHOD_SHA512)
         else:
-            password = crypt.crypt(raw_password.encode('utf-8'), '$6$' + get_random_string(16))
+            password = sha512_crypt.hash(raw_password.encode('utf-8'), '$6$' + get_random_string(16))
         try:
             user.gapps_password.password = password
         except ObjectDoesNotExist:
