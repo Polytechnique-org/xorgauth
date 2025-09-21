@@ -75,6 +75,9 @@ ENV UWSGI_ENV="DJANGO_SETTINGS_MODULE=${XORG_PACKAGE_NAME}.settings"
 ENV UWSGI_CHDIR=$XORG_ROOT
 
 # Start uWSGI using system-installed package
-CMD ${XORG_ROOT}/venv/bin/python3 $XORG_ROOT/app/manage.py migrate --noinput; \
+WORKDIR $XORG_ROOT
+CMD ./venv/bin/python ./app/manage.py migrate --noinput && \
     /usr/bin/uwsgi --show-config --plugin /usr/lib/uwsgi/plugins/python3_plugin.so
-#CMD $XORG_ROOT/venv/bin/python $XORG_ROOT/app/manage.py runserver --traceback 0.0.0.0:8000
+
+# Start using python only
+#CMD ./venv/bin/python ./app/manage.py runserver --traceback 0.0.0.0:8000
