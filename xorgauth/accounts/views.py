@@ -1,5 +1,5 @@
-import crypt
 import json
+from passlib.hash import sha512_crypt
 
 from django.conf import settings
 from django.contrib import messages
@@ -74,7 +74,7 @@ class SyncAxData(View):
             return HttpResponseBadRequest("Unable to load request")
 
         # data['secret'] is a password for authenticating the data provider
-        digest = crypt.crypt(data.get('secret', ''), settings.AX_SYNC_SECRET_CRYPT)
+        digest = sha512_crypt.hash(data.get('secret', ''), salt=settings.AX_SYNC_SECRET_CRYPT)
         if not constant_time_compare(digest, settings.AX_SYNC_SECRET_CRYPT):
             return HttpResponseForbidden("Unauthenticated")
 
