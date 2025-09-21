@@ -64,7 +64,7 @@ ENV UWSGI_VIRTUALENV=$XORG_ROOT/venv UWSGI_MODULE=$XORG_PACKAGE_NAME.wsgi:applic
 ENV UWSGI_WORKERS=2 UWSGI_THREADS=4
 
 # uWSGI static file serving configuration (customize or comment out if not needed):
-ENV UWSGI_STATIC_MAP="/static/=${XORG_ROOT}/app/${XORG_PACKAGE_NAME}/static/core/" UWSGI_STATIC_EXPIRES_URI="/static/.*\.[a-f0-9]{12,}\.(css|js|png|jpg|jpeg|gif|ico|woff|ttf|otf|svg|scss|map|txt) 315360000"
+ENV UWSGI_STATIC_MAP="/static/=${XORG_ROOT}/app/static/" UWSGI_STATIC_EXPIRES_URI="/static/.*\.[a-f0-9]{12,}\.(css|js|png|jpg|jpeg|gif|ico|woff|ttf|otf|svg|scss|map|txt) 315360000"
 
 ENV UWSGI_ENV="DJANGO_SETTINGS_MODULE=${XORG_PACKAGE_NAME}.settings"
 ENV UWSGI_CHDIR=$XORG_ROOT
