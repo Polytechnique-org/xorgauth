@@ -18,37 +18,32 @@
     <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
     <script src="{% static 'jquery-3.7.1.slim.min.js' %}"></script>
 
-    <style type="text/css"><!--
-        .navbar-brand-logo {
-            padding: 5px;
-        }
-        .navbar-brand-logo>img {
-            height: 100%;
-        }
-    --></style>
+    <link rel="stylesheet" href="{% static 'xorgauth.css' %}">
 </head>
 <body>
-    <nav class="navbar navbar-fixed-top navbar-default">
+    <nav class="navbar fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand navbar-brand-logo"><img src="{% static 'logo-xorg.png' %}"></a>
-                <a class="navbar-brand m-b-0">{% trans 'Polytechnique.org' %}</a>
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'logo-xorg.png' %}" style="height: 2em;">
+                    {% trans 'Polytechnique.org' %}
+                </a>
             </div>
-            <ul class="nav navbar-nav navbar-right" style="display:flex; align-items: center;">
-            {% if user.is_authenticated %}
-            <li class="nav-item active"><a class="nav-link" href="{% url 'profile' %}">{{ user.fullname }}</a></li>
-            <li class="nav-item" style="padding-left: 10px;">
-                <form method="post" action="{% url 'logout' %}">
-                    {% csrf_token %}
-                    <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; cursor: pointer;">{% trans 'Log out' %}</button>
-                </form>
-            </li>
-            {% else %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">{% trans 'Log in' %}</a></li>
-            {% endif %}
-            {% with "navbar-form navbar-left hidden-xs" as extra_classes %}
-            {% include "./language_selection.html" %}
-            {% endwith %}
+            <ul class="nav navbar-nav d-flex flex-row justify-content-end">
+                {% if user.is_authenticated %}
+                <li class="nav-item active"><a class="nav-link" href="{% url 'profile' %}">{{ user.fullname }}</a></li>
+                <li class="nav-item" style="padding-left: 10px;">
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-link" style="background: none; border: none; padding: 0; cursor: pointer;">{% trans 'Log out' %}</button>
+                    </form>
+                </li>
+                {% else %}
+                <li class="nav-item"><a class="nav-link pe-4" href="{% url 'login' %}">{% trans 'Log in' %}</a></li>
+                {% endif %}
+                {% with "navbar-form d-none d-sm-block" as extra_classes %}
+                {% include "./language_selection.html" %}
+                {% endwith %}
             </ul>
         </div>
     </nav>
@@ -63,7 +58,7 @@
     {% block content %}{% endblock %}
     </div>
 
-    <div class="visible-xs-block">
+    <div class="d-block d-sm-none">
         <hr/>
         <div class="container">
             {% with "" as extra_classes %}

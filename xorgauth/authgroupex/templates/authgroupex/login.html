@@ -9,11 +9,11 @@
     {% csrf_token %}
     {% bootstrap_form form %}
     {% trans "Log in" as log_in_text %}
-    {% bootstrap_button content=log_in_text button_type="submit" button_class="btn btn-primary" %}
+    {% bootstrap_button content=log_in_text button_type="submit" button_class="btn btn-primary btn-sm" %}
 
     <input type="hidden" name="next" value="{{ next }}" />
 </form>
-<p><a href="{% url 'password_reset' %}" class="btn btn-primary">{% trans 'Forgotten password?' %}</a></p>
+<p><a href="{% url 'password_reset' %}" class="btn btn-primary btn-sm">{% trans 'Forgotten password?' %}</a></p>
 <p><a href="{% url 'faq' %}">{% trans 'Frequently asked questions' %}</a></p>
 
 {% endblock %}
