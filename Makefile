@@ -6,7 +6,7 @@ DOC_DIR=docs
 # Use current python binary instead of system default.
 COVERAGE = python $(shell which coverage)
 FLAKE8 = flake8
-DJANGO_ADMIN ?= django-admin.py
+DJANGO_ADMIN ?= django-admin
 PO_FILES = $(shell find $(SRC_DIR) -name '*.po') $(shell find third_party -name '*.po')
 MO_FILES = $(PO_FILES:.po=.mo)
 
