@@ -120,9 +120,9 @@ if _engine not in _ENGINE_MAP:
     )
 if _engine == 'sqlite':
     if APPMODE == 'dev':
-        _default_db_name = os.path.join(BASE_DIR, 'dev', 'db.sqlite')
+        _default_db_name = os.path.join(BASE_DIR, 'dev', 'db.sqlite3')
     else:
-        _default_db_name = '/var/lib/xorgauth/db.sqlite'
+        _default_db_name = '/var/lib/xorgauth/db.sqlite3'
 else:
     _default_db_name = 'xorgauth'
 
