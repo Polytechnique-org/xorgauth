@@ -10,36 +10,40 @@ RUN apt update
 RUN apt install -y python3 uwsgi-plugin-python3 uwsgi python3-passlib
 
 # install build-dependencies
-RUN apt install -y python3-setuptools python3-venv make gettext
+RUN apt install -y python3-setuptools python3-venv gettext
 
 # create user
 RUN useradd --user-group --system --create-home --home-dir $XORG_ROOT $XORG_USER
 
+WORKDIR $XORG_ROOT
+
 # copy this django app
-COPY --chown=$XORG_USER: --exclude=Dockerfile --exclude=docker-compose.yml . $XORG_ROOT/app
+COPY --chown=$XORG_USER: --exclude=Dockerfile --exclude=docker-compose.yml . app
 
 # install and activate venv in a separate directory
 # allow that venv to use system-installed python3-* packages
 # this is useful because in general some python3 modules require compiled binaries,
 # which are better maintained within debian packages. E.g. python3-cryptography.
-RUN python3 -m venv --system-site-packages $XORG_ROOT/venv
 
-# install project deps as root
-ENV DJANGO_ADMIN=$XORG_ROOT/venv/bin/django-admin
-RUN $XORG_ROOT/venv/bin/pip install $XORG_ROOT/app
-
-# build project as user
 USER $XORG_USER
-RUN make -C $XORG_ROOT/app
+RUN python3 -m venv --system-site-packages venv
 
-USER root
+# install deps
+RUN venv/bin/pip install ./app
+
+# build
+RUN venv/bin/django-admin compilemessages
+
+# collect to app/static
+RUN venv/bin/python app/manage.py collectstatic --noinput
 
 # touch reload, usefull for debugging
-RUN touch $XORG_ROOT/reload-uwsgi.touchme
+RUN touch reload-uwsgi.touchme
 ENV UWSGI_TOUCH_RELOAD="${XORG_ROOT}/reload-uwsgi.touchme"
 
 # cleanup apt
-RUN apt remove -y make python3-setuptools && apt autoremove -y
+USER root
+RUN apt remove -y python3-setuptools && apt autoremove -y
 RUN rm -rf /var/cache/apt/* /var/lib/apt/lists/*
 
 # install global settings
@@ -54,10 +58,6 @@ USER $XORG_USER
 
 # Add any static environment variables needed by Django or your settings file here:
 ENV DJANGO_SETTINGS_MODULE=$XORG_PACKAGE_NAME.settings
-
-# Call collectstatic (customize the following line with the minimal environment variables needed for manage.py to run)
-# the collected files end up in app/static
-RUN $XORG_ROOT/venv/bin/python $XORG_ROOT/app/manage.py collectstatic --noinput
 
 # Tell uWSGI where to find your wsgi file (change this):
 ENV UWSGI_WSGI_FILE=$XORG_ROOT/$XORG_PACKAGE_NAME/wsgi.py
@@ -75,7 +75,6 @@ ENV UWSGI_ENV="DJANGO_SETTINGS_MODULE=${XORG_PACKAGE_NAME}.settings"
 ENV UWSGI_CHDIR=$XORG_ROOT
 
 # Start uWSGI using system-installed package
-WORKDIR $XORG_ROOT
 CMD ./venv/bin/python ./app/manage.py migrate --noinput && \
     /usr/bin/uwsgi --show-config --plugin /usr/lib/uwsgi/plugins/python3_plugin.so
 
