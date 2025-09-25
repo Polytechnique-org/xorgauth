@@ -38,8 +38,8 @@ RUN venv/bin/django-admin compilemessages
 RUN venv/bin/python app/manage.py collectstatic --noinput
 
 # touch reload, usefull for debugging
-RUN touch reload-uwsgi.touchme
-ENV UWSGI_TOUCH_RELOAD="${XORG_ROOT}/reload-uwsgi.touchme"
+RUN touch app/reload-uwsgi.touchme
+ENV UWSGI_TOUCH_RELOAD="${XORG_ROOT}/app/reload-uwsgi.touchme"
 
 # cleanup apt
 USER root
