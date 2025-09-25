@@ -78,5 +78,3 @@ ENV UWSGI_CHDIR=$XORG_ROOT
 CMD ./venv/bin/python ./app/manage.py migrate --noinput && \
     /usr/bin/uwsgi --show-config --plugin /usr/lib/uwsgi/plugins/python3_plugin.so
 
-# Start using python only
-#CMD ./venv/bin/python ./app/manage.py runserver --traceback 0.0.0.0:8000
