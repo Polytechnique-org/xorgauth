@@ -18,6 +18,7 @@ conf.read(os.path.join(os.path.dirname(__file__), '..', 'platal.conf'))
 db = pymysql.connect(
     host=conf['Core']['dbhost'].strip('"'),
     user=conf['Core']['dbuser'].strip('"'),
+    port=int(conf['Core']['dbport']),
     password=conf['Core']['dbpwd'].strip('"'),
     db=conf['Core']['dbdb'].strip('"'),
     charset='utf8mb4',
@@ -59,4 +60,4 @@ with db.cursor() as cursor:
 # Output JSON
 print("Writing JSON file")
 with open('exported_for_ax.json', 'w') as f:
-    json.dump(result, f, indent=2)
+    json.dump(result, f, indent=2, default=str)
