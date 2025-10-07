@@ -216,6 +216,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 # django-oidc-provider configuration
 OIDC_USERINFO = 'xorgauth.accounts.oidc_provider_settings.userinfo'
 OIDC_EXTRA_SCOPE_CLAIMS = 'xorgauth.accounts.oidc_provider_settings.XorgScopeClaims'
