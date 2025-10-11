@@ -7,7 +7,7 @@ ARG XORG_USER=xorg
 RUN apt update
 
 # install dependencies
-RUN apt install -y python3 uwsgi-plugin-python3 uwsgi python3-passlib
+RUN apt install -y python3 uwsgi-plugin-python3 uwsgi python3-passlib python3-mysqldb
 
 # install build-dependencies
 RUN apt install -y python3-setuptools python3-venv gettext
@@ -83,4 +83,3 @@ ENV UWSGI_CHDIR=$XORG_ROOT
 # Start uWSGI using system-installed package
 CMD python manage.py migrate --noinput && \
     /usr/bin/uwsgi --show-config --plugin /usr/lib/uwsgi/plugins/python3_plugin.so
-
