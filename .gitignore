@@ -20,4 +20,5 @@ MANIFEST
 
 # Settings
 local_settings.ini
+settings.ini
 platal.conf
