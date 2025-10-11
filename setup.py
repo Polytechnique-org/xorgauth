@@ -55,8 +55,8 @@ setup(
 
     python_requires='>=3.10',
     install_requires=[
-        'Django>=5.0',
-        'django-oidc-provider>=0.7.0',  # Version 0.7.0 has a breaking change in response types
+        'Django~=5.0',
+        'django-oidc-provider~=0.9',  # Version 0.7.0 has a breaking change in response types
         'django-bootstrap5',
         'django_zxcvbn_password',
         'getconf',
