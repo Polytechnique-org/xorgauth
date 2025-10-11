@@ -7,10 +7,10 @@ ARG XORG_USER=xorg
 RUN apt update
 
 # install dependencies
-RUN apt install -y python3 uwsgi-plugin-python3 uwsgi python3-passlib
+RUN apt install -y python3 uwsgi-plugin-python3 uwsgi python3-passlib libmariadb-dev-compat
 
 # install build-dependencies
-RUN apt install -y python3-setuptools python3-venv gettext
+RUN apt install -y python3-setuptools python3-venv gettext python3-dev build-essential pkg-config
 
 # create user
 RUN useradd --user-group --system --create-home --home-dir $XORG_ROOT $XORG_USER
@@ -32,7 +32,7 @@ RUN python3 -m venv --system-site-packages venv
 ENV PATH=$XORG_ROOT/venv/bin:$PATH
 
 # install deps
-RUN pip install ./app
+RUN pip install ./app mysqlclient
 
 # build
 RUN django-admin compilemessages
@@ -49,7 +49,7 @@ ENV UWSGI_TOUCH_RELOAD=$XORG_ROOT/app/reload-uwsgi.touchme
 
 # cleanup apt
 USER root
-RUN apt remove -y python3-setuptools && apt autoremove -y
+RUN apt remove -y python3-setuptools python3-dev build-essential pkg-config && apt autoremove -y
 RUN rm -rf /var/cache/apt/* /var/lib/apt/lists/*
 
 # install global settings
