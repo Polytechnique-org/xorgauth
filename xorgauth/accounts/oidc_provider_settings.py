@@ -9,7 +9,7 @@ from oidc_provider.lib.claims import ScopeClaims
 def userinfo(claims, user):
     """Populate claims dict for the given user
 
-    http://django-oidc-provider.readthedocs.io/en/latest/sections/scopesclaims.html
+    https://django-oidc-provider.readthedocs.io/en/master/sections/scopesclaims.html
     """
     claims['name'] = user.fullname
     claims['email'] = user.main_email
