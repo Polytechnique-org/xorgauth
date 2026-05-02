@@ -13,6 +13,11 @@ def userinfo(claims, user):
     """
     claims['name'] = user.fullname
     claims['email'] = user.main_email
+    claims['given_name'] = user.firstname
+    claims['family_name'] = user.lastname
+    claims['preferred_username'] = user.preferred_name
+    claims['gender'] = user.sex
+    claims['birthdate'] = user.birth_date
     return claims
 
 
