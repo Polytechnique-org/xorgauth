@@ -182,7 +182,7 @@ msgid "J&R subscriber"
 msgstr "Abonné J&R"
 
 #: xorgauth/accounts/models.py:141
-msgid "Subscribed to La Jaune et la Rouge,"
+msgid "Subscribed to La Jaune et la Rouge"
 msgstr "Abonné à La Jaune et la Rouge"
 
 #: xorgauth/accounts/models.py:142

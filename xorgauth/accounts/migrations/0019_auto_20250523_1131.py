@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='user',
             name='axjr_subscriber',
-            field=models.BooleanField(blank=True, help_text='Subscribed to La Jaune et la Rouge,', null=True, verbose_name='J&R subscriber'),
+            field=models.BooleanField(blank=True, help_text='Subscribed to La Jaune et la Rouge', null=True, verbose_name='J&R subscriber'),
         ),
     ]
