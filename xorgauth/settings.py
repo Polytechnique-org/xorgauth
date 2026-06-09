@@ -10,9 +10,9 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-import getconf
 import os
 
+import getconf
 from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -110,7 +110,7 @@ AUTH_USER_MODEL = 'accounts.User'
 _ENGINE_MAP = {
     'sqlite': 'django.db.backends.sqlite3',
     'mysql': 'django.db.backends.mysql',
-    'postgresql': 'django.db.backends.postgresql_psycopg2',
+    'postgresql': 'django.db.backends.postgresql',
 }
 _engine = config.getstr('db.engine', 'sqlite')
 if _engine not in _ENGINE_MAP:
