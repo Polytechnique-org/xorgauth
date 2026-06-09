@@ -18,7 +18,7 @@ RUN useradd --user-group --system --create-home --home-dir $XORG_ROOT $XORG_USER
 WORKDIR $XORG_ROOT
 
 # copy this django app
-COPY --chown=$XORG_USER: --exclude=Dockerfile --exclude=docker-compose.yml . app
+COPY --chown=$XORG_USER: --exclude=Dockerfile --exclude=docker-compose.yml --exclude=*.ini . app
 
 # install and activate venv in a separate directory
 # allow that venv to use system-installed python3-* packages
