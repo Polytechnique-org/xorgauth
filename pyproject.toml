@@ -54,3 +54,13 @@ exclude = ["migrations"]
 [tool.ruff.lint]
 select = ["E", "F", "W", "I"]
 ignore = []
+
+# ---------------------------------------------------------------------------
+# Coverage
+# ---------------------------------------------------------------------------
+[tool.coverage.run]
+source = ["xorgauth"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
