@@ -28,6 +28,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Install gettext
+        run: sudo apt install -y gettext
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v6
         with:
@@ -84,6 +87,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
+
+      - name: Install gettext
+        run: sudo apt install -y gettext
 
       - name: Set up Python
         uses: actions/setup-python@v6
