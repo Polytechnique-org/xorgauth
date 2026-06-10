@@ -14,6 +14,7 @@ from django.views.generic.base import RedirectView, TemplateView, View
 from oidc_provider.models import Client, UserConsent
 from passlib.hash import sha512_crypt
 
+from xorgauth.accounts.hashers import parse_sha512_hash
 from xorgauth.forms import PasswordChangeForm, PasswordResetForm, SetPasswordForm
 
 from .models import User
@@ -71,7 +72,10 @@ class SyncAxData(View):
             return HttpResponseBadRequest("Unable to load request")
 
         # data['secret'] is a password for authenticating the data provider
-        digest = sha512_crypt.hash(data.get("secret", ""), salt=settings.AX_SYNC_SECRET_CRYPT)
+        parsed_sha512_crypt = parse_sha512_hash(settings.AX_SYNC_SECRET_CRYPT)
+        digest = sha512_crypt.using(rounds=parsed_sha512_crypt["rounds"], salt=parsed_sha512_crypt["salt"]).hash(
+            data.get("secret", "")
+        )
         if not constant_time_compare(digest, settings.AX_SYNC_SECRET_CRYPT):
             return HttpResponseForbidden("Unauthenticated")
 

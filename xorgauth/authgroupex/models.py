@@ -4,21 +4,13 @@
 
 import hashlib
 import re
-import sys
+from hmac import compare_digest
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from xorgauth.utils.fields import UnboundedCharField
-
-# hmac.compare_digest is only available from Python 3.3
-if sys.version_info >= (3, 3):
-    from hmac import compare_digest
-else:
-
-    def compare_digest(x, y):
-        return x == y
 
 
 class AuthGroupeXClientManager(models.Manager):

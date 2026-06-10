@@ -2,5 +2,4 @@
 
 check_manifest
 ruff
-passlib
 coverage[toml]

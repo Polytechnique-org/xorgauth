@@ -16,7 +16,7 @@ class GoogleAppsPasswordValidator(object):
 
     def password_changed(self, raw_password, user):
         # Hash the password in a way compatible with Google Apps: crypt with $6
-        password = sha512_crypt.hash(raw_password)
+        password = sha512_crypt.using().hash(raw_password)
         try:
             user.gapps_password.password = password
         except ObjectDoesNotExist:

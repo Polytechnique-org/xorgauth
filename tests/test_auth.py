@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import sys
 
 from django.contrib import auth
 from django.core import mail
@@ -8,6 +7,7 @@ from django.utils import translation
 from passlib.hash import sha512_crypt
 
 import xorgauth.forms
+from xorgauth.accounts.hashers import parse_sha512_hash
 from xorgauth.accounts.models import User, UserAlias
 
 
@@ -146,16 +146,24 @@ class AuthenticationTests(TestCase):
         self.vaneau.set_password("Depuis Vaneau!")
         self.vaneau.save()
         gapps_password = self.vaneau.gapps_password.password
-        self.assertEqual(sha512_crypt.hash("Depuis Vaneau!", salt=gapps_password), gapps_password)
+        parsed_sha512_crypt = parse_sha512_hash(gapps_password)
+        self.assertEqual(
+            sha512_crypt.using(rounds=parsed_sha512_crypt["rounds"], salt=parsed_sha512_crypt["salt"]).hash(
+                "Depuis Vaneau!"
+            ),
+            gapps_password,
+        )
 
         password = "Mot de passe différent?"
         self.vaneau.set_password(password)
         self.vaneau.save()
         self.vaneau = User.objects.get(hrid="louis.vaneau.1829")
         gapps_password = self.vaneau.gapps_password.password
-        if sys.version_info < (3,):
-            password = password.encode("utf-8")
-        self.assertEqual(sha512_crypt.hash(password, salt=gapps_password), gapps_password)
+        parsed_sha512_crypt = parse_sha512_hash(gapps_password)
+        self.assertEqual(
+            sha512_crypt.using(rounds=parsed_sha512_crypt["rounds"], salt=parsed_sha512_crypt["salt"]).hash(password),
+            gapps_password,
+        )
 
     def test_password_reset_form(self):
         """Test using the password reset form"""
