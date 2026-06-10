@@ -1,4 +1,6 @@
 -e .
 
 check_manifest
-flake8
+ruff
+passlib
+coverage[toml]

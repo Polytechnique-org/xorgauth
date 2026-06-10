@@ -8,6 +8,7 @@
 dev/
 /static/
 /.tox/
+venv/
 
 # Build-related files
 doc/_build/

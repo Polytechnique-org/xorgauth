@@ -1,8 +1,9 @@
 xorgauth
 ========
 
-.. image:: https://secure.travis-ci.org/Polytechnique-org/xorgauth.png?branch=master
-    :target: http://travis-ci.org/Polytechnique-org/xorgauth/
+.. image:: https://github.com/Polytechnique-org/xorgauth/actions/workflows/ci.yml/badge.svg?branch=master
+   :target: https://github.com/Polytechnique-org/xorgdata/actions/workflows/ci.yml
+   :alt: CI
 
 .. image:: https://img.shields.io/pypi/v/xorgauth.svg
     :target: https://pypi.python.org/pypi/xorgauth/
