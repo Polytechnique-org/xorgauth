@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import json
 
-from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import BaseCommand, CommandError
+
 from xorgauth.accounts.hashers import PBKDF2WrappedSHA1PasswordHasher
-from xorgauth.accounts.models import User, UserAlias, Group, GroupMembership, Role
+from xorgauth.accounts.models import Group, GroupMembership, Role, User, UserAlias
 
 
 class Command(BaseCommand):

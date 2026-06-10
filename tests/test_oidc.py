@@ -1,10 +1,10 @@
 import json
 import sys
+
+import oidc_provider.models
 from django.core.management import call_command
 from django.test import Client, TestCase
 from django.urls import reverse
-
-import oidc_provider.models
 
 from xorgauth.accounts.models import User, UserAlias
 

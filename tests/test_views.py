@@ -55,7 +55,7 @@ class ViewTests(TestCase):
                 c = Client()
                 resp = c.post(reverse(url_id))
                 self.assertEqual(200, resp.status_code)
-            else :    
+            else :
                 c = Client()
                 resp = c.get(reverse(url_id))
                 self.assertEqual(200, resp.status_code)

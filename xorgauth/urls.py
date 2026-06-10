@@ -14,15 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import include
-from django.urls import re_path as url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.urls import re_path as url
 from django.views.generic.base import TemplateView
+
+from xorgauth import forms as xorgauth_forms
 from xorgauth.accounts import views as xorgauth_views
 from xorgauth.authgroupex import views as authgpx_views
 from xorgauth.relying_party_test import views as rptest_views
-from xorgauth import forms as xorgauth_forms
-
 
 if hasattr(auth_views, 'PasswordChangeDoneView'):
     # Django 2.1 replaced auth_password_change_done_view by PasswordChangeDoneView

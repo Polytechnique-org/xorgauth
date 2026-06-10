@@ -1,5 +1,4 @@
 import json
-from passlib.hash import sha512_crypt
 
 from django.conf import settings
 from django.contrib import messages
@@ -12,8 +11,8 @@ from django.utils.crypto import constant_time_compare
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import RedirectView, TemplateView, View
-
-from oidc_provider.models import UserConsent, Client
+from oidc_provider.models import Client, UserConsent
+from passlib.hash import sha512_crypt
 
 from xorgauth.forms import PasswordChangeForm, PasswordResetForm, SetPasswordForm
 

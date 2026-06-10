@@ -6,7 +6,6 @@ from django.urls import reverse
 
 from xorgauth.accounts.models import User
 
-
 # crypt("secret")
 CRYPT_SECRET = (
     '$6$789UF3OtQuQGbJVZ$gorL2XAIfptBDtPObm.NKpO0FDESesSLZyEYDwjPbfbKbkEzLHh0MQ'

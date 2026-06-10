@@ -1,7 +1,7 @@
-from django.contrib.auth import forms as auth_forms
 import django.forms
+from django.contrib.auth import forms as auth_forms
 from django.utils.translation import gettext_lazy as _
-from zxcvbn_password.fields import PasswordField, PasswordConfirmationField
+from zxcvbn_password.fields import PasswordConfirmationField, PasswordField
 
 from xorgauth.accounts.models import User
 

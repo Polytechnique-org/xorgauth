@@ -2,6 +2,7 @@ import json
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.management.base import BaseCommand, CommandError
+
 from xorgauth.authgroupex.models import AuthGroupeXClient
 
 

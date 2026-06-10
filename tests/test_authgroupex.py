@@ -4,14 +4,14 @@ import random
 import struct
 
 import django
-from django import http
 import django.contrib.auth
+from django import http
 from django.test import Client, TestCase
 from django.urls import reverse
 
-from xorgauth.accounts.models import User, UserAlias, Role, Group, GroupMembership
-from xorgauth.authgroupex.models import AuthGroupeXClient
 import xorgauth.authgroupex.views as authgroupex_views
+from xorgauth.accounts.models import Group, GroupMembership, Role, User, UserAlias
+from xorgauth.authgroupex.models import AuthGroupeXClient
 
 
 class AuthGroupeXTests(TestCase):

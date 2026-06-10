@@ -9,8 +9,8 @@ import sys
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from xorgauth.utils.fields import UnboundedCharField
 
+from xorgauth.utils.fields import UnboundedCharField
 
 # hmac.compare_digest is only available from Python 3.3
 if sys.version_info >= (3, 3):

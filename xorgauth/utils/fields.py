@@ -3,9 +3,9 @@
 # This code is distributed under the Affero General Public License version 3
 import re
 
+from django import forms
 from django.core.validators import RegexValidator
 from django.db import models
-from django import forms
 from django.utils.translation import gettext_lazy as _
 
 

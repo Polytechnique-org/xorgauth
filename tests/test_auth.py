@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import sys
-from passlib.hash import sha512_crypt
 
 from django.contrib import auth
 from django.core import mail
 from django.test import Client, TestCase
 from django.utils import translation
+from passlib.hash import sha512_crypt
 
-from xorgauth.accounts.models import User, UserAlias
 import xorgauth.forms
+from xorgauth.accounts.models import User, UserAlias
 
 
 class AuthenticationTests(TestCase):
