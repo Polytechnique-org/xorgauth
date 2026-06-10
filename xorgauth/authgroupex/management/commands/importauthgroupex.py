@@ -10,23 +10,22 @@ class Command(BaseCommand):
     help = "Import a JSON file with authgroupex client data into the database"
 
     def add_arguments(self, parser):
-        parser.add_argument('jsonfile', nargs=1, type=str,
-                            help="path to JSON file to load")
+        parser.add_argument("jsonfile", nargs=1, type=str, help="path to JSON file to load")
 
     def handle(self, *args, **options):
-        with open(options['jsonfile'][0], 'r') as jsonfd:
+        with open(options["jsonfile"][0], "r") as jsonfd:
             jsondata = json.load(jsonfd)
-        if 'authgroupex' not in jsondata:
+        if "authgroupex" not in jsondata:
             raise CommandError("Unable to find account entries")
-        for client_data in jsondata['authgroupex']:
-            name = client_data['name']
+        for client_data in jsondata["authgroupex"]:
+            name = client_data["name"]
             try:
                 client = AuthGroupeXClient.objects.get(name=name)
             except ObjectDoesNotExist:
                 client = AuthGroupeXClient(name=name)
 
-            client.privkey = client_data['privkey']
-            client.data_fields = client_data['datafields']
-            client.return_urls = client_data['returnurls']
-            client.allow_xnet = (client_data['flags'] == 'allow_xnet')
+            client.privkey = client_data["privkey"]
+            client.data_fields = client_data["datafields"]
+            client.return_urls = client_data["returnurls"]
+            client.allow_xnet = client_data["flags"] == "allow_xnet"
             client.save()

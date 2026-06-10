@@ -19,60 +19,59 @@ from .models import AuthGroupeXClient
 
 def extract_url_from_next_param(next_value, cut_length=120):
     """Parse the next parameter of the login page in order to display a nice URL"""
-    if '?' not in next_value:
+    if "?" not in next_value:
         return
-    query_params = QueryDict(next_value.split('?', 1)[1].encode('utf-8'))
-    ext_url = query_params.get('url', '')
+    query_params = QueryDict(next_value.split("?", 1)[1].encode("utf-8"))
+    ext_url = query_params.get("url", "")
     # make exturl printable
     if cut_length and len(ext_url) >= cut_length:
-        ext_url = ext_url[:cut_length] + '...'
+        ext_url = ext_url[:cut_length] + "..."
     return ext_url
 
 
 class AuthGroupeXLoginView(auth_views.LoginView):
-    template_name = 'authgroupex/login.html'
+    template_name = "authgroupex/login.html"
     authentication_form = xorgauth_forms.AuthenticationForm
 
     def get_context_data(self, **kwargs):
         context = super(AuthGroupeXLoginView, self).get_context_data(**kwargs)
         # Find the external URL in next value
-        context['ext_url'] = extract_url_from_next_param(context.get('next', ''))
+        context["ext_url"] = extract_url_from_next_param(context.get("next", ""))
         return context
 
 
 class AuthGroupeXView(LoginRequiredMixin, View):
     def get_login_url(self):
-        return reverse('auth-groupex-login')
+        return reverse("auth-groupex-login")
 
     def get(self, request, *args, **kwargs):
-        ext_url = request.GET.get('url')
-        php_session = request.GET.get('session')
-        gpex_challenge = request.GET.get('challenge')
-        gpex_pass = request.GET.get('pass')
-        gpex_group = request.GET.get('group')
+        ext_url = request.GET.get("url")
+        php_session = request.GET.get("session")
+        gpex_challenge = request.GET.get("challenge")
+        gpex_pass = request.GET.get("pass")
+        gpex_group = request.GET.get("group")
         if not ext_url:
-            return HttpResponseBadRequest('error: missing url')
+            return HttpResponseBadRequest("error: missing url")
         if not gpex_challenge:
-            return HttpResponseBadRequest('error: missing challenge')
+            return HttpResponseBadRequest("error: missing challenge")
         if not gpex_pass:
-            return HttpResponseBadRequest('error: missing gpex_pass')
+            return HttpResponseBadRequest("error: missing gpex_pass")
 
         # Split the external URL parameters
-        if '?' in ext_url:
-            ext_url, params = ext_url.split('?', 1)
-            ext_url_params = QueryDict(params.encode('utf-8'), mutable=True)
+        if "?" in ext_url:
+            ext_url, params = ext_url.split("?", 1)
+            ext_url_params = QueryDict(params.encode("utf-8"), mutable=True)
         else:
             ext_url_params = QueryDict(mutable=True)
 
         # Normalize the return URL
-        if not re.match(r'^(http|https)://', ext_url):
-            ext_url = 'http://' + ext_url
+        if not re.match(r"^(http|https)://", ext_url):
+            ext_url = "http://" + ext_url
 
         # Get the client which signed the request
-        client = AuthGroupeXClient.objects.get_by_url_and_challenge(
-            ext_url, gpex_challenge, gpex_pass)
+        client = AuthGroupeXClient.objects.get_by_url_and_challenge(ext_url, gpex_challenge, gpex_pass)
         if not client:
-            return HttpResponseBadRequest('error: unknown client URL or bad challenge signature')
+            return HttpResponseBadRequest("error: unknown client URL or bad challenge signature")
 
         # Update the last used date
         client.last_used = timezone.now()
@@ -90,49 +89,48 @@ class AuthGroupeXView(LoginRequiredMixin, View):
 
         # Add session as PHPSESSID into ext_url parameters
         if php_session:
-            ext_url_params['PHPSESSID'] = php_session
+            ext_url_params["PHPSESSID"] = php_session
 
-        return HttpResponseRedirect('%s?%s' % (ext_url, ext_url_params.urlencode()))
+        return HttpResponseRedirect("%s?%s" % (ext_url, ext_url_params.urlencode()))
 
 
 class AuthGroupeXLogoutView(View):
     def get(self, request, *args, **kwargs):
-        ext_url = request.GET.get('url')
-        php_session = request.GET.get('session')
-        gpex_challenge = request.GET.get('challenge')
-        gpex_pass = request.GET.get('pass')
+        ext_url = request.GET.get("url")
+        php_session = request.GET.get("session")
+        gpex_challenge = request.GET.get("challenge")
+        gpex_pass = request.GET.get("pass")
         if not ext_url:
-            return HttpResponseBadRequest('error: missing url')
+            return HttpResponseBadRequest("error: missing url")
         if not gpex_challenge:
-            return HttpResponseBadRequest('error: missing challenge')
+            return HttpResponseBadRequest("error: missing challenge")
         if not gpex_pass:
-            return HttpResponseBadRequest('error: missing gpex_pass')
+            return HttpResponseBadRequest("error: missing gpex_pass")
 
         # Split the external URL parameters
-        if '?' in ext_url:
-            ext_url, params = ext_url.split('?', 1)
-            ext_url_params = QueryDict(params.encode('utf-8'), mutable=True)
+        if "?" in ext_url:
+            ext_url, params = ext_url.split("?", 1)
+            ext_url_params = QueryDict(params.encode("utf-8"), mutable=True)
         else:
             ext_url_params = QueryDict(mutable=True)
 
         # Normalize the return URL
-        if not re.match(r'^(http|https)://', ext_url):
-            ext_url = 'http://' + ext_url
+        if not re.match(r"^(http|https)://", ext_url):
+            ext_url = "http://" + ext_url
 
         # Get the client which signed the request
-        client = AuthGroupeXClient.objects.get_by_url_and_challenge(
-            ext_url, gpex_challenge, gpex_pass)
+        client = AuthGroupeXClient.objects.get_by_url_and_challenge(ext_url, gpex_challenge, gpex_pass)
         if not client:
-            return HttpResponseBadRequest('error: unknown client URL or bad challenge signature')
+            return HttpResponseBadRequest("error: unknown client URL or bad challenge signature")
 
         # Log out the user and redirect to the redirection URL
         logout(request)
 
         # Add session as PHPSESSID into ext_url parameters
         if php_session:
-            ext_url_params['PHPSESSID'] = php_session
+            ext_url_params["PHPSESSID"] = php_session
 
         ext_url_params_str = ext_url_params.urlencode()
         if ext_url_params_str:
-            ext_url += '?' + ext_url_params_str
+            ext_url += "?" + ext_url_params_str
         return HttpResponseRedirect(ext_url)

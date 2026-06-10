@@ -9,10 +9,10 @@ from . import models
 
 @admin.register(models.Role)
 class RoleAdmin(admin.ModelAdmin):
-    search_fields = ['hrid', 'display']
+    search_fields = ["hrid", "display"]
 
-    list_display = ['hrid', 'display', 'system']
-    list_filter = ['system']
+    list_display = ["hrid", "display", "system"]
+    list_filter = ["system"]
 
 
 class UserAliasInline(admin.TabularInline):
@@ -29,30 +29,30 @@ class UserAdmin(admin.ModelAdmin):
         UserAliasInline,
         GoogleAppsPasswordInline,
     ]
-    search_fields = ['hrid', 'main_email', 'fullname', 'preferred_name']
+    search_fields = ["hrid", "main_email", "fullname", "preferred_name"]
 
-    list_display = ['hrid', 'main_email', 'fullname']
-    list_filter = ['roles', 'last_login']
+    list_display = ["hrid", "main_email", "fullname"]
+    list_filter = ["roles", "last_login"]
 
 
 @admin.register(models.UserAlias)
 class UserAliasAdmin(admin.ModelAdmin):
-    search_fields = ['user__%s' % f for f in UserAdmin.search_fields]
+    search_fields = ["user__%s" % f for f in UserAdmin.search_fields]
 
-    list_display = ['email', 'user']
-    list_select_related = ['user']
+    list_display = ["email", "user"]
+    list_select_related = ["user"]
 
 
 @admin.register(models.Group)
 class GroupAdmin(admin.ModelAdmin):
-    search_fields = ['shortname'] + ['members__user__%s' % f for f in UserAdmin.search_fields]
+    search_fields = ["shortname"] + ["members__user__%s" % f for f in UserAdmin.search_fields]
 
-    list_display = ['shortname']
+    list_display = ["shortname"]
 
 
 @admin.register(models.GroupMembership)
 class GroupMembershipAdmin(admin.ModelAdmin):
-    search_fields = ['group__shortname'] + ['user__%s' % f for f in UserAdmin.search_fields]
+    search_fields = ["group__shortname"] + ["user__%s" % f for f in UserAdmin.search_fields]
 
-    list_display = ['pk', 'group', 'user', 'perms']
-    list_filter = ['perms']
+    list_display = ["pk", "group", "user", "perms"]
+    list_filter = ["perms"]
