@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n staticfiles bootstrap3 %}
+{% load i18n static django_bootstrap5 %}
 
 {% block content %}
 
@@ -10,9 +10,9 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">Client name</th>
-            <th scope="col">Authorized scopes</th>
-            <th scope="col">Expiration date</th>
+            <th scope="col">{% trans 'Client name' %}</th>
+            <th scope="col">{% trans 'Authorized scopes' %}</th>
+            <th scope="col">{% trans 'Expiration date' %}</th>
             <th></th>
         </tr>
     </thead>
@@ -26,7 +26,7 @@
             <form action="{{ request.path }}" method="POST">
                 {% csrf_token %}
                 <input type="hidden" name="revoke" value="{{ consent.client.client_id }}" />
-                <input type="submit" value="{% trans "Revoke" %}" class="btn btn-secondary" />
+                <input type="submit" value="{% trans "Revoke" %}" class="btn btn-secondary btn-sm" />
             </form>
         </td>
     </tr>

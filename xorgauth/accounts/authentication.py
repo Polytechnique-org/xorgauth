@@ -9,6 +9,7 @@ class XorgBackend(ModelBackend):
     It inherits from django's default backend to keep all other behavior,
     just overriding the user search given an hrid or email
     """
+
     def authenticate(self, request, username=None, password=None, **kwargs):
         user = User.objects.get_for_login(username, True)
         if user is None:

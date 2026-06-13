@@ -12,15 +12,12 @@ class AXOIDCFixerMiddleware:
 
     Remove those extra &amp;
     """
+
     def __init__(self, get_response):
         self.get_response = get_response
 
     def __call__(self, request):
-        if (
-            request.path.startswith("/openid/authorize")
-            and request.method == "GET"
-            and "amp;client_id" in request.GET
-        ):
+        if request.path.startswith("/openid/authorize") and request.method == "GET" and "amp;client_id" in request.GET:
             new_get = request.GET.copy()
 
             for key in request.GET.keys():

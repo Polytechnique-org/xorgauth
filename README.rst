@@ -1,8 +1,9 @@
 xorgauth
 ========
 
-.. image:: https://secure.travis-ci.org/Polytechnique-org/xorgauth.png?branch=master
-    :target: http://travis-ci.org/Polytechnique-org/xorgauth/
+.. image:: https://github.com/Polytechnique-org/xorgauth/actions/workflows/ci.yml/badge.svg?branch=master
+   :target: https://github.com/Polytechnique-org/xorgdata/actions/workflows/ci.yml
+   :alt: CI
 
 .. image:: https://img.shields.io/pypi/v/xorgauth.svg
     :target: https://pypi.python.org/pypi/xorgauth/
@@ -23,8 +24,7 @@ xorgauth
 xorgauth handles authentication / authorization for Polytechnique.org-related services.
 
 
-.. note::
-
+:note:
     This is currently a work in progress.
 
 
@@ -86,9 +86,54 @@ Here are instructions specific to xorgauth application for upgrading::
     make
 
 
+Building and using a docker/podman image
+----------------------------------------
+
+This commands work using either podman or docker.
+
+## For development
+
+To build the image::
+
+    podman build --file Dockerfile --tag xorgauth
+
+One can create, start, and attach to a container for development (ctrl-c to kill it), that will bind-mount current directory in place of the app in the image::
+
+    podman run --interactive --tty --replace --name xorgauth_dev --mount type=bind,src=.,dst=/srv/xorgauth/app --publish 8000:8000 xorgauth:latest
+
+Make changes to the code in the current directory, and reload the application quickly::
+
+    touch reload-uwsgi.touchme
+
+which is way quicker than restarting the container.
+
+One can also get a shell in the container::
+
+    podman exec -it xorgauth_dev /bin/bash
+    $> python manage.py importaccounts scripts/dev_data.json
+
+## For production
+
+A production container would just be::
+
+    podman create --name xorgauth_prod --publish 8000:8202 xorgauth:latest
+
+To start it, just::
+
+    podman start xorgauth_prod
+
+To see the logs::
+
+    podman logs --follow xorgauth_prod
+
+One can kill, restart, etc...
+
+
 Notes
 -----
 
+* After adding a new translation tag in an html template, you can recreate the translation file with the command ``make poupdate`` (the blocks with "fuzzy" are ignored)
+* Before running the ``collectstatic`` command, make sure to manually add all necessary static files to the project. In particular, the JavaScript and CSS dependencies must be downloaded and placed in the ``xorgauth/static/`` directory of this project; **remember to update them regularly**
 * Use https://testpypi.python.org/pypi/django-zxcvbn-password/2.0.0 for password entry
 * As a provider, return a list of "group access levels" + "role-based permissions"
 

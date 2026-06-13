@@ -1,4 +1,5 @@
 -e .
 
 check_manifest
-flake8
+ruff
+coverage[toml]

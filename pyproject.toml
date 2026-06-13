@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xorgauth"
+dynamic = ["version"]
+description = "Polytechnique.org authentication provider"
+readme = "README.rst"
+license = { text = "AGPL-3.0" }
+authors = [
+    { name = "Polytechnique.org dev team", email = "devel+xorgauth@staff.polytechnique.org" },
+]
+keywords = ["sso", "authentication", "authgroupex", "openid connect"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Natural Language :: French",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Internet :: WWW/HTTP :: Session",
+    "Topic :: System :: Systems Administration :: Authentication/Directory",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "Django~=5.0",
+    "django-oidc-provider~=0.9",
+    "django-bootstrap5",
+    "django_zxcvbn_password",
+    "getconf",
+    "passlib>=1.7",
+]
+
+[project.urls]
+Homepage = "https://github.com/Polytechnique-org/xorgauth"
+Download = "http://pypi.python.org/pypi/xorgauth/"
+
+[tool.setuptools.packages.find]
+include = ["xorgauth", "xorgauth.*"]
+
+[tool.setuptools.dynamic]
+version = { attr = "xorgauth.__version__" }
+
+# ---------------------------------------------------------------------------
+# Ruff
+# ---------------------------------------------------------------------------
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+exclude = ["migrations"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = []
+
+# ---------------------------------------------------------------------------
+# Coverage
+# ---------------------------------------------------------------------------
+[tool.coverage.run]
+source = ["xorgauth"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true

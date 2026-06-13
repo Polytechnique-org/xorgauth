@@ -8,6 +8,7 @@
 dev/
 /static/
 /.tox/
+venv/
 
 # Build-related files
 doc/_build/
@@ -20,4 +21,5 @@ MANIFEST
 
 # Settings
 local_settings.ini
+settings.ini
 platal.conf

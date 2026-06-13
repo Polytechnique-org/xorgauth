@@ -1,4 +1,3 @@
-import crypt
 import json
 
 from django.conf import settings
@@ -12,9 +11,10 @@ from django.utils.crypto import constant_time_compare
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import RedirectView, TemplateView, View
+from oidc_provider.models import Client, UserConsent
+from passlib.hash import sha512_crypt
 
-from oidc_provider.models import UserConsent, Client
-
+from xorgauth.accounts.hashers import parse_sha512_hash
 from xorgauth.forms import PasswordChangeForm, PasswordResetForm, SetPasswordForm
 
 from .models import User
@@ -23,32 +23,30 @@ from .models import User
 @login_required
 def list_consents(request):
     # if a revoke request was done, process it
-    revoke = request.POST.get('revoke', None)
+    revoke = request.POST.get("revoke", None)
     if revoke is not None:
         consent = UserConsent.objects.filter(user=request.user, client__client_id=revoke)
         if consent:
             revoked_client = consent[0].client
             consent[0].delete()
-            messages.success(request, "Successfully revoked consent for client \"{}\"".format(revoked_client.name))
+            messages.success(request, 'Successfully revoked consent for client "{}"'.format(revoked_client.name))
         else:
             client = Client.objects.filter(client_id=revoke)
             if client:
-                messages.error(request, "You have no consent for client \"{}\".".format(client[0].name))
+                messages.error(request, 'You have no consent for client "{}".'.format(client[0].name))
             else:
                 messages.error(request, "Unknown client.")
     # render the result
     consents = UserConsent.objects.filter(user=request.user)
-    return render(request, 'list_consents.html', {
-        'consents': consents
-    })
+    return render(request, "list_consents.html", {"consents": consents})
 
 
 class IndexView(LoginRequiredMixin, RedirectView):
-    pattern_name = 'profile'
+    pattern_name = "profile"
 
 
 class ProfileView(LoginRequiredMixin, TemplateView):
-    template_name = 'profile.html'
+    template_name = "profile.html"
 
     def user_has_consents(self):
         """Return true if the logged user has any consent"""
@@ -60,7 +58,7 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         return user.main_email if user.is_x_alumni() else None
 
 
-@method_decorator(csrf_exempt, name='dispatch')
+@method_decorator(csrf_exempt, name="dispatch")
 class SyncAxData(View):
     def post(self, request, *args, **kwargs):
         """Receive some data for syncing"""
@@ -69,26 +67,29 @@ class SyncAxData(View):
             raise Http404("AX sync has not been configured")
 
         try:
-            data = json.loads(request.body.decode('ascii'))
+            data = json.loads(request.body.decode("ascii"))
         except ValueError:
             return HttpResponseBadRequest("Unable to load request")
 
         # data['secret'] is a password for authenticating the data provider
-        digest = crypt.crypt(data.get('secret', ''), settings.AX_SYNC_SECRET_CRYPT)
+        parsed_sha512_crypt = parse_sha512_hash(settings.AX_SYNC_SECRET_CRYPT)
+        digest = sha512_crypt.using(rounds=parsed_sha512_crypt["rounds"], salt=parsed_sha512_crypt["salt"]).hash(
+            data.get("secret", "")
+        )
         if not constant_time_compare(digest, settings.AX_SYNC_SECRET_CRYPT):
             return HttpResponseForbidden("Unauthenticated")
 
         # Mapping from User model to value in JSON request
         field_mapping = (
-            ('alumnforce_id', 'af_id'),
-            ('ax_contributor', 'ax_contributor'),
-            ('axjr_subscriber', 'axjr_subscribed'),
-            ('ax_last_synced', 'last_updated'),
+            ("alumnforce_id", "af_id"),
+            ("ax_contributor", "ax_contributor"),
+            ("axjr_subscriber", "axjr_subscribed"),
+            ("ax_last_synced", "last_updated"),
         )
         try:
-            for account_data in data['data']:
+            for account_data in data["data"]:
                 try:
-                    user = User.objects.get(hrid=account_data['xorg_id'])
+                    user = User.objects.get(hrid=account_data["xorg_id"])
                 except User.DoesNotExist:
                     # Silently skip users that do not exist
                     # If they are created, they will be synced the next time a
@@ -115,13 +116,13 @@ if settings.MAINTENANCE:
     # Disable the forms in maintenance mode
 
     class PasswordChangeView(LoginRequiredMixin, TemplateView):
-        template_name = 'registration/password_change_form.html'
+        template_name = "registration/password_change_form.html"
 
     class PasswordResetView(TemplateView):
-        template_name = 'registration/password_reset_form.html'
+        template_name = "registration/password_reset_form.html"
 
     class PasswordResetConfirmView(TemplateView):
-        template_name = 'registration/password_reset_confirm.html'
+        template_name = "registration/password_reset_confirm.html"
 
 else:
 

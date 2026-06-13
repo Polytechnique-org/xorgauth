@@ -4,17 +4,15 @@ TESTS_DIR=tests
 DOC_DIR=docs
 
 # Use current python binary instead of system default.
-COVERAGE = python $(shell which coverage)
-FLAKE8 = flake8
-DJANGO_ADMIN = django-admin.py
+COVERAGE = python -m coverage
+RUFF = ruff
+DJANGO_ADMIN ?= django-admin
 PO_FILES = $(shell find $(SRC_DIR) -name '*.po') $(shell find third_party -name '*.po')
 MO_FILES = $(PO_FILES:.po=.mo)
 
 all: default
 
-
 default: build
-
 
 clean:
 	find . -type f -name '*.pyc' -delete
@@ -53,11 +51,15 @@ test: build
 checkdeploy:
 	python manage.py check --deploy --fail-level WARNING
 
-
 lint:
 	check-manifest
-	$(FLAKE8) --config .flake8 $(SRC_DIR)
-	$(FLAKE8) --config .flake8 $(TESTS_DIR)
+	$(RUFF) check $(SRC_DIR) $(TESTS_DIR)
+
+format:
+	$(RUFF) format $(SRC_DIR) $(TESTS_DIR)
+
+format-check:
+	$(RUFF) format $(SRC_DIR) $(TESTS_DIR) --check
 
 coverage:
 	$(COVERAGE) erase
@@ -69,4 +71,4 @@ doc:
 	$(MAKE) -C $(DOC_DIR) html
 
 
-.PHONY: all checkdeploy clean coverage createdb default doc install-deps lint poupdate test testall update
+.PHONY: all checkdeploy clean coverage createdb default doc format format-check lint poupdate test testall update
