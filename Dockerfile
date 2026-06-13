@@ -30,6 +30,8 @@ RUN \
 # create user
 RUN useradd --user-group --system --create-home --home-dir $XORG_ROOT $XORG_USER
 
+ENV DJANGO_SETTINGS_MODULE=$XORG_PACKAGE_NAME.settings
+
 WORKDIR $XORG_ROOT
 
 ############################################
@@ -64,7 +66,7 @@ RUN pip install ./app
 RUN django-admin compilemessages
 
 # collect to app/static
-RUN python app/manage.py collectstatic --noinput
+RUN django-admin collectstatic --noinput
 
 ############################################
 ##########      App Image      ##########
@@ -99,9 +101,6 @@ EXPOSE 8000
 # Switch back to user
 USER $XORG_USER
 
-# Add any static environment variables needed by Django or your settings file here:
-ENV DJANGO_SETTINGS_MODULE=$XORG_PACKAGE_NAME.settings
-
 # Tell uWSGI where to find your wsgi file (change this):
 ENV UWSGI_WSGI_FILE=$XORG_ROOT/app/$XORG_PACKAGE_NAME/wsgi.py
 
@@ -112,7 +111,7 @@ ENV UWSGI_VIRTUALENV=$XORG_ROOT/venv UWSGI_MODULE=$XORG_PACKAGE_NAME.wsgi:applic
 ENV UWSGI_WORKERS=2 UWSGI_THREADS=4
 
 # uWSGI static file serving configuration (customize or comment out if not needed):
-ENV UWSGI_STATIC_MAP="/static/=${XORG_ROOT}/app/$XORG_PACKAGE_NAME/static/" UWSGI_STATIC_EXPIRES_URI="/static/.*\.[a-f0-9]{12,}\.(css|js|png|jpg|jpeg|gif|ico|woff|ttf|otf|svg|scss|map|txt) 315360000"
+ENV UWSGI_STATIC_MAP="/static/=${XORG_ROOT}/app/static/" UWSGI_STATIC_EXPIRES_URI="/static/.*\.[a-f0-9]{12,}\.(css|js|png|jpg|jpeg|gif|ico|woff|ttf|otf|svg|scss|map|txt) 315360000"
 
 ENV UWSGI_ENV="DJANGO_SETTINGS_MODULE=${XORG_PACKAGE_NAME}.settings"
 ENV UWSGI_CHDIR=$XORG_ROOT
@@ -122,5 +121,5 @@ ENV UWSGI_ROUTE_HOST="^(?!data\.m4x\.org$) break:400"
 
 # Start uWSGI using system-installed package
 SHELL ["/bin/bash", "-c"]
-CMD python manage.py migrate --noinput && \
+CMD django-admin migrate --noinput && \
     /usr/bin/uwsgi --show-config --plugin /usr/lib/uwsgi/plugins/python3_plugin.so
